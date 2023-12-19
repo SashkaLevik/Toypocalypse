@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Glue
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  Name: 
+  Name: Glue
   Health: 3
   Type: 2

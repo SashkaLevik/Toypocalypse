@@ -14,7 +14,6 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private const string Arms = "Parts/Arms";
 
         [SerializeField] private Inventory _inventory;
-        [SerializeField] private List<PrefabsSet> _prefabSets;
 
         public List<Part> _heads;
         public List<Part> _torsos;

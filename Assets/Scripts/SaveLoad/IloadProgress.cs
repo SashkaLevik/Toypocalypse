@@ -2,8 +2,8 @@
 
 namespace Assets.Scripts.SaveLoad
 {
-    public interface IloadProgress
+    public interface ILoadProgress
     {
-        public void LoadProgress(PlayerProgress progress);
+        public void Load(PlayerProgress progress);
     }
 }

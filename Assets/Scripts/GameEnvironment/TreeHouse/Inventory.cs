@@ -36,15 +36,16 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         public GameObject LegsContainer => _legsContainer;
 
         public event UnityAction<Part> PlacedOnTable;
-
+        
         private void Awake()
         {
         }
 
         private void Start()
         {
+            
         }
-
+       
         private void OnEnable()
         {
             _onTable.onClick.AddListener(RemovePart);

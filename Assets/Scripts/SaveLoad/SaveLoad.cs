@@ -1,11 +1,11 @@
 ﻿using Assets.Scripts.Data;
-using Assets.Scripts.GameFactory;
+using Assets.Scripts.Factory;
 using Assets.Scripts.Infrastructure.Services;
 using UnityEngine;
 
 namespace Assets.Scripts.SaveLoad
 {
-    class SaveLoad : ISaveLoadService
+    public class SaveLoad : ISaveLoadService
     {
         private const string ProgressKey = "Progress";
 

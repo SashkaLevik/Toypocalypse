@@ -37,6 +37,13 @@ namespace Assets.Scripts.UI
             _table.MaterialAdded += IncreaseOnMaterial;
         }
 
+        private void OnDisable()
+        {
+            _table.PartAdded -= IncreaseSliders;
+            _table.PartRemoved -= DicreaseSliders;
+            _table.MaterialAdded -= IncreaseOnMaterial;
+        }
+
         private void IncreaseOnMaterial(float health)
         {
             _healthSlider.value = health;

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Screw
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  Name: 
+  Name: Screw
   Health: 4
   Type: 3

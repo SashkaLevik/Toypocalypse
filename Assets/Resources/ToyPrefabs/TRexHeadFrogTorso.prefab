@@ -98,3 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toyImage: {fileID: 21300000, guid: 189bf0afeaa8a6d45a7da00afb2fdfe0, type: 3}
+  _health: 0
+  _speed: 0
+  _damage: 0

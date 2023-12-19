@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0422c2de02d0634a934cc5b4f3a7473, type: 3}
   m_Name: ToyData 1
   m_EditorClassIdentifier: 
+  toyImage: {fileID: 21300000, guid: 189bf0afeaa8a6d45a7da00afb2fdfe0, type: 3}
   Prefab: {fileID: 3859031018498452022, guid: 0653354b36eea92429044a4015bc4565, type: 3}
   Parts:
   - {fileID: 11400000, guid: f34b67ce001c4834aa20ecf728942dc2, type: 2}

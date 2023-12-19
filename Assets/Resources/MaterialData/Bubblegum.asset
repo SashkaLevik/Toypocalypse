@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Bubblegum
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  Name: 
+  Name: Bubblegum
   Health: 1
   Type: 0

@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: KongHead
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
+  SkillImage: {fileID: 0}
+  SkillDamage: 0
+  Name: Kong Head
   Health: 3
   Speed: 1
   Damage: 1
+  MaterialAmount: 0
+  Type: 0

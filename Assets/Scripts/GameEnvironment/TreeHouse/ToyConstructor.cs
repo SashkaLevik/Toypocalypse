@@ -1,27 +1,30 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+using UnityEditor;
 using Assets.Scripts.Data.StaticData;
 using UnityEngine.UI;
-using Assets.Scripts.Toys;
+using Assets.Scripts.Player;
 using Assets.Scripts.UI;
 using UnityEngine.Events;
+using Assets.Scripts.Data;
+using Assets.Scripts.SaveLoad;
 
 namespace Assets.Scripts.GameEnvironment.TreeHouse
 {
-    public class ToyConstructor : MonoBehaviour
+    public class ToyConstructor : MonoBehaviour, ISaveProgress
     {
         [SerializeField] private TreeHouseUI _treeHouseUI;
         [SerializeField] private Table _table;       
-        [SerializeField] private Toy _createdToy;
+        [SerializeField] private List<ToyStaticData> _toyDatas;
         
-        public List<ToyStaticData> _toyDatas;
+        public ToyStaticData _createdToyData;
         private int _matchCount;
         private int _allParts = 4;
+        public PlayerStats _stats;
 
-        public Toy CreatedToy => _createdToy;
+        //public Toy CreatedToy => _createdToy;
 
-        public event UnityAction<Toy> ToyConstructed;
+        public event UnityAction<ToyStaticData> ToyConstructed;
 
         private void Start()
         {
@@ -30,13 +33,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private void OnEnable()
         {
             _table.ToyConstructed += IdentifyPrefab;
-        }        
-
-        private void CreateToy(Toy toy)
-        {
-            _treeHouseUI.ShowToyPreview(toy);
-            toy.SetParameters(_table.Health, _table.Speed, _table.Damage);
-        }
+        }                
 
         private void IdentifyPrefab()
         {            
@@ -51,32 +48,31 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
                 }
                 if (_matchCount == _allParts)
                 {
-                    _createdToy = toyData.Prefab;
-                    ToyConstructed?.Invoke(_createdToy);
+                    _createdToyData = toyData;
+                    ToyConstructed?.Invoke(_createdToyData);                    
                 }
                     
                 else
                     _matchCount = 0;
             }
-            CreateToy(_createdToy);
+            var toy = _createdToyData.Prefab.GetComponent<Toy>();
+            ShowCreatedToy(toy);
         }
 
-        //private bool CheckMatch(List<PartData> partDatas)
-        //{
-        //    for (int i = 0; i < partDatas.Count; i++)
-        //    {
-        //        foreach (var part in _table.Parts)
-        //        {
-        //            if (partDatas[i] == part.PartData) _matchCount++;                    
-        //        }
-        //    }
-        //    if (_matchCount == _allParts)
-        //        return true;
-        //    else
-        //    {
-        //        _matchCount = 0;
-        //        return false;
-        //    }            
-        //}                       
+        private void ShowCreatedToy(Toy toy)
+        {
+            _treeHouseUI.ShowToyPreview(toy);
+            toy.SetParameters(_table.Health, _table.Speed, _table.Damage);
+        }
+
+        public void Save(PlayerProgress progress)
+        {
+            progress.PlayerStats.MaxHP = _table.Health;
+        }
+
+        public void Load(PlayerProgress progress)
+        {
+            
+        }
     }
 }

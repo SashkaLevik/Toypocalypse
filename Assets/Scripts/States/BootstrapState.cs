@@ -1,7 +1,8 @@
-﻿using Assets.Scripts.Infrastructure.GameManagment;
+﻿using Assets.Scripts.Factory;
+using Assets.Scripts.Infrastructure.AssetManagment;
+using Assets.Scripts.Infrastructure.GameManagment;
 using Assets.Scripts.Infrastructure.Services;
-using System;
-using UnityEngine;
+
 
 namespace Assets.Scripts.States
 {
@@ -32,12 +33,23 @@ namespace Assets.Scripts.States
 
         private void RegisterServices()
         {
+            _services.RegisterSingle<IGameStateMachine>(_stateMachine);
+            RegisterToyData();
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
+            _services.RegisterSingle<IAssetProvider>(new AssetProvider());
+            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>()));
         }
 
         private void EnterState()
         {
             _stateMachine.Enter<MenuState, string>(Menu);
+        }
+
+        private void RegisterToyData()
+        {
+            IToyDataService toyData = new ToyDataService();
+            toyData.Load();
+            _services.RegisterSingle(toyData);
         }
     }
 }

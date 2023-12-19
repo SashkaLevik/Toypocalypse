@@ -8,12 +8,12 @@ namespace Assets.Scripts.Data
     public class PlayerProgress
     {
         public WorldData WorldData;
-        public Stats HeroStats;
+        public PlayerStats PlayerStats;
 
         public PlayerProgress(string initialLevel)
         {
             WorldData = new WorldData(initialLevel);
-            HeroStats = new Stats();
+            PlayerStats = new PlayerStats();
         }
     }
 }

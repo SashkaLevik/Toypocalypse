@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Curtain
-  - ToySpawnTag
+  - PlayerSpawnTag
+  - EnemySpawnTag
   layers:
   - Default
   - TransparentFX

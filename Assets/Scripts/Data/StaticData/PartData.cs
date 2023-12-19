@@ -7,11 +7,14 @@ namespace Assets.Scripts.Data.StaticData
     public class PartData : ScriptableObject
     {
         public Sprite Icon;
-        public string Name;        
+        public Sprite SkillImage;
+        public float SkillDamage;
+        public string Name;    
         public float Health;
         public float Speed;
         public float Damage;
         public float MaterialAmount;
+        public SkillData SkillData;
         public PartType Type;
     }
 }

@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: HorseHead
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 35e026b9407668249b71d9801cd24ac7, type: 3}
+  SkillImage: {fileID: 21300000, guid: 720f3b14fa0e2d64bafde2a1267cef33, type: 3}
+  SkillDamage: 1
   Name: Horse Head
   Health: 0
   Speed: 0
   Damage: 1
   MaterialAmount: 1
+  SkillData: {fileID: 11400000, guid: 7f353004df1fe4f459e3d2fa65a55cf4, type: 2}
   Type: 0

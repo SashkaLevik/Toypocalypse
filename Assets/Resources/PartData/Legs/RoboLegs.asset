@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: RoboLegs
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: a005af67980c14244abbde2f6d2c5a29, type: 3}
+  SkillImage: {fileID: 0}
+  SkillDamage: 0
   Name: Robo Legs
   Health: 0
   Speed: 3
   Damage: 0
   MaterialAmount: 1
+  SkillData: {fileID: 11400000, guid: c351254aa45892f468bd21d3f6dd4c0d, type: 2}
   Type: 3

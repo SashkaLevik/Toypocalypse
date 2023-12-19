@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: FrogTorso
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 7c75803a896649c44bc014270813dfe0, type: 3}
+  SkillImage: {fileID: 0}
+  SkillDamage: 0
   Name: Frog Torso
   Health: 2
   Speed: 0
   Damage: 0
   MaterialAmount: 1
+  SkillData: {fileID: 11400000, guid: f6ed732a3b78a044b8a2b5970e25d57a, type: 2}
   Type: 1

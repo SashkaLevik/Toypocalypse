@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.GameFactory;
+﻿using Assets.Scripts.Factory;
 using Assets.Scripts.Infrastructure.GameManagment;
 using Assets.Scripts.Infrastructure.Services;
 using System;

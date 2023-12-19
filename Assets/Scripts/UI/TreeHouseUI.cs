@@ -1,19 +1,20 @@
-﻿using Assets.Scripts.GameEnvironment.TreeHouse;
+﻿using Assets.Scripts.Data.StaticData;
+using Assets.Scripts.GameEnvironment.TreeHouse;
 using Assets.Scripts.Infrastructure.GameManagment;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.States;
-using Assets.Scripts.Toys;
-using System;
+using Assets.Scripts.Player;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using System;
 
 namespace Assets.Scripts.UI
 {
     public class TreeHouseUI : MonoBehaviour
     {
-        private const string BattleScene = "BattleScene";
+        private const string Battle = "Battle";
 
         [SerializeField] private ToyConstructor _toyConstructor;
         [SerializeField] private Image _notChoosedWarning;
@@ -21,35 +22,54 @@ namespace Assets.Scripts.UI
         [SerializeField] private Image _materialWarning;
         [SerializeField] private Image _existWarning;
         [SerializeField] private Image _toyPreview;
-        [SerializeField] private Button _enterBattle;
+        [SerializeField] private Image _map;
+        [SerializeField] private Button _openMap;
 
         private IGameStateMachine _stateMachine;
-        public Toy _battleToy;
+        public ToyStaticData _createdToyData;
 
         public Image NotChoosedWarning => _notChoosedWarning;
         public Image FullTableWarning => _fullTableWarning;
         public Image MaterealWarning => _materialWarning;
         public Image ExistWarning => _existWarning;
 
+        public ToyStaticData ToyData => _createdToyData;
+
         private void Awake()
         {
             _stateMachine = AllServices.Container.Single<IGameStateMachine>();
         }
 
+        private void Start()
+        {
+            
+        }
+
         private void OnEnable()
         {
             _toyConstructor.ToyConstructed += OnToyConstruct;
-            _enterBattle.onClick.AddListener(OnBattleEntered);
+            _openMap.onClick.AddListener(OnMapOpen);
         }
 
-        private void OnToyConstruct(Toy toy)
+        private void OnDisable()
         {
-            _battleToy = toy;
+            
+        }
+
+        private void OnMapOpen()
+        {
+            _map.gameObject.SetActive(true);
+        }
+
+        private void OnToyConstruct(ToyStaticData toyData)
+        {
+            _createdToyData = toyData;
+            _openMap.interactable = true;
         }
 
         private void OnBattleEntered()
         {
-            _stateMachine.Enter<BattleState, string>(BattleScene, _battleToy);
+            _stateMachine.Enter<BattleState, string>(Battle, _createdToyData);
         }
 
         public void EnableWarning(Image image)

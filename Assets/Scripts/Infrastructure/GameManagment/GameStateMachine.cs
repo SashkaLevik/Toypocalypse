@@ -1,7 +1,8 @@
-﻿using Assets.Scripts.GameFactory;
+﻿using Assets.Scripts.Data.StaticData;
+using Assets.Scripts.Factory;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.States;
-using Assets.Scripts.Toys;
+using Assets.Scripts.Player;
 using System;
 using System.Collections.Generic;
 
@@ -21,7 +22,7 @@ namespace Assets.Scripts.Infrastructure.GameManagment
                     services.Single<IPersistentProgressService>()),
 
                 [typeof(BattleState)] = new BattleState(this, sceneLoader, loadingCurtain, services.Single<IGameFactory>(),
-                    services.Single<IPersistentProgressService>()),
+                    services.Single<IPersistentProgressService>(), services.Single<IToyDataService>()),
 
                 [typeof(LoopState)] = new LoopState(this),
             };
@@ -33,16 +34,16 @@ namespace Assets.Scripts.Infrastructure.GameManagment
             state.Enter();
         }
 
-        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadedState<TPayload>
+        public void Enter<TState, TPayload>(TPayload sceneName) where TState : class, IPayloadedState<TPayload>
         {
             TState state = ChangeState<TState>();
-            state.Enter(payload);
+            state.Enter(sceneName);
         }
 
-        public void Enter<TState, TPayload>(TPayload payload, Toy payload1) where TState : class, IPayloadedState1<TPayload, Toy>
+        public void Enter<TState, TPayload>(TPayload sceneName, ToyStaticData toyData) where TState : class, IPayloadedState1<TPayload, ToyStaticData>
         {
             TState state = ChangeState<TState>();
-            state.Enter(payload, payload1);
+            state.Enter(sceneName, toyData);
         }
 
         private TState ChangeState<TState>() where TState : class, IExitableState
