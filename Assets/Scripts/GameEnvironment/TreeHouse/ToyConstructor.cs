@@ -62,7 +62,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private void ShowCreatedToy(Toy toy)
         {
             _treeHouseUI.ShowToyPreview(toy);
-            toy.SetParameters(_table.Health, _table.Speed, _table.Damage);
+            toy.SetParameters(_table.Health, _table.Speed);
         }
 
         public void Save(PlayerProgress progress)

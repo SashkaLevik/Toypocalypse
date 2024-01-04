@@ -11,8 +11,9 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _partName;
         [SerializeField] private TMP_Text _health;
         [SerializeField] private TMP_Text _speed;
-        [SerializeField] private TMP_Text _damage;
+        [SerializeField] private TMP_Text _material;
         [SerializeField] private TMP_Text _skillDamage;
+        [SerializeField] private TMP_Text _AP;
         [SerializeField] private Image _skillImage;
 
         private PartData _choosedPartData;
@@ -23,8 +24,9 @@ namespace Assets.Scripts.UI
             _partName.text = partData.Name;
             _health.text = partData.Health.ToString();
             _speed.text = partData.Speed.ToString();
-            _damage.text = partData.Damage.ToString();
+            _material.text = partData.MaterialAmount.ToString();
             _skillDamage.text = partData.SkillData.Damage.ToString();
+            _AP.text = partData.SkillData.RequiredAP.ToString();
             _skillImage.sprite = partData.SkillData.Icon;
             _choosedPartData = partData;
         }

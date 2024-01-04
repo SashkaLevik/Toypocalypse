@@ -27,7 +27,7 @@ namespace Assets.Scripts.Infrastructure.GameManagment
 
         private void OnHomeLoad()
         {
-            _stateMachine.Enter<BattleState, string>(Home, _treeHouse.ToyData);
+            _stateMachine.Enter<LevelState, string>(Home, _treeHouse.ToyData);
         }
     }
 }

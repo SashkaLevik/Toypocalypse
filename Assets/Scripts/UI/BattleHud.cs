@@ -1,53 +1,34 @@
 ﻿using Assets.Scripts.Player;
 using Assets.Scripts.UI.Bar;
 using UnityEngine;
-
+using TMPro;
 namespace Assets.Scripts.UI
 {
     public class BattleHud : MonoBehaviour
     {
-        [SerializeField] private Canvas _canvas;
-        [SerializeField] private HPBar _hpBar;
-        [SerializeField] private SpeedBar _speedBar;
+        //[SerializeField] protected Canvas _canvas;
+        [SerializeField] protected HPBar _hpBar;
+        [SerializeField] protected SpeedBar _speedBar;
+        [SerializeField] protected TMP_Text _defence;
 
-        private PlayerHealth _playerHealth;
-        private PlayerSpeed _playerSpeed;
-
-        private void Awake()
-        {
-            _canvas.worldCamera = Camera.main;
-        }
+        protected IHealth _health;
+        protected ISpeed _speed;        
 
         private void Start()
         {
+            //_canvas.worldCamera = Camera.main;
             UpdateHPBar();
             UpdateSpeedBar();
-        }
-        private void Update()
+        }              
+
+        protected virtual void UpdateHPBar()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                _playerHealth.CurrentHP -= 1;
-            }
-            if (Input.GetKeyDown(KeyCode.Backspace))
-            {
-                _playerSpeed.CurrentSpeed -= 1;
-            }
+            _hpBar.SetValue(_health.CurrentHP, _health.MaxHP);
         }
 
-        public void Construct(PlayerHealth playerHealth, PlayerSpeed playerSpeed)
-        {
-            _playerHealth = playerHealth;
-            _playerSpeed = playerSpeed;
-            _playerHealth.HealthChanged += UpdateHPBar;
-            _playerSpeed.SpeedChanged += UpdateSpeedBar;
-        }
+        protected virtual void UpdateDefence() { }
 
-        private void UpdateHPBar()
-            => _hpBar.SetValue(_playerHealth.CurrentHP, _playerHealth.MaxHP);
-
-
-        private void UpdateSpeedBar()
-            => _speedBar.SetValue(_playerSpeed.CurrentSpeed, _playerSpeed.MaxSpeed);
+        protected virtual void UpdateSpeedBar()
+            => _speedBar.SetValue(_speed.CurrentSpeed, _speed.MaxSpeed);        
     }
 }

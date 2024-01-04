@@ -21,7 +21,7 @@ namespace Assets.Scripts.Infrastructure.GameManagment
                 [typeof(MenuState)] = new MenuState(this, sceneLoader, loadingCurtain, services.Single<IGameFactory>(),
                     services.Single<IPersistentProgressService>()),
 
-                [typeof(BattleState)] = new BattleState(this, sceneLoader, loadingCurtain, services.Single<IGameFactory>(),
+                [typeof(LevelState)] = new LevelState(this, sceneLoader, loadingCurtain, services.Single<IGameFactory>(),
                     services.Single<IPersistentProgressService>(), services.Single<IToyDataService>()),
 
                 [typeof(LoopState)] = new LoopState(this),

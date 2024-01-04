@@ -13,6 +13,8 @@ namespace Assets.Scripts.Factory
         GameObject CreateToy(ToyStaticData toyStaticData, GameObject at);
 
         GameObject CreateBattleHud();
+        GameObject CreateSkillPanel();
+
 
         List<ISaveProgress> ProgressWriters { get; }
         List<ILoadProgress> ProgressReaders { get; }

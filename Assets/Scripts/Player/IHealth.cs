@@ -6,8 +6,11 @@ namespace Assets.Scripts.Player
     public interface IHealth
     {
         event UnityAction HealthChanged;
+        event UnityAction DefenceChanged;
         float CurrentHP { get; set; }
         float MaxHP { get; set; }
-        void TakeDamage(int damage);
+        float Defence { get; set; }
+
+        void TakeDamage(float damage);
     }
 }

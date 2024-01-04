@@ -30,12 +30,18 @@ namespace Assets.Scripts.Factory
             return battleHud;
         }
 
-        public GameObject CreateToy(ToyStaticData toyStaticData, GameObject at)
+        public GameObject CreateSkillPanel()
         {
-            var toy = Object.Instantiate(toyStaticData.Prefab, at.transform);
+            GameObject skillPanel = _assetProvider.Instantiate(AssetPath.SkillPanel);
+            return skillPanel;
+        }
+
+        public GameObject CreateToy(ToyStaticData toyData, GameObject at)
+        {
+            var toy = Object.Instantiate(toyData.Prefab, at.transform);
             RegisterProgressWatchers(toy.gameObject);
             return toy.gameObject;
-        }        
+        }
 
         private void RegisterProgressWatchers(GameObject obj)
         {

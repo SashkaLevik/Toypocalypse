@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Assets.Scripts.Player
 {
-    public class PlayerSpeed : MonoBehaviour
+    public class PlayerSpeed : MonoBehaviour, ISpeed
     {
         public float _currentSpeed;
         public float _maxSpeed;
@@ -34,14 +34,14 @@ namespace Assets.Scripts.Player
             _currentSpeed = _maxSpeed;
         }
 
-        public void SpentAP(int amount)
+        public void SpentAP(float amount)
         {
             CurrentSpeed -= amount;
         }
 
-        public void RecoverAP(int amount)
+        public void RecoverAP()
         {
-            CurrentSpeed += amount;
+            CurrentSpeed = MaxSpeed;
         }
     }
 }

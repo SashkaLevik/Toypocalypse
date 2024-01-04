@@ -17,7 +17,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         [SerializeField] private Image _materialImage;
         [SerializeField] private float _health;
         [SerializeField] private float _speed;
-        [SerializeField] private float _damage;
+        //[SerializeField] private float _damage;
         [SerializeField] private float _material;
 
         public Part _currentPart;
@@ -30,12 +30,12 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
 
         public float Health => _health;
         public float Speed => _speed;
-        public float Damage => _damage;
+        //public float Damage => _damage;
         public List<Part> Parts => _parts;
         public float RequiredMaterial => _material;
 
-        public event UnityAction<float, float, float, float> PartAdded;
-        public event UnityAction<float, float, float, float> PartRemoved;
+        public event UnityAction<float, float, float> PartAdded;
+        public event UnityAction<float, float, float> PartRemoved;
         public event UnityAction<float> MaterialAdded;
         public event UnityAction<Material> MaterialReturned;
         public event UnityAction<Part> PartReturned;
@@ -108,8 +108,8 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private void AddPart(Part part)
         {            
             _parts.Add(part);
-            IncreaseValues(part.PartData.Health, part.PartData.Speed, part.PartData.Damage, part.PartData.MaterialAmount);
-            PartAdded?.Invoke(_health, _speed, _damage, _material);
+            IncreaseValues(part.PartData.Health, part.PartData.Speed, part.PartData.MaterialAmount);
+            PartAdded?.Invoke(_health, _speed, _material);
             part.PartChoosed += ChoosePart;
             if (_parts.Count == _maxParts) _materials.EnableMaterial();
         }
@@ -120,9 +120,9 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
                 _treeHouse.EnableWarning(_treeHouse.NotChoosedWarning);
             else
             {
-                DecreaseValues(_currentPart.PartData.Health, _currentPart.PartData.Speed, 
-                    _currentPart.PartData.Damage, _currentPart.PartData.MaterialAmount);                
-                PartRemoved?.Invoke(_health, _speed, _damage, _material);
+                DecreaseValues(_currentPart.PartData.Health, _currentPart.PartData.Speed, _currentPart.PartData.MaterialAmount);
+
+                PartRemoved?.Invoke(_health, _speed, _material);
                 PartReturned?.Invoke(_currentPart);
                 GetSutableContainer();
                 _currentPart.PartChoosed -= ChoosePart;
@@ -151,19 +151,17 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             }
         }
 
-        private void IncreaseValues(float health, float speed, float damage, float material)
+        private void IncreaseValues(float health, float speed, float material)
         {
             _health += health;
             _speed += speed;
-            _damage += damage;
             _material += material;
         }
 
-        private void DecreaseValues(float health, float speed, float damage, float material)
+        private void DecreaseValues(float health, float speed, float material)
         {
             _health -= health;
             _speed -= speed;
-            _damage -= damage;
             _material -= material;
         }
 

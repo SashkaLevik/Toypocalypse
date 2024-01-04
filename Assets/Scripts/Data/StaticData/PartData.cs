@@ -8,11 +8,9 @@ namespace Assets.Scripts.Data.StaticData
     {
         public Sprite Icon;
         public Sprite SkillImage;
-        public float SkillDamage;
         public string Name;    
         public float Health;
         public float Speed;
-        public float Damage;
         public float MaterialAmount;
         public SkillData SkillData;
         public PartType Type;

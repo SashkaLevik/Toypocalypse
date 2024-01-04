@@ -9,13 +9,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using System;
+using Assets.Scripts.GameEnvironment.Battle;
 
 namespace Assets.Scripts.UI
 {
     public class TreeHouseUI : MonoBehaviour
     {
         private const string Battle = "Battle";
-
         [SerializeField] private ToyConstructor _toyConstructor;
         [SerializeField] private Image _notChoosedWarning;
         [SerializeField] private Image _fullTableWarning;
@@ -24,10 +24,10 @@ namespace Assets.Scripts.UI
         [SerializeField] private Image _toyPreview;
         [SerializeField] private Image _map;
         [SerializeField] private Button _openMap;
+        [SerializeField] private Transform _toyPreviewPos;
 
         private IGameStateMachine _stateMachine;
         public ToyStaticData _createdToyData;
-
         public Image NotChoosedWarning => _notChoosedWarning;
         public Image FullTableWarning => _fullTableWarning;
         public Image MaterealWarning => _materialWarning;
@@ -42,7 +42,6 @@ namespace Assets.Scripts.UI
 
         private void Start()
         {
-            
         }
 
         private void OnEnable()
@@ -69,7 +68,7 @@ namespace Assets.Scripts.UI
 
         private void OnBattleEntered()
         {
-            _stateMachine.Enter<BattleState, string>(Battle, _createdToyData);
+            _stateMachine.Enter<LevelState, string>(Battle, _createdToyData);
         }
 
         public void EnableWarning(Image image)
@@ -80,6 +79,7 @@ namespace Assets.Scripts.UI
 
         public void ShowToyPreview(Toy toy)
         {
+            //Instantiate(toy, _toyPreviewPos);
             _toyPreview.gameObject.SetActive(true);
             _toyPreview.sprite = toy.ToyImage;
         }

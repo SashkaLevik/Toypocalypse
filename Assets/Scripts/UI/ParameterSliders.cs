@@ -11,11 +11,11 @@ namespace Assets.Scripts.UI
         [SerializeField] private Table _table;
         [SerializeField] private Slider _healthSlider;
         [SerializeField] private Slider _speedSlider;
-        [SerializeField] private Slider _damageSlider;
+        //[SerializeField] private Slider _damageSlider;
         [SerializeField] private TMP_Text _materialCount;
         [SerializeField] private TMP_Text _healthText;
         [SerializeField] private TMP_Text _speedText;
-        [SerializeField] private TMP_Text _damageText;        
+        //erializeField] private TMP_Text _damageText;        
 
         private void Start()
         {
@@ -24,10 +24,7 @@ namespace Assets.Scripts.UI
             });
             _speedSlider.onValueChanged.AddListener((value) => {
                 _speedText.text = value.ToString();
-            });
-            _damageSlider.onValueChanged.AddListener((value) => {
-                _damageText.text = value.ToString();
-            });
+            });            
         }
 
         private void OnEnable()
@@ -49,19 +46,17 @@ namespace Assets.Scripts.UI
             _healthSlider.value = health;
         }
 
-        private void IncreaseSliders(float health, float speed, float damage, float material)
+        private void IncreaseSliders(float health, float speed, float material)
         {            
             _healthSlider.value = health;
             _speedSlider.value = speed;
-            _damageSlider.value = damage;
             _materialCount.text = material.ToString();
         }
 
-        private void DicreaseSliders(float health, float speed, float damage, float material)
+        private void DicreaseSliders(float health, float speed, float material)
         {
             _healthSlider.value = health;
             _speedSlider.value = speed;
-            _damageSlider.value = damage;
             _materialCount.text = material.ToString();
         }
     }

@@ -8,10 +8,10 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
 {
     public class PartsSpawner : MonoBehaviour
     {
-        private const string Heads = "Parts/Head";
-        private const string Legs = "Parts/Legs";
-        private const string Torsos = "Parts/Torsos";
-        private const string Arms = "Parts/Arms";
+        private const string Heads = "Player/Parts/Head";
+        private const string Legs = "Player/Parts/Legs";
+        private const string Torsos = "Player/Parts/Torsos";
+        private const string Arms = "Player/Parts/Arms";
 
         [SerializeField] private Inventory _inventory;
 

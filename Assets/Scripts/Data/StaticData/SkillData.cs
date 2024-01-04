@@ -8,7 +8,9 @@ namespace Assets.Scripts.Data.StaticData
         public Sprite Icon;
         public string SkillDescription;
         public float Damage;
+        public float Defence;
         public float Cooldown;
-        public AttackType AttackType;
+        public float RequiredAP;
+        public SkillType Type;
     }    
 }
