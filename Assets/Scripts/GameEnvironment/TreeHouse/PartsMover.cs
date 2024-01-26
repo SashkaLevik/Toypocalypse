@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Assets.Scripts.GameEnvironment.TreeHouse
 {
@@ -9,7 +8,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
     {
         [SerializeField] private Canvas _canvas;
 
-        private float _speed = 12f;
+        private float _speed = 1200f;
 
         public void RemovePart(List<Part> parts, Part part, Transform obj)
         {

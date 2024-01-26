@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
+﻿using Assets.Scripts.Data;
 using Assets.Scripts.Data.StaticData;
-using UnityEngine.UI;
+using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Player;
-using Assets.Scripts.UI;
-using UnityEngine.Events;
-using Assets.Scripts.Data;
 using Assets.Scripts.SaveLoad;
+using Assets.Scripts.UI;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.GameEnvironment.TreeHouse
 {
@@ -17,17 +16,16 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         [SerializeField] private Table _table;       
         [SerializeField] private List<ToyStaticData> _toyDatas;
         
-        public ToyStaticData _createdToyData;
         private int _matchCount;
         private int _allParts = 4;
-        public PlayerStats _stats;
-
-        //public Toy CreatedToy => _createdToy;
+        private ToyStaticData _createdToyData;
+        private ISaveLoadService _saveLoadService;
 
         public event UnityAction<ToyStaticData> ToyConstructed;
 
-        private void Start()
+        private void Awake()
         {
+            _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
         }
 
         private void OnEnable()
@@ -57,6 +55,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             }
             var toy = _createdToyData.Prefab.GetComponent<Toy>();
             ShowCreatedToy(toy);
+            _saveLoadService.SaveProgress();
         }
 
         private void ShowCreatedToy(Toy toy)
@@ -68,6 +67,8 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         public void Save(PlayerProgress progress)
         {
             progress.PlayerStats.MaxHP = _table.Health;
+            progress.PlayerStats.MaxSpeed = _table.Speed;
+            progress.PlayerStats.CurrentToy = _createdToyData;
         }
 
         public void Load(PlayerProgress progress)

@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Data.StaticData;
-using Assets.Scripts.Enemyes;
-using System;
+using Assets.Scripts.UI;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,38 +7,22 @@ namespace Assets.Scripts.Player
 {
     public class PlayerSpawnPoint : MonoBehaviour
     {
-        //[SerializeField] private GameObject _enemySpawnPos;
-        //[SerializeField] private EnemySpawner _enemySpawner;
+        [SerializeField] private RoutMap _routMap;
 
-        public Toy _player;
+        private Toy _player;
+
+        public RoutMap RoutMap => _routMap;
         public Toy Player => _player;
-        //public BaseEnemy _enemy;
 
-        //public event UnityAction<Toy> PlayerSpawned;
-
-        private void Start()
-        {
-            Invoke(nameof(GetPlayer), 0.2f);
-        }
-
-        //private void OnEnable()
-        //{
-        //    _enemySpawner.EnemySpawned += GetEnemy;
-        //}
+        public event UnityAction<Toy> PlayerSpawned;               
 
         public void SetPosition(ToyStaticData toyData)
-            => transform.position = toyData.SpawnPosition;
+            => transform.position = toyData.SpawnPosition;                
 
-        //private void GetEnemy(BaseEnemy enemy)
-        //{
-        //    _enemy = enemy;
-        //    _player.InitEnemy(_enemy);
-        //}        
-
-        private void GetPlayer()
+        public void GetPlayer(Toy player)
         {
-            _player = GetComponentInChildren<Toy>();
-            //PlayerSpawned?.Invoke(_player);
+            _player = player;
+            PlayerSpawned?.Invoke(_player);
         }            
     }
 }

@@ -16,6 +16,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         public UnityAction<Part> PartChoosed;
 
         public PartData PartData => _partData;
+        public bool IsActivated => _isActivated;
 
         private void Awake()
         {

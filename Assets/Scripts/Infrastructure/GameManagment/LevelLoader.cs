@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Infrastructure.Services;
+﻿using Assets.Scripts.Data;
+using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.SaveLoad;
 using Assets.Scripts.States;
 using Assets.Scripts.UI;
 using System;
@@ -6,28 +8,41 @@ using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.GameManagment
 {
-    public class LevelLoader : MonoBehaviour
-    {
-        public const string Home = "Home";
-
+    public class LevelLoader : MonoBehaviour, ISaveProgress
+    {       
         [SerializeField] private TreeHouseUI _treeHouse;
         [SerializeField] private Map _map;
+        
+        private string _level;
 
         private IGameStateMachine _stateMachine;
+        private ISaveLoadService _saveLoadService;
 
         private void Awake()
         {
             _stateMachine = AllServices.Container.Single<IGameStateMachine>();
+            _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
         }
 
         private void OnEnable()
         {
-            _map.HomeLoaded += OnHomeLoad;
+            _map.LevelLoaded += OnLevelLoad;
         }
 
-        private void OnHomeLoad()
+        private void OnLevelLoad(string level)
         {
-            _stateMachine.Enter<LevelState, string>(Home, _treeHouse.ToyData);
+            _level = level;
+            _saveLoadService.SaveProgress();
+            _stateMachine.Enter<LevelState, string>(level, _treeHouse.ToyData);
+        }
+
+        public void Save(PlayerProgress progress)
+        {
+            progress.WorldData.Level = _level;
+        }
+
+        public void Load(PlayerProgress progress)
+        {            
         }
     }
 }

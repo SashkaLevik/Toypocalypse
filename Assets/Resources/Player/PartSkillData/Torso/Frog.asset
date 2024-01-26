@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Frog
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 83c2ea2171a88c04a9c3e0dda8d0978d, type: 3}
-  SkillDescription: Melee sound attack
+  SkillDescription: Increase defence
+  DefaultDamage: 0
   Damage: 0
-  Defence: 2
+  Defence: 3
+  DefaultCooldown: 4
   Cooldown: 4
   RequiredAP: 1
-  Type: 6
+  SkillType: 2
+  AttackType: 0

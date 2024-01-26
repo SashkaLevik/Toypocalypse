@@ -1,18 +1,19 @@
 ﻿using Assets.Scripts.Data;
 using Assets.Scripts.Factory;
 using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.SaveLoad;
 using UnityEngine;
 
-namespace Assets.Scripts.SaveLoad
+namespace Assets.Scripts.Services
 {
-    public class SaveLoad : ISaveLoadService
+    public class SaveLoadService : ISaveLoadService
     {
         private const string ProgressKey = "Progress";
 
         private readonly IPersistentProgressService _progressService;
         private readonly IGameFactory _gameFactory;
 
-        public SaveLoad(IPersistentProgressService progressService, IGameFactory gameFactory)
+        public SaveLoadService(IPersistentProgressService progressService, IGameFactory gameFactory)
         {
             _progressService = progressService;
             _gameFactory = gameFactory;

@@ -6,16 +6,21 @@ namespace Assets.Scripts.UI
 {
     public class Map : MonoBehaviour
     {
-        [SerializeField] private Button _home;
+        public const string Home = "Home";
+        public const string Jungle = "Jungle";
 
-        public event UnityAction HomeLoaded;
+        [SerializeField] private Button _home;
+        [SerializeField] private Button _jungle;
+        
+        public event UnityAction<string> LevelLoaded;
 
         private void OnEnable()
         {
             _home.onClick.AddListener(LoadHome);
-        }
+            //_jungle.onClick.AddListener(LoadJungle);
+        }        
 
         private void LoadHome()
-            => HomeLoaded?.Invoke();
+            => LevelLoaded?.Invoke(Home);        
     }
 }

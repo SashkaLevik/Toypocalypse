@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 720f3b14fa0e2d64bafde2a1267cef33, type: 3}
   SkillDescription: Melee horne attack
+  DefaultDamage: 0
   Damage: 1
   Defence: 0
+  DefaultCooldown: 2
   Cooldown: 2
   RequiredAP: 1
-  Type: 1
+  SkillType: 1
+  AttackType: 0

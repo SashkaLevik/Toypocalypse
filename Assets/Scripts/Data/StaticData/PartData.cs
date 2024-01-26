@@ -11,7 +11,7 @@ namespace Assets.Scripts.Data.StaticData
         public string Name;    
         public float Health;
         public float Speed;
-        public float MaterialAmount;
+        public int MaterialAmount;
         public SkillData SkillData;
         public PartType Type;
     }

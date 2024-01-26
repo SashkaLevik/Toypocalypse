@@ -6,7 +6,6 @@ namespace Assets.Scripts.UI
 {
     public class BattleHud : MonoBehaviour
     {
-        //[SerializeField] protected Canvas _canvas;
         [SerializeField] protected HPBar _hpBar;
         [SerializeField] protected SpeedBar _speedBar;
         [SerializeField] protected TMP_Text _defence;
@@ -16,7 +15,6 @@ namespace Assets.Scripts.UI
 
         private void Start()
         {
-            //_canvas.worldCamera = Camera.main;
             UpdateHPBar();
             UpdateSpeedBar();
         }              

@@ -8,7 +8,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
 {
     public class Table : MonoBehaviour
     {
-        [SerializeField] private ConnectingMaterials _materials;
+        [SerializeField] private MaterialsPanel _materials;
         [SerializeField] private TreeHouseUI _treeHouse;
         [SerializeField] private Inventory _inventory;
         [SerializeField] private PartsMover _partsMover;
@@ -17,27 +17,24 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         [SerializeField] private Image _materialImage;
         [SerializeField] private float _health;
         [SerializeField] private float _speed;
-        //[SerializeField] private float _damage;
-        [SerializeField] private float _material;
+        [SerializeField] private int _material;
 
         public Part _currentPart;
         public Part _previousPart;
-        public Material _currentMaterial;
-        public Material _previousMaterial;
+        public ConnectingMaterial _currentMaterial;
+        public ConnectingMaterial _previousMaterial;
         public List<Part> _parts = new List<Part>();
         private int _maxParts = 4;
 
-
         public float Health => _health;
         public float Speed => _speed;
-        //public float Damage => _damage;
         public List<Part> Parts => _parts;
-        public float RequiredMaterial => _material;
+        public int RequiredMaterial => _material;
 
         public event UnityAction<float, float, float> PartAdded;
         public event UnityAction<float, float, float> PartRemoved;
         public event UnityAction<float> MaterialAdded;
-        public event UnityAction<Material> MaterialReturned;
+        public event UnityAction<ConnectingMaterial> MaterialReturned;
         public event UnityAction<Part> PartReturned;
         public event UnityAction ToyConstructed;
 
@@ -84,7 +81,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             return false;
         }
 
-        private void OnMaterialAdded(Material material)
+        private void OnMaterialAdded(ConnectingMaterial material)
         {            
             if (_currentMaterial == null)
             {
@@ -111,7 +108,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             IncreaseValues(part.PartData.Health, part.PartData.Speed, part.PartData.MaterialAmount);
             PartAdded?.Invoke(_health, _speed, _material);
             part.PartChoosed += ChoosePart;
-            if (_parts.Count == _maxParts) _materials.EnableMaterial();
+            if (_parts.Count == _maxParts) _materials.EnableMaterialPanel();
         }
 
         private void RemovePart()
@@ -151,14 +148,14 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             }
         }
 
-        private void IncreaseValues(float health, float speed, float material)
+        private void IncreaseValues(float health, float speed, int material)
         {
             _health += health;
             _speed += speed;
             _material += material;
         }
 
-        private void DecreaseValues(float health, float speed, float material)
+        private void DecreaseValues(float health, float speed, int material)
         {
             _health -= health;
             _speed -= speed;

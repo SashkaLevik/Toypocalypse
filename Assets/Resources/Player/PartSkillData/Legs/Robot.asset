@@ -17,5 +17,6 @@ MonoBehaviour:
   Damage: 0
   Defence: 0
   Cooldown: 0
-  RequiredAP: 2
-  Type: 7
+  RequiredAP: 1
+  SkillType: 3
+  AttackType: 0

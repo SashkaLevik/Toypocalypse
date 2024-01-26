@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8076350482767736925}
   - component: {fileID: 4707696327903262110}
   - component: {fileID: 6833173537798302392}
+  - component: {fileID: 5270580030919868603}
   - component: {fileID: 4559449500124176648}
   - component: {fileID: 2048399270601341716}
   m_Layer: 0
@@ -111,10 +112,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5ba8b798c511c44a930f39ed241baa1, type: 2}
   - {fileID: 11400000, guid: abf6a863eb66ed3458565f4ff0b38f4c, type: 2}
   _attackPanel: {fileID: 9009665857384889209}
-  _enemy: {fileID: 0}
-  _skillPanel: {fileID: 9027159580069111718}
-  _health: 4
-  _speed: 6
 --- !u!114 &8076350482767736925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,18 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab17750c3c31fb43ba24fdfc8a80a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 0
-  _maxHealth: 0
-  _defence: 0
-  _defendingDamage: 0
-  _toy: {fileID: 0}
-  _stats:
-    Bubblegum: 5
-    Plasticine: 0
-    Glue: 0
-    SuperGlue: 0
-    CurrentHP: 0
-    MaxHP: 0
 --- !u!114 &4707696327903262110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,9 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aef605829aebf44ab6ce62e53bfb02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentSpeed: 0
-  _maxSpeed: 0
-  _toy: {fileID: 0}
 --- !u!114 &6833173537798302392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,7 +148,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fe3870ab2927a49963263bd20578eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
+  _moveSpeed: 3
+--- !u!114 &5270580030919868603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263726977418400611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d65df6112d537b4d85643a7eb106755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &4559449500124176648
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -273,7 +267,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &1183656741003089054
 MonoBehaviour:
@@ -477,10 +471,5 @@ PrefabInstance:
 --- !u!224 &3852162546503650514 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5438988538886752571, guid: 64df6f7a22e43b44ba3342fe43fbafb9, type: 3}
-  m_PrefabInstance: {fileID: 9083349435012744681}
-  m_PrefabAsset: {fileID: 0}
---- !u!223 &9027159580069111718 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 236548794570154575, guid: 64df6f7a22e43b44ba3342fe43fbafb9, type: 3}
   m_PrefabInstance: {fileID: 9083349435012744681}
   m_PrefabAsset: {fileID: 0}

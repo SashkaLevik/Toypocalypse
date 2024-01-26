@@ -18,8 +18,12 @@ namespace Assets.Scripts.Infrastructure.GameManagment
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
+
                 [typeof(MenuState)] = new MenuState(this, sceneLoader, loadingCurtain, services.Single<IGameFactory>(),
                     services.Single<IPersistentProgressService>()),
+
+                [typeof(ProgressState)] = new ProgressState(this, services.Single<IPersistentProgressService>(),
+                    services.Single<ISaveLoadService>()),
 
                 [typeof(LevelState)] = new LevelState(this, sceneLoader, loadingCurtain, services.Single<IGameFactory>(),
                     services.Single<IPersistentProgressService>(), services.Single<IToyDataService>()),

@@ -12,9 +12,10 @@ namespace Assets.Scripts.Factory
     {
         GameObject CreateToy(ToyStaticData toyStaticData, GameObject at);
 
+        GameObject CreteMenuHud();
         GameObject CreateBattleHud();
         GameObject CreateSkillPanel();
-
+        GameObject CreateBattleSystem();
 
         List<ISaveProgress> ProgressWriters { get; }
         List<ILoadProgress> ProgressReaders { get; }

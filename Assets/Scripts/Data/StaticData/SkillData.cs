@@ -7,10 +7,19 @@ namespace Assets.Scripts.Data.StaticData
     {
         public Sprite Icon;
         public string SkillDescription;
+        public float DefaultDamage;
         public float Damage;
         public float Defence;
+        public float DefaultCooldown;
         public float Cooldown;
         public float RequiredAP;
-        public SkillType Type;
+        public SkillType SkillType;
+        public AttackType AttackType;
+
+        public void ResetSkill()
+        {
+            Damage = DefaultDamage;
+            Cooldown = DefaultCooldown;
+        }
     }    
 }

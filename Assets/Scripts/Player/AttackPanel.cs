@@ -21,8 +21,6 @@ namespace Assets.Scripts.Player
         public SkillPanel _skillPanel;
         public SkillView AttackSkill => _attackSkill;
 
-        //public event UnityAction SkillPlayed;
-
         public void Construct(SkillPanel skillPanel)
             => _skillPanel = skillPanel;
 
@@ -46,9 +44,7 @@ namespace Assets.Scripts.Player
             if(_enemy == null) _enemy = GetComponentInParent<Toy>().Enemy;
 
             if (_attackSkill == null)
-                PrepareSkill();
-            //else 
-            //    ApplySkill();
+                PrepareSkill();            
         }
 
         private void PrepareSkill()
@@ -61,28 +57,34 @@ namespace Assets.Scripts.Player
 
         public void ApplySkill()
         {
-            if(_attackSkill == null)
+            if (_attackSkill == null)
             {
-                Debug.Log("ChooseSkill");
+                _skillPanel.PlayerHud.EnableSkillAbsenceWarning();
                 return;
-            }
-            
+            }           
+
             if (CanApply())
             {
-                if (_attackSkill.SkillData.Type == SkillType.Defence)
-                {
+                if (_attackSkill.SkillData.SkillType == SkillType.Defence)
                     _player.GetComponent<PlayerHealth>().IncreaseDefence(_attackSkill.SkillData.Defence);
-                    Debug.Log("ApplyDefence");
-                }
                 else
-                {
-                    _enemy.GetComponent<EnemyHealth>().TakeDamage(_attackSkill.Damage);
-                }
+                    ApplyAttack();
+
                 RemovePlayed();
             }
             else
-                Debug.Log("ChangeArea");
+                _skillPanel.PlayerHud.EnebleAreaWarning();
 
+        }
+
+        private void ApplyAttack()
+        {
+            _enemy.GetComponent<EnemyHealth>().TakeDamage(_attackSkill.Damage);
+
+            if (_attackSkill.SkillData.AttackType == AttackType.Push)
+                _enemy.GetComponent<EnemyMovement>().Push();
+            else if (_attackSkill.SkillData.AttackType == AttackType.Pull)
+                _enemy.GetComponent<EnemyMovement>().Pull();
         }
 
         private void ResetSkill()
@@ -97,7 +99,6 @@ namespace Assets.Scripts.Player
             _attackSkill.ApplyCooldown();
             _skillPanel.ReturnPlayed(_attackSkill);
             _attackSkill.SkillButton.onClick.RemoveListener(ResetSkill);
-            //_attackSkill.SkillButton.onClick.RemoveListener(RemovePlayed);
             _attackSkill = null;            
         }
 
@@ -106,11 +107,11 @@ namespace Assets.Scripts.Player
 
         private bool CanApply()
         {
-            if (_attackSkill.SkillData.Type == SkillType.Defence)
+            if (_attackSkill.SkillData.SkillType == SkillType.Defence)
                 return true;
-            else if (_attackSkill.SkillData.Type == SkillType.Melee && _areaType == AreaType.Melee)
+            else if (_attackSkill.SkillData.SkillType == SkillType.Melee && _areaType == AreaType.Melee)
                 return true;
-            else if (_attackSkill.SkillData.Type == SkillType.Range && _areaType == AreaType.Range)
+            else if (_attackSkill.SkillData.SkillType == SkillType.Range && _areaType == AreaType.Range)
                 return true;
 
             return false;

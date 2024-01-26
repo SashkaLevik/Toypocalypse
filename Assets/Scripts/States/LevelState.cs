@@ -8,6 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using Assets.Scripts.UI;
 using Assets.Scripts.Enemyes;
+using Assets.Scripts.GameEnvironment.Battle;
 
 namespace Assets.Scripts.States
 {
@@ -52,28 +53,33 @@ namespace Assets.Scripts.States
 
         private void OnSceneLoad()
         {
-            Debug.Log(_toyData);
             InitGameWorld();
-            //InformProgressReaders();
+            InformProgressReaders();
             _stateMachine.Enter<LoopState>();
         }
 
         private void InitGameWorld()
         {
             GameObject spawnPoint = GameObject.FindWithTag(PlayerSpawnTag);
-            spawnPoint.GetComponent<PlayerSpawnPoint>().SetPosition(_toyData);
+            var playerSpawner = spawnPoint.GetComponent<PlayerSpawnPoint>();
+            playerSpawner.SetPosition(_toyData);
             GameObject player = _gameFactory.CreateToy(_toyData, spawnPoint);
             GameObject battleHud = _gameFactory.CreateBattleHud();
             GameObject skillPanel = _gameFactory.CreateSkillPanel();
+            GameObject battleSystem = _gameFactory.CreateBattleSystem();
+            player.GetComponent<Toy>().Construct(skillPanel.GetComponent<SkillPanel>(), spawnPoint.GetComponent<PlayerSpawnPoint>().RoutMap,
+                battleHud.GetComponentInChildren<PlayerHud>());
+            playerSpawner.GetPlayer(player.GetComponent<Toy>());
+            battleSystem.GetComponent<BattleSystem>().Construct(playerSpawner, playerSpawner.GetComponent<EnemySpawner>(), playerSpawner.RoutMap);
             AttackPanel attackPanel = player.GetComponentInChildren<AttackPanel>();
             InitBattleHud(player, battleHud, skillPanel, attackPanel);
         }        
         
         private void InitBattleHud(GameObject player, GameObject battleHud, GameObject skillPanel, AttackPanel attackPanel)
         {
-            battleHud.GetComponentInChildren<PlayerHud>().Construct(player.GetComponent<PlayerHealth>(), player.GetComponent<PlayerSpeed>());
-            skillPanel.GetComponent<SkillPanel>().Construct(player.GetComponent<Toy>(), player.GetComponent<PlayerSpeed>());
-            player.GetComponent<Toy>().Construct(skillPanel.GetComponent<SkillPanel>());
+            battleHud.GetComponentInChildren<PlayerHud>().Construct(player.GetComponent<Toy>(), player.GetComponent<PlayerHealth>(), player.GetComponent<PlayerSpeed>());
+            skillPanel.GetComponent<SkillPanel>().Construct(player.GetComponent<Toy>(), battleHud.GetComponentInChildren<PlayerHud>());
+            //player.GetComponent<Toy>().Construct(skillPanel.GetComponent<SkillPanel>());
             attackPanel.Construct(skillPanel.GetComponent<SkillPanel>());
         }
 

@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Data.StaticData;
+﻿using Assets.Scripts.Data;
+using Assets.Scripts.Data.StaticData;
+using Assets.Scripts.SaveLoad;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,7 +8,7 @@ using UnityEngine.Events;
 
 namespace Assets.Scripts.GameEnvironment.TreeHouse
 {
-    public class PartsSpawner : MonoBehaviour
+    public class PartsSpawner : MonoBehaviour, ISaveProgress
     {
         private const string Heads = "Player/Parts/Head";
         private const string Legs = "Player/Parts/Legs";
@@ -15,11 +17,16 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
 
         [SerializeField] private Inventory _inventory;
 
-        public List<Part> _heads;
-        public List<Part> _torsos;
-        public List<Part> _arms;
-        public List<Part> _legs;
-        public Part _spawnedPart;
+        private List<Part> _heads;
+        private List<Part> _torsos;
+        private List<Part> _arms;
+        private List<Part> _legs;
+        private Part _spawnedPart;
+
+        public List<Part> _activatedParts;
+        public List<Part> _disactivatedParts;
+
+        public PlayerParts _playerParts;
 
         private void Awake()
         {
@@ -52,6 +59,15 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
                     _inventory.AddPart(_spawnedPart);
                 }
             }
+        }
+
+        public void Save(PlayerProgress progress)
+        {
+        }
+
+        public void Load(PlayerProgress progress)
+        {
+            //Parts = progress.PlayerParts.Parts.ToList();
         }
     }
 }

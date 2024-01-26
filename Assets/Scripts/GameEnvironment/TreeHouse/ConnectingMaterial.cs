@@ -6,15 +6,17 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.GameEnvironment.TreeHouse
 {
-    public class Material : MonoBehaviour
+    public class ConnectingMaterial : MonoBehaviour
     {
         [SerializeField] private MaterialData _materialData;
 
         private Button _materialButton;
 
+        public Button MaterialButton => _materialButton;
+
         public MaterialData Data => _materialData;
 
-        public event UnityAction<Material> MaterialChoosed;
+        public event UnityAction<ConnectingMaterial> MaterialChoosed;
 
         private void Awake()
         {

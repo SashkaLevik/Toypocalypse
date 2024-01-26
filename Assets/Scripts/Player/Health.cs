@@ -16,7 +16,7 @@ namespace Assets.Scripts.Player
 
         public event UnityAction HealthChanged;
         public event UnityAction DefenceChanged;
-        //public event UnityAction Died;
+        public event UnityAction Died;
 
         public float Defence
         {
@@ -68,6 +68,8 @@ namespace Assets.Scripts.Player
 
                 CurrentHP -= _defendingDamage;
             }
+
+            if (CurrentHP <= 0) Die();
         }
 
         public void IncreaseDefence(float defence)
@@ -94,5 +96,11 @@ namespace Assets.Scripts.Player
                 _isDefending = false;
             }
         }
+
+        private void Die()
+        {
+            Died?.Invoke();
+            Destroy(gameObject);
+        }            
     }
 }

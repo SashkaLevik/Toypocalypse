@@ -10,7 +10,7 @@ namespace Assets.Scripts.Enemyes
 {
     public class EnemySpawner : MonoBehaviour
     {
-        private const string Sister = "Enemy/EnemiesSet/SisterRoomArea";
+        private const string HomeLevel = "Enemy/EnemiesSet/SisterRoomArea";
         private const string EnemySpawnTag = "EnemySpawnTag";
 
         [SerializeField] private RoutMap _routMap;
@@ -29,33 +29,27 @@ namespace Assets.Scripts.Enemyes
 
         private void Awake()
         {
-            _enemies = Resources.LoadAll<EnemiesSet>(Sister).ToList();
+            _enemies = Resources.LoadAll<EnemiesSet>(HomeLevel).ToList();
         }
 
         private void Start()
         {
             _spawnPoint = GameObject.FindWithTag(EnemySpawnTag);
         }
-
-        private void OnEnable()
-        {
-            _routMap.StageButtonPressed += SpawnEnemy;
-        }                 
-
+        
         public void SpawnEnemy(int stageNumber)
         {
-            _stageNumber = stageNumber;
-            if (_stageNumber == 1)
+            if (stageNumber == 1)
             {
                 StartCoroutine(CreateEnemy(EnemyTypeID.Stage1, _spawnPoint));                
             }
-            else if (_stageNumber == 2)
+            else if (stageNumber == 2)
             {
-                StartCoroutine(CreateEnemy(EnemyTypeID.Stage2, _spawnPoint));
+                StartCoroutine(CreateEnemy(EnemyTypeID.Stage1, _spawnPoint));
             }
-            else if (_stageNumber == 3)
+            else if (stageNumber == 3)
             {
-                StartCoroutine(CreateEnemy(EnemyTypeID.Stage3, _spawnPoint));
+                StartCoroutine(CreateEnemy(EnemyTypeID.Stage1, _spawnPoint));
             }
         }
 

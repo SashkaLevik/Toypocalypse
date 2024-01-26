@@ -1,64 +1,86 @@
-﻿using Assets.Scripts.Enemyes;
+﻿using Assets.Scripts.Data;
+using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.GameEnvironment.Battle;
+using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.SaveLoad;
+using Assets.Scripts.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Player
 {
-    public class SkillPanel : MonoBehaviour
+    public class SkillPanel : MonoBehaviour, ISaveProgress
     {
         [SerializeField] private Canvas _canvas;
         [SerializeField] private SkillView _skillView;
-        //[SerializeField] private AttackPanel _attackPanel;
+        [SerializeField] private SkillView _moveSkill;
         [SerializeField] private Button _wait;
         [SerializeField] private Button _foward;
         [SerializeField] private Button _backward;
         [SerializeField] private Button _applyAction;
 
-        public Toy _player;
-        public BaseEnemy _enemy;
-        public SkillView _currentSkill;
-        public PlayerSpeed _playerSpeed;
-        public AttackPanel _attackPanel;
+        private Toy _player;
+        private SkillView _currentSkill;
+        private PlayerSpeed _playerSpeed;
+        private AttackPanel _attackPanel;
         private PlayerMovement _movement;
+        private PlayerHud _playerHud;
+        private RoutMap _routMap;
+        public List<SkillView> _playerSkills;
+        public List<SkillData> _playerSkillDatas;
+        public PlayerProgress _playerProgress;
+        private ISaveLoadService _saveLoadService;
 
-        //public event UnityAction<SkillView> ActionChoosed;
+        public PlayerHud PlayerHud => _playerHud;
+        public List<SkillView> PlayerSkills => _playerSkills;
+
         public event UnityAction SkillPlayed;
-
+        public event UnityAction<SkillView> SkillChoosed;
         private void Awake()
-        {
-        }
+            => _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
 
         private void Start()
         {
             _canvas.worldCamera = Camera.main;
-            FillSkillPanel();
             _attackPanel = _player.GetComponentInChildren<AttackPanel>();
             _applyAction.onClick.AddListener(_attackPanel.ApplySkill);
-        }
-
-        private void OnEnable()
-        {
             _wait.onClick.AddListener(OnWaitButton);
+            _foward.onClick.AddListener(() => OnRightButton(_moveSkill));
+            _backward.onClick.AddListener(() => OnLeftButton(_moveSkill));
+            _routMap = _player.GetComponentInParent<PlayerSpawnPoint>().RoutMap;
+        }        
+
+        private void OnDestroy()
+        {
+            _applyAction.onClick.RemoveListener(_attackPanel.ApplySkill);
+            _wait.onClick.RemoveListener(OnWaitButton);
+            _foward.onClick.RemoveListener(() => OnRightButton(_moveSkill));
+            _backward.onClick.RemoveListener(() => OnLeftButton(_moveSkill));
         }
 
-        public void Construct(Toy player, PlayerSpeed playerSpeed)
+        public void Construct(Toy player, PlayerHud playerHud)
         {
-            _player = player;
-            _playerSpeed = playerSpeed;
+            _player = player;            
+            _playerSpeed = _player.GetComponent<PlayerSpeed>();
             _movement = _player.GetComponent<PlayerMovement>();
-            _movement.MovePlayer(_foward, _backward);            
-        }            
+            _playerHud = playerHud;
+        }
+
+        public void LoadPanelOrInitNew()
+        {
+            if (_playerProgress.IsPlayerCreated == true)
+                LoadSkillPanel();
+            else
+                CreateNewPanel();           
+        }               
 
         public void ReturnPlayed(SkillView skillView)
         {
-            _currentSkill = skillView;
-            _currentSkill.transform.position = transform.position;
-            _currentSkill.transform.SetParent(transform);
-            _currentSkill.SkillButtonPressed += ChooseSkill;
+            TakeBack(skillView);            
             SkillPlayed += _currentSkill.RecoverCooldown;            
         }
 
@@ -70,54 +92,151 @@ namespace Assets.Scripts.Player
             _currentSkill.SkillButtonPressed += ChooseSkill;
         }
 
-        private void OnWaitButton()
+        public void AddMinion(SkillData skillData)
         {
-            _playerSpeed.RecoverAP();
-            SkillPlayed?.Invoke();
+            _skillView.Init(skillData);
+            _currentSkill = Instantiate(_skillView, transform);
+            _currentSkill.SkillButtonPressed += ChooseSkill;
+            _playerSkills.Add(_currentSkill);
+            _playerSkillDatas.Add(_currentSkill.SkillData);
+            _saveLoadService.SaveProgress();
         }
-
-        private void FillSkillPanel()
-        {            
-            for (int i = 0; i < _player.Parts.Count; i++)
-            {                
-                if (_player.Parts[i].SkillData.Type == SkillType.Move)
-                {
-                    var moveSkill = _player.Parts[i].SkillData;
-                    _foward.GetComponent<SkillView>().Init(moveSkill);
-                    _backward.GetComponent<SkillView>().Init(moveSkill);
-                }
-                else
-                {
-                    _skillView.Init(_player.Parts[i].SkillData);
-                    _currentSkill = Instantiate(_skillView, transform);
-                    _currentSkill.SkillButtonPressed += ChooseSkill;
-                }                
-            }
-        }                
-
-        private void ChooseSkill(SkillView skillView)
+        
+        public void ChooseSkill(SkillView skillView)
         {
             _currentSkill = skillView;
 
+            if (_routMap.IsInBattle == true)
+                OnAttack(_currentSkill);
+            else
+                OnEvent(_currentSkill);
+        }
+
+        public void ResetCooldown()
+        {
+            foreach (var skill in _playerSkills)
+                skill.ResetCooldown();
+        }
+
+        public void ResetMoveButtons()
+        {
+            _foward.interactable = true;
+            _backward.interactable = true;
+        }
+
+        private void CreatePanel()
+        {
+            for (int i = 0; i < _playerSkillDatas.Count; i++)
+            {
+                if (_playerSkillDatas[i].SkillType == SkillType.Move)
+                {
+                    _moveSkill.Init(_playerSkillDatas[i]);
+                    _foward.GetComponent<SkillView>().Init(_playerSkillDatas[i]);
+                    _backward.GetComponent<SkillView>().Init(_playerSkillDatas[i]);
+                }
+                else
+                {
+                    _skillView.Init(_playerSkillDatas[i]);
+                    _currentSkill = Instantiate(_skillView, transform);
+                    _currentSkill.SkillButtonPressed += ChooseSkill;
+                    _playerSkills.Add(_currentSkill);
+                }
+            }
+        }
+
+        private void LoadSkillPanel()
+        {
+            _playerSkillDatas = _playerProgress.PlayerSkills.ToList();
+            CreatePanel();           
+        }
+        private void CreateNewPanel()
+        {
+            GetSkillDatas();
+            CreatePanel();
+            _saveLoadService.SaveProgress();           
+        }
+
+        private void GetSkillDatas()
+        {
+            foreach (var data in _player.Parts)
+                _playerSkillDatas.Add(data.SkillData);
+        }
+
+        private void OnWaitButton()
+        {
+            _playerSpeed.RecoverAP();
+            PlaySkillOnBattle();
+        }        
+
+        private void OnRightButton(SkillView skillView)
+        {
+            if (_movement.IsMoving == true) return;
+
+            if (skillView.RequiredAP <= _playerSpeed.CurrentSpeed)
+            {
+                _movement.MoveRight(_foward, _backward);
+                _playerSpeed.SpentAP(skillView.RequiredAP);
+                PlaySkillOnBattle();
+            }
+            else
+                _playerHud.EnableAPWarning();
+        }
+
+        private void OnLeftButton(SkillView skillView)
+        {
+            if (_movement.IsMoving == true) return;
+
+            if (skillView.RequiredAP <= _playerSpeed.CurrentSpeed)
+            {
+                _movement.MoveLeft(_foward, _backward);
+                _playerSpeed.SpentAP(skillView.RequiredAP);
+                PlaySkillOnBattle();
+            }
+            else
+                _playerHud.EnableAPWarning();
+        }                                        
+
+        private void OnAttack(SkillView skillView)
+        {
             if (_attackPanel.AttackSkill != null)
             {
-                Debug.Log("SkillAllreadyPrepared");
+                _playerHud.EnableSkillWarning();
                 return;
             }
 
-            if (_currentSkill.RequiredAP <= _playerSpeed.CurrentSpeed)
+            if (skillView.RequiredAP <= _playerSpeed.CurrentSpeed)
             {
-                SkillPlayed -= _currentSkill.RecoverCooldown;
                 SkillPlayed?.Invoke();
-                _playerSpeed.SpentAP(_currentSkill.RequiredAP);
-                _attackPanel.OnSkillChoosed(_currentSkill);
-                _currentSkill.SkillButtonPressed -= ChooseSkill;
+                _playerSpeed.SpentAP(skillView.RequiredAP);
+                _attackPanel.OnSkillChoosed(skillView);
+                skillView.SkillButtonPressed -= ChooseSkill;
             }
             else
             {
-                Debug.Log("NoAP");
+                _playerHud.EnableAPWarning();
                 return;
             }
-        }        
+        }
+
+        private void OnEvent(SkillView skillView)
+        {
+            SkillChoosed?.Invoke(skillView);
+            //skillView.SkillButtonPressed -= ChooseSkill; ansigne in events
+        }
+
+        private void PlaySkillOnBattle()
+        {
+            if (_routMap.IsInBattle == true) SkillPlayed?.Invoke();
+        }
+
+        public void Save(PlayerProgress progress)
+        {
+            progress.PlayerSkills = _playerSkillDatas.ToList();
+        }
+
+        public void Load(PlayerProgress progress)
+        {
+            _playerProgress = progress;
+        }
     }
 }

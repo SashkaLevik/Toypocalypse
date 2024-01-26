@@ -7,10 +7,14 @@ namespace Assets.Scripts.Data
     public class WorldData
     {
         public string Level;
+        public int Stage;
+        public int LevelNumber;
 
         public WorldData(string level)
         {
             Level = level;
+            Stage = 0;
+            LevelNumber = 0;
         }
     }
 }

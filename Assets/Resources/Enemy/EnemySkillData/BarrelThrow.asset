@@ -18,4 +18,4 @@ MonoBehaviour:
   Defence: 0
   Cooldown: 2
   RequiredAP: 1
-  Type: 0
+  Type: 1

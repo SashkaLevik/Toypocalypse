@@ -7,37 +7,22 @@ namespace Assets.Scripts.Enemyes
     public class EnemyHud : BattleHud
     {
         [SerializeField] private EnemyHealth _enemyHealth;
-        [SerializeField] private EnemySpeed _enemySpeed;
-        //[SerializeField] private HPBar _hpBar;
-        //[SerializeField] private SpeedBar _speedBar;
-
-        //private void Start()
-        //{
-        //    UpdateHPBar();
-        //}
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Backspace))
-            {
-                _enemyHealth.CurrentHP -= 1;
-            }
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                _enemySpeed.CurrentSpeed -= 1;
-            }
-        }
+        [SerializeField] private EnemySpeed _enemySpeed;               
 
         private void OnEnable()
         {
             _enemyHealth.HealthChanged += UpdateHPBar;
             _enemySpeed.SpeedChanged += UpdateSpeedBar;
+            _enemyHealth.DefenceChanged += UpdateDefence;
         }
 
         protected override void UpdateHPBar()
             => _hpBar.SetValue(_enemyHealth.CurrentHP, _enemyHealth.MaxHP);
 
         protected override void UpdateSpeedBar()
-            => _speedBar.SetValue(_enemySpeed.CurrentSpeed, _enemySpeed.MaxSpeed);       
+            => _speedBar.SetValue(_enemySpeed.CurrentSpeed, _enemySpeed.MaxSpeed);
+
+        protected override void UpdateDefence()
+            => _defence.text = _enemyHealth.Defence.ToString();
     }
 }

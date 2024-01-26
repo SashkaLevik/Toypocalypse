@@ -1,7 +1,9 @@
 ﻿using Assets.Scripts.Factory;
 using Assets.Scripts.Infrastructure.GameManagment;
 using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.SaveLoad;
 using System;
+using UnityEngine;
 
 namespace Assets.Scripts.States
 {
@@ -38,20 +40,21 @@ namespace Assets.Scripts.States
 
         private void OnLoaded()
         {
-            //InitGameWorld();
-            //InformProgressReaders();
+            CreateMenu();
+            InformProgressReaders();
 
             _gameStateMachine.Enter<LoopState>();
         }
 
         private void InformProgressReaders()
         {
-            throw new NotImplementedException();
+            foreach (ILoadProgress progressReader in _gameFactory.ProgressReaders)
+                progressReader.Load(_progressService.Progress);
         }
 
-        private void InitGameWorld()
+        private void CreateMenu()
         {
-            throw new NotImplementedException();
+            GameObject menuHud = _gameFactory.CreteMenuHud();
         }
     }
 }

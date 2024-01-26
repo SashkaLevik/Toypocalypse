@@ -23,6 +23,13 @@ namespace Assets.Scripts.Factory
            // _toyDataService = toyDataService;
         }
 
+        public GameObject CreteMenuHud()
+        {
+            GameObject menuHud = _assetProvider.Instantiate(AssetPath.MenuHud);
+            RegisterProgressWatchers(menuHud);
+            return menuHud;
+        }
+
         public GameObject CreateBattleHud()
         {
             GameObject battleHud = _assetProvider.Instantiate(AssetPath.BattleHud);
@@ -33,7 +40,15 @@ namespace Assets.Scripts.Factory
         public GameObject CreateSkillPanel()
         {
             GameObject skillPanel = _assetProvider.Instantiate(AssetPath.SkillPanel);
+            RegisterProgressWatchers(skillPanel.gameObject);
             return skillPanel;
+        }
+
+        public GameObject CreateBattleSystem()
+        {
+            GameObject battleSystem = _assetProvider.Instantiate(AssetPath.BattleSystem);
+            RegisterProgressWatchers(battleSystem);
+            return battleSystem;
         }
 
         public GameObject CreateToy(ToyStaticData toyData, GameObject at)
@@ -41,7 +56,7 @@ namespace Assets.Scripts.Factory
             var toy = Object.Instantiate(toyData.Prefab, at.transform);
             RegisterProgressWatchers(toy.gameObject);
             return toy.gameObject;
-        }
+        }        
 
         private void RegisterProgressWatchers(GameObject obj)
         {
@@ -57,6 +72,6 @@ namespace Assets.Scripts.Factory
                 ProgressWriters.Add(progressWriter);
 
             ProgressReaders.Add(progressReader);
-        }
+        }        
     }
 }

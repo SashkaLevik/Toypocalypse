@@ -15,7 +15,6 @@ namespace Assets.Scripts.UI
 {
     public class TreeHouseUI : MonoBehaviour
     {
-        private const string Battle = "Battle";
         [SerializeField] private ToyConstructor _toyConstructor;
         [SerializeField] private Image _notChoosedWarning;
         [SerializeField] private Image _fullTableWarning;
@@ -26,19 +25,14 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _openMap;
         [SerializeField] private Transform _toyPreviewPos;
 
-        private IGameStateMachine _stateMachine;
-        public ToyStaticData _createdToyData;
+        private ToyStaticData _createdToyData;
+
         public Image NotChoosedWarning => _notChoosedWarning;
         public Image FullTableWarning => _fullTableWarning;
         public Image MaterealWarning => _materialWarning;
         public Image ExistWarning => _existWarning;
 
-        public ToyStaticData ToyData => _createdToyData;
-
-        private void Awake()
-        {
-            _stateMachine = AllServices.Container.Single<IGameStateMachine>();
-        }
+        public ToyStaticData ToyData => _createdToyData;        
 
         private void Start()
         {
@@ -50,9 +44,10 @@ namespace Assets.Scripts.UI
             _openMap.onClick.AddListener(OnMapOpen);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
-            
+            _toyConstructor.ToyConstructed -= OnToyConstruct;
+            _openMap.onClick.RemoveListener(OnMapOpen);
         }
 
         private void OnMapOpen()
@@ -64,12 +59,7 @@ namespace Assets.Scripts.UI
         {
             _createdToyData = toyData;
             _openMap.interactable = true;
-        }
-
-        private void OnBattleEntered()
-        {
-            _stateMachine.Enter<LevelState, string>(Battle, _createdToyData);
-        }
+        }      
 
         public void EnableWarning(Image image)
         {
@@ -79,7 +69,6 @@ namespace Assets.Scripts.UI
 
         public void ShowToyPreview(Toy toy)
         {
-            //Instantiate(toy, _toyPreviewPos);
             _toyPreview.gameObject.SetActive(true);
             _toyPreview.sprite = toy.ToyImage;
         }
