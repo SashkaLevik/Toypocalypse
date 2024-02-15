@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e616ec4555938d49a6547cba6356917, type: 3}
   m_Name: UnicornHead
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 53b31c81cc10ffa408383e0bf8df8951, type: 3}
-  SkillImage: {fileID: 0}
-  SkillDamage: 0
-  Name: Unicorn Head
-  Health: 1
-  Speed: 1
-  Damage: 1
-  MaterialAmount: 1
+  Icon: {fileID: 21300000, guid: afe315c7f1a6c5f41988fcb3d6013217, type: 3}
+  SkillImage: {fileID: -1969280064, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
+  NameEn: Unicorn head
+  NameRu: "\u0413\u043E\u043B\u043E\u0432\u0430 \u0435\u0434\u0438\u043D\u043E\u0440\u043E\u0433\u0430"
+  Health: 3
+  Speed: 2
+  MaterialAmount: 2
+  SkillData: {fileID: 11400000, guid: 575a297e2d5cc07498297a3f457dc929, type: 2}
   Type: 0

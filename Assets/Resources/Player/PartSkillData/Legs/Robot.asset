@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: Robot
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 1d5cfab3bfba6c0458fcac9239279960, type: 3}
-  SkillDescription: Apply defence
+  Icon: {fileID: -1178213201, guid: 13920b3a35c79de4193f1160199f2568, type: 3}
+  RuDescription: "\u0423\u0447\u0430\u0432\u0441\u0442\u0432\u0443\u044E\u0442 \u0432
+    \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u0438"
+  EnDescription: Involved in movement
+  DefaultDamage: 0
   Damage: 0
+  DefaultDefence: 0
   Defence: 0
+  DefaultCooldown: 0
   Cooldown: 0
-  RequiredAP: 1
-  SkillType: 3
+  RequiredAP: 2
+  SkillType: 4
   AttackType: 0

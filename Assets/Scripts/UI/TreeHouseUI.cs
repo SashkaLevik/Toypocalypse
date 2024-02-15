@@ -1,53 +1,65 @@
 ﻿using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.GameEnvironment.TreeHouse;
-using Assets.Scripts.Infrastructure.GameManagment;
-using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.States;
 using Assets.Scripts.Player;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using System;
-using Assets.Scripts.GameEnvironment.Battle;
 
 namespace Assets.Scripts.UI
 {
     public class TreeHouseUI : MonoBehaviour
     {
+        [SerializeField] private Warning _warning;
         [SerializeField] private ToyConstructor _toyConstructor;
-        [SerializeField] private Image _notChoosedWarning;
-        [SerializeField] private Image _fullTableWarning;
-        [SerializeField] private Image _materialWarning;
-        [SerializeField] private Image _existWarning;
         [SerializeField] private Image _toyPreview;
+        [SerializeField] private Image _toyCreator;
         [SerializeField] private Image _map;
         [SerializeField] private Button _openMap;
-        [SerializeField] private Transform _toyPreviewPos;
+        [SerializeField] private Button _toMenu;
+        [SerializeField] private AudioSource _constructSound;
+        [SerializeField] private AudioSource _treeHouseTheme;
+        [SerializeField] private AudioSource _menuTheme;
+        [SerializeField] private GameObject _treeHouse;
+        [SerializeField] private GameObject _menu;
 
         private ToyStaticData _createdToyData;
 
-        public Image NotChoosedWarning => _notChoosedWarning;
-        public Image FullTableWarning => _fullTableWarning;
-        public Image MaterealWarning => _materialWarning;
-        public Image ExistWarning => _existWarning;
+        public Warning Warning => _warning;        
 
-        public ToyStaticData ToyData => _createdToyData;        
-
-        private void Start()
-        {
-        }
+        public ToyStaticData ToyData => _createdToyData;                
 
         private void OnEnable()
         {
             _toyConstructor.ToyConstructed += OnToyConstruct;
             _openMap.onClick.AddListener(OnMapOpen);
+            _toMenu.onClick.AddListener(ReturnToMenu);
+        }
+
+        private void ReturnToMenu()
+        {
+            _menu.SetActive(true);
+            _treeHouse.SetActive(false);
+            _treeHouseTheme.Stop();
+            _menuTheme.Play();
         }
 
         private void OnDestroy()
         {
             _toyConstructor.ToyConstructed -= OnToyConstruct;
             _openMap.onClick.RemoveListener(OnMapOpen);
+        }
+
+        private IEnumerator ShowPreview()
+        {
+            var tempColor = _toyPreview.color;
+            tempColor.a = 0f;
+
+            while (tempColor.a < 1)
+            {
+                tempColor.a += 0.03f;
+                _toyPreview.color = tempColor;
+                yield return new WaitForSeconds(0.03f);
+            }
         }
 
         private void OnMapOpen()
@@ -59,24 +71,15 @@ namespace Assets.Scripts.UI
         {
             _createdToyData = toyData;
             _openMap.interactable = true;
-        }      
-
-        public void EnableWarning(Image image)
-        {
-            image.gameObject.SetActive(true);
-            StartCoroutine(DisableWarning(image));
-        }         
+        }                              
 
         public void ShowToyPreview(Toy toy)
         {
+            _constructSound.Play();
+            _toyCreator.gameObject.SetActive(true);
             _toyPreview.gameObject.SetActive(true);
             _toyPreview.sprite = toy.ToyImage;
-        }
-
-        private IEnumerator DisableWarning(Image image)
-        {
-            yield return new WaitForSeconds(2f);
-            image.gameObject.SetActive(false);
-        }                    
+            StartCoroutine(ShowPreview());
+        }                          
     }
 }

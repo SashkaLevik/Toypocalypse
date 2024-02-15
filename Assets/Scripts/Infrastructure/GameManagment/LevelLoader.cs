@@ -37,8 +37,7 @@ namespace Assets.Scripts.Infrastructure.GameManagment
         }
 
         public void Save(PlayerProgress progress)
-        {
-            progress.WorldData.Level = _level;
+        {            
         }
 
         public void Load(PlayerProgress progress)

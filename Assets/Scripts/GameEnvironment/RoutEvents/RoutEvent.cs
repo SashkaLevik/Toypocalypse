@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.GameEnvironment.TreeHouse;
 using Assets.Scripts.Player;
 using Assets.Scripts.UI;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -10,21 +9,24 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents
 {
     public class RoutEvent : MonoBehaviour
     {
+        [SerializeField] protected Warning _warning;
         [SerializeField] protected Sprite _icon;
         [SerializeField] protected Button _close;
-        [SerializeField] protected RoutMap _routMap;
-        [SerializeField] protected Image _moneyWarning;
-        [SerializeField] protected Image _materialWarning;
+        [SerializeField] protected RoutMap _routMap;        
+        [SerializeField] protected int _plasticinePaymentAmount;
+        [SerializeField] protected int _gluePaymentAmount;
+        [SerializeField] protected int _screwPaymentAmount;
         [SerializeField] private PlayerSpawnPoint _playerSpawner;
 
         //protected SkillView _choosedSkill;
+        protected Toy _player;
         protected SkillView _nextSkill;
         protected SkillPanel _skillPanel;
         protected PlayerMoney _playerMoney;
         protected PlayerHud _playerHud;
         protected Walet _walet;
         protected PlayerSpeed _playerSpeed;
-        private Toy _player;
+        protected PlayerHealth _playerHealth;
 
         public Sprite Icon => _icon;
 
@@ -36,14 +38,20 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents
             _skillPanel = _player.SkillPanel;
             _playerHud = _player.PlayerHud;
             _playerSpeed = _player.GetComponent<PlayerSpeed>();
-            _playerSpeed.RecoverAP();
-            _walet = _playerHud.GetComponentInChildren<Walet>();
-            //_walet.EnableButtons();
+            _playerHealth = _player.GetComponent<PlayerHealth>();
+            _playerSpeed.ResetAP();
+            _walet = _skillPanel.GetComponent<Walet>();
             _playerMoney = _player.GetComponent<PlayerMoney>();
-            //_playerMoney.MaterialChoosed += GetPayment;
-            //_skillPanel.SkillChoosed += PrepareToBuff;
-            //_skillPanel.ResetCooldown();
-        }       
+            _skillPanel.ResetCooldown();
+        }
+
+        protected int GetPaymentValue(ConnectingMaterial material)
+        {
+            if (material.Data.Type == MaterialType.Plasticine) return _plasticinePaymentAmount;
+            else if (material.Data.Type == MaterialType.Glue) return _gluePaymentAmount;
+            else if (material.Data.Type == MaterialType.Screw) return _screwPaymentAmount;
+            return 0;
+        }
 
         protected virtual void PrepareToBuff(SkillView skill) { }
 
@@ -52,24 +60,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents
         protected virtual void CloseEvent()
         {            
             EventCompleted?.Invoke();
-        }
-
-        protected void EnableMoneyWarning()
-        {
-            _moneyWarning.gameObject.SetActive(true);
-            StartCoroutine(DisableWarning(_moneyWarning));
-        }
-
-        protected void EnableMaterialWarning()
-        {
-            _materialWarning.gameObject.SetActive(true);
-            StartCoroutine(DisableWarning(_materialWarning));
-        }
-
-        private IEnumerator DisableWarning(Image image)
-        {
-            yield return new WaitForSeconds(2f);
-            image.gameObject.SetActive(false);
-        }
+        }        
     }
 }

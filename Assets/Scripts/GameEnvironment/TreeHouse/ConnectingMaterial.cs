@@ -9,6 +9,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
     public class ConnectingMaterial : MonoBehaviour
     {
         [SerializeField] private MaterialData _materialData;
+        [SerializeField] private AudioSource _chooseSound;
 
         private Button _materialButton;
 
@@ -27,9 +28,14 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         {
             _materialButton.onClick.AddListener(ChooseMaterial);
         }
+        private void OnDestroy()
+        {
+            _materialButton.onClick.RemoveListener(ChooseMaterial);
+        }
 
         private void ChooseMaterial()
         {
+            _chooseSound.Play();
             MaterialChoosed?.Invoke(this);
         }
     }

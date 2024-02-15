@@ -12,6 +12,7 @@ namespace Assets.Scripts.Enemyes
         [SerializeField] private GameObject _attackPanel;
         [SerializeField] private BaseEnemy _enemy;
         [SerializeField] private SkillView _wait;
+        [SerializeField] private SkillView _stun;
 
         public AreaType _areaType;
         private Toy _player;
@@ -20,7 +21,9 @@ namespace Assets.Scripts.Enemyes
         private SkillView _waitSkill;
         private EnemyMovement _movement;
         private EnemySpeed _enemySpeed;
-        private int _randomSkill;        
+        private int _randomSkill;
+        private int _stunValue;
+        private float _animationDelay = 1f;
 
         private void Start()
         {
@@ -41,11 +44,22 @@ namespace Assets.Scripts.Enemyes
                 _waitSkill = null;
             }
             if (CanAct())
-            {                
                 PrepareSkill();
-            }
             else
-                Wait();
+                Invoke(nameof(Wait), _animationDelay);
+        }
+
+        public void CalculateStun(int stunChance)
+        {
+            _stunValue = Random.Range(1, 100);
+            if (_stunValue < stunChance)
+                ApplyStun();
+        }
+
+        private void ApplyStun()
+        {
+            if (_currentSkill != null) RemoveSkill();
+            _waitSkill = Instantiate(_stun, _attackPanel.transform);
         }
 
         private void PrepareSkill()
@@ -56,7 +70,7 @@ namespace Assets.Scripts.Enemyes
                 _enemySpeed.SpentAP(_skillData.RequiredAP);
             }
             else
-                ApplyAction();
+                Invoke(nameof(ApplyAction), _animationDelay);
         }        
 
         private void ApplyAction()
@@ -66,20 +80,28 @@ namespace Assets.Scripts.Enemyes
                 if (_currentSkill.SkillData.SkillType == SkillType.Defence)
                     _enemy.GetComponent<EnemyHealth>().IncreaseDefence(_currentSkill.SkillData.Defence);
                 else
-                {
-                    _player.GetComponent<PlayerHealth>().TakeDamage(_currentSkill.Damage);
-                }
+                    ApplyAttack();
                 RemoveSkill();
             }
             else
                 ChangeArea();
-        }        
+        }
+
+        private void ApplyAttack()
+        {
+            _player.GetComponent<PlayerHealth>().TakeDamage(_currentSkill.Damage);
+
+            if (_currentSkill.SkillData.AttackType == AttackType.Push)
+                _player.GetComponent<PlayerMovement>().Push();
+            else if (_currentSkill.SkillData.AttackType == AttackType.Pull)
+                _player.GetComponent<PlayerMovement>().Pull();
+        }
 
         private void Wait()
         {
             ApplyAction();
             _waitSkill = Instantiate(_wait, _attackPanel.transform);
-            _enemySpeed.RecoverAP();
+            _enemySpeed.ResetAP();
         }
         
         private void RemoveSkill()

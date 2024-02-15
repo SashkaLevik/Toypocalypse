@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
+  m_Name: DollLegs
+  m_EditorClassIdentifier: 
+  Icon: {fileID: -1178213201, guid: 13920b3a35c79de4193f1160199f2568, type: 3}
+  RuDescription: "\u041E\u0447\u0435\u043D\u044C \u0431\u044B\u0441\u0442\u0440\u044B\u0435"
+  EnDescription: Very fast
+  DefaultDamage: 0
+  Damage: 0
+  DefaultDefence: 0
+  Defence: 0
+  DefaultCooldown: 0
+  Cooldown: 0
+  RequiredAP: 0
+  SkillType: 4
+  AttackType: 0

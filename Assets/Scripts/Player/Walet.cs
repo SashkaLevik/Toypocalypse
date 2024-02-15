@@ -24,13 +24,16 @@ namespace Assets.Scripts.Player
 
         private void Start()
         {
-            _player = GetComponentInParent<PlayerHud>().Player;
+            _player = GetComponent<SkillPanel>().Player;
             _playerMoney = _player.GetComponent<PlayerMoney>();
             _playerMoney.MoneyChanged += UpdateMaterials;
             UpdateMaterials();
 
             foreach (var material in _materials)
-                material.MaterialChoosed += _playerMoney.OnMaterialChoosed;
+            {
+                _currentMaterial = material;
+                _currentMaterial.MaterialChoosed += _playerMoney.OnMaterialChoosed;
+            }                
         }                
 
         public void EnableButtons()

@@ -1,24 +1,30 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 namespace Assets.Scripts.UI
 {
     public class PartSkillDescription : MonoBehaviour
     {
         [SerializeField] private PartDescription _partDescription;
-        [SerializeField] private TMP_Text _cooldownDescription;
-        [SerializeField] private TMP_Text _skillDescription;        
+        [SerializeField] private Image _cooldownDescription;
+        [SerializeField] private Image _apDescription;
+        [SerializeField] private Image _skillDescription;
+        [SerializeField] private TMP_Text _skillDescriptionText;
 
-        private void OnMouseEnter()
+        public void OnEnter()
         {
             _cooldownDescription.gameObject.SetActive(true);
+            _apDescription.gameObject.SetActive(true);
             _skillDescription.gameObject.SetActive(true);
-            _skillDescription.text = _partDescription.ChoosedPart.SkillData.SkillDescription;
+            _skillDescriptionText.text = _partDescription.ChoosedPart.SkillData.RuDescription;
         }
 
-        private void OnMouseExit()
+        public void OnExit()
         {
             _cooldownDescription.gameObject.SetActive(false);
+            _apDescription.gameObject.SetActive(false);
             _skillDescription.gameObject.SetActive(false);
-        }
+        }        
     }
 }

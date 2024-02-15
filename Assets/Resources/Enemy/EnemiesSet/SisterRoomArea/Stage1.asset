@@ -15,4 +15,6 @@ MonoBehaviour:
   _enemy: {fileID: 7436280200827580417, guid: efef6e5172decae43a57329077d56b3b, type: 3}
   _prefabs:
   - {fileID: 7436280200827580417, guid: efef6e5172decae43a57329077d56b3b, type: 3}
+  - {fileID: 7436280200827580417, guid: a6a0052a13de910438fe65561705a14b, type: 3}
+  - {fileID: 7436280200827580417, guid: 23a703e6a77f15c4f8037faefae6965f, type: 3}
   _enemyType: 0

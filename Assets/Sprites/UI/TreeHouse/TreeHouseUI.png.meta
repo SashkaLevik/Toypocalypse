@@ -1,0 +1,1003 @@
+fileFormatVersion: 2
+guid: 2b3f53440d9cbca43a0b72ada31cb3ad
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TreeHouseUI_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 852
+        width: 341
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a7d2e9241e40f4692a73ae2c418fd8
+      internalID: 389045111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_1
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 852
+        width: 341
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7e30f7262171dd489853702b65becfb
+      internalID: -846118434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_2
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 898
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22a88bec12271bf4e87ab74bce1919d4
+      internalID: -1335084303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_4
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 364
+        width: 512
+        height: 590
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 900198bd9f9c97e49a6610e7be4fd3b8
+      internalID: 1484125914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnDescription
+      rect:
+        serializedVersion: 2
+        x: 1501
+        y: 648
+        width: 359
+        height: 306
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42be6c048b1ff324090a9220fa1305bf
+      internalID: 1403766355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_6
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 759
+        width: 226
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d4e594dc86fb49419ba11c077d19e1c
+      internalID: 855067016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_7
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 780
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d26f80210f4128246a8716b993f187ab
+      internalID: -494914978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_8
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 781
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 238eaf9ed8fc5b049a58f8efae432914
+      internalID: -2024947424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnMaterial
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 673
+        width: 196
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a01efa2066572e469d39e1e0c0fb960
+      internalID: -477979660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RuMaterial
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 673
+        width: 196
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11ebe77b4ba00a14290001abf6976b4f
+      internalID: -661775628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_11
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 662
+        width: 248
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 777c72ee302eab54287c6b374af01ed0
+      internalID: 2113635270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_22
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 383
+        width: 335
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8873f4a5b6b1714598cc8e7490f86c7
+      internalID: 484548017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_23
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 458
+        width: 112
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3444e9dfe394ca84d8b0c237bd44d410
+      internalID: 1410190771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_24
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 458
+        width: 109
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f906e2091f153b04f9a15128e0023453
+      internalID: -1151908689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RuDescription
+      rect:
+        serializedVersion: 2
+        x: 1501
+        y: 294
+        width: 356
+        height: 306
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7df408404f78fc84880dac582547843b
+      internalID: 275862157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RuTorsoOn
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 239
+        width: 117
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b9f81f3da81964cb89284541335298
+      internalID: 2037629237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RuLegsOn
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 241
+        width: 106
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d717a85e5585ab8469daa81d59035906
+      internalID: 358582423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RuArmsOn
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 224
+        width: 136
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b375718a14614b34c81b6a82aecf16c4
+      internalID: -1035360184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnTorsoOn
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 228
+        width: 117
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42dbbffc0ba8b7a4ebd6026315ebe7f7
+      internalID: 1029011955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RuHeadOn
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 210
+        width: 139
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa54f7577c141b9498886918047ca5a7
+      internalID: 1102939208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnLegsOn
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 216
+        width: 106
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c194d54e088814044b47d7499c3cf20d
+      internalID: 1097465697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnHeadOn
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 191
+        width: 139
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76c881fc8ff4b6140b793ec4a689e8f7
+      internalID: 1117563521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnArmsOn
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 170
+        width: 136
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e5bafb0af42ec940a90fc1429847fa5
+      internalID: 372042529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RuTorsoOff
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 84
+        width: 117
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48cab31485766934f9ffd267dd192f48
+      internalID: 1403956570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RuLegsOff
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 80
+        width: 106
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d65f886c3b15dcd49b956f3d047e899f
+      internalID: 504471439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RuArmsOff
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 61
+        width: 130
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ebbd2e6d20ecf4d81a284cc8fcd143
+      internalID: -2146854068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RuHeadOff
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 82
+        width: 139
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0df57cc430f6164a810baf42c115a41
+      internalID: -687835313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnTorsoOff
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 78
+        width: 117
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c32c6825e955c74086b593058f473cc
+      internalID: 1492943597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnLegsOff
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 73
+        width: 106
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae871929580029d4580bf1a0b93b4b63
+      internalID: -213948739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnHeadOff
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 72
+        width: 139
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3c90237360fecd43af0b14719433e8b
+      internalID: -528287540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnArmsOff
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 50
+        width: 136
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa6144d35f7408148b6306d343b4deb9
+      internalID: -1830957606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_3
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 538
+        width: 55
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bd1c6aeab1307d41af3a721b32401b6
+      internalID: -928495702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_12
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 538
+        width: 55
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7b4e0810719fc4f9232ed9f488a253
+      internalID: 246709168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_13
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 538
+        width: 55
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a2e1bd00d835a4c91221df6579a7bc
+      internalID: 1950034250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeHouseUI_14
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 538
+        width: 55
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c2637dd850dfe6409293026753cd47d
+      internalID: -1220605961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      TreeHouseUI_69: -1756224778
+      TreeHouseUI_105: -122216721
+      TreeHouseUI_65: 835802107
+      TreeHouseUI_78: -1008464445
+      TreeHouseUI_30: 1990759409
+      TreeHouseUI_90: 79258532
+      TreeHouseUI_97: -348661662
+      TreeHouseUI_64: -204840563
+      TreeHouseUI_99: -917812357
+      TreeHouseUI_63: -693923825
+      TreeHouseUI_118: 1797419413
+      TreeHouseUI_100: -1453025339
+      TreeHouseUI_58: 373856092
+      TreeHouseUI_107: 1017558150
+      TreeHouseUI_13: 1950034250
+      TreeHouseUI_94: 745355508
+      RuArmsOff: -2146854068
+      RuLegsOff: 504471439
+      TreeHouseUI_20: 490492203
+      EnArmsOn: 372042529
+      TreeHouseUI_50: -867106488
+      TreeHouseUI_21: -543314221
+      TreeHouseUI_16: 148745394
+      TreeHouseUI_59: 1506888365
+      TreeHouseUI_48: 1417714395
+      TreeHouseUI_49: 1010706700
+      TreeHouseUI_95: 1182374690
+      TreeHouseUI_110: 1892132787
+      TreeHouseUI_45: 1651440268
+      TreeHouseUI_43: 2105821687
+      TreeHouseUI_109: -114305778
+      TreeHouseUI_93: -459260458
+      TreeHouseUI_51: -2029061267
+      TreeHouseUI_53: 1959760050
+      EnTorsoOff: 1492943597
+      TreeHouseUI_24: -1151908689
+      TreeHouseUI_101: -1127794201
+      TreeHouseUI_28: -1166688769
+      TreeHouseUI_76: 1272992786
+      TreeHouseUI_17: -141436304
+      TreeHouseUI_108: -394253088
+      TreeHouseUI_117: 934356476
+      TreeHouseUI_113: -922764131
+      TreeHouseUI_75: -1623654174
+      TreeHouseUI_23: 1410190771
+      TreeHouseUI_2: -1335084303
+      TreeHouseUI_106: -1029632643
+      TreeHouseUI_61: -367747294
+      TreeHouseUI_7: -494914978
+      TreeHouseUI_47: -1618875813
+      TreeHouseUI_19: 358669749
+      TreeHouseUI_56: 1502402003
+      TreeHouseUI_72: 1662512688
+      TreeHouseUI_55: -1411686778
+      TreeHouseUI_14: -1220605961
+      TreeHouseUI_44: -700976567
+      TreeHouseUI_29: -349946484
+      EnTorsoOn: 1029011955
+      TreeHouseUI_38: -995505582
+      TreeHouseUI_12: 246709168
+      EnHeadOn: 1117563521
+      TreeHouseUI_74: -598330745
+      RuArmsOn: -1035360184
+      EnHeadOff: -528287540
+      TreeHouseUI_77: 223681731
+      TreeHouseUI_86: 705016705
+      TreeHouseUI_119: -756604157
+      RuHeadOn: 1102939208
+      TreeHouseUI_111: 252017115
+      TreeHouseUI_54: 1281148876
+      TreeHouseUI_70: 448332269
+      TreeHouseUI_22: 484548017
+      TreeHouseUI_104: -1446564236
+      EnLegsOff: -213948739
+      TreeHouseUI_41: 1982912600
+      TreeHouseUI_35: -1196320889
+      TreeHouseUI_62: 157558727
+      EnLegsOn: 1097465697
+      TreeHouseUI_82: -1651001248
+      TreeHouseUI_102: 1693755836
+      TreeHouseUI_11: 2113635270
+      TreeHouseUI_0: 389045111
+      TreeHouseUI_112: -2088934214
+      TreeHouseUI_3: -928495702
+      RuDescription: 275862157
+      TreeHouseUI_1: -846118434
+      TreeHouseUI_114: -845188444
+      TreeHouseUI_84: -1643978376
+      TreeHouseUI_6: 855067016
+      TreeHouseUI_27: 1502228067
+      EnDescription: 1403766355
+      TreeHouseUI_18: -1806597084
+      TreeHouseUI_120: -2092833788
+      TreeHouseUI_60: 1170100375
+      TreeHouseUI_40: 1370567025
+      TreeHouseUI_73: -1497957331
+      TreeHouseUI_96: 282734820
+      TreeHouseUI_115: -1297647962
+      RuTorsoOn: 2037629237
+      TreeHouseUI_4: 1484125914
+      TreeHouseUI_67: 2057149343
+      RuTorsoOff: 1403956570
+      EnArmsOff: -1830957606
+      TreeHouseUI_116: -1049416968
+      EnMaterial: -477979660
+      TreeHouseUI_79: 976946238
+      TreeHouseUI_42: -1859267056
+      TreeHouseUI_66: -1811573816
+      TreeHouseUI_68: -1308405081
+      RuHeadOff: -687835313
+      TreeHouseUI_88: -185072605
+      TreeHouseUI_71: 1883101790
+      TreeHouseUI_8: -2024947424
+      TreeHouseUI_15: -573198093
+      RuLegsOn: 358582423
+      RuMaterial: -661775628
+      TreeHouseUI_25: 1963237948
+      TreeHouseUI_103: 5062593
+      TreeHouseUI_31: 596267491
+      TreeHouseUI_57: -1527096910
+      TreeHouseUI_98: -939978203
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

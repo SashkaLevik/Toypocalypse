@@ -25,7 +25,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         public ConnectingMaterial _previousMaterial;
         public List<Part> _parts = new List<Part>();
         private int _maxParts = 4;
-
+        
         public float Health => _health;
         public float Speed => _speed;
         public List<Part> Parts => _parts;
@@ -66,7 +66,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
                 {
                     if (partOnTable.PartData.Type == part.PartData.Type)
                     {
-                        _treeHouse.EnableWarning(_treeHouse.ExistWarning);
+                        _treeHouse.Warning.Enable(_treeHouse.Warning.SamePartChoosed);
                         return false;
                     }
                 }
@@ -86,6 +86,8 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             if (_currentMaterial == null)
             {
                 _currentMaterial = material;
+                _materialImage.gameObject.SetActive(true);
+                _materialImage.sprite = _currentMaterial.Data.Icon;
                 _health += _currentMaterial.Data.Health;
                 _construct.gameObject.SetActive(true);
                 _inInventory.gameObject.SetActive(false);
@@ -97,6 +99,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
                 _health -= _previousMaterial.Data.Health;
                 MaterialReturned?.Invoke(_previousMaterial);
                 _currentMaterial = material;
+                _materialImage.sprite = _currentMaterial.Data.Icon;
                 _health += _currentMaterial.Data.Health;
                 MaterialAdded?.Invoke(_health);
             }
@@ -114,7 +117,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private void RemovePart()
         {
             if (_currentPart == null)
-                _treeHouse.EnableWarning(_treeHouse.NotChoosedWarning);
+                _treeHouse.Warning.Enable(_treeHouse.Warning.NoPartChoosed);
             else
             {
                 DecreaseValues(_currentPart.PartData.Health, _currentPart.PartData.Speed, _currentPart.PartData.MaterialAmount);
@@ -123,7 +126,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
                 PartReturned?.Invoke(_currentPart);
                 GetSutableContainer();
                 _currentPart.PartChoosed -= ChoosePart;
-                _currentPart = null;                
+                _currentPart = null;
             }            
         }
 

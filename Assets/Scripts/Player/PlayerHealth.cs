@@ -28,6 +28,17 @@ namespace Assets.Scripts.Player
         private void OnDestroy()
             => _player.AreaChanged -= OnDefenceArea;
 
+        public void Heal(float amount)
+        {
+            CurrentHP += amount;
+            if (CurrentHP > MaxHP) CurrentHP = MaxHP;
+        }
+
+        public void RiseDefence(float amount)
+        {
+            Defence += amount;
+        }
+
         public void Save(PlayerProgress progress)
         {
             

@@ -59,9 +59,9 @@ namespace Assets.Scripts.Player
         {
             if (_attackSkill == null)
             {
-                _skillPanel.PlayerHud.EnableSkillAbsenceWarning();
+                _skillPanel.PlayerHud.Warning.Enable(_skillPanel.PlayerHud.Warning.NoSkillWarning);
                 return;
-            }           
+            }
 
             if (CanApply())
             {
@@ -73,7 +73,7 @@ namespace Assets.Scripts.Player
                 RemovePlayed();
             }
             else
-                _skillPanel.PlayerHud.EnebleAreaWarning();
+                _skillPanel.PlayerHud.Warning.Enable(_skillPanel.PlayerHud.Warning.AreaWarning);
 
         }
 
@@ -85,6 +85,8 @@ namespace Assets.Scripts.Player
                 _enemy.GetComponent<EnemyMovement>().Push();
             else if (_attackSkill.SkillData.AttackType == AttackType.Pull)
                 _enemy.GetComponent<EnemyMovement>().Pull();
+            else if (_attackSkill.SkillData.AttackType == AttackType.Stun)
+                _enemy.GetComponent<EnemyAI>().CalculateStun(_attackSkill.SkillData.StunChance);
         }
 
         private void ResetSkill()
@@ -108,6 +110,8 @@ namespace Assets.Scripts.Player
         private bool CanApply()
         {
             if (_attackSkill.SkillData.SkillType == SkillType.Defence)
+                return true;
+            else if (_attackSkill.SkillData.SkillType == SkillType.Minion)
                 return true;
             else if (_attackSkill.SkillData.SkillType == SkillType.Melee && _areaType == AreaType.Melee)
                 return true;

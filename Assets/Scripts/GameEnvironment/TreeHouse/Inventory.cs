@@ -35,17 +35,14 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         public GameObject ArmsContainer => _armsContainer;
         public GameObject LegsContainer => _legsContainer;
 
-        public event UnityAction<Part> PlacedOnTable;
-        
-        private void Awake()
+        public event UnityAction<Part> PlacedOnTable;              
+
+        private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+                _description.gameObject.SetActive(false);
         }
 
-        private void Start()
-        {
-            
-        }
-       
         private void OnEnable()
         {
             _onTable.onClick.AddListener(RemovePart);
@@ -68,19 +65,19 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private void RemovePart()
         {
             if (_currentPart == null)
-                _treeHouse.EnableWarning(_treeHouse.NotChoosedWarning);
+                _treeHouse.Warning.Enable(_treeHouse.Warning.NoPartChoosed);
             else
             {
                 if (_table.CanAddPart() && _table.CheckTypeMatch(_currentPart))
                 {
                     _currentPart.PartChoosed -= ChoosePart;
-                    //_spawnedPart.PartChoosed -= ChoosePart;
                     _partsMover.RemovePart(_parts, _currentPart, _table.transform);
                     PlacedOnTable?.Invoke(_currentPart);
                     _description.gameObject.SetActive(false);
                     _currentPart = null;
                 }
-                else _treeHouse.EnableWarning(_treeHouse.FullTableWarning);
+                else if(_table.CanAddPart() == false)
+                    _treeHouse.Warning.Enable(_treeHouse.Warning.AllPartsChoosed);
             }                        
         }                        
 

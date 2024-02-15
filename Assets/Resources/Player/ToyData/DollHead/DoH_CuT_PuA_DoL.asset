@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0422c2de02d0634a934cc5b4f3a7473, type: 3}
+  m_Name: DoH_CuT_PuA_DoL
+  m_EditorClassIdentifier: 
+  SpawnPosition: {x: -4.4, y: -0.7, z: 0}
+  toyImage: {fileID: 20687793, guid: 50905ebe8497cbd4d85c932def8bb376, type: 3}
+  Prefab: {fileID: 8634518628380221811, guid: f65a4126ad8cd0a4aa4d1a5056ccf3c7, type: 3}
+  Parts:
+  - {fileID: 11400000, guid: 0ce086389d737d1409c1b13c2abbdb44, type: 2}
+  - {fileID: 11400000, guid: e7c209560e2008f48abdc870fe9b8824, type: 2}
+  - {fileID: 11400000, guid: 874970cc4805cf3409ea22e1299375fb, type: 2}
+  - {fileID: 11400000, guid: 943e53590e302e44d80667da2716f72f, type: 2}

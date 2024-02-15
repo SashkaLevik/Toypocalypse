@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts.Data.StaticData;
+using Assets.Scripts.GameEnvironment.Items.Potions;
 using System;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Data
 {
@@ -15,19 +17,21 @@ namespace Assets.Scripts.Data
         public float MaxSpeed;
         public float CurrentSpeed;
         public ToyStaticData CurrentToy;
+        public List<PotionData> Potions;
 
         public void ResetHP() => CurrentHP = MaxHP;
 
         public PlayerStats()
         {
-            Bubblegum = 10;
-            Plasticine = 5;
-            Glue = 5;
+            Bubblegum = 20;
+            Plasticine = 0;
+            Glue = 0;
             Screw = 0;
             MaxHP = 0;
             CurrentHP = 0;
             MaxSpeed = 0;
             CurrentSpeed = 0;
+            Potions = new List<PotionData>();
         }
     }
 }

@@ -9,22 +9,19 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
 {
     public class MinionShop : RoutEvent
     {
-        private const string Minions = "Minions";
-
         [SerializeField] private List<SkillData> _skillDatas;
         [SerializeField] private List<Image> _minionsContainer;
         [SerializeField] private Image _preview;
         [SerializeField] private Button _takeMinion;
 
-        private List<Minion> _allMinions;
         private List<Minion> _minions = new List<Minion>();
         private Minion _currentMinion;
-        private Minion _choosedMinion;
+        private Minion _choosedMinion;       
 
-        private void Awake()
+        protected override void Start()
         {
-            _allMinions = Resources.LoadAll<Minion>(Minions).ToList();
-            GetAvalableMinions();
+            base.Start();
+            _minions = _player.Minions.ToList();
             InstantiateMinions();
         }
 
@@ -38,26 +35,18 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         {
             _takeMinion.onClick.RemoveListener(TakeMinion);
             _close.onClick.RemoveListener(CloseEvent);
-        }
-
-        private void GetAvalableMinions()
-        {
-            foreach (var minion in _allMinions)
-            {
-                if (minion.IsAvalable == true)
-                {
-                    _minions.Add(minion);
-                }
-            }
-        }
+        }        
 
         private void InstantiateMinions()
         {
-            for (int i = 0; i < _minions.Count; i++)
+            if (_minions.Count > 0)
             {
-                _currentMinion = Instantiate(_minions[i], _minionsContainer[i].transform);
-                _currentMinion.MinionButtonPressed += ChooseMinion;
-            }
+                for (int i = 0; i < _minions.Count; i++)
+                {
+                    _currentMinion = Instantiate(_minions[i], _minionsContainer[i].transform);
+                    _currentMinion.MinionButtonPressed += ChooseMinion;
+                }
+            }            
         }
 
         private void ChooseMinion(Minion minion)

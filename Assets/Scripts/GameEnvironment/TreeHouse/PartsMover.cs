@@ -7,6 +7,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
     public class PartsMover : MonoBehaviour
     {
         [SerializeField] private Canvas _canvas;
+        [SerializeField] private AudioSource _moveSound;
 
         private float _speed = 1200f;
 
@@ -16,6 +17,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             part.transform.SetParent(_canvas.transform);
             part.SetDisableColor();
             StartCoroutine(Move(part, obj));
+            _moveSound.Play();
         }
 
         private IEnumerator Move(Part part, Transform obj)

@@ -35,7 +35,6 @@ namespace Assets.Scripts.Player
 
         public void OnMaterialChoosed(ConnectingMaterial material)
         {
-            if (_currentMaterial == material) return;
             _currentMaterial = material;
             _currentMaterialAmount = GetValue(_currentMaterial.Data.Type);
             MaterialChoosed?.Invoke(_currentMaterial);
@@ -55,6 +54,7 @@ namespace Assets.Scripts.Player
             progress.PlayerStats.Plasticine = _plasticine;
             progress.PlayerStats.Glue = _glue;
             progress.PlayerStats.Screw = _screw;
+            Debug.Log("MoneySaved");
         }
 
         public void AddMaterialByAmount(int gum, int plasticine, int glue, int screw)
@@ -64,7 +64,6 @@ namespace Assets.Scripts.Player
             _glue += glue;
             _screw += screw;
             MoneyChanged?.Invoke();
-            _saveLoadService.SaveProgress();
         }
 
         public void AddMaterialByType(MaterialType type, int amount)

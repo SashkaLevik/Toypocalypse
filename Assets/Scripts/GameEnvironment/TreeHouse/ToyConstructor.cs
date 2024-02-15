@@ -55,7 +55,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             }
             var toy = _createdToyData.Prefab.GetComponent<Toy>();
             ShowCreatedToy(toy);
-            _saveLoadService.SaveProgress();
+            //_saveLoadService.SaveProgress();
         }
 
         private void ShowCreatedToy(Toy toy)

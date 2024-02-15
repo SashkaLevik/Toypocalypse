@@ -9,16 +9,14 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
     public class DamageShrine : RoutEvent
     {
         [SerializeField] private Transform _shrineSlot;
+        [SerializeField] private Image _materialIcon;
         [SerializeField] private Button _buffButton;
         [SerializeField] private MaterialType _paymentMaterial;
-        [SerializeField] private int _paymentAmount;
-        [SerializeField] private int _plasticinePaymentAmount;
-        [SerializeField] private int _gluePaymentAmount;
-        [SerializeField] private int _screwPaymentAmount;
-        [SerializeField] private TMP_Text _materialAmount;
+        //[SerializeField] private TMP_Text _materialAmount;
         [SerializeField] private TMP_Text _plasticineAmount;
         [SerializeField] private TMP_Text _glueAmount;
         [SerializeField] private TMP_Text _screwAmount;
+        [SerializeField] private float _raiseValue;
 
         protected SkillView _choosedSkill;
         private ConnectingMaterial _currentMaterial;
@@ -49,6 +47,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         {
             _buffButton.onClick.RemoveListener(ApplyBuff);
             _close.onClick.RemoveListener(CloseEvent);
+            _playerMoney.MaterialChoosed -= GetPayment;
         }
 
         protected override void GetPayment(ConnectingMaterial material)
@@ -59,6 +58,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
                 if (_currentMaterial == null)
                 {
                     _currentMaterial = material;
+                    ChangeIcon(_currentMaterial);
                     _playerMoney.RemoveMaterialByType(_currentMaterial.Data.Type, GetPaymentValue(_currentMaterial));
                 }
                 else
@@ -66,18 +66,19 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
                     _previousMaterial = _currentMaterial;
                     _playerMoney.AddMaterialByType(_previousMaterial.Data.Type, GetPaymentValue(_previousMaterial));
                     _currentMaterial = material;
+                    ChangeIcon(_currentMaterial);
                     _playerMoney.RemoveMaterialByType(_currentMaterial.Data.Type, GetPaymentValue(_currentMaterial));
                 }
             }
             else
-                EnableMoneyWarning();
+                _warning.Enable(_warning.NoMoney);
         }
 
         protected override void PrepareToBuff(SkillView skill)
         {
             if (_currentMaterial == null)
             {
-                EnableMaterialWarning();
+                _warning.Enable(_warning.NoMaterialChoosed);
                 return;
             }
 
@@ -102,6 +103,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         protected override void CloseEvent()
         {
             base.CloseEvent();
+            _walet.DisableButtons();
             if (_choosedSkill != null) _skillPanel.TakeBack(_choosedSkill);
             _routMap.gameObject.SetActive(true);
             gameObject.SetActive(false);
@@ -110,14 +112,14 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         private void ApplyBuff()
         {
             if (_choosedSkill == null) return;
-            _playerMoney.SaveMoney();
+            //_playerMoney.SaveMoney();
 
             if (_choosedSkill.SkillData.SkillType == SkillType.Defence)
-                _choosedSkill.SkillData.Defence++;
+                _choosedSkill.SkillData.Defence += _raiseValue;
             else
-                _choosedSkill.SkillData.Damage++;
+                _choosedSkill.SkillData.Damage += _raiseValue;
 
-            //_choosedSkill.UpdateCooldown();
+            _choosedSkill.Init(_choosedSkill.SkillData);
             _skillPanel.TakeBack(_choosedSkill);
             _shrineSlot.gameObject.SetActive(false);
             _skillPanel.SkillChoosed -= PrepareToBuff;
@@ -125,12 +127,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             Invoke(nameof(CloseEvent), 1f);
         }
 
-        private int GetPaymentValue(ConnectingMaterial material)
-        {
-            if (material.Data.Type == MaterialType.Plasticine) return _plasticinePaymentAmount;
-            else if (material.Data.Type == MaterialType.Glue) return _gluePaymentAmount;
-            else if (material.Data.Type == MaterialType.Screw) return _screwPaymentAmount;
-            return 0;
-        }
+        private void ChangeIcon(ConnectingMaterial material)
+            => _materialIcon.sprite = material.Data.Icon;
     }
 }

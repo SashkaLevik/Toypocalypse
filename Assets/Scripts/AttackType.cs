@@ -6,6 +6,7 @@ namespace Assets.Scripts
         Simple,
         Push,
         Pull,
+        Stun,
         Poison,
         Fire
     }

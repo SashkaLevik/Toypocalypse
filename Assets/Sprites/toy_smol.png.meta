@@ -1,0 +1,1075 @@
+fileFormatVersion: 2
+guid: 50905ebe8497cbd4d85c932def8bb376
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: toy_smol_0
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 2982
+        width: 263
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62f9fe700a93f1a49af617a1537fe7c5
+      internalID: 805690726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_2
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 2956
+        width: 274
+        height: 588
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c80e257a23022d42b3bac0cc74d010b
+      internalID: -364754664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_3
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 2965
+        width: 177
+        height: 543
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6fbfc8893af9a94fb6d060acb2a711d
+      internalID: -1826590767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_4
+      rect:
+        serializedVersion: 2
+        x: 1710
+        y: 2964
+        width: 209
+        height: 558
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f15df4559f0b6e5448b766984574dfcc
+      internalID: 1476611450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_5
+      rect:
+        serializedVersion: 2
+        x: 2078
+        y: 2956
+        width: 242
+        height: 588
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17bcf7c1dc05eb94aab7e7f3762d5947
+      internalID: 1716828597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_6
+      rect:
+        serializedVersion: 2
+        x: 2534
+        y: 2945
+        width: 198
+        height: 566
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a15dd9b8cae03fb4c89de79eebf41274
+      internalID: 312722140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_7
+      rect:
+        serializedVersion: 2
+        x: 2945
+        y: 2966
+        width: 198
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4535c9662782b54b94cecfea676fa9e
+      internalID: -1032366248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_8
+      rect:
+        serializedVersion: 2
+        x: 3336
+        y: 2966
+        width: 241
+        height: 556
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34a4fa5fa67c83e478b87ad21b78a7e8
+      internalID: -1121615385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_9
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 2966
+        width: 274
+        height: 521
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75d1c9c628434e045834536634adefac
+      internalID: 324164691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_21
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 2414
+        width: 276
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19728c6ab2aa8b247af634e692aaaa84
+      internalID: -1300853844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_23
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 2392
+        width: 284
+        height: 447
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20342023f141aef41aef3da04ef0de47
+      internalID: -325057532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_24
+      rect:
+        serializedVersion: 2
+        x: 1611
+        y: 2414
+        width: 254
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baf644a3b87b8964fbe48bcc03589dcd
+      internalID: 527263327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_25
+      rect:
+        serializedVersion: 2
+        x: 2102
+        y: 2425
+        width: 240
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c860357e971580498db77455c82d991
+      internalID: -1187726266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_27
+      rect:
+        serializedVersion: 2
+        x: 3029
+        y: 2436
+        width: 190
+        height: 414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3fa193569ffd3e43949a7542c17d316
+      internalID: -547175800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_28
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 2437
+        width: 263
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2633e012601ddd4ca7b732f3dc206c0
+      internalID: -443142991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_30
+      rect:
+        serializedVersion: 2
+        x: 2566
+        y: 2425
+        width: 198
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 606d67d98cbc83040ad9660ce60e4898
+      internalID: 402237688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_47
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1764
+        width: 254
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f54264b6292aa44b96920523f632d95
+      internalID: 1141467843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_48
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1742
+        width: 219
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0bfeed68ff1ebe44a165ffad596f2a4
+      internalID: -2122896979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_49
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 1753
+        width: 219
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 331a7063fd628e44d83fde72b64e62b1
+      internalID: -1375069558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_50
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 1742
+        width: 285
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a052894772f8ed64fb9f1ba14688c1bd
+      internalID: -519919454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_51
+      rect:
+        serializedVersion: 2
+        x: 1883
+        y: 1728
+        width: 285
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68451e4472571d4458baddacaae005ef
+      internalID: -798277574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_52
+      rect:
+        serializedVersion: 2
+        x: 2414
+        y: 1731
+        width: 207
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a0b29a737a70854897713b61d4d9574
+      internalID: -772921668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_54
+      rect:
+        serializedVersion: 2
+        x: 2837
+        y: 1742
+        width: 204
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29fbbcb181bda924b9bb23c660363800
+      internalID: -422013541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_55
+      rect:
+        serializedVersion: 2
+        x: 3278
+        y: 1764
+        width: 234
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92e138e37f85dac41be50f1ccd397296
+      internalID: -1226638957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_56
+      rect:
+        serializedVersion: 2
+        x: 3271
+        y: 1983
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e1cfbcf760351544bc6cb1c45c024f9
+      internalID: -832651715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_59
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 854
+        width: 284
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c009d6f06a867b144a82f59afe7f920d
+      internalID: 20687793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_60
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 893
+        width: 241
+        height: 560
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 069bdccd2f4859d4b88482b95bcbbfd2
+      internalID: 2047418072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_61
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 876
+        width: 231
+        height: 566
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 046340b5d0503c24aa218e3ec64487e5
+      internalID: 1456895755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_62
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 865
+        width: 252
+        height: 577
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c2f5ef406f19f54da91718a28bdf745
+      internalID: -431802325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_64
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 854
+        width: 271
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7a8a2a6e5bf88a4d876de43c97dd0d7
+      internalID: -762704601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_66
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 898
+        width: 253
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41fa4e4e9ffe03e45a236cc9fa63fceb
+      internalID: 2121694051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_67
+      rect:
+        serializedVersion: 2
+        x: 2369
+        y: 887
+        width: 244
+        height: 543
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e27cff50fba5f0449f0f1d3c4c7df86
+      internalID: -1345359555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_68
+      rect:
+        serializedVersion: 2
+        x: 3259
+        y: 876
+        width: 242
+        height: 545
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fcb5a81a3330f043afdcabb840e52c8
+      internalID: 1452004560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_74
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 397
+        width: 357
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b93f4d1c5c4a0d74685a068e7e8bcae3
+      internalID: 260483747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_76
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 356
+        width: 377
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 268bfb948cc74ff42a6e7e9ef25696e6
+      internalID: 1705450791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_77
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 357
+        width: 161
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f379d845a15363445b9559f80c8b88a1
+      internalID: 1370405600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_78
+      rect:
+        serializedVersion: 2
+        x: 1721
+        y: 365
+        width: 283
+        height: 286
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47598091bab7f614e918b03c4d007fe3
+      internalID: 777807917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_79
+      rect:
+        serializedVersion: 2
+        x: 2169
+        y: 313
+        width: 194
+        height: 404
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 387399d89ce22474382523838124fbeb
+      internalID: -42826743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_81
+      rect:
+        serializedVersion: 2
+        x: 2458
+        y: 410
+        width: 241
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c5bb37fc2ba6864dbe0f5ac4914add5
+      internalID: 1873522255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toy_smol_82
+      rect:
+        serializedVersion: 2
+        x: 3032
+        y: 356
+        width: 231
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4541004455ca87c478e88b2e244f4e5a
+      internalID: -563238832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      toy_smol_83: 620367605
+      toy_smol_47: 1141467843
+      toy_smol_65: -2065918575
+      toy_smol_13: -150145379
+      toy_smol_41: -49513121
+      toy_smol_68: 1452004560
+      toy_smol_82: -563238832
+      toy_smol_23: -325057532
+      toy_smol_55: -1226638957
+      toy_smol_70: -546269165
+      toy_smol_48: -2122896979
+      toy_smol_21: -1300853844
+      toy_smol_73: 1887942625
+      toy_smol_34: 506561187
+      toy_smol_46: -1431923993
+      toy_smol_52: -772921668
+      toy_smol_60: 2047418072
+      toy_smol_2: -364754664
+      toy_smol_61: 1456895755
+      toy_smol_87: 519785504
+      toy_smol_53: 196530370
+      toy_smol_38: 1184637911
+      toy_smol_42: 504981825
+      toy_smol_20: -1321430469
+      toy_smol_32: -517354752
+      toy_smol_5: 1716828597
+      toy_smol_59: 20687793
+      toy_smol_63: -1996776102
+      toy_smol_72: -1292376587
+      toy_smol_50: -519919454
+      toy_smol_27: -547175800
+      toy_smol_6: 312722140
+      toy_smol_16: 356615620
+      toy_smol_7: -1032366248
+      toy_smol_28: -443142991
+      toy_smol_39: 275568116
+      toy_smol_8: -1121615385
+      toy_smol_66: 2121694051
+      toy_smol_12: 712474931
+      toy_smol_77: 1370405600
+      toy_smol_35: -1506307272
+      toy_smol_64: -762704601
+      toy_smol_14: -48517982
+      toy_smol_85: -1249815500
+      toy_smol_54: -422013541
+      toy_smol_86: -27870407
+      toy_smol_30: 402237688
+      toy_smol_56: -832651715
+      toy_smol_10: -1628263458
+      toy_smol_67: -1345359555
+      toy_smol_3: -1826590767
+      toy_smol_51: -798277574
+      toy_smol_62: -431802325
+      toy_smol_74: 260483747
+      toy_smol_24: 527263327
+      toy_smol_4: 1476611450
+      toy_smol_25: -1187726266
+      toy_smol_49: -1375069558
+      toy_smol_75: -843833302
+      toy_smol_43: -634600290
+      toy_smol_31: -1885453298
+      toy_smol_0: 805690726
+      toy_smol_37: 1756867748
+      toy_smol_29: 268515950
+      toy_smol_22: -459338079
+      toy_smol_15: 1652101438
+      toy_smol_33: 2019261788
+      toy_smol_17: 1927345951
+      toy_smol_18: 528387706
+      toy_smol_80: 705916967
+      toy_smol_84: 1126452758
+      toy_smol_79: -42826743
+      toy_smol_81: 1873522255
+      toy_smol_57: -2145207524
+      toy_smol_9: 324164691
+      toy_smol_36: 802584059
+      toy_smol_78: 777807917
+      toy_smol_58: 1336183459
+      toy_smol_69: -1243726140
+      toy_smol_26: -1294250934
+      toy_smol_76: 1705450791
+      toy_smol_40: -839590436
+      toy_smol_19: 1947299415
+      toy_smol_44: 837732709
+      toy_smol_45: 1727923633
+      toy_smol_71: -1933362451
+      toy_smol_1: 824452247
+      toy_smol_11: -342961929
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

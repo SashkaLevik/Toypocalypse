@@ -7,7 +7,13 @@ namespace Assets.Scripts.Enemyes
     public class EnemyHud : BattleHud
     {
         [SerializeField] private EnemyHealth _enemyHealth;
-        [SerializeField] private EnemySpeed _enemySpeed;               
+        [SerializeField] private EnemySpeed _enemySpeed;
+        [SerializeField] private Canvas _canvas;
+
+        private void Awake()
+        {
+            _canvas.worldCamera = Camera.main;
+        }
 
         private void OnEnable()
         {

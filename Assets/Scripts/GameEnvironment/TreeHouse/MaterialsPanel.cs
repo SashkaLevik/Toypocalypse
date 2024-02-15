@@ -23,6 +23,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private ConnectingMaterial _currentMaterial;
 
         public event UnityAction<ConnectingMaterial> RequiredQuantityAdded;
+        public event UnityAction PanelEnabled;
 
         private void Start()
         {
@@ -49,7 +50,11 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             _table.MaterialReturned -= ReturnMaterial;
         }        
 
-        public void EnableMaterialPanel() => gameObject.SetActive(true);
+        public void EnableMaterialPanel()
+        {
+            gameObject.SetActive(true);
+            PanelEnabled?.Invoke();
+        }
         public void DisableMaterialPanel() => gameObject.SetActive(false);        
 
         public void ReturnMaterial(ConnectingMaterial material)
@@ -76,7 +81,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
                 UpdateMaterialsCount();
             }
             else
-                _treeHouse.EnableWarning(_treeHouse.MaterealWarning);          
+                _treeHouse.Warning.Enable(_treeHouse.Warning.NoMaterialChoosed);          
         }                                  
         
         private void UpdateMaterialsCount()

@@ -3,12 +3,13 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Data.StaticData
 {
-    [CreateAssetMenu(fileName = "PartData", menuName = "Parts")]
+    [CreateAssetMenu(fileName = "PartData", menuName = "PartData")]
     public class PartData : ScriptableObject
     {
         public Sprite Icon;
         public Sprite SkillImage;
-        public string Name;    
+        public string NameEn;
+        public string NameRu;
         public float Health;
         public float Speed;
         public int MaterialAmount;

@@ -6,6 +6,7 @@ namespace Assets.Scripts
         Melee,
         Range,        
         Defence,
+        Minion,
         Move
     }
 }

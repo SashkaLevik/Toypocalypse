@@ -13,11 +13,8 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         [SerializeField] private Image _materialIcon;
         [SerializeField] private Button _buffButton;
         [SerializeField] private MaterialType _paymentMaterial;
-        [SerializeField] private int _paymentAmount;
-        [SerializeField] private int _plasticinePaymentAmount;
-        [SerializeField] private int _gluePaymentAmount;
-        [SerializeField] private int _screwPaymentAmount;
-        [SerializeField] private TMP_Text _materialAmount;
+        //[SerializeField] private int _paymentAmount;        
+        //[SerializeField] private TMP_Text _materialAmount;
         [SerializeField] private TMP_Text _plasticineAmount;
         [SerializeField] private TMP_Text _glueAmount;
         [SerializeField] private TMP_Text _screwAmount;
@@ -28,7 +25,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
 
         private void Awake()
         {
-            _materialAmount.text = _paymentAmount.ToString();
             _plasticineAmount.text = _plasticinePaymentAmount.ToString();
             _glueAmount.text = _gluePaymentAmount.ToString();
             _screwAmount.text = _screwPaymentAmount.ToString();
@@ -40,7 +36,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             _walet.EnableButtons();
             _playerMoney.MaterialChoosed += GetPayment;
             _skillPanel.SkillChoosed += PrepareToBuff;
-            _skillPanel.ResetCooldown();
         }
 
         private void OnEnable()
@@ -73,17 +68,17 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
                     _currentMaterial = material;
                     ChangeIcon(_currentMaterial);
                     _playerMoney.RemoveMaterialByType(_currentMaterial.Data.Type, GetPaymentValue(_currentMaterial));
-                }                
+                }
             }
             else
-                EnableMoneyWarning();
+                _warning.Enable(_warning.NoMoney);
         }        
 
         protected override void PrepareToBuff(SkillView skill)
         {
             if (_currentMaterial == null)
             {
-                EnableMaterialWarning();
+                _warning.Enable(_warning.NoMaterialChoosed);
                 return;
             }
 
@@ -118,7 +113,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         private void ApplyBuff()
         {
             if (_choosedSkill == null) return;
-            _playerMoney.SaveMoney();
+            //_playerMoney.SaveMoney();
             _choosedSkill.SkillData.Cooldown--;
             _choosedSkill.UpdateCooldown();
             _skillPanel.TakeBack(_choosedSkill);
@@ -126,15 +121,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             _skillPanel.SkillChoosed -= PrepareToBuff;
             _choosedSkill = null;
             Invoke(nameof(CloseEvent), 1f);
-        }        
-
-        private int GetPaymentValue(ConnectingMaterial material)
-        {
-            if (material.Data.Type == MaterialType.Plasticine) return _plasticinePaymentAmount;
-            else if (material.Data.Type == MaterialType.Glue) return _gluePaymentAmount;
-            else if (material.Data.Type == MaterialType.Screw) return _screwPaymentAmount;
-            return 0;
-        }       
+        }                       
 
         private void ChangeIcon(ConnectingMaterial material)
         {

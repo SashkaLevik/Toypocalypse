@@ -9,12 +9,16 @@ namespace Assets.Scripts.Data
         public string Level;
         public int Stage;
         public int LevelNumber;
+        public bool IsNewGame;
+        public bool IsFirstRun;
 
         public WorldData(string level)
         {
             Level = level;
-            Stage = 0;
-            LevelNumber = 0;
+            Stage = 1;
+            LevelNumber = 1;
+            IsNewGame = true;
+            IsFirstRun = true;
         }
     }
 }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0422c2de02d0634a934cc5b4f3a7473, type: 3}
+  m_Name: PuH_PlT_PuA_DoL
+  m_EditorClassIdentifier: 
+  SpawnPosition: {x: 0, y: 0, z: 0}
+  toyImage: {fileID: 468318802, guid: 2b5546cedf7f97a45b79f65c0db6074e, type: 3}
+  Prefab: {fileID: 8634518628380221811, guid: d04e5837b2ac0e94592930aaacebe51a, type: 3}
+  Parts:
+  - {fileID: 11400000, guid: 0ce086389d737d1409c1b13c2abbdb44, type: 2}
+  - {fileID: 11400000, guid: 274f304df41159d4299a9e252354c3d2, type: 2}
+  - {fileID: 11400000, guid: 874970cc4805cf3409ea22e1299375fb, type: 2}
+  - {fileID: 11400000, guid: b5f6c4002f3f172478e8fc82df93b736, type: 2}

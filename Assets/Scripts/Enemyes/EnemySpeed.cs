@@ -34,7 +34,7 @@ namespace Assets.Scripts.Enemyes
             CurrentSpeed -= amount;
         }
 
-        public void RecoverAP()
+        public void ResetAP()
         {
             CurrentSpeed = MaxSpeed;
         }

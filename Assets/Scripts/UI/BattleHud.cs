@@ -24,9 +24,10 @@ namespace Assets.Scripts.UI
             _hpBar.SetValue(_health.CurrentHP, _health.MaxHP);
         }
 
-        protected virtual void UpdateDefence() { }
-
         protected virtual void UpdateSpeedBar()
             => _speedBar.SetValue(_speed.CurrentSpeed, _speed.MaxSpeed);        
+
+        protected virtual void UpdateDefence() { }
+
     }
 }

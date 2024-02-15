@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e616ec4555938d49a6547cba6356917, type: 3}
+  m_Name: DollLegs
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: d78de28261af9574ead5fc49efc501f4, type: 3}
+  SkillImage: {fileID: -1178213201, guid: 13920b3a35c79de4193f1160199f2568, type: 3}
+  NameEn: Doll legs
+  NameRu: "\u041D\u043E\u0433\u0438 \u043A\u0443\u043A\u043B\u044B"
+  Health: 0
+  Speed: 4
+  MaterialAmount: 4
+  SkillData: {fileID: 11400000, guid: b0c87b7dae6d871489b10347ae160916, type: 2}
+  Type: 3

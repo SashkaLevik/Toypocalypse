@@ -1,15 +1,11 @@
 ﻿using Assets.Scripts.Data;
 using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.Enemyes;
-using Assets.Scripts.GameEnvironment.TreeHouse;
-using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.SaveLoad;
 using Assets.Scripts.UI;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Player
 {
@@ -27,7 +23,7 @@ namespace Assets.Scripts.Player
         private RoutMap _routMap;
         private PlayerHud _playerHud;
         private PlayerProgress _playerProgress;
-        private ISaveLoadService _saveLoadService;
+        private List<Minion> _activeMinions;
 
         public float Health => _health;
         public float Speed => _speed;
@@ -36,20 +32,18 @@ namespace Assets.Scripts.Player
         public Sprite ToyImage => _toyImage;
         public PlayerProgress Progress => _playerProgress;
         public List<PartData> Parts => _parts;
+        public List<Minion> Minions => _activeMinions;
         public BaseEnemy Enemy => _enemy;
 
         public event UnityAction<AreaType> AreaChanged;
-
-        private void Awake()
-            => _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
+        
 
         private void Start()
         {
             _attackPanel.worldCamera = Camera.main;
-            _skillPanel.LoadPanelOrInitNew();
-            _saveLoadService.SaveProgress();
+            _skillPanel.LoadPanelOrInitNew();            
         }
-
+        
         public void Construct(SkillPanel skillPanel, RoutMap routMap, PlayerHud playerHud)
         {
             _skillPanel = skillPanel;
@@ -71,11 +65,11 @@ namespace Assets.Scripts.Player
 
         public void Save(PlayerProgress progress)
         {
-            progress.IsPlayerCreated = true;
         }
 
         public void Load(PlayerProgress progress)
         {
+            _activeMinions = progress.PlayerParts.ActiveMinions;
         }
     }
 }

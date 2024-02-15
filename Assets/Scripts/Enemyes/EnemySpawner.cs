@@ -40,17 +40,15 @@ namespace Assets.Scripts.Enemyes
         public void SpawnEnemy(int stageNumber)
         {
             if (stageNumber == 1)
-            {
-                StartCoroutine(CreateEnemy(EnemyTypeID.Stage1, _spawnPoint));                
-            }
+                StartCoroutine(CreateEnemy(EnemyTypeID.Stage1, _spawnPoint));
             else if (stageNumber == 2)
-            {
-                StartCoroutine(CreateEnemy(EnemyTypeID.Stage1, _spawnPoint));
-            }
+                StartCoroutine(CreateEnemy(EnemyTypeID.Stage2, _spawnPoint));
             else if (stageNumber == 3)
-            {
-                StartCoroutine(CreateEnemy(EnemyTypeID.Stage1, _spawnPoint));
-            }
+                StartCoroutine(CreateEnemy(EnemyTypeID.Stage3, _spawnPoint));
+            else if (stageNumber == 4)
+                StartCoroutine(CreateEnemy(EnemyTypeID.Stage4, _spawnPoint));
+            else if (stageNumber == 5)
+                StartCoroutine(CreateEnemy(EnemyTypeID.Stage5, _spawnPoint));
         }
 
         private IEnumerator CreateEnemy(EnemyTypeID enemyType, GameObject at)

@@ -9,6 +9,6 @@ namespace Assets.Scripts.Player
         float CurrentSpeed { get; set; }
         float MaxSpeed { get; set; }
         void SpentAP(float amount);
-        void RecoverAP();
+        void ResetAP();
     }
 }

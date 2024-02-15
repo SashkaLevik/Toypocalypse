@@ -102,6 +102,14 @@ namespace Assets.Scripts.Player
             UpdateCooldown();
         }
 
+        //public void RiseDamage(float riseValue, SkillView skillView)
+        //{
+        //    if (skillView.SkillData.SkillType == SkillType.Defence)
+        //        skillView.SkillData.Defence += riseValue;
+        //    else
+        //        skillView.SkillData.Damage += riseValue;
+        //}
+
         public void UpdateCooldown()
         {
             for (int i = 0; i < _emptyImages.Length; i++)
@@ -114,7 +122,11 @@ namespace Assets.Scripts.Player
                 _fullImages[i].gameObject.SetActive(true);
         }
 
-        private void SetParameters(SkillData skillData)
+        public void SetToDefault()
+            => _skillData.ResetSkill();
+        
+
+        public void SetParameters(SkillData skillData)
         {
             _damageText.text = _damage.ToString();
             _cooldown = skillData.Cooldown;

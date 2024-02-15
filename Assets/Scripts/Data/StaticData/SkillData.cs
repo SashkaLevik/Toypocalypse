@@ -6,13 +6,16 @@ namespace Assets.Scripts.Data.StaticData
     public class SkillData : ScriptableObject
     {
         public Sprite Icon;
-        public string SkillDescription;
+        public string RuDescription;
+        public string EnDescription;
         public float DefaultDamage;
         public float Damage;
+        public float DefaultDefence;
         public float Defence;
         public float DefaultCooldown;
         public float Cooldown;
         public float RequiredAP;
+        public int StunChance;
         public SkillType SkillType;
         public AttackType AttackType;
 
@@ -20,6 +23,7 @@ namespace Assets.Scripts.Data.StaticData
         {
             Damage = DefaultDamage;
             Cooldown = DefaultCooldown;
+            Defence = DefaultDefence;
         }
     }    
 }

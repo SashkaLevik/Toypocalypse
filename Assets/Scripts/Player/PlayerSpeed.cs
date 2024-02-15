@@ -40,14 +40,19 @@ namespace Assets.Scripts.Player
             CurrentSpeed -= amount;
         }
 
-        public void RecoverAP()
+        public void ResetAP()
         {
             CurrentSpeed = MaxSpeed;
         }
 
-        public void Save(PlayerProgress progress)
+        public void RecoverAP(float value)
         {
-            
+            CurrentSpeed += value;
+            if (CurrentSpeed > MaxSpeed) CurrentSpeed = MaxSpeed;
+        }
+
+        public void Save(PlayerProgress progress)
+        {            
         }
 
         public void Load(PlayerProgress progress)
