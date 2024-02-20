@@ -1,11 +1,14 @@
 ﻿using Assets.Scripts.Player;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Enemyes
 {
     public class EnemyHealth : Health//MonoBehaviour, IHealth
     {
-        [SerializeField] private BaseEnemy _enemy;        
+        [SerializeField] private BaseEnemy _enemy;
+
+        public event UnityAction Died;
 
         private void Start()
         {
@@ -14,9 +17,10 @@ namespace Assets.Scripts.Enemyes
             _enemy.AreaChanged += OnDefenceArea;
         }        
 
-        private void Die()
+        protected override void Die()
         {
-            
+            Died?.Invoke();
+            Destroy(gameObject);
         }
     }
 }

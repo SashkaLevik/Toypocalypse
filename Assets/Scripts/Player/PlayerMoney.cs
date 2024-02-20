@@ -54,7 +54,6 @@ namespace Assets.Scripts.Player
             progress.PlayerStats.Plasticine = _plasticine;
             progress.PlayerStats.Glue = _glue;
             progress.PlayerStats.Screw = _screw;
-            Debug.Log("MoneySaved");
         }
 
         public void AddMaterialByAmount(int gum, int plasticine, int glue, int screw)

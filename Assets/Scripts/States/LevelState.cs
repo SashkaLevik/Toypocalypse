@@ -71,16 +71,16 @@ namespace Assets.Scripts.States
                 battleHud.GetComponentInChildren<PlayerHud>());
             playerSpawner.GetPlayer(player.GetComponent<Toy>());
             battleSystem.GetComponent<BattleSystem>().Construct(playerSpawner, playerSpawner.GetComponent<EnemySpawner>(), playerSpawner.RoutMap);
-            AttackPanel attackPanel = player.GetComponentInChildren<AttackPanel>();
-            InitBattleHud(player, battleHud, skillPanel, attackPanel);
+            battleHud.GetComponent<AttackPanel>().Construct(playerSpawner.GetComponent<EnemySpawner>());
+            InitBattleHud(player, battleHud, skillPanel);
         }        
         
-        private void InitBattleHud(GameObject player, GameObject battleHud, GameObject skillPanel, AttackPanel attackPanel)
+        private void InitBattleHud(GameObject player, GameObject battleHud, GameObject skillPanel)//, AttackPanel attackPanel)
         {
             battleHud.GetComponentInChildren<PlayerHud>().Construct(player.GetComponent<Toy>(), player.GetComponent<PlayerHealth>(), player.GetComponent<PlayerSpeed>());
             skillPanel.GetComponent<SkillPanel>().Construct(player.GetComponent<Toy>(), battleHud.GetComponentInChildren<PlayerHud>());
             //player.GetComponent<Toy>().Construct(skillPanel.GetComponent<SkillPanel>());
-            attackPanel.Construct(skillPanel.GetComponent<SkillPanel>());
+            //attackPanel.Construct(skillPanel.GetComponent<SkillPanel>());
         }
 
         private void InformProgressReaders()

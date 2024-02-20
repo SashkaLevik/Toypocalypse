@@ -16,7 +16,7 @@ MonoBehaviour:
   RuDescription: 
   EnDescription: 
   DefaultDamage: 0
-  Damage: 3
+  Damage: 4
   DefaultDefence: 0
   Defence: 0
   DefaultCooldown: 0

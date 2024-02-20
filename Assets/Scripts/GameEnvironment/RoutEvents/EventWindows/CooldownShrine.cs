@@ -114,7 +114,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         {
             if (_choosedSkill == null) return;
             //_playerMoney.SaveMoney();
-            _choosedSkill.SkillData.Cooldown--;
+            _choosedSkill.SkillData.Cooldown++;
             _choosedSkill.UpdateCooldown();
             _skillPanel.TakeBack(_choosedSkill);
             _shrineSlot.gameObject.SetActive(false);

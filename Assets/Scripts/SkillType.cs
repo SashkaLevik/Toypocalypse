@@ -3,8 +3,7 @@ namespace Assets.Scripts
 {
     public enum SkillType
     {
-        Melee,
-        Range,        
+        Attack,
         Defence,
         Minion,
         Move

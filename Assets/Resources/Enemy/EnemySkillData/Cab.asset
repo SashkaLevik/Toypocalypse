@@ -18,10 +18,10 @@ MonoBehaviour:
   DefaultDamage: 0
   Damage: 0
   DefaultDefence: 0
-  Defence: 3
+  Defence: 5
   DefaultCooldown: 0
   Cooldown: 2
   RequiredAP: 3
   StunChance: 0
-  SkillType: 2
+  SkillType: 1
   AttackType: 0

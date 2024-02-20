@@ -446,7 +446,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2317d752e714e54f89c57b71c08221c, type: 2}
   m_sharedMaterial: {fileID: 5726996689192584616, guid: f2317d752e714e54f89c57b71c08221c, type: 2}
@@ -1016,12 +1016,10 @@ MonoBehaviour:
   - {fileID: 3918067666177142486}
   _skillButton: {fileID: 4433293790356865318}
   _imageContainer: {fileID: 4721385386377131642}
-  _skillPanel: {fileID: 0}
   _cooldown: 3
-  _damage: 4
-  _requiredAP: 4
-  _turnsToRecover: 0
-  _skillData: {fileID: 11400000, guid: 17222805c11b3864e8daafc208aca0df, type: 2}
+  _damage: 2
+  _requiredAP: 3
+  _skillData: {fileID: 11400000, guid: 283b4d82e999f034a8b57c75d8dbd5bf, type: 2}
 --- !u!114 &8789339680645436193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1102,7 +1100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2317d752e714e54f89c57b71c08221c, type: 2}
   m_sharedMaterial: {fileID: 5726996689192584616, guid: f2317d752e714e54f89c57b71c08221c, type: 2}
@@ -1237,7 +1235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1969280064, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
+  m_Sprite: {fileID: -1501441866, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

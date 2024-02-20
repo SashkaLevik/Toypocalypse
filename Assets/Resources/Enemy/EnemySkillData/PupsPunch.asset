@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: PupsPunch
   m_EditorClassIdentifier: 
-  Icon: {fileID: -1969280064, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
+  Icon: {fileID: -1519101230, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
   RuDescription: 
   EnDescription: 
   DefaultDamage: 0
@@ -24,4 +24,4 @@ MonoBehaviour:
   RequiredAP: 2
   StunChance: 0
   SkillType: 0
-  AttackType: 0
+  AttackType: 4

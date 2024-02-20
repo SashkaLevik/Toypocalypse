@@ -16,15 +16,13 @@ namespace Assets.Scripts.Player
         [SerializeField] private Image[] _emptyImages;
         [SerializeField] private Button _skillButton;
         [SerializeField] private GameObject _imageContainer;
-        [SerializeField] private SkillPanel _skillPanel;
 
         public float _cooldown;
         public float _damage;
         public float _requiredAP;
-        public float _turnsToRecover;
+        private int _usePerTurn;
         public SkillData _skillData;
 
-        public float Damage => _damage;
         public float RequiredAP => _requiredAP;
         public SkillData SkillData => _skillData;
         public Button SkillButton => _skillButton;
@@ -32,7 +30,9 @@ namespace Assets.Scripts.Player
         public event UnityAction<SkillView> SkillButtonPressed;
 
         private void Start()
-            => _skillPanel = GetComponentInParent<SkillPanel>();
+        {
+            _usePerTurn = (int)_cooldown;
+        }            
 
         private void OnEnable()
             => _skillButton.onClick.AddListener(OnButtonPress);
@@ -48,12 +48,7 @@ namespace Assets.Scripts.Player
             {
                 _damage = _skillData.Defence;
                 SetParameters(_skillData);                
-            }
-            else if (skillData.SkillType == SkillType.Move)
-            {
-                _damage = 0;
-                SetParameters(_skillData);                
-            }
+            }            
             else
             {
                 _damage = _skillData.Damage;
@@ -63,52 +58,25 @@ namespace Assets.Scripts.Player
             UpdateCooldown();                                             
         }        
 
-        public void ApplyCooldown()
+        public void DecreaseCooldown()
         {
-            for (int i = 0; i < SkillData.Cooldown; i++)
+            for (int i = 0; i < _usePerTurn; i++)
             {
-                _fullImages[i].gameObject.SetActive(false);
-                _emptyImages[i].gameObject.SetActive(true);
+                _fullImages[_usePerTurn-1].gameObject.SetActive(false);
+                _emptyImages[_usePerTurn-1].gameObject.SetActive(true);
             }
-                
-            SkillButton.interactable = false;
-        }
 
-        public void RecoverCooldown()
-        {
-            _turnsToRecover+=1;
-            
-            if (_turnsToRecover <= SkillData.Cooldown)
-            {
-                for (int i = 0; i < _turnsToRecover; i++)
-                {
-                    _fullImages[i].gameObject.SetActive(true);
-                    _emptyImages[i].gameObject.SetActive(false);
-                }                    
+            _usePerTurn--;
 
-                if (_turnsToRecover == SkillData.Cooldown)
-                {
-                    SkillButton.interactable = true;
-                    _turnsToRecover = 0;
-                    _skillPanel.SkillPlayed -= RecoverCooldown;
-                }
-            }
-        }
+            if (_usePerTurn == 0) _skillButton.interactable = false;
+        }             
 
         public void ResetCooldown()
         {
             SkillButton.interactable = true;
-            _turnsToRecover = 0;
+            _usePerTurn = (int)_cooldown;
             UpdateCooldown();
         }
-
-        //public void RiseDamage(float riseValue, SkillView skillView)
-        //{
-        //    if (skillView.SkillData.SkillType == SkillType.Defence)
-        //        skillView.SkillData.Defence += riseValue;
-        //    else
-        //        skillView.SkillData.Damage += riseValue;
-        //}
 
         public void UpdateCooldown()
         {

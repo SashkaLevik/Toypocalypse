@@ -19,14 +19,8 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private int _matchCount;
         private int _allParts = 4;
         private ToyStaticData _createdToyData;
-        private ISaveLoadService _saveLoadService;
 
-        public event UnityAction<ToyStaticData> ToyConstructed;
-
-        private void Awake()
-        {
-            _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
-        }
+        public event UnityAction<ToyStaticData> ToyConstructed;       
 
         private void OnEnable()
         {
@@ -55,13 +49,11 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             }
             var toy = _createdToyData.Prefab.GetComponent<Toy>();
             ShowCreatedToy(toy);
-            //_saveLoadService.SaveProgress();
         }
 
         private void ShowCreatedToy(Toy toy)
         {
             _treeHouseUI.ShowToyPreview(toy);
-            toy.SetParameters(_table.Health, _table.Speed);
         }
 
         public void Save(PlayerProgress progress)

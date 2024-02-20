@@ -22,5 +22,6 @@ MonoBehaviour:
   DefaultCooldown: 0
   Cooldown: 0
   RequiredAP: 0
-  SkillType: 4
+  StunChance: 0
+  SkillType: 0
   AttackType: 0

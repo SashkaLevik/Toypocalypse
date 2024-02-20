@@ -8,15 +8,12 @@ namespace Assets.Scripts.Player
         protected float _currentHealth;
         protected float _maxHealth;
         protected float _defence;
-        protected float _constantDefence = 1;
+        protected float _constantDefence = 2;
         protected float _defendingDamage;
         protected bool _isDefending;
-        private Animator _animator;
-        //public PlayerStats _stats;
 
         public event UnityAction HealthChanged;
         public event UnityAction DefenceChanged;
-        public event UnityAction Died;
 
         public float Defence
         {
@@ -53,7 +50,7 @@ namespace Assets.Scripts.Player
                 if (_defendingDamage < 0) _defendingDamage = 0;
 
                 Defence -= damage;
-                if (Defence < 1) Defence = 1;
+                if (Defence < _constantDefence) Defence = _constantDefence;
 
                 CurrentHP -= _defendingDamage;
             }
@@ -77,10 +74,16 @@ namespace Assets.Scripts.Player
 
         public void DecreaseDefence(float defence)
         {
-            if (Defence > 0)
-            {
-                Defence -= defence;
-            }
+            Defence -= defence;
+            if (Defence < 0) Defence = 0;
+        }            
+
+        public void ResetDefence()
+        {
+            if (_isDefending)
+                Defence = _constantDefence;
+            else
+                Defence = 0;
         }
 
         protected void OnDefenceArea(AreaType areaType)
@@ -97,10 +100,6 @@ namespace Assets.Scripts.Player
             }
         }
 
-        private void Die()
-        {
-            Died?.Invoke();
-            Destroy(gameObject);
-        }            
+        protected virtual void Die() { }                   
     }
 }

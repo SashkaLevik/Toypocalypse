@@ -39,8 +39,13 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyUp(KeyCode.Mouse1))
+            {
                 _description.gameObject.SetActive(false);
+                _currentPart.SetDisableColor();
+                _currentPart = null;
+            }
+                
         }
 
         private void OnEnable()

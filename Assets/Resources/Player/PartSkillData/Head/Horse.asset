@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Horse
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 720f3b14fa0e2d64bafde2a1267cef33, type: 3}
-  SkillDescription: Melee horne attack
+  RuDescription: 
+  EnDescription: 
   DefaultDamage: 1
   Damage: 1
   DefaultDefence: 0
@@ -21,5 +22,6 @@ MonoBehaviour:
   DefaultCooldown: 1
   Cooldown: 1
   RequiredAP: 1
-  SkillType: 1
+  StunChance: 0
+  SkillType: 0
   AttackType: 0

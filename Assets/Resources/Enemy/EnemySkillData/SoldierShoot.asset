@@ -24,4 +24,4 @@ MonoBehaviour:
   RequiredAP: 1
   StunChance: 0
   SkillType: 0
-  AttackType: 0
+  AttackType: 5

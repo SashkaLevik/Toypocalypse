@@ -1,27 +1,23 @@
 ﻿using Assets.Scripts.Data;
-using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.SaveLoad;
-using System;
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets.Scripts.Player
 {
     public class PlayerHealth : Health, ISaveProgress
     {
-        private Toy _player;       
+        private Toy _player;
+
+        public event UnityAction Died;
 
         private void Awake()
         {
-            //_saveLoadService = AllServices.Container.Single<ISaveLoadService>();
             _player = GetComponent<Toy>();
             _player.AreaChanged += OnDefenceArea;
         }
 
         private void Start()
         {
-            //_animator = GetComponent<Animator>();
-            //_maxHealth = _player.Health;
             _currentHealth = _maxHealth;
         }
 
@@ -47,6 +43,12 @@ namespace Assets.Scripts.Player
         public void Load(PlayerProgress progress)
         {
             _maxHealth = progress.PlayerStats.MaxHP;
+        }
+
+        protected override void Die()
+        {
+            Died?.Invoke();
+            Destroy(gameObject);
         }
     }
 }

@@ -16,12 +16,12 @@ MonoBehaviour:
   RuDescription: 
   EnDescription: 
   DefaultDamage: 0
-  Damage: 2
+  Damage: 5
   DefaultDefence: 0
   Defence: 0
   DefaultCooldown: 0
   Cooldown: 2
   RequiredAP: 3
   StunChance: 0
-  SkillType: 1
+  SkillType: 0
   AttackType: 0

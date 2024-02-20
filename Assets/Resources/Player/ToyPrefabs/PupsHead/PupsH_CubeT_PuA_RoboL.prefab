@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5270580030919868603}
   - component: {fileID: 4559449500124176648}
   - component: {fileID: 2048399270601341716}
+  - component: {fileID: 289379984676143708}
   m_Layer: 0
   m_Name: PupsH_CubeT_PuA_RoboL
   m_TagString: Untagged
@@ -111,6 +112,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5ba8b798c511c44a930f39ed241baa1, type: 2}
   - {fileID: 11400000, guid: 943e53590e302e44d80667da2716f72f, type: 2}
   _attackPanel: {fileID: 9009665857384889209}
+  _attackSound: {fileID: 0}
 --- !u!114 &8076350482767736925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +209,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &289379984676143708
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263726977418400611}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e84615f7bc0718f4bb01f0cd996aea20, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4194738877165811804
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &159737143547640114
 RectTransform:
   m_ObjectHideFlags: 0
@@ -320,13 +342,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3ce8dbf7d47f64b8388932287667fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 9009665857384889209}
-  _skillView: {fileID: 8943515504867517937, guid: fd84f5b3a01028b44827b8b7560db03f, type: 3}
-  _enemy: {fileID: 0}
-  _player: {fileID: 0}
-  _choosedSkill: {fileID: 0}
-  _attackSkill: {fileID: 0}
-  _nextSkill: {fileID: 0}
-  _areaType: 1
-  _playerSpeed: {fileID: 0}
-  _skillPanel: {fileID: 0}
+  _playerHud: {fileID: 0}
+  _effectImage: {fileID: 0}

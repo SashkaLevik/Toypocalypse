@@ -5,6 +5,7 @@ using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Player;
 using Assets.Scripts.SaveLoad;
 using Assets.Scripts.UI;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -20,7 +21,9 @@ namespace Assets.Scripts.GameEnvironment.Battle
         [SerializeField] private Button _completeStage;
 
         private int _stageNumber;
+        private int _roundCounter;
         private Toy _player;
+        private PlayerSpeed _playerSpeed;
         private BaseEnemy _enemy;
         private EnemyHealth _enemyHealth;
         private EnemyAI _enemyAI;
@@ -29,6 +32,8 @@ namespace Assets.Scripts.GameEnvironment.Battle
         private ISaveLoadService _saveLoadService;
         private RoutEvent _currentEvent;
         private PlayerMovement _playerMovement;
+        //private float _appearTime = 1.2f;
+
         public Toy Player => _player;
 
         public event UnityAction StageCompleted;
@@ -41,7 +46,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _player = _playerSpawner.GetComponentInChildren<Toy>();
             _playerMovement = _player.GetComponent<PlayerMovement>();
             _skillPanel = _player.SkillPanel;
-            _skillPanel.SkillPlayed += EnemyTurn;
+            _playerSpeed = _player.GetComponent<PlayerSpeed>();
             _enemySpawner.EnemySpawned += GetEnemyStats;
             _routMap.StageButtonPressed += EnterStage;
             _routMap.EventEntered += SetEvent;
@@ -52,6 +57,8 @@ namespace Assets.Scripts.GameEnvironment.Battle
         private void OnDestroy()
         {
             _enemySpawner.EnemySpawned -= GetEnemyStats;
+            _enemy.AnimationEnded -= PlayerTurn;
+            _player.AnimationEnded -= _enemyAI.Attack;
             _completeStage.onClick.RemoveListener(CompleteStage);
         }
 
@@ -66,7 +73,6 @@ namespace Assets.Scripts.GameEnvironment.Battle
         {
             _routMap.StageButtonPressed -= EnterStage;
             _routMap.EventEntered -= SetEvent;
-            _skillPanel.SkillPlayed -= EnemyTurn;
         }
 
         private void SetEvent(RoutEvent routEvent)
@@ -103,14 +109,19 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _player.InitEnemy(_enemy);
             _enemyAI = _enemy.GetComponent<EnemyAI>();
             _enemyHealth = _enemy.GetComponent<EnemyHealth>();
+            _player.AnimationEnded += _enemyAI.Attack;
+            _enemy.AnimationEnded += PlayerTurn;
             _enemyHealth.Died += OnEnemyDie;
-        }    
+        }            
 
-        private void EnemyTurn()
+        private void PlayerTurn()
         {
-            _enemyAI.ChooseAction();
-        }        
-        
+            _enemyAI.PrepareSkills();
+            _skillPanel.ResetCooldown();
+            _skillPanel.ResetWaitButton();
+            _playerSpeed.ResetAP();
+        }
+
         private void OnEnemyDie()
         {
             _winWindow.SetActive(true);

@@ -8,6 +8,8 @@ namespace Assets.Scripts.UI
 {
     public class PartDescription : MonoBehaviour
     {
+        private const string Russian = "Russian";
+
         [SerializeField] private LeanLocalization _leanLocalization;
         [SerializeField] private TMP_Text _partName;
         [SerializeField] private TMP_Text _health;
@@ -32,7 +34,7 @@ namespace Assets.Scripts.UI
 
         private string GetLocalizedName(PartData partData)
         {
-            if (_leanLocalization.CurrentLanguage == "Russian")
+            if (_leanLocalization.CurrentLanguage == Russian)
                 return partData.NameRu;
             else
                 return partData.NameEn;

@@ -7,7 +7,8 @@ namespace Assets.Scripts
         Push,
         Pull,
         Stun,
-        Poison,
-        Fire
+        Trauma,
+        Rust,
+        Burn
     }
 }

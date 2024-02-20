@@ -6,27 +6,14 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Player
 {
-    public class PlayerMovement : MonoBehaviour
-    {        
-        [SerializeField] private float _moveSpeed;
-
-        private Vector3 _rightBorder = new Vector3(2.5f, 0, 0);
-        private Vector3 _leftBorder = new Vector3(-2.5f, 0, 0);
-        private Vector3 _right;
-        private Vector3 _left;
-        private Vector3 _startPos;
-        private Vector3 _defaultPosition = new Vector3(0, 0, 0);
-        private bool _isMoving;
+    public class PlayerMovement : Movement
+    {                
+        private int _requiredAP = 1;
 
         public bool IsMoving => _isMoving;
+        public int RequiredAP => _requiredAP;
 
-        public event UnityAction PlayerMoved;
-
-        public void SetDefoultPosition()
-        {
-            transform.localPosition = _defaultPosition;
-            _startPos = _defaultPosition;
-        }
+        public event UnityAction PlayerMoved;               
 
         public void CheckButtons(Button right, Button left)
         {
@@ -36,42 +23,22 @@ namespace Assets.Scripts.Player
             if (_startPos.x < _rightBorder.x) right.interactable = true;
         }
 
-        public void MoveRight()
+        public override void MoveRight()
         {
-            _right = _startPos += new Vector3(2.5f, 0, 0);
+            base.MoveRight();
             PlayerMoved?.Invoke();
-            StartCoroutine(Move(_right));
         }
 
-        public void MoveLeft()
+        public override void MoveLeft()
         {
-            _left = _startPos += new Vector3(-2.5f, 0, 0);
+            base.MoveLeft();
             PlayerMoved?.Invoke();
-            StartCoroutine(Move(_left));
         }
 
-        public void Push()
-        {
-            if (transform.localPosition != _leftBorder)
-                MoveLeft();
-        }
+        public override void Push()
+            => MoveLeft();
 
-        public void Pull()
-        {
-            if (transform.localPosition != _rightBorder)
-                MoveRight();
-        }        
-
-        private IEnumerator Move(Vector3 newPos)
-        {
-            _isMoving = true;
-            while (transform.localPosition != newPos)
-            {
-                transform.localPosition = Vector3.MoveTowards(transform.localPosition, newPos, _moveSpeed * Time.deltaTime);
-                yield return null;
-            }
-            _startPos = transform.localPosition;
-            _isMoving = false;
-        }
+        public override void Pull()
+            => MoveRight();        
     }
 }

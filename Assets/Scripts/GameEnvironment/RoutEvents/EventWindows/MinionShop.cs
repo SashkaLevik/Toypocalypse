@@ -57,7 +57,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
 
         private void TakeMinion()
         {
-            _skillPanel.AddMinion(_choosedMinion.MinionData);
+            _skillPanel.AddMinion(_choosedMinion);
             _takeMinion.interactable = false;
         }
 
