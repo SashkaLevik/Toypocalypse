@@ -12,17 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: Robot
   m_EditorClassIdentifier: 
-  Icon: {fileID: 1966752993, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
-  RuDescription: "\u0422\u0440\u0430\u0432\u043C\u0430:\u0443\u043C\u0435\u043D\u044C\u0448\u0430\u044E\u0442
-    \u0443\u0440\u043E\u043D \u043D\u0430 50%"
-  EnDescription: Trauma:reduce damage on 50%
+  Icon: {fileID: -545755102, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
+  RuDescription: "\u041F\u043E\u0432\u044B\u0448\u0430\u044E\u0442 \u0437\u0430\u0449\u0438\u0442\u0443"
+  EnDescription: Rise defence
   DefaultDamage: 0
   Damage: 0
-  DefaultDefence: 0
+  DefaultDefence: 2
   Defence: 2
-  DefaultCooldown: 1
-  Cooldown: 1
-  RequiredAP: 2
+  DefaultCooldown: 2
+  Cooldown: 2
+  RequiredAP: 1
   StunChance: 0
   SkillType: 1
-  AttackType: 4
+  AttackType: 0

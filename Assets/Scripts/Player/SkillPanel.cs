@@ -1,10 +1,11 @@
 ﻿using Assets.Scripts.Data;
 using Assets.Scripts.Data.StaticData;
-using TMPro;
+using Assets.Scripts.GameEnvironment.Battle;
 using Assets.Scripts.SaveLoad;
-using Assets.Scripts.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -15,13 +16,15 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] private Canvas _canvas;
         [SerializeField] private List<RectTransform> _skillSlots;
-        [SerializeField] private RectTransform _minionSlot;
+        [SerializeField] private MinionSlot _minionSlot;
         [SerializeField] private SkillView _skillView;
         [SerializeField] private SkillView _moveSkill;
         [SerializeField] private Button _wait;
         [SerializeField] private Button _foward;
         [SerializeField] private Button _backward;
+        [SerializeField] private List<SkillView> _skills;
 
+        bool _isInBattle;
         private Toy _player;
         private Minion _currentMinion;
         private SkillView _currentSkill;
@@ -29,14 +32,17 @@ namespace Assets.Scripts.Player
         private AttackPanel _attackPanel;
         private PlayerMovement _movement;
         private PlayerHud _playerHud;
-        private RoutMap _routMap;
+        private BattleSystem _battleSystem;
         private List<SkillView> _playerSkills = new List<SkillView>();
         private List<SkillData> _playerSkillDatas = new List<SkillData>();
         private PlayerProgress _playerProgress;
         private Transform _skillPosition;
 
-        public PlayerHud PlayerHud => _playerHud;
         public Toy Player => _player;
+        public PlayerHud PlayerHud => _playerHud;
+        public BattleSystem BattleSystem => _battleSystem;
+        public List<SkillView> PlayerSkills => _playerSkills;
+        public AttackPanel AttackPanel => _attackPanel;
 
         public event UnityAction<SkillView> SkillChoosed;
         public event UnityAction RoundEnded;
@@ -48,30 +54,34 @@ namespace Assets.Scripts.Player
             _wait.onClick.AddListener(OnWaitButton);
             _foward.onClick.AddListener(OnRightButton);
             _backward.onClick.AddListener(OnLeftButton);
-            _routMap = _player.GetComponentInParent<PlayerSpawnPoint>().RoutMap;
             _movement.PlayerMoved += OnPlayerMove;
+            _battleSystem.BattleEntered += CheckBattleStatus;
             SetMovmentAP();
-        }        
-
+        }
+        
         private void OnDestroy()
         {
             _wait.onClick.RemoveListener(OnWaitButton);
             _foward.onClick.RemoveListener(OnRightButton);
             _backward.onClick.RemoveListener(OnLeftButton);
+
+            foreach (var skill in _playerSkills)
+                _player.AreaChanged -= skill.ChangeOnArea;
         }
 
-        public void Construct(Toy player, PlayerHud playerHud)
+        public void Construct(Toy player, PlayerHud playerHud, BattleSystem battleSystem)
         {
             _player = player;
             _playerSpeed = _player.GetComponent<PlayerSpeed>();
             _movement = _player.GetComponent<PlayerMovement>();
             _playerHud = playerHud;
+            _battleSystem = battleSystem;
         }     
 
         private void SetMovmentAP()
         {
-            _foward.GetComponentInChildren<TMP_Text>().text = _movement.RequiredAP.ToString();
-            _backward.GetComponentInChildren<TMP_Text>().text = _movement.RequiredAP.ToString();
+            _foward.GetComponentInChildren<TMP_Text>().text = _movement.MovementAP.ToString();
+            _backward.GetComponentInChildren<TMP_Text>().text = _movement.MovementAP.ToString();
         }
 
         public void LoadPanelOrInitNew()
@@ -79,10 +89,11 @@ namespace Assets.Scripts.Player
             if (_playerProgress.IsPlayerCreated == true)
                 LoadSkillPanel();
             else
+            {
                 CreateNewPanel();
-
+            }
             _playerProgress.IsPlayerCreated = true;
-        }                       
+        }
 
         public void TakeBack(SkillView skillView)
         {
@@ -95,19 +106,14 @@ namespace Assets.Scripts.Player
         public void AddMinion(Minion minion)
         {
             _currentMinion = minion;
-            _currentMinion.transform.position = _minionSlot.position;
-            _currentMinion.transform.SetParent(_minionSlot.transform);
-            //_currentSkill = Instantiate(_skillView, GetSkillPosition());
-            //_currentSkill.SkillButtonPressed += ChooseSkill;
-            //_playerSkills.Add(_currentSkill);
-            //_playerSkillDatas.Add(_currentSkill.SkillData);
+            _minionSlot.OnMinionAdded(_currentMinion);           
         }
         
         public void ChooseSkill(SkillView skillView)
         {
             _currentSkill = skillView;
 
-            if (_routMap.IsInBattle == true)
+            if (_isInBattle == true)
                 OnAttack(skillView);
             else
                 OnEvent(skillView);
@@ -128,14 +134,17 @@ namespace Assets.Scripts.Player
         public void ResetWaitButton()
             => _wait.interactable = true;
 
+        private void CheckBattleStatus(bool isInBattle)
+            => _isInBattle = isInBattle;        
+
         private void CreatePanel()
-        {
+        {            
             for (int i = 0; i < _playerSkillDatas.Count; i++)
             {
-                _skillView.Init(_playerSkillDatas[i]);
-                _currentSkill = Instantiate(_skillView, GetSkillPosition());
-                _currentSkill.SkillButtonPressed += ChooseSkill;
-                _playerSkills.Add(_currentSkill);                
+                _skills[i].Init(_playerSkillDatas[i]);
+                _skills[i].SkillButtonPressed += ChooseSkill;
+                _player.AreaChanged += _skills[i].ChangeOnArea;
+                _playerSkills.Add(_skills[i]);
             }
         }
 
@@ -155,12 +164,15 @@ namespace Assets.Scripts.Player
         {
             _playerSkillDatas = _playerProgress.PlayerSkills.ToList();
             CreatePanel();
+            if (_currentMinion != null) AddMinion(_currentMinion);
+            Debug.Log("LoadPanel");
         }
 
         private void CreateNewPanel()
         {
             GetSkillDatas();
             CreatePanel();
+            Debug.Log("NewPanel");
         }
 
         private void GetSkillDatas()
@@ -180,10 +192,10 @@ namespace Assets.Scripts.Player
         {
             if (_movement.IsMoving == true) return;
 
-            if (_movement.RequiredAP <= _playerSpeed.CurrentSpeed)
+            if (_movement.MovementAP <= _playerSpeed.CurrentSpeed)
             {
                 _movement.MoveRight();
-                _playerSpeed.SpentAP(_movement.RequiredAP);
+                _playerSpeed.SpentAP(_movement.MovementAP);
             }
             else
                 _playerHud.Warning.Enable(_playerHud.Warning.APWarning);
@@ -193,10 +205,10 @@ namespace Assets.Scripts.Player
         {
             if (_movement.IsMoving == true) return;
 
-            if (_movement.RequiredAP <= _playerSpeed.CurrentSpeed)
+            if (_movement.MovementAP <= _playerSpeed.CurrentSpeed)
             {
                 _movement.MoveLeft();
-                _playerSpeed.SpentAP(_movement.RequiredAP);
+                _playerSpeed.SpentAP(_movement.MovementAP);
             }
             else
                 _playerHud.Warning.Enable(_playerHud.Warning.APWarning);
@@ -230,11 +242,17 @@ namespace Assets.Scripts.Player
         public void Save(PlayerProgress progress)
         {
             progress.PlayerSkills = _playerSkillDatas.ToList();
+
+            if(_currentMinion != null)
+                progress.PlayerParts.CurrentMinion = _currentMinion.MinionData;
         }
 
         public void Load(PlayerProgress progress)
         {
             _playerProgress = progress;
+
+            if (progress.PlayerParts.CurrentMinion != null)
+                _currentMinion = _playerProgress.PlayerParts.CurrentMinion.MinionPrefab;
         }
     }
 }

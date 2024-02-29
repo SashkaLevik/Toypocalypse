@@ -23,7 +23,15 @@ namespace Assets.Scripts.Player
             }
         }
 
-        public float MaxSpeed { get => _maxSpeed; set => _maxSpeed = value; }
+        public float MaxSpeed
+        {
+            get => _maxSpeed;
+            set
+            {
+                _maxSpeed = value;
+                SpeedChanged?.Invoke();
+            }
+        }
 
         private void Awake()
         {

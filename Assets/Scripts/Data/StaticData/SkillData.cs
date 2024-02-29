@@ -8,6 +8,7 @@ namespace Assets.Scripts.Data.StaticData
         public Sprite Icon;
         public string RuDescription;
         public string EnDescription;
+        public float NegativeValue;
         public float DefaultDamage;
         public float Damage;
         public float DefaultDefence;

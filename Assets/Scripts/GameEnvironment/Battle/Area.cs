@@ -1,14 +1,23 @@
 ﻿using Assets.Scripts.Enemyes;
 using Assets.Scripts.Player;
 using UnityEngine;
-
+using TMPro;
 namespace Assets.Scripts.GameEnvironment.Battle
 {
     public class Area : MonoBehaviour
     {
         [SerializeField] private AreaType _areaType;
         [SerializeField] private GameObject _areaEnter;
+        [SerializeField] private float _areaBattleValue;
+        [SerializeField] private TMP_Text _battleValue;
+
+        public float AreaBattleValue => _areaBattleValue;
         public AreaType AreaType => _areaType;
+
+        private void Start()
+        {
+            //_battleValue.text = _areaBattleValue.ToString();                
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -19,7 +28,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
             }
             if (collision.TryGetComponent(out BaseEnemy enemy))
             {
-                enemy.ChangeArea(_areaType);
+                enemy.ChangeArea(this, _areaType);
                 _areaEnter.SetActive(true);
             }
         }

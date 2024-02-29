@@ -43,10 +43,11 @@ namespace Assets.Scripts.GameEnvironment.Battle
                 _newPartImage.gameObject.SetActive(true);
                 _newPartImage.sprite = _currentPart.PartData.Icon;
                 //_currentPart = _inactiveParts[_randomPart];
+                SaveActivatedPart();
             }
 
-            _openBox.interactable = false;
-            SaveActivatedPart();            
+            _battleSystem.OnLootBoxOpened();
+            _openBox.interactable = false;                        
         }
 
         private void SaveActivatedPart()

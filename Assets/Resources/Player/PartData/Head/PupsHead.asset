@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e616ec4555938d49a6547cba6356917, type: 3}
   m_Name: PupsHead
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 8d3f362cb0fe67a4aab2d95266472e93, type: 3}
-  SkillImage: {fileID: -1969280064, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
+  Icon: {fileID: 21300000, guid: 99ba9906a4d0288429d568e12bf4ef2c, type: 3}
+  SkillImage: {fileID: -1901019991, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
   NameEn: Baby doll head
   NameRu: "\u0413\u043E\u043B\u043E\u0432\u0430 \u043F\u0443\u043F\u0441\u0430"
   Health: 2

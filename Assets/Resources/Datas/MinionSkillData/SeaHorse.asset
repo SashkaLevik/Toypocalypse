@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: SeaHorse
   m_EditorClassIdentifier: 
-  Icon: {fileID: 1370405600, guid: 50905ebe8497cbd4d85c932def8bb376, type: 3}
-  RuDescription: "\u041C\u043E\u0440\u0441\u043A\u0430\u044F \u0432\u043E\u043B\u043D\u0430"
-  EnDescription: SeaWave
-  DefaultDamage: 3
-  Damage: 3
+  Icon: {fileID: 1966752993, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
+  RuDescription: "\u0414\u0430\u0435\u0442 2 \u0437\u0430\u0449\u0438\u0442\u044B,
+    \u0442\u043E\u043B\u043A\u0430\u0435\u0442 \u0432\u0440\u0430\u0433\u0430"
+  EnDescription: Give 2 defence, push enemy
+  DefaultDamage: 0
+  Damage: 0
   DefaultDefence: 0
-  Defence: 0
-  DefaultCooldown: 4
-  Cooldown: 4
-  RequiredAP: 3
+  Defence: 2
+  DefaultCooldown: 0
+  Cooldown: 0
+  RequiredAP: 0
   StunChance: 0
-  SkillType: 3
-  AttackType: 0
+  SkillType: 1
+  AttackType: 1

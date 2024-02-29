@@ -33,9 +33,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private void OnEnable()
         {
             foreach (var material in _materials)
-            {
                 material.MaterialChoosed += OnMaterialChoosed;
-            }
 
             _table.MaterialReturned += ReturnMaterial;
         }
@@ -43,19 +41,19 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private void OnDestroy()
         {
             foreach (var material in _materials)
-            {
                 material.MaterialChoosed -= OnMaterialChoosed;
-            }
 
             _table.MaterialReturned -= ReturnMaterial;
         }        
 
-        public void EnableMaterialPanel()
+        public void EnablePanel()
         {
             gameObject.SetActive(true);
             PanelEnabled?.Invoke();
         }
-        public void DisableMaterialPanel() => gameObject.SetActive(false);        
+
+        public void DisablePanel()
+            => gameObject.SetActive(false);
 
         public void ReturnMaterial(ConnectingMaterial material)
         {
@@ -81,7 +79,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
                 UpdateMaterialsCount();
             }
             else
-                _treeHouse.Warning.Enable(_treeHouse.Warning.NoMaterialChoosed);          
+                _treeHouse.Warning.Enable(_treeHouse.Warning.NoMoney);          
         }                                  
         
         private void UpdateMaterialsCount()

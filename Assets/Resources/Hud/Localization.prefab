@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7135943465840213951}
-  m_RootOrder: 25
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7958939428911184808
 MonoBehaviour:
@@ -82,7 +82,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7135943465840213951}
-  m_RootOrder: 23
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5962559553851391783
 MonoBehaviour:
@@ -103,6 +103,122 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: English
     Text: Required AP
+    Object: {fileID: 0}
+--- !u!1 &643874352745533884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7355846249449875285}
+  - component: {fileID: 3598442692517742781}
+  m_Layer: 0
+  m_Name: DMGShrineDescription
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7355846249449875285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643874352745533884}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7135943465840213951}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3598442692517742781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643874352745533884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0421\u0432\u044F\u0442\u044B\u043D\u044F \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0442
+      \u0443\u0440\u043E\u043D \u0438\u043B\u0438 \u0437\u0430\u0449\u0438\u0442\u0443
+      \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0432\u044B\u043A\u0430
+      \u0435\u0441\u043B\u0438 \u0432\u044B \u0431\u0443\u0434\u0435\u0442\u0435
+      \u0449\u0435\u0434\u0440\u044B \u0438 \u043F\u043E\u0436\u0435\u0440\u0442\u0432\u0443\u0435\u0442\u0435
+      \u0435\u0439 \u043C\u0430\u0442\u0435\u0440\u0438\u0430\u043B "
+    Object: {fileID: 0}
+  - Language: English
+    Text: The Shrine will increase the damage or defense of the selected skill if
+      you are generous and donate material to it
+    Object: {fileID: 0}
+--- !u!1 &1572737414628980531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2069010009754341293}
+  - component: {fileID: 6037163388139403857}
+  m_Layer: 0
+  m_Name: CLDlShrineDescription
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2069010009754341293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572737414628980531}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7135943465840213951}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6037163388139403857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572737414628980531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0421\u0432\u044F\u0442\u044B\u043D\u044F \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0442
+      \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u0439
+      \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0432\u044B\u043A\u0430
+      \u0435\u0441\u043B\u0438 \u0432\u044B \u0431\u0443\u0434\u0435\u0442\u0435
+      \u0449\u0435\u0434\u0440\u044B \u0438 \u043F\u043E\u0436\u0435\u0440\u0442\u0432\u0443\u0435\u0442\u0435
+      \u0435\u0439 \u043C\u0430\u0442\u0435\u0440\u0438\u0430\u043B"
+    Object: {fileID: 0}
+  - Language: English
+    Text: The shrine will increase the number of uses of the selected skill if you
+      are generous and donate material to it
     Object: {fileID: 0}
 --- !u!1 &1816085468551459670
 GameObject:
@@ -134,7 +250,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7135943465840213951}
-  m_RootOrder: 24
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3642521608555370044
 MonoBehaviour:
@@ -220,7 +336,7 @@ GameObject:
   - component: {fileID: 305866925243026937}
   - component: {fileID: 1985710481328442133}
   m_Layer: 0
-  m_Name: FullPotionContainer
+  m_Name: FullContainerWarning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,10 +373,10 @@ MonoBehaviour:
   entries:
   - Language: Russian
     Text: "\u0423 \u0432\u0430\u0441 \u043D\u0435\u0442 \u0441\u0432\u043E\u0431\u043E\u0434\u043D\u044B\u0445
-      \u0441\u043B\u043E\u0442\u043E\u0432 \u0434\u043B\u044F \u0437\u0435\u043B\u0438\u0439"
+      \u0441\u043B\u043E\u0442\u043E\u0432"
     Object: {fileID: 0}
   - Language: English
-    Text: You don't have empty potion slots
+    Text: You don't have empty slots
     Object: {fileID: 0}
 --- !u!1 &2537790882363087242
 GameObject:
@@ -419,59 +535,6 @@ MonoBehaviour:
   - Language: English
     Text: 
     Object: {fileID: 1023641615, guid: 13920b3a35c79de4193f1160199f2568, type: 3}
---- !u!1 &2707553651681343629
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5630260167619184517}
-  - component: {fileID: 209634964089771322}
-  m_Layer: 0
-  m_Name: AreaWarning
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5630260167619184517
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2707553651681343629}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7135943465840213951}
-  m_RootOrder: 22
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &209634964089771322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2707553651681343629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: 0
-  entries:
-  - Language: Russian
-    Text: "\u041F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438\u0442\u0435\u0441\u044C
-      \u0432 \u043F\u043E\u0434\u0445\u043E\u0434\u044F\u0449\u0443\u044E \u0437\u043E\u043D\u0443"
-    Object: {fileID: 0}
-  - Language: English
-    Text: Move to the appropriate area
-    Object: {fileID: 0}
 --- !u!1 &2882845949777424674
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,58 +639,6 @@ MonoBehaviour:
   - Language: English
     Text: 
     Object: {fileID: -213948739, guid: 2b3f53440d9cbca43a0b72ada31cb3ad, type: 3}
---- !u!1 &3245221463458129813
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 287325151602947528}
-  - component: {fileID: 3979901506701708442}
-  m_Layer: 0
-  m_Name: NoSkillWarning
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &287325151602947528
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3245221463458129813}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7135943465840213951}
-  m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3979901506701708442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3245221463458129813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: 0
-  entries:
-  - Language: Russian
-    Text: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043D\u0430\u0432\u044B\u043A"
-    Object: {fileID: 0}
-  - Language: English
-    Text: Choose skill
-    Object: {fileID: 0}
 --- !u!1 &3424963001490265351
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,58 +795,6 @@ MonoBehaviour:
   - Language: English
     Text: 
     Object: {fileID: 1492943597, guid: 2b3f53440d9cbca43a0b72ada31cb3ad, type: 3}
---- !u!1 &4903222828729647466
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5506001611816283426}
-  - component: {fileID: 6357213462989813402}
-  m_Layer: 0
-  m_Name: SkillExistWarning
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5506001611816283426
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4903222828729647466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7135943465840213951}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6357213462989813402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4903222828729647466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: 0
-  entries:
-  - Language: Russian
-    Text: "\u041D\u0430\u0432\u044B\u043A \u0443\u0436\u0435 \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D"
-    Object: {fileID: 0}
-  - Language: English
-    Text: Skill already prepared
-    Object: {fileID: 0}
 --- !u!1 &5222090987659988387
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +951,58 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: English
     Text: You don't have required amount
+    Object: {fileID: 0}
+--- !u!1 &6115962401335146281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1633106782720209853}
+  - component: {fileID: 530161138166502883}
+  m_Layer: 0
+  m_Name: ReturnMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1633106782720209853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6115962401335146281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7135943465840213951}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &530161138166502883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6115962401335146281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u0432 \u043C\u0435\u043D\u044E"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Return to menu
     Object: {fileID: 0}
 --- !u!1 &6268473054159678708
 GameObject:
@@ -1252,12 +1263,12 @@ Transform:
   - {fileID: 6390213713238400415}
   - {fileID: 225110625312795644}
   - {fileID: 731588435963317812}
-  - {fileID: 5506001611816283426}
-  - {fileID: 287325151602947528}
-  - {fileID: 5630260167619184517}
   - {fileID: 2257622697999428692}
   - {fileID: 6812801346836164432}
   - {fileID: 9179246669479753134}
+  - {fileID: 1633106782720209853}
+  - {fileID: 2069010009754341293}
+  - {fileID: 7355846249449875285}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1273,7 +1284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: English
+  currentLanguage: Russian
   detectLanguage: 1
   defaultLanguage: 
   saveLoad: 1

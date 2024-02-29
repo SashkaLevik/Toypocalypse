@@ -1,12 +1,15 @@
 ﻿using Assets.Scripts.GameEnvironment.RoutEvents;
 using Assets.Scripts.Infrastructure.GameManagment;
 using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.Player;
 using Assets.Scripts.States;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
+using System.Collections;
 
 namespace Assets.Scripts.UI
 {
@@ -14,8 +17,9 @@ namespace Assets.Scripts.UI
     {
         private const string MenuScene = "Menu";
 
+        [SerializeField] private PlayerSpawnPoint _playerSpawn;
         [SerializeField] private List<Button> _stageButtons;
-        [SerializeField] private Button _retreat;
+        //[SerializeField] private Button _retreat;
         [SerializeField] private List<Button> _1StageEventButtons;
         [SerializeField] private List<Button> _2StageEventButtons;
         [SerializeField] private List<Button> _3StageEventButtons;
@@ -25,8 +29,10 @@ namespace Assets.Scripts.UI
         [SerializeField] private List<RoutEvent> _3StageEvents;
         [SerializeField] private List<RoutEvent> _4StageEvents;
         [SerializeField] private EventButtonContainers _buttonContainers;
+        [SerializeField] private TMP_Text _partsCount;
 
         private bool _isInBattle;
+        private Toy _player;
         private List<RoutEvent> _1StageShuffled = new();
         private List<RoutEvent> _2StageShuffled = new();
         private List<RoutEvent> _3StageShuffled = new();
@@ -47,16 +53,14 @@ namespace Assets.Scripts.UI
         {
             Shuffle();
             CreateEvents();
-            _retreat.onClick.AddListener(RetreatBattle);
-
+            _playerSpawn.PlayerSpawned += CheckAvalaibleParts;
+            
             foreach (var button in _stageButtons)
                 button.onClick.AddListener(() => EnterStage(button));
         }        
 
         private void OnDestroy()
         {
-            _retreat.onClick.RemoveListener(RetreatBattle);
-
             foreach (var button in _stageButtons)
                 button.onClick.RemoveListener(() => EnterStage(button));
         }                           
@@ -88,10 +92,18 @@ namespace Assets.Scripts.UI
             }
         }
 
-        private void RetreatBattle()
+        private void GetParts()
+            => _partsCount.text = _player.InactiveParts.Count.ToString();
+
+        private void CheckAvalaibleParts(Toy player)
         {
-            _stateMachine.Enter<MenuState, string>(MenuScene);
+            _player = player;
+            Invoke(nameof(GetParts), 0.5f);
         }
+        //private void RetreatBattle()
+        //{
+        //    _stateMachine.Enter<MenuState, string>(MenuScene);
+        //}
 
         private void EndBattle()
             => _isInBattle = false;

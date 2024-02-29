@@ -59,6 +59,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         public void Save(PlayerProgress progress)
         {
             progress.PlayerStats.MaxHP = _table.Health;
+            progress.PlayerStats.CurrentHP = _table.Health;
             progress.PlayerStats.MaxSpeed = _table.Speed;
             progress.PlayerStats.CurrentToy = _createdToyData;
         }

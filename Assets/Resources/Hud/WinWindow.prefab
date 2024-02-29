@@ -1514,10 +1514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _materialLootBox: {fileID: 0}
-  _potionLootBox: {fileID: 0}
   _partsLootBox: {fileID: 0}
-  _canvas: {fileID: 5701323273264750517}
-  _completeStage: {fileID: 5500472336114941963}
   _battleSystem: {fileID: 0}
 --- !u!1 &6468476296041754269
 GameObject:

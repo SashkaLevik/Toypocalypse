@@ -10,6 +10,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
     {
         [SerializeField] private TMP_Text _effectDescription;
         [SerializeField] private Image _effectImage;
+        [SerializeField] private Image _descImage;
 
         private SkillData _skillEffect;
 
@@ -30,12 +31,12 @@ namespace Assets.Scripts.GameEnvironment.Battle
 
         public void OnEnter()
         {
-            _effectDescription.gameObject.SetActive(true);
+            _descImage.gameObject.SetActive(true);
             _effectDescription.text = GetLocalizedDescription(_skillEffect);
         }
 
         public void OnExit()
-            => _effectDescription.gameObject.SetActive(false);
+            => _descImage.gameObject.SetActive(false);
 
         private string GetLocalizedDescription(SkillData skillData)
         {            

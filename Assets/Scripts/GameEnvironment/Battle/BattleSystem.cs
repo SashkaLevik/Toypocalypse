@@ -18,12 +18,14 @@ namespace Assets.Scripts.GameEnvironment.Battle
         [SerializeField] private EnemySpawner _enemySpawner;
         [SerializeField] private StagePrizeCalculator _prizeCalculator;
         [SerializeField] private GameObject _winWindow;
+        [SerializeField] private GameObject _dieWindow;
         [SerializeField] private Button _completeStage;
 
         private int _stageNumber;
         private int _roundCounter;
         private Toy _player;
         private PlayerSpeed _playerSpeed;
+        private PlayerHealth _playerHealth;
         private BaseEnemy _enemy;
         private EnemyHealth _enemyHealth;
         private EnemyAI _enemyAI;
@@ -32,18 +34,26 @@ namespace Assets.Scripts.GameEnvironment.Battle
         private ISaveLoadService _saveLoadService;
         private RoutEvent _currentEvent;
         private PlayerMovement _playerMovement;
-        //private float _appearTime = 1.2f;
+        private ArtifactsContainer _artifactsContainer;
+        private PlayerProgress _playerProgress;
 
         public Toy Player => _player;
+        public BaseEnemy Enemy => _enemy;
+        public ArtifactsContainer ArtifactsContainer => _artifactsContainer;
 
         public event UnityAction StageCompleted;
+        public event UnityAction<bool> BattleEntered;
 
         private void Awake()
-            => _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
+        {
+            _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
+        }
 
         private void Start()
-        {            
+        {
             _player = _playerSpawner.GetComponentInChildren<Toy>();
+            _playerHealth = _player.GetComponent<PlayerHealth>();
+            _playerHealth.Died += OnPlayerDie;
             _playerMovement = _player.GetComponent<PlayerMovement>();
             _skillPanel = _player.SkillPanel;
             _playerSpeed = _player.GetComponent<PlayerSpeed>();
@@ -51,14 +61,13 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _routMap.StageButtonPressed += EnterStage;
             _routMap.EventEntered += SetEvent;
             _completeStage.onClick.AddListener(CompleteStage);
+            _artifactsContainer = _skillPanel.GetComponent<ArtifactsContainer>();
             OpenNextStage();
         }        
 
         private void OnDestroy()
         {
-            _enemySpawner.EnemySpawned -= GetEnemyStats;
-            _enemy.AnimationEnded -= PlayerTurn;
-            _player.AnimationEnded -= _enemyAI.Attack;
+            _enemySpawner.EnemySpawned -= GetEnemyStats;            
             _completeStage.onClick.RemoveListener(CompleteStage);
         }
 
@@ -67,27 +76,50 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _playerSpawner = playerSpawner;
             _enemySpawner = enemySpawner;
             _routMap = routMap;
-        }        
-        
-        public void AnsigneEvents()//вызвать на событие завершения уровня
+        }
+
+        public void OnLootBoxOpened()
+            => _completeStage.gameObject.SetActive(true);
+
+        public void AnsigneEvents()
         {
             _routMap.StageButtonPressed -= EnterStage;
             _routMap.EventEntered -= SetEvent;
+            //_currentEvent.EventCompleted -= SaveGame;
+            //_enemy.AnimationEnded -= PlayerTurn;
+            //_player.AnimationEnded -= _enemyAI.Attack;
+            if (_currentEvent != null) _currentEvent.EventCompleted -= SaveGame;
+        }
+
+        private void OnPlayerDie()
+        {
+            _dieWindow.SetActive(true);
+            _playerProgress.IsPlayerCreated = false;
+            _playerHealth.Died -= OnPlayerDie;
+            _saveLoadService.SaveProgress();
         }
 
         private void SetEvent(RoutEvent routEvent)
         {
             _currentEvent = routEvent;
             _currentEvent.EventCompleted += OpenNextStage;
+            _currentEvent.EventCompleted += SaveGame;
             _playerMovement.SetDefoultPosition();
             _skillPanel.ResetMoveButtons();
         }
 
+        private void SaveGame()
+            => _saveLoadService.SaveProgress();
+
         private void EnterStage()
-            => _enemySpawner.SpawnEnemy(_stageNumber);
+        {
+            BattleEntered?.Invoke(true);
+            _enemySpawner.SpawnEnemy(_stageNumber);
+        }            
 
         private void CompleteStage()
         {
+            BattleEntered?.Invoke(false);
             StageCompleted?.Invoke();
             _routMap.gameObject.SetActive(true);
             _routMap.OpenNextEvents(_stageNumber);            
@@ -100,13 +132,14 @@ namespace Assets.Scripts.GameEnvironment.Battle
         private void OpenNextStage()
         {
             _routMap.OpenStage(_stageNumber);
-            _saveLoadService.SaveProgress();
+            _playerProgress.WorldData.Stage = _stageNumber;
         }
 
         private void GetEnemyStats(BaseEnemy enemy)
         {
             _enemy = enemy;
             _player.InitEnemy(_enemy);
+            _skillPanel.GetComponentInChildren<MinionSlot>().InitEnemy(_enemy);
             _enemyAI = _enemy.GetComponent<EnemyAI>();
             _enemyHealth = _enemy.GetComponent<EnemyHealth>();
             _player.AnimationEnded += _enemyAI.Attack;
@@ -124,18 +157,22 @@ namespace Assets.Scripts.GameEnvironment.Battle
 
         private void OnEnemyDie()
         {
+            _player.AnimationEnded -= _enemyAI.Attack;
             _winWindow.SetActive(true);
-            _prizeCalculator.GetBox();            
+            _prizeCalculator.GetBox();
+            _skillPanel.ResetCooldown();
+            _skillPanel.ResetWaitButton();
+            _playerSpeed.ResetAP();
         }
 
         public void Save(PlayerProgress progress)
         {
-            progress.WorldData.Stage = _stageNumber;
         }
 
         public void Load(PlayerProgress progress)
         {
             _stageNumber = progress.WorldData.Stage;
+            _playerProgress = progress;
         }
     }
 }

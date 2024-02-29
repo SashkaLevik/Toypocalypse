@@ -10,7 +10,7 @@ namespace Assets.Scripts.GameEnvironment.Items.Potions
 {
     public class Potion : MonoBehaviour
     {
-        [SerializeField] private LeanLocalization _leanLocalization;
+        //[SerializeField] private LeanLocalization _leanLocalization;
         [SerializeField] private PotionData _data;
         [SerializeField] private Image _potionIcon;
         [SerializeField] private TMP_Text _description;
@@ -40,7 +40,7 @@ namespace Assets.Scripts.GameEnvironment.Items.Potions
         }            
 
         public void OnExit()
-            => _description.gameObject.SetActive(false);
+            => _description.gameObject.SetActive(false);        
 
         public void InitPlayer(Toy player)
         {
@@ -60,7 +60,7 @@ namespace Assets.Scripts.GameEnvironment.Items.Potions
 
         private string GetLocalizedDescription(PotionData data)
         {
-            if (_leanLocalization.CurrentLanguage == "Russian")
+            if (Application.systemLanguage == SystemLanguage.Russian)
                 return data.RuDescription;
             else
                 return data.EnDescription;

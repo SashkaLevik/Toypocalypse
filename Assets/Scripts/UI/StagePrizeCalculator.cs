@@ -2,10 +2,7 @@
 using Assets.Scripts.GameEnvironment.Battle;
 using Assets.Scripts.Player;
 using Assets.Scripts.SaveLoad;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.UI
 {
@@ -20,11 +17,18 @@ namespace Assets.Scripts.UI
         private int _materialPercent = 90;
         private int _changedPercent = 10;
         private int _stageNumber;
+        private int _inactiveParts;
+        //private int _bossStage = 5;
 
         private void Start()
         {           
             _battleSystem.StageCompleted += ChangeBoxPercent;
             _materialPercent -= _stageNumber * 10;
+
+            //if (_stageNumber == _bossStage)
+            //    _materialPercent = 0;
+            //else
+            //    _materialPercent -= _stageNumber * 10;
         }
 
         private void OnDestroy()

@@ -8,10 +8,10 @@ namespace Assets.Scripts.Player
 {
     public class PlayerMovement : Movement
     {                
-        private int _requiredAP = 1;
+        private int _movementAP = 1;
 
         public bool IsMoving => _isMoving;
-        public int RequiredAP => _requiredAP;
+        public int MovementAP => _movementAP;
 
         public event UnityAction PlayerMoved;               
 

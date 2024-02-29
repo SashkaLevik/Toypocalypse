@@ -13,8 +13,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         [SerializeField] private Image _materialIcon;
         [SerializeField] private Button _buffButton;
         [SerializeField] private MaterialType _paymentMaterial;
-        //[SerializeField] private int _paymentAmount;        
-        //[SerializeField] private TMP_Text _materialAmount;
         [SerializeField] private TMP_Text _plasticineAmount;
         [SerializeField] private TMP_Text _glueAmount;
         [SerializeField] private TMP_Text _screwAmount;
@@ -113,7 +111,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         private void ApplyBuff()
         {
             if (_choosedSkill == null) return;
-            //_playerMoney.SaveMoney();
             _choosedSkill.SkillData.Cooldown++;
             _choosedSkill.UpdateCooldown();
             _skillPanel.TakeBack(_choosedSkill);

@@ -2,7 +2,6 @@
 using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.GameEnvironment.Items.Potions;
 using Assets.Scripts.SaveLoad;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,11 +13,11 @@ namespace Assets.Scripts.Player
         [SerializeField] private List<RectTransform> _potionSlots;
         [SerializeField] private Potion _defaultPotion;
 
-        private List<PotionData> _potions = new List<PotionData>();
         private Transform _position;
         private Toy _player;
         private SkillPanel _skillPanel;
         private Potion _potion;
+        private List<PotionData> _potions = new List<PotionData>();
 
         private void Start()
         {
@@ -67,6 +66,7 @@ namespace Assets.Scripts.Player
                     _defaultPotion.Init(_potions[i]);
                     _potion = Instantiate(_defaultPotion, _potionSlots[i]);
                     _potion.InitPlayer(_player);
+                    _potion.Activate();
                     _potion.Used += RemovePotion;
                 }
             }                           

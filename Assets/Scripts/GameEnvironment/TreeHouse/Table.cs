@@ -111,7 +111,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             IncreaseValues(part.PartData.Health, part.PartData.Speed, part.PartData.MaterialAmount);
             PartAdded?.Invoke(_health, _speed, _material);
             part.PartChoosed += ChoosePart;
-            if (_parts.Count == _maxParts) _materials.EnableMaterialPanel();
+            if (_parts.Count == _maxParts) _materials.EnablePanel();
         }
 
         private void RemovePart()
@@ -127,6 +127,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
                 GetSutableContainer();
                 _currentPart.PartChoosed -= ChoosePart;
                 _currentPart = null;
+                _materials.DisablePanel();
             }            
         }
 

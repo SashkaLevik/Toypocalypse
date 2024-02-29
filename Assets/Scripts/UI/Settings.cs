@@ -2,9 +2,9 @@
 using Assets.Scripts.GameEnvironment.Battle;
 using Assets.Scripts.Infrastructure.GameManagment;
 using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.Player;
 using Assets.Scripts.SaveLoad;
 using Assets.Scripts.States;
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,6 +21,10 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _returnToMenu;
         [SerializeField] private GameObject _settingsWindow;
 
+        private PlayerSpawnPoint _playerSpawner;
+        private Toy _player;
+        private PlayerHealth _playerHealth;
+        private PlayerSpeed _playerSpeed;
         private ISaveLoadService _saveLoadService;
         private IGameStateMachine _stateMachine;
         private Scene _scene;
@@ -32,12 +36,24 @@ namespace Assets.Scripts.UI
             _scene = SceneManager.GetActiveScene();
         }
 
+        private void Start()
+        {            
+            _player = _playerSpawner.GetComponentInChildren<Toy>();
+            _playerHealth = _player.GetComponent<PlayerHealth>();
+            _playerSpeed = _player.GetComponent<PlayerSpeed>();
+        }
+
         private void OnEnable()
         {
             _settings.onClick.AddListener(OpenSettings);
             _close.onClick.AddListener(CloseWindow);
             _returnToMenu.onClick.AddListener(ExitBattle);
         }
+
+        public void Construct(PlayerSpawnPoint playerSpawner)
+        {
+            _playerSpawner = playerSpawner;
+        }            
 
         private void ExitBattle()
         {
@@ -57,7 +73,11 @@ namespace Assets.Scripts.UI
 
         public void Save(PlayerProgress progress)
         {
+            Debug.Log("SaveInSettings");
             progress.WorldData.Level = _scene.name;
+            progress.PlayerStats.CurrentHP = _playerHealth.CurrentHP;
+            progress.PlayerStats.MaxHP = _playerHealth.MaxHP;
+            progress.PlayerStats.MaxSpeed = _playerSpeed.MaxSpeed;
         }
 
         public void Load(PlayerProgress progress)

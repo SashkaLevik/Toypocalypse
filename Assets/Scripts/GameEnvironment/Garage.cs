@@ -68,7 +68,7 @@ namespace Assets.Scripts.GameEnvironment
             {
                 for (int i = 0; i < minions.Count; i++)
                 {
-                    _minionSlots[i].sprite = minions[i].MinionData.Icon;
+                    _minionSlots[i].sprite = minions[i].Icon;
                 }
             }
         }

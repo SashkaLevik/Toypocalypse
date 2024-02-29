@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e616ec4555938d49a6547cba6356917, type: 3}
   m_Name: CubeTorso
   m_EditorClassIdentifier: 
-  Icon: {fileID: -563238832, guid: 50905ebe8497cbd4d85c932def8bb376, type: 3}
+  Icon: {fileID: 21300000, guid: 404efdd1f2df6dc418b45445e7e58255, type: 3}
   SkillImage: {fileID: -1501441866, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
-  NameEn: Cube
-  NameRu: "\u041A\u0443\u0431\u0438\u043A"
+  NameEn: Alphabet cube
+  NameRu: "\u0410\u043B\u0444\u0430\u0432\u0438\u0442\u043D\u044B\u0439 \u043A\u0443\u0431\u0438\u043A"
   Health: 3
   Speed: 1
   MaterialAmount: 2

@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31eba0da9f3403e478c76b01809cdf08, type: 3}
   m_Name: Stage2
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 0}
+  _enemy: {fileID: 7436280200827580417, guid: 24f19e3d2d9357947a931350d5489ab9, type: 3}
   _prefabs:
-  - {fileID: 7436280200827580417, guid: fe67e5a24d8b5b045bd41e7476eb4cdc, type: 3}
-  - {fileID: 7436280200827580417, guid: cbb18049c819ddc4a9afdafdc86d41f5, type: 3}
-  - {fileID: 7436280200827580417, guid: 4966b7ff530aff641bf83ae5d577e371, type: 3}
+  - {fileID: 7436280200827580417, guid: a938b78639c7f97448a9cbc970e11476, type: 3}
   _enemyType: 1

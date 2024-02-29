@@ -35,69 +35,29 @@ namespace Assets.Scripts.Player
             }
         }
 
-        public float MaxHP { get => _maxHealth; set => _maxHealth = value; }
-        //{
-        //    get => _stats.MaxHP;
-        //    set => _stats.MaxHP = value;
-        //}
-
-        public void TakeDamage(float damage)
+        public float MaxHP
         {
-            if (_isDefending)
+            get => _maxHealth;
+            set
             {
-                _defendingDamage = damage - _defence;
-
-                if (_defendingDamage < 0) _defendingDamage = 0;
-
-                Defence -= damage;
-                if (Defence < _constantDefence) Defence = _constantDefence;
-
-                CurrentHP -= _defendingDamage;
+                _maxHealth = value;
+                HealthChanged?.Invoke();
             }
-            else
-            {
-                _defendingDamage = damage - _defence;
+        }       
 
-                if (_defendingDamage < 0) _defendingDamage = 0;
-
-                Defence -= damage;
-                if (Defence < 0) Defence = 0;
-
-                CurrentHP -= _defendingDamage;
-            }
-
-            if (CurrentHP <= 0) Die();
-        }
-
-        public void IncreaseDefence(float defence)
-            => Defence += defence;
-
-        public void DecreaseDefence(float defence)
+        public virtual void TakeDamage(float damage)
         {
-            Defence -= defence;
+            _defendingDamage = damage - _defence;
+
+            if (_defendingDamage < 0) _defendingDamage = 0;
+
+            Defence -= damage;
             if (Defence < 0) Defence = 0;
-        }            
 
-        public void ResetDefence()
-        {
-            if (_isDefending)
-                Defence = _constantDefence;
-            else
-                Defence = 0;
-        }
+            CurrentHP -= _defendingDamage;
 
-        protected void OnDefenceArea(AreaType areaType)
-        {
-            if (areaType == AreaType.Defence)
-            {
-                IncreaseDefence(_constantDefence);
-                _isDefending = true;
-            }
-            else
-            {
-                DecreaseDefence(_constantDefence);
-                _isDefending = false;
-            }
+            if (CurrentHP < 0) CurrentHP = 0;
+            if (CurrentHP <= 0) Die();
         }
 
         protected virtual void Die() { }                   

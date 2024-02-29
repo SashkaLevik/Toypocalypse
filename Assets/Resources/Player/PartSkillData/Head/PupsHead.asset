@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: PupsHead
   m_EditorClassIdentifier: 
-  Icon: {fileID: 1214123105, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
-  RuDescription: "\u0411\u043B\u0438\u0436\u043D\u044F\u044F \u0430\u0442\u0430\u043A\u0430"
-  EnDescription: Melee attack
-  DefaultDamage: 2
-  Damage: 2
+  Icon: {fileID: -141908469, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
+  RuDescription: "\u041A\u0438\u0441\u043B\u043E\u0442\u043D\u0430\u044F \u0430\u0442\u0430\u043A\u0430
+    \u0441\u043D\u0438\u043C\u0430\u0435\u0442 1 \u0437\u0430\u0449\u0438\u0442\u0443"
+  EnDescription: Acid attack removes 1 defense
+  NegativeValue: 1
+  DefaultDamage: 3
+  Damage: 3
   DefaultDefence: 0
   Defence: 0
-  DefaultCooldown: 4
-  Cooldown: 4
-  RequiredAP: 1
+  DefaultCooldown: 1
+  Cooldown: 1
+  RequiredAP: 2
   StunChance: 0
   SkillType: 0
   AttackType: 5

@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3818eb9676b48f4ebc65c8ff1e88730, type: 3}
   m_Name: APPotion
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
-  ApplyedValue: 0
-  Price: 0
+  Icon: {fileID: 950981339, guid: deda65eb392c43842930bfffda3b3013, type: 3}
+  ApplyedValue: 3
+  Price: 4
   PotionType: 2
-  Material: {fileID: 3560572913167305854, guid: 7359ea77605d51644aaa7f18ddd517e4, type: 3}
+  Material: {fileID: 4716325762324565998, guid: caa8bd3f9ca6ef34a9d000012c81b550, type: 3}
+  RuDescription: "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442
+    3\u041E\u0414"
+  EnDescription: Recover 3AP

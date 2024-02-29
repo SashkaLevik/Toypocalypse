@@ -49,6 +49,15 @@ namespace Assets.Scripts.UI
             _openMap.onClick.RemoveListener(OnMapOpen);
         }
 
+        public void ShowToyPreview(Toy toy)
+        {
+            _constructSound.Play();
+            _toyCreator.gameObject.SetActive(true);
+            _toyPreview.gameObject.SetActive(true);
+            _toyPreview.sprite = toy.PreviewImage;
+            StartCoroutine(ShowPreview());
+        }
+
         private IEnumerator ShowPreview()
         {
             var tempColor = _toyPreview.color;
@@ -71,15 +80,6 @@ namespace Assets.Scripts.UI
         {
             _createdToyData = toyData;
             _openMap.interactable = true;
-        }                              
-
-        public void ShowToyPreview(Toy toy)
-        {
-            _constructSound.Play();
-            _toyCreator.gameObject.SetActive(true);
-            _toyPreview.gameObject.SetActive(true);
-            _toyPreview.sprite = toy.ToyImage;
-            StartCoroutine(ShowPreview());
-        }                          
+        }                                                                
     }
 }

@@ -9,7 +9,6 @@ namespace Assets.Scripts.States
     public class BootstrapState : IState
     {
         private const string Initial = "Initial";
-        private const string Menu = "Menu";
 
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
@@ -26,7 +25,7 @@ namespace Assets.Scripts.States
 
         public void Enter()
         {
-            _sceneLoader.Load(Initial, onLoaded: EnterState);
+            _sceneLoader.Load(Initial, onLoaded: LoadProgress);
         }        
 
         public void Exit() { }        
@@ -42,9 +41,8 @@ namespace Assets.Scripts.States
                 _services.Single<IGameFactory>()));
         }
 
-        private void EnterState()
+        private void LoadProgress()
         {
-            //_stateMachine.Enter<MenuState, string>(Menu);
             _stateMachine.Enter<ProgressState>();
         }
 

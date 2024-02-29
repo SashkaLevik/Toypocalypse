@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PuH_CuT_PuA_RobL
   m_EditorClassIdentifier: 
   SpawnPosition: {x: -4.4, y: -0.7, z: 0}
-  toyImage: {fileID: -443142991, guid: 50905ebe8497cbd4d85c932def8bb376, type: 3}
+  toyImage: {fileID: 21300000, guid: 5aba262775387484eb5f27b83a5eb7f0, type: 3}
   Prefab: {fileID: 8634518628380221811, guid: 7e8bbb4da11ef114f9997ba9a291c753, type: 3}
   Parts:
   - {fileID: 11400000, guid: 0ce086389d737d1409c1b13c2abbdb44, type: 2}

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e616ec4555938d49a6547cba6356917, type: 3}
   m_Name: RoboArms
   m_EditorClassIdentifier: 
-  Icon: {fileID: -1113402925, guid: d398499903863a949880e7ff81891dcb, type: 3}
-  SkillImage: {fileID: 21300000, guid: 1f1fb431dfde1bc4382f2987328b4c50, type: 3}
+  Icon: {fileID: 21300000, guid: 2ffd981d62201df4495ac04d1fac9901, type: 3}
+  SkillImage: {fileID: -1901019991, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
   NameEn: Robot arms
   NameRu: "\u0420\u0443\u043A\u0438 \u0440\u043E\u0431\u043E\u0442\u0430"
-  Health: 1
+  Health: 3
   Speed: 3
-  MaterialAmount: 1
+  MaterialAmount: 4
   SkillData: {fileID: 11400000, guid: 5c4f5822b60e16c4c9a2b5f7d3e6ab83, type: 2}
   Type: 2

@@ -22,7 +22,7 @@ namespace Assets.Scripts.Infrastructure.GameManagment
                 [typeof(MenuState)] = new MenuState(this, sceneLoader, loadingCurtain, services.Single<IGameFactory>(),
                     services.Single<IPersistentProgressService>()),
 
-                [typeof(ProgressState)] = new ProgressState(this, services.Single<IPersistentProgressService>(),
+                [typeof(ProgressState)] = new ProgressState(this, sceneLoader, services.Single<IPersistentProgressService>(),
                     services.Single<ISaveLoadService>()),
 
                 [typeof(LevelState)] = new LevelState(this, sceneLoader, loadingCurtain, services.Single<IGameFactory>(),

@@ -32,10 +32,16 @@ namespace Assets.Scripts.Enemyes
         protected override void UpdateHPBar()
             => _hpBar.SetValue(_enemyHealth.CurrentHP, _enemyHealth.MaxHP);
 
-        protected override void UpdateDefence()
-            => _defence.text = _enemyHealth.Defence.ToString();
+        private void UpdateDefence()
+        {
+            _defence.text = _enemyHealth.Defence.ToString();
+            _defenceAnimator.Play();
+        }            
 
         private void UpdateDamage()
-            => _damage.text = _enemyAI.Damage.ToString();        
+        {
+            _damage.text = _enemyAI.Damage.ToString();
+            _attackAnimator.Play();
+        }                   
     }
 }

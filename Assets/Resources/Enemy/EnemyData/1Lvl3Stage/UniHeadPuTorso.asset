@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1a9a012f719334ca224250b42047e9, type: 3}
+  m_Name: UniHeadPuTorso
+  m_EditorClassIdentifier: 
+  Skills:
+  - {fileID: 11400000, guid: 17222805c11b3864e8daafc208aca0df, type: 2}
+  - {fileID: 11400000, guid: cd0cb3af3ef353c408fdb4b5edb4844a, type: 2}
+  - {fileID: 11400000, guid: f7417066d1b91404d9c490a83f1a451b, type: 2}
+  - {fileID: 11400000, guid: 106fe6eca674ed3428be02180b7f4577, type: 2}
+  SpawnPosition: {x: 4.5, y: -0.8, z: 0}
+  Appear: {fileID: 307832150595218324, guid: f70545bdbaac09c4992cff1d2ea259e5, type: 3}
+  Health: 12
+  Speed: 5

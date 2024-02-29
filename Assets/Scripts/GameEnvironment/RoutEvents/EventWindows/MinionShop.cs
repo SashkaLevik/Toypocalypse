@@ -52,7 +52,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         private void ChooseMinion(Minion minion)
         {
             _choosedMinion = minion;
-            _preview.sprite = _choosedMinion.MinionData.Icon;
+            _preview.sprite = _choosedMinion.Icon;
         }
 
         private void TakeMinion()

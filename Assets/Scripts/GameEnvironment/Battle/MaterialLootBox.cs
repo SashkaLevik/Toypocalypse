@@ -44,15 +44,28 @@ namespace Assets.Scripts.GameEnvironment.Battle
         }
 
         public void CalculatePrize()
+        {            
+            CalculateOrdinary();
+            _gumAmount.text = _gum.ToString();
+            _plasticineAmount.text = _plasticine.ToString();
+            _glueAmount.text = _glue.ToString();
+            _screwAmount.text = _screw.ToString();
+        }
+
+        private void CalculateOrdinary()
         {
             _gum = Random.Range(6, 10);
             _plasticine = Random.Range(4, 6);
             _glue = Random.Range(2, 4);
             _screw = Random.Range(0, 2);
-            _gumAmount.text = _gum.ToString();
-            _plasticineAmount.text = _plasticine.ToString();
-            _glueAmount.text = _glue.ToString();
-            _screwAmount.text = _screw.ToString();
+        }
+
+        private void CalculateHigh()
+        {
+            _gum = Random.Range(8, 12);
+            _plasticine = Random.Range(6, 8);
+            _glue = Random.Range(4, 6);
+            _screw = Random.Range(2, 4);
         }
 
         private void CloseBox()
@@ -74,6 +87,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _screwIcon.gameObject.SetActive(true);
             _playerMoney.AddMaterialByAmount(_gum, _plasticine, _glue, _screw);
             _openBox.interactable = false;
+            _battleSystem.OnLootBoxOpened();
         }              
     }
 }

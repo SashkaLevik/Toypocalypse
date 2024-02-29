@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e616ec4555938d49a6547cba6356917, type: 3}
   m_Name: DollLegs
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: d78de28261af9574ead5fc49efc501f4, type: 3}
+  Icon: {fileID: 21300000, guid: 020aec4a5cee9834dbf26444fa4cf5e4, type: 3}
   SkillImage: {fileID: -1178213201, guid: 13920b3a35c79de4193f1160199f2568, type: 3}
   NameEn: Doll legs
   NameRu: "\u041D\u043E\u0433\u0438 \u043A\u0443\u043A\u043B\u044B"

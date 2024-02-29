@@ -5,7 +5,6 @@ namespace Assets.Scripts.GameEnvironment.Battle
     public class BoxAnimator : MonoBehaviour
     {
         private const string Open = "Open";
-        private const string IsOpen = "IsOpen";
 
         private Animator _animator;
 
@@ -17,11 +16,6 @@ namespace Assets.Scripts.GameEnvironment.Battle
         public void OpenBox()
         {
             _animator.SetTrigger(Open);
-        }
-
-        public void CloseBox()
-        {
-            _animator.SetBool(IsOpen, false);
-        }
+        }        
     }
 }

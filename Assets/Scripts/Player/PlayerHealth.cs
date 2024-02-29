@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts.Data;
 using Assets.Scripts.SaveLoad;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets.Scripts.Player
@@ -7,22 +9,20 @@ namespace Assets.Scripts.Player
     public class PlayerHealth : Health, ISaveProgress
     {
         private Toy _player;
+        private float _animationDelay = 1.2f;
 
         public event UnityAction Died;
 
         private void Awake()
         {
             _player = GetComponent<Toy>();
-            _player.AreaChanged += OnDefenceArea;
-        }
+        }        
 
-        private void Start()
+        public override void TakeDamage(float damage)
         {
-            _currentHealth = _maxHealth;
+            base.TakeDamage(damage);
+            StartCoroutine(Hit());
         }
-
-        private void OnDestroy()
-            => _player.AreaChanged -= OnDefenceArea;
 
         public void Heal(float amount)
         {
@@ -31,24 +31,38 @@ namespace Assets.Scripts.Player
         }
 
         public void RiseDefence(float amount)
+            => Defence += amount;        
+
+        protected override void Die()
         {
-            Defence += amount;
+            StartCoroutine(OnDie());
+        }
+
+        private IEnumerator Hit()
+        {
+            yield return new WaitForSeconds(0.2f);
+            _player.Animator.PlayHit();
+            yield return new WaitForSeconds(0.8f);
+            _player.Animator.PlayHit();
+        }
+
+        private IEnumerator OnDie()
+        {
+            _player.Animator.PlayDie();
+            yield return new WaitForSeconds(_animationDelay);
+            Died?.Invoke();
+            Destroy(gameObject);
         }
 
         public void Save(PlayerProgress progress)
         {
-            
+
         }
 
         public void Load(PlayerProgress progress)
         {
             _maxHealth = progress.PlayerStats.MaxHP;
-        }
-
-        protected override void Die()
-        {
-            Died?.Invoke();
-            Destroy(gameObject);
+            _currentHealth = progress.PlayerStats.CurrentHP;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Data;
+using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.GameEnvironment;
 using Assets.Scripts.GameEnvironment.TreeHouse;
 using Assets.Scripts.Infrastructure.GameManagment;
@@ -42,9 +43,16 @@ namespace Assets.Scripts.UI
         private List<Minion> _activeMinions = new List<Minion>();
         private PlayerProgress _playerProgress;
         private IGameStateMachine _stateMachine;
+        private ISaveLoadService _saveLoadService;
+        private ToyStaticData _currentToyData;
+        private string _level;
+        private float _maxHP;
+        private float _currentHP;
+        private float _maxSpeed;
 
         private void Awake()
         {
+            _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
             _stateMachine = AllServices.Container.Single<IGameStateMachine>();
             _firstLevelParts = Resources.LoadAll<Part>(FirstLevelParts).ToList();
             _secondLevelParts = Resources.LoadAll<Part>(SecondLevelParts).ToList();
@@ -95,7 +103,8 @@ namespace Assets.Scripts.UI
 
         private void LoadGame()
         {
-            _stateMachine.Enter<LevelState, string>(_playerProgress.WorldData.Level, _playerProgress.PlayerStats.CurrentToy);
+            _saveLoadService.SaveProgress();
+            _stateMachine.Enter<LevelState, string>(_level, _currentToyData);
         }
 
         private void EnterTreeHouse()
@@ -133,6 +142,15 @@ namespace Assets.Scripts.UI
                 progress.WorldData.Stage = 1;
                 Debug.Log("SaveMenu");
             }
+            else
+            {
+                progress.PlayerStats.MaxHP = _maxHP;
+                progress.PlayerStats.CurrentHP = _currentHP;
+                progress.PlayerStats.MaxSpeed = _maxSpeed;
+            }
+
+            if (_currentToyData != null) progress.PlayerStats.CurrentToy = _currentToyData;
+            if (_level != null) progress.WorldData.Level = _level;
 
             if (progress.WorldData.IsNewGame == true)
             {
@@ -148,6 +166,16 @@ namespace Assets.Scripts.UI
         public void Load(PlayerProgress progress)
         {
             _playerProgress = progress;
+            _level = progress.WorldData.Level;
+
+            if (progress.PlayerStats.CurrentToy != null)
+            {
+                _currentToyData = progress.PlayerStats.CurrentToy;
+                _maxHP = progress.PlayerStats.MaxHP;
+                _currentHP = progress.PlayerStats.CurrentHP;
+                _maxSpeed = progress.PlayerStats.MaxSpeed;
+            }
+                
         }
     }
 }

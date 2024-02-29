@@ -18,6 +18,7 @@ namespace Assets.Scripts.Data
         public float CurrentSpeed;
         public ToyStaticData CurrentToy;
         public List<PotionData> Potions;
+        public List<ArtifactData> Artifacts;
 
         public void ResetHP() => CurrentHP = MaxHP;
 
@@ -25,13 +26,14 @@ namespace Assets.Scripts.Data
         {
             Bubblegum = 20;
             Plasticine = 0;
-            Glue = 0;
+            Glue = 5;
             Screw = 0;
             MaxHP = 0;
             CurrentHP = 0;
             MaxSpeed = 0;
             CurrentSpeed = 0;
             Potions = new List<PotionData>();
+            Artifacts = new List<ArtifactData>();
         }
     }
 }

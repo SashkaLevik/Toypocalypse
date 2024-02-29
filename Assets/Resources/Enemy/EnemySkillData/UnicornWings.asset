@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: UnicornWings
   m_EditorClassIdentifier: 
-  Icon: {fileID: 311714063, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
-  RuDescription: 
-  EnDescription: 
+  Icon: {fileID: 899156992, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
+  RuDescription: "\u041E\u0442\u0442\u0430\u043B\u043A\u0438\u0432\u0430\u044E\u0449\u0430\u044F
+    \u0430\u0442\u0430\u043A\u0430"
+  EnDescription: Push attack
   DefaultDamage: 0
-  Damage: 4
+  Damage: 3
   DefaultDefence: 0
   Defence: 0
   DefaultCooldown: 0
@@ -24,4 +25,4 @@ MonoBehaviour:
   RequiredAP: 2
   StunChance: 0
   SkillType: 0
-  AttackType: 0
+  AttackType: 1

@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.Enemyes;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +11,9 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] private PlayerHud _playerHud;
 
-        private float _damage;
-        private float _constantDamage = 2;
-        private bool _isInAttackArea;
+        private float _tempDamage;
+        private float _tempDefence;
+        private float _damage;        
         private Toy _player;
         private SkillData _currentSkill;
         private PlayerHealth _playerHealth;
@@ -25,6 +24,7 @@ namespace Assets.Scripts.Player
         private EnemyMovement _enemyMovement;
         private EnemyHud _enemyHud;
         private List<SkillData> _appliedEffects = new();
+        private List<SkillView> _preparedSkills = new();
 
         public float Damage
         {
@@ -35,20 +35,21 @@ namespace Assets.Scripts.Player
                 DamageChanged?.Invoke();
             }
         }
+        public float TempDamage => _tempDamage;
+        public float TempDefence => _tempDefence;
 
         public event UnityAction DamageChanged;
 
         private void Start()
         {
             _player = _playerHud.Player;
-            _playerHealth = _player.GetComponent<PlayerHealth>();
             _player.AreaChanged += OnAreaChanged;
-            _enemySpawner.EnemySpawned += GetEnemy;            
-        }       
+            _playerHealth = _player.GetComponent<PlayerHealth>();
+            _enemySpawner.EnemySpawned += GetEnemy;
+        }               
 
         private void OnDestroy()
         {
-            _player.AreaChanged -= OnAreaChanged;
             _enemySpawner.EnemySpawned -= GetEnemy;
         }
 
@@ -61,22 +62,27 @@ namespace Assets.Scripts.Player
             {
                 _appliedEffects.Add(skillView.SkillData);
                 _playerHud.ShowAppliedEffect(skillView.SkillData);
-                //_currentSkill = skillView.SkillData;
-            }
-            
+                _preparedSkills.Add(skillView);
+            }            
             if (skillView.SkillData.SkillType == SkillType.Defence)
             {
-                if (_playerHud.CheckNegativeEffect(skillView.SkillData))
-                    _playerHealth.Defence += Mathf.Round(skillView.SkillData.Defence / 2);
-                else
-                    _playerHealth.Defence += skillView.SkillData.Defence;
+                _preparedSkills.Add(skillView);
+                _playerHealth.Defence += skillView.Defence;
+                _tempDefence++;
+                //if (_playerHud.CheckNegativeEffect(skillView.SkillData))
+                //    _playerHealth.Defence += Mathf.Round(skillView.Defence / 2);
+                //else
+                //    _playerHealth.Defence += skillView.Defence;
             }
             else if (skillView.SkillData.SkillType == SkillType.Attack)
             {
-                if (_playerHud.CheckNegativeEffect(skillView.SkillData))
-                    Damage += Mathf.Round(skillView.SkillData.Damage / 2);
-                else
-                    Damage += skillView.SkillData.Damage;
+                _preparedSkills.Add(skillView);
+                Damage += skillView.Damage;
+                _tempDamage++;
+                //if (_playerHud.CheckNegativeEffect(skillView.SkillData))
+                //    Damage += Mathf.Round(skillView.Damage / 2);
+                //else
+                //    Damage += skillView.Damage;
             }
         }
 
@@ -85,13 +91,14 @@ namespace Assets.Scripts.Player
 
         private IEnumerator ApplyAttack()
         {
-            _playerHud.ResetReceived();
+            _enemyAI.ApplySkillEffects();
             ApplySkillEffects();
-            yield return new WaitForSeconds(1f);
-            _player.PlayAttack();
+            yield return new WaitForSeconds(0.8f);
+            _player.Attack();
             _enemyHealth.TakeDamage(_damage);            
             _playerHud.ResetApplied();
             _appliedEffects.Clear();
+            _preparedSkills.Clear();
         }
 
         private void ApplySkillEffects()
@@ -104,42 +111,11 @@ namespace Assets.Scripts.Player
                         _enemyMovement.Push();
                     else if (effect.AttackType == AttackType.Pull)
                         _enemyMovement.Pull();
-                    else
-                        _enemyHud.ShowReceivedEffect(effect);                    
+                    else if (effect.AttackType == AttackType.Rust)
+                        _enemyHealth.DecreaseDefenceByEffect(effect.NegativeValue);                   
                 }
             }
-        }        
-
-        private void ResetDamage()
-        {
-            if (_isInAttackArea)
-                Damage = _constantDamage;
-            else
-                Damage = 0;                        
-        }
-
-        private void OnAreaChanged(AreaType areaType)
-        {
-            if (areaType == AreaType.Attack)
-            {
-                IncreaseDamage(_constantDamage);
-                _isInAttackArea = true;
-            }
-            else
-            {
-                DecreaseDamage(_constantDamage);
-                _isInAttackArea = false;                
-            }
-        }
-
-        private void IncreaseDamage(float damage)
-            => Damage += damage;
-
-        private void DecreaseDamage(float damage)
-        {
-            Damage -= damage;
-            if (Damage < 0) Damage = 0;
-        }
+        }                              
 
         private void GetEnemy(BaseEnemy enemy)
         {
@@ -156,12 +132,59 @@ namespace Assets.Scripts.Player
         {
             _enemy.AnimationEnded -= ResetParameters;
             _enemyHealth.Died -= Ansigne;
+            ResetParameters();
         }
 
         private void ResetParameters()
         {
-            ResetDamage();
-            _playerHealth.ResetDefence();
+            Damage = 0;
+            _tempDamage = 0;
+            _tempDefence = 0;
+            _playerHealth.Defence = 0;
+        }
+
+        private void OnAreaChanged(AreaType areaType)
+        {
+            if (areaType == AreaType.Attack)
+            {
+                foreach (var skill in _preparedSkills)
+                {
+                    if (skill.SkillData.SkillType == SkillType.Defence)
+                        _playerHealth.Defence--;
+                    if (skill.SkillData.SkillType == SkillType.Attack)
+                        Damage++;
+                }
+            }
+            else if (areaType == AreaType.Defence)
+            {
+                foreach (var skill in _preparedSkills)
+                {
+                    if (skill.SkillData.SkillType == SkillType.Attack)
+                        Damage--;
+                    if (skill.SkillData.SkillType == SkillType.Defence)
+                        _playerHealth.Defence++;
+                }
+            }
+            else if (areaType == AreaType.Common && _player.PreviouseArea == AreaType.Attack)
+            {
+                foreach (var skill in _preparedSkills)
+                {
+                    if (skill.SkillData.SkillType == SkillType.Attack)
+                        Damage--;
+                    if (skill.SkillData.SkillType == SkillType.Defence)
+                        _playerHealth.Defence++;
+                }
+            }
+            else if (areaType == AreaType.Common && _player.PreviouseArea == AreaType.Defence)
+            {
+                foreach (var skill in _preparedSkills)
+                {
+                    if (skill.SkillData.SkillType == SkillType.Defence)
+                        _playerHealth.Defence--;
+                    if (skill.SkillData.SkillType == SkillType.Attack)
+                        Damage++;
+                }
+            }
         }
     }
 }
