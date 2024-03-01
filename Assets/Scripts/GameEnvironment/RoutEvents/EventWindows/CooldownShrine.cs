@@ -85,7 +85,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
                 _choosedSkill = skill;
                 _choosedSkill.transform.SetParent(_shrineSlot.transform);
                 _choosedSkill.transform.position = _shrineSlot.position;
-                _choosedSkill.SkillButtonPressed -= _skillPanel.ChooseSkill;
+                //_choosedSkill.SkillButtonPressed -= _skillPanel.ChooseSkill;
             }
             else
             {
@@ -94,7 +94,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
                 _choosedSkill = _nextSkill;
                 _choosedSkill.transform.SetParent(_shrineSlot.transform);
                 _choosedSkill.transform.position = _shrineSlot.position;
-                _choosedSkill.SkillButtonPressed -= _skillPanel.ChooseSkill;
+                //_choosedSkill.SkillButtonPressed -= _skillPanel.ChooseSkill;
             }
         }
 
@@ -112,7 +112,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         {
             if (_choosedSkill == null) return;
             _choosedSkill.SkillData.Cooldown++;
-            _choosedSkill.UpdateCooldown();
+            _choosedSkill.Init(_choosedSkill.SkillData);
             _skillPanel.TakeBack(_choosedSkill);
             _shrineSlot.gameObject.SetActive(false);
             _skillPanel.SkillChoosed -= PrepareToBuff;

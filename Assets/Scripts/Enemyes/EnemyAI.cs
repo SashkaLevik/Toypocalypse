@@ -18,12 +18,12 @@ namespace Assets.Scripts.Enemyes
         [SerializeField] private EnemyHud _enemyHud;
 
         private int _randomSkill;
-        private int _skillsPerRound = 2;
+        private int _skillsPerRound = 3;
         private int _stunValue;
         private float _damage;
         private int _randomArea;
         private bool _isInAttackArea;
-        private float _chooseSkillDelay = 1f;
+        private float _chooseSkillDelay = 0.8f;
         public AreaType _areaType;
         private Toy _player;
         private PlayerHealth _playerHealth;
@@ -83,8 +83,6 @@ namespace Assets.Scripts.Enemyes
                     _enemyHealth.Defence += _skillData.Defence;
                 else if (_skillData.SkillType == SkillType.Attack)
                     Damage += _skillData.Damage;
-
-                Debug.Log(_skillData);
             }
 
             ChangeArea();
@@ -133,7 +131,7 @@ namespace Assets.Scripts.Enemyes
                     else if (effect.AttackType == AttackType.Pull)
                         _playerMovement.Pull();
                     else if (effect.AttackType == AttackType.Rust)
-                        _playerHealth.Defence -= effect.NegativeValue;
+                        _playerHealth.DecreaseDefence(effect.NegativeValue);
                 }                    
             }                           
         }        

@@ -16,6 +16,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         [SerializeField] private List<PotionData> _potionDatas; 
         [SerializeField] private List<RectTransform> _slots;
         [SerializeField] private List<BuyButton> _buyButtons;
+        [SerializeField] private List<Image> _materialImages;
         [SerializeField] private Potion _defaultPotion;
        
         private Potion _potion;
@@ -75,7 +76,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
                 _buyButtons[i].GetPotion(_potion);
                 _priceText = _slots[i].GetComponentInChildren<TMP_Text>();
                 _priceText.text = _potion.Data.Price.ToString();
-                _materialIcon = _slots[i].GetComponentInChildren<Image>();
+                _materialIcon = _materialImages[i];
                 _materialIcon.sprite = _potion.Data.Material.Data.Icon;
                 _potion.InitPlayer(_player);
             }

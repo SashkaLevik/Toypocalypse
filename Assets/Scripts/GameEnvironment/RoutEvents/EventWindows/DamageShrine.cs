@@ -12,7 +12,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         [SerializeField] private Image _materialIcon;
         [SerializeField] private Button _buffButton;
         [SerializeField] private MaterialType _paymentMaterial;
-        //[SerializeField] private TMP_Text _materialAmount;
         [SerializeField] private TMP_Text _plasticineAmount;
         [SerializeField] private TMP_Text _glueAmount;
         [SerializeField] private TMP_Text _screwAmount;
@@ -87,7 +86,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
                 _choosedSkill = skill;
                 _choosedSkill.transform.SetParent(_shrineSlot.transform);
                 _choosedSkill.transform.position = _shrineSlot.position;
-                _choosedSkill.SkillButtonPressed -= _skillPanel.ChooseSkill;
             }
             else
             {
@@ -96,23 +94,12 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
                 _choosedSkill = _nextSkill;
                 _choosedSkill.transform.SetParent(_shrineSlot.transform);
                 _choosedSkill.transform.position = _shrineSlot.position;
-                _choosedSkill.SkillButtonPressed -= _skillPanel.ChooseSkill;
             }
-        }
-
-        protected override void CloseEvent()
-        {
-            base.CloseEvent();
-            _walet.DisableButtons();
-            if (_choosedSkill != null) _skillPanel.TakeBack(_choosedSkill);
-            _routMap.gameObject.SetActive(true);
-            gameObject.SetActive(false);
-        }
+        }        
 
         private void ApplyBuff()
         {
             if (_choosedSkill == null) return;
-            //_playerMoney.SaveMoney();
 
             if (_choosedSkill.SkillData.SkillType == SkillType.Defence)
                 _choosedSkill.SkillData.Defence += _raiseValue;
@@ -125,6 +112,15 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             _skillPanel.SkillChoosed -= PrepareToBuff;
             _choosedSkill = null;
             Invoke(nameof(CloseEvent), 1f);
+        }
+
+        protected override void CloseEvent()
+        {
+            base.CloseEvent();
+            _walet.DisableButtons();
+            if (_choosedSkill != null) _skillPanel.TakeBack(_choosedSkill);
+            _routMap.gameObject.SetActive(true);
+            gameObject.SetActive(false);
         }
 
         private void ChangeIcon(ConnectingMaterial material)

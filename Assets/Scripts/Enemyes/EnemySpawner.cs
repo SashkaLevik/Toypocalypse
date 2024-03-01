@@ -49,6 +49,8 @@ namespace Assets.Scripts.Enemyes
                 StartCoroutine(CreateEnemy(EnemyTypeID.Stage4, _spawnPoint));
             else if (stageNumber == 5)
                 StartCoroutine(CreateEnemy(EnemyTypeID.Stage5, _spawnPoint));
+            else if (stageNumber == 6)
+                StartCoroutine(CreateEnemy(EnemyTypeID.Stage6, _spawnPoint));
         }
 
         private IEnumerator CreateEnemy(EnemyTypeID enemyType, GameObject at)

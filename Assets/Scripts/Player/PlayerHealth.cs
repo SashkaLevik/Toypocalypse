@@ -33,6 +33,12 @@ namespace Assets.Scripts.Player
         public void RiseDefence(float amount)
             => Defence += amount;        
 
+        public void DecreaseDefence(float value)
+        {
+            Defence -= value;
+            if (Defence < 0) Defence = 0;
+        }
+
         protected override void Die()
         {
             StartCoroutine(OnDie());

@@ -14,7 +14,6 @@ namespace Assets.Scripts.GameEnvironment
     public class Garage : MonoBehaviour, ISaveProgress
     {
         [SerializeField] private List<Image> _minionSlots;
-        [SerializeField] private Image _altar;
         [SerializeField] private TMP_Text _sacrificePrice;
         [SerializeField] private Button _summonMinion;
         [SerializeField] private Button _exit;

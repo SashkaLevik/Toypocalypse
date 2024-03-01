@@ -83,7 +83,10 @@ namespace Assets.Scripts.UI
         {
             EndBattle();
 
+            if (stage > _buttonContainers.Containers.Count) return;
+
             var container = _buttonContainers.Containers[stage - 1];
+
 
             foreach (var button in container.Buttons)
             {

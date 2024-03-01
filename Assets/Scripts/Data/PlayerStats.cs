@@ -27,7 +27,7 @@ namespace Assets.Scripts.Data
             Bubblegum = 20;
             Plasticine = 0;
             Glue = 5;
-            Screw = 0;
+            Screw = 10;
             MaxHP = 0;
             CurrentHP = 0;
             MaxSpeed = 0;

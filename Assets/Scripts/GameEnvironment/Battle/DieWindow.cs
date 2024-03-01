@@ -1,7 +1,5 @@
-﻿using Assets.Scripts.Data;
-using Assets.Scripts.Infrastructure.GameManagment;
+﻿using Assets.Scripts.Infrastructure.GameManagment;
 using Assets.Scripts.Infrastructure.Services;
-using Assets.Scripts.SaveLoad;
 using Assets.Scripts.States;
 using UnityEngine;
 using UnityEngine.UI;

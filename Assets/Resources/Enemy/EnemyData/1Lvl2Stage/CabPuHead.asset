@@ -16,7 +16,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5264c1cc04ba9474e879be7c9559bc1f, type: 2}
   - {fileID: 11400000, guid: d7dee15ccacf8c74a988e88106d425ef, type: 2}
   - {fileID: 11400000, guid: e22433890adc24642912135c121bcf8a, type: 2}
-  SpawnPosition: {x: 4.7, y: -0.8, z: 0}
+  - {fileID: 11400000, guid: 5264c1cc04ba9474e879be7c9559bc1f, type: 2}
+  SpawnPosition: {x: 4.7, y: -0.6, z: 0}
   Appear: {fileID: 307832150595218324, guid: a67a04592a14a874f9f5045df38fe9cd, type: 3}
   Health: 10
   Speed: 6

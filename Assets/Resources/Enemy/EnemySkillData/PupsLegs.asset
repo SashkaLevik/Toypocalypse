@@ -15,10 +15,11 @@ MonoBehaviour:
   Icon: {fileID: -1227737522, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
   RuDescription: 
   EnDescription: 
+  NegativeValue: 0
   DefaultDamage: 0
   Damage: 0
   DefaultDefence: 0
-  Defence: 4
+  Defence: 5
   DefaultCooldown: 0
   Cooldown: 0
   RequiredAP: 0

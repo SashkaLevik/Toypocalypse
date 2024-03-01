@@ -16,17 +16,20 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         [SerializeField] private Button _maxAP;
         [SerializeField] private Button _getPotion;
         [SerializeField] private ConnectingMaterial _paymentMaterial;
-        [SerializeField] private int _paymentPrice;
         [SerializeField] private Image _matetialIcon;
         [SerializeField] private TMP_Text _paymentText;
+        [SerializeField] private TMP_Text _healAmountText;
+        [SerializeField] private TMP_Text _maxHPAmount;
+        [SerializeField] private TMP_Text _maxSpeedAmount;
         [SerializeField] private List<PotionData> _potionDatas;
         [SerializeField] private Potion _defaultPotion;
+        [SerializeField] private int _paymentPrice;
         [SerializeField] private float _healAmount;
+        [SerializeField] private float _healthRiseValue;
+        [SerializeField] private float _speedRiseValue;
         [SerializeField] private List<Button> _eventButtons;
         [SerializeField] private RectTransform _slot;
 
-        private float _healthRiseiseValue = 3;
-        private float _speedRiseValue = 2;
         private Potion _potion;
         private PotionContainer _potionContainer;
 
@@ -36,6 +39,9 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             _potionContainer = _skillPanel.GetComponent<PotionContainer>();
             _matetialIcon.sprite = _paymentMaterial.Data.Icon;
             _paymentText.text = _paymentPrice.ToString();
+            _healAmountText.text = _healAmount.ToString();
+            _maxHPAmount.text = _healthRiseValue.ToString();
+            _maxSpeedAmount.text = _speedRiseValue.ToString();
         }
 
         private void OnEnable()
@@ -72,8 +78,8 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         {
             if (_playerMoney.GetValue(_paymentMaterial.Data.Type) >= _paymentPrice)
             {
-                _playerHealth.MaxHP += _healthRiseiseValue;
-                _playerHealth.CurrentHP += _healthRiseiseValue;
+                _playerHealth.MaxHP += _healthRiseValue;
+                _playerHealth.CurrentHP += _healthRiseValue;
                 _playerMoney.RemoveMaterialByType(_paymentMaterial.Data.Type, _paymentPrice);
                 OffButtons();
             }

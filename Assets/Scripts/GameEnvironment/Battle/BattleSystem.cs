@@ -20,9 +20,10 @@ namespace Assets.Scripts.GameEnvironment.Battle
         [SerializeField] private GameObject _winWindow;
         [SerializeField] private GameObject _dieWindow;
         [SerializeField] private Button _completeStage;
+        [SerializeField] private GameObject _winLvlWindow;
 
         private int _stageNumber;
-        private int _roundCounter;
+        private int _maxStages;
         private Toy _player;
         private PlayerSpeed _playerSpeed;
         private PlayerHealth _playerHealth;
@@ -45,9 +46,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
         public event UnityAction<bool> BattleEntered;
 
         private void Awake()
-        {
-            _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
-        }
+            => _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
 
         private void Start()
         {
@@ -85,10 +84,9 @@ namespace Assets.Scripts.GameEnvironment.Battle
         {
             _routMap.StageButtonPressed -= EnterStage;
             _routMap.EventEntered -= SetEvent;
-            //_currentEvent.EventCompleted -= SaveGame;
             //_enemy.AnimationEnded -= PlayerTurn;
             //_player.AnimationEnded -= _enemyAI.Attack;
-            if (_currentEvent != null) _currentEvent.EventCompleted -= SaveGame;
+            //if (_currentEvent != null) _currentEvent.EventCompleted -= SaveGame;
         }
 
         private void OnPlayerDie()
@@ -127,12 +125,19 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _prizeCalculator.DisableBox();
             _winWindow.SetActive(false);
             _saveLoadService.SaveProgress();
+            if (_stageNumber > _maxStages) _winLvlWindow.SetActive(true);
         }
 
         private void OpenNextStage()
         {
             _routMap.OpenStage(_stageNumber);
             _playerProgress.WorldData.Stage = _stageNumber;
+
+            if (_currentEvent != null)
+            {
+                _currentEvent.EventCompleted -= OpenNextStage;
+                _currentEvent.EventCompleted -= SaveGame;
+            }
         }
 
         private void GetEnemyStats(BaseEnemy enemy)
@@ -173,6 +178,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
         {
             _stageNumber = progress.WorldData.Stage;
             _playerProgress = progress;
+            _maxStages = progress.WorldData.FirstLvlStages;
         }
     }
 }

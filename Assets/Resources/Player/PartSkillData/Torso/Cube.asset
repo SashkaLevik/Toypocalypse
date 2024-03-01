@@ -15,9 +15,10 @@ MonoBehaviour:
   Icon: {fileID: -545755102, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
   RuDescription: "\u041F\u043E\u0432\u044B\u0448\u0430\u044E\u0442 \u0437\u0430\u0449\u0438\u0442\u0443"
   EnDescription: Rise defence
+  NegativeValue: 0
   DefaultDamage: 0
   Damage: 0
-  DefaultDefence: 3
+  DefaultDefence: 4
   Defence: 3
   DefaultCooldown: 1
   Cooldown: 1

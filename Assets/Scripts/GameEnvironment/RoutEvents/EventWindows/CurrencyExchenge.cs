@@ -76,7 +76,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             _playerMoney.AddMaterialByType(material.Data.Type, GetPaymentValue(material));
             _playerMoney.RemoveMaterialByType(_currentMaterial.Data.Type, GetPaymentValue(_currentMaterial));
             _currentMaterial = null;
-            _materialIcon.sprite = _defaultImage;
+            _materialIcon.gameObject.SetActive(false);
             RemoveMaterials();
         }
 
@@ -99,6 +99,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
 
         private void ChangeIcon(ConnectingMaterial material)
         {
+            _materialIcon.gameObject.SetActive(true);
             _materialIcon.sprite = material.Data.Icon;
         }
     }

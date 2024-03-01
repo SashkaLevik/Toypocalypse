@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.Enemyes;
+using Assets.Scripts.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Assets.Scripts.Player
     public class AttackPanel : MonoBehaviour
     {
         [SerializeField] private PlayerHud _playerHud;
+        [SerializeField] private BattleTutorial _battleTutorial;
 
         private float _tempDamage;
         private float _tempDefence;
@@ -46,6 +48,7 @@ namespace Assets.Scripts.Player
             _player.AreaChanged += OnAreaChanged;
             _playerHealth = _player.GetComponent<PlayerHealth>();
             _enemySpawner.EnemySpawned += GetEnemy;
+            _enemySpawner.EnemySpawned += _battleTutorial.OpenTutorial;
         }               
 
         private void OnDestroy()

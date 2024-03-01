@@ -15,6 +15,7 @@ MonoBehaviour:
   Icon: {fileID: -1901019991, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
   RuDescription: 
   EnDescription: 
+  NegativeValue: 0
   DefaultDamage: 0
   Damage: 5
   DefaultDefence: 0
