@@ -18,6 +18,6 @@ MonoBehaviour:
   NameRu: "\u041D\u043E\u0433\u0438 \u043A\u0443\u043A\u043B\u044B"
   Health: 0
   Speed: 4
-  MaterialAmount: 4
+  MaterialAmount: 2
   SkillData: {fileID: 11400000, guid: b0c87b7dae6d871489b10347ae160916, type: 2}
   Type: 3

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1a9a012f719334ca224250b42047e9, type: 3}
+  m_Name: CabPuHead
+  m_EditorClassIdentifier: 
+  Skills:
+  - {fileID: 11400000, guid: 5264c1cc04ba9474e879be7c9559bc1f, type: 2}
+  - {fileID: 11400000, guid: d7dee15ccacf8c74a988e88106d425ef, type: 2}
+  - {fileID: 11400000, guid: e22433890adc24642912135c121bcf8a, type: 2}
+  - {fileID: 11400000, guid: 5264c1cc04ba9474e879be7c9559bc1f, type: 2}
+  SpawnPosition: {x: 4.7, y: -0.6, z: 0}
+  Appear: {fileID: 307832150595218324, guid: a67a04592a14a874f9f5045df38fe9cd, type: 3}
+  Health: 14
+  Speed: 6

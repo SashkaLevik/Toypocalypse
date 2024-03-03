@@ -54,7 +54,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
 
         private void CalculateOrdinary()
         {
-            _gum = Random.Range(6, 10);
+            _gum = Random.Range(8, 12);
             _plasticine = Random.Range(4, 6);
             _glue = Random.Range(2, 4);
             _screw = Random.Range(0, 2);

@@ -11,6 +11,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private GameObject _materialLootBox;
         [SerializeField] private GameObject _partsLootBox;
         [SerializeField] private BattleSystem _battleSystem;
+        [SerializeField] private PartsLootBox _partsBox;
 
         private Toy _player;
         private int _boxTypePercent;
@@ -18,6 +19,7 @@ namespace Assets.Scripts.UI
         private int _changedPercent = 10;
         private int _stageNumber;
         private int _inactiveParts;
+        private PlayerProgress _playerProgress;
         //private int _bossStage = 5;
 
         private void Start()
@@ -43,10 +45,10 @@ namespace Assets.Scripts.UI
         {
             _boxTypePercent = Random.Range(1, 100);
 
-            if (_boxTypePercent <= _materialPercent)
-                _materialLootBox.SetActive(true);
-            else
+            if (_boxTypePercent >= _materialPercent && _partsBox.InactiveParts.Count > 0)
                 _partsLootBox.SetActive(true);
+            else
+                _materialLootBox.SetActive(true);
         }
 
         public void DisableBox()
@@ -62,6 +64,7 @@ namespace Assets.Scripts.UI
         public void Load(PlayerProgress progress)
         {
             _stageNumber = progress.WorldData.Stage;
+            _playerProgress = progress;
         }
     }
 }

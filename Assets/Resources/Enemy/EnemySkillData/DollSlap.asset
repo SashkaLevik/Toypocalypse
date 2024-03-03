@@ -17,7 +17,7 @@ MonoBehaviour:
   EnDescription: 
   NegativeValue: 0
   DefaultDamage: 0
-  Damage: 5
+  Damage: 4
   DefaultDefence: 0
   Defence: 0
   DefaultCooldown: 0

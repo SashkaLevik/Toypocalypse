@@ -17,7 +17,7 @@ namespace Assets.Scripts.Data
         {
             Level = level;
             Stage = 1;
-            FirstLvlStages = 4;
+            FirstLvlStages = 6;
             LevelNumber = 1;
             IsNewGame = true;
             IsFirstRun = true;

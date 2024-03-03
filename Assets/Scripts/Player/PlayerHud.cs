@@ -59,10 +59,12 @@ namespace Assets.Scripts.Player
 
         public void ShowOnLeft(AreaType areaType)
         {
+            float defaoultDamage = _attackPanel.Damage - _attackPanel.TempDamage * 2;
+            float defaultDefence = _playerHealth.Defence +_attackPanel.TempDefence;
             float tempDamage = _attackPanel.Damage - _attackPanel.TempDamage;
-            float tempDefence = _playerHealth.Defence + _attackPanel.TempDefence;
+            float tempDefence = _playerHealth.Defence + _attackPanel.TempDefence * 2;
 
-            if (areaType != AreaType.Defence)
+            if (areaType == AreaType.Common)
             {
                 if (_attackPanel.TempDamage > 0)
                 {
@@ -74,16 +76,32 @@ namespace Assets.Scripts.Player
                     _defence.color = Color.green;
                     _defence.text = tempDefence.ToString();
                 }
-            }            
+            }
+            else if (areaType == AreaType.Attack)
+            {
+                if (_attackPanel.TempDamage > 0)
+                {
+                    _damage.color = Color.red;
+                    _damage.text = defaoultDamage.ToString();
+                }
+                if (_attackPanel.TempDefence > 0)
+                {
+                    _defence.color = Color.green;
+                    _defence.text = defaultDefence.ToString();
+                }
+            }
         }
 
         public void ShowOnRight(AreaType areaType)
         {
-            float tempDamage = _attackPanel.Damage + _attackPanel.TempDamage;
+            float defaoultDamage = _attackPanel.Damage + _attackPanel.TempDamage;
+            float defaultDefence = _playerHealth.Defence - _attackPanel.TempDefence * 2;
+            float tempDamage = _attackPanel.Damage + _attackPanel.TempDamage * 2;
             float tempDefence = _playerHealth.Defence - _attackPanel.TempDefence;
 
-            if (areaType != AreaType.Attack)
+            if (areaType == AreaType.Common)
             {
+                
                 if (_attackPanel.TempDamage > 0)
                 {
                     _damage.color = Color.green;
@@ -94,7 +112,20 @@ namespace Assets.Scripts.Player
                     _defence.color = Color.red;
                     _defence.text = tempDefence.ToString();
                 }
-            }            
+            }
+            else if (areaType == AreaType.Defence)
+            {
+                if (_attackPanel.TempDamage > 0)
+                {
+                    _damage.color = Color.green;
+                    _damage.text = defaoultDamage.ToString();
+                }
+                if (_attackPanel.TempDefence > 0)
+                {
+                    _defence.color = Color.red;
+                    _defence.text = defaultDefence.ToString();
+                }
+            }
         }
 
         public void SetDefault()

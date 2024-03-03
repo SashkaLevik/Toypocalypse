@@ -26,6 +26,7 @@ namespace Assets.Scripts.UI
                 if (skill != null) skill.ResetSkill();
 
             _playerProgress.IsPlayerCreated = false;
+            _playerProgress.PlayerStats.CurrentToy = null;
             _menu.StartNewGame();
             _warningWindow.SetActive(false);
         }

@@ -15,8 +15,9 @@ MonoBehaviour:
   Icon: {fileID: -1969280064, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
   RuDescription: "\u041E\u0442\u0430\u043A\u0430 \u0440\u043E\u0433\u043E\u043C"
   EnDescription: Horne attack
+  NegativeValue: 0
   DefaultDamage: 0
-  Damage: 5
+  Damage: 4
   DefaultDefence: 0
   Defence: 0
   DefaultCooldown: 0

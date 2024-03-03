@@ -145,6 +145,7 @@ namespace Assets.Scripts.Player
                 _skills[i].SkillButtonPressed += ChooseSkill;
                 _player.AreaChanged += _skills[i].ChangeOnArea;
                 _playerSkills.Add(_skills[i]);
+                Debug.Log(_playerSkillDatas[i]);
             }
         }
 

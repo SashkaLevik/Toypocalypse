@@ -24,10 +24,10 @@ namespace Assets.Scripts.Data
 
         public PlayerStats()
         {
-            Bubblegum = 20;
-            Plasticine = 0;
-            Glue = 5;
-            Screw = 10;
+            Bubblegum = 24;
+            Plasticine = 4;
+            Glue = 0;
+            Screw = 0;
             MaxHP = 0;
             CurrentHP = 0;
             MaxSpeed = 0;

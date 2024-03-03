@@ -79,7 +79,7 @@ namespace Assets.Scripts.Player
             {                
                 if (_skillData.SkillType == SkillType.Attack)
                 {
-                    _damage += 1;
+                    _damage += 2;
                     _damageText.color = Color.green;
                     UpdateBattleValue(_damage);
                 }
@@ -94,7 +94,7 @@ namespace Assets.Scripts.Player
             {
                 if (_skillData.SkillType == SkillType.Defence)
                 {
-                    _defence += 1;
+                    _defence += 2;
                     _damageText.color = Color.green;
                     UpdateBattleValue(_defence);
                 }
@@ -156,7 +156,7 @@ namespace Assets.Scripts.Player
                 else if (_skillData.SkillType == SkillType.Defence)
                 {
                     _damageText.color = Color.green;
-                    _damageText.text = (defence + 1).ToString();
+                    _damageText.text = (defence + 2).ToString();
                 }
             }
             else if (areaType == AreaType.Attack)
@@ -184,7 +184,7 @@ namespace Assets.Scripts.Player
                 if (_skillData.SkillType == SkillType.Attack)
                 {
                     _damageText.color = Color.green;
-                    _damageText.text = (damage + 1).ToString();
+                    _damageText.text = (damage + 2).ToString();
                 }
                 else if (_skillData.SkillType == SkillType.Defence)
                 {

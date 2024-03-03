@@ -18,7 +18,7 @@ MonoBehaviour:
   EnDescription: Push attack
   NegativeValue: 0
   DefaultDamage: 0
-  Damage: 4
+  Damage: 5
   DefaultDefence: 0
   Defence: 0
   DefaultCooldown: 0

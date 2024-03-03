@@ -15,12 +15,13 @@ MonoBehaviour:
   Icon: {fileID: -1901019991, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
   RuDescription: "\u0410\u0442\u0430\u043A\u0430 \u043B\u0430\u0437\u0435\u0440\u043E\u043C"
   EnDescription: Lazer attack
-  DefaultDamage: 4
-  Damage: 4
+  NegativeValue: 0
+  DefaultDamage: 5
+  Damage: 5
   DefaultDefence: 0
   Defence: 0
-  DefaultCooldown: 3
-  Cooldown: 3
+  DefaultCooldown: 1
+  Cooldown: 1
   RequiredAP: 2
   StunChance: 0
   SkillType: 0

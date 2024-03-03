@@ -98,7 +98,11 @@ namespace Assets.Scripts.UI
             if (_playerProgress.IsPlayerCreated == true)
                 _warningWindow.SetActive(true);
             else
+            {
+                _currentToyData = null;
                 EnterTreeHouse();
+            }
+                
         }
 
         private void LoadGame()

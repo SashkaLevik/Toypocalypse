@@ -2,14 +2,12 @@
 using Assets.Scripts.Infrastructure.GameManagment;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Player;
-using Assets.Scripts.States;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections;
 
 namespace Assets.Scripts.UI
 {
@@ -19,15 +17,16 @@ namespace Assets.Scripts.UI
 
         [SerializeField] private PlayerSpawnPoint _playerSpawn;
         [SerializeField] private List<Button> _stageButtons;
-        //[SerializeField] private Button _retreat;
         [SerializeField] private List<Button> _1StageEventButtons;
         [SerializeField] private List<Button> _2StageEventButtons;
         [SerializeField] private List<Button> _3StageEventButtons;
         [SerializeField] private List<Button> _4StageEventButtons;
+        [SerializeField] private List<Button> _5StageEventButtons;
         [SerializeField] private List<RoutEvent> _1StageEvents;
         [SerializeField] private List<RoutEvent> _2StageEvents;
         [SerializeField] private List<RoutEvent> _3StageEvents;
         [SerializeField] private List<RoutEvent> _4StageEvents;
+        [SerializeField] private List<RoutEvent> _5StageEvents;
         [SerializeField] private EventButtonContainers _buttonContainers;
         [SerializeField] private TMP_Text _partsCount;
 
@@ -37,6 +36,7 @@ namespace Assets.Scripts.UI
         private List<RoutEvent> _2StageShuffled = new();
         private List<RoutEvent> _3StageShuffled = new();
         private List<RoutEvent> _4StageShuffled = new();
+        private List<RoutEvent> _5StageShuffled = new();
         private IGameStateMachine _stateMachine;
 
         public bool IsInBattle => _isInBattle;
@@ -102,11 +102,7 @@ namespace Assets.Scripts.UI
         {
             _player = player;
             Invoke(nameof(GetParts), 0.5f);
-        }
-        //private void RetreatBattle()
-        //{
-        //    _stateMachine.Enter<MenuState, string>(MenuScene);
-        //}
+        }        
 
         private void EndBattle()
             => _isInBattle = false;
@@ -117,6 +113,7 @@ namespace Assets.Scripts.UI
             AssigneEventWindows(_2StageEventButtons, _2StageShuffled);
             AssigneEventWindows(_3StageEventButtons, _3StageShuffled);
             AssigneEventWindows(_4StageEventButtons, _4StageShuffled);
+            AssigneEventWindows(_5StageEventButtons, _5StageShuffled);
         }
 
         private void Shuffle()
@@ -125,6 +122,7 @@ namespace Assets.Scripts.UI
             _2StageShuffled = _2StageEvents.OrderBy(x => Random.value).ToList();
             _3StageShuffled = _3StageEvents.OrderBy(x => Random.value).ToList();
             _4StageShuffled = _4StageEvents.OrderBy(x => Random.value).ToList();
+            _5StageShuffled = _5StageEvents.OrderBy(x => Random.value).ToList();
         }
 
         private void AssigneEventWindows(List<Button> buttons, List<RoutEvent> events)

@@ -9,13 +9,15 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
     public class DamageShrine : RoutEvent
     {
         [SerializeField] private Transform _shrineSlot;
-        [SerializeField] private Image _materialIcon;
+        [SerializeField] private Image _plasticineIcon;
+        [SerializeField] private Image _glueIcon;
+        [SerializeField] private Image _screwIcon;
         [SerializeField] private Button _buffButton;
-        [SerializeField] private MaterialType _paymentMaterial;
         [SerializeField] private TMP_Text _plasticineAmount;
         [SerializeField] private TMP_Text _glueAmount;
         [SerializeField] private TMP_Text _screwAmount;
         [SerializeField] private float _raiseValue;
+        [SerializeField] private AudioSource _buffSound;
 
         protected SkillView _choosedSkill;
         private ConnectingMaterial _currentMaterial;
@@ -106,6 +108,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             else
                 _choosedSkill.SkillData.Damage += _raiseValue;
 
+            _buffSound.Play();
             _choosedSkill.Init(_choosedSkill.SkillData);
             _skillPanel.TakeBack(_choosedSkill);
             _shrineSlot.gameObject.SetActive(false);
@@ -123,7 +126,29 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             gameObject.SetActive(false);
         }
 
-        private void ChangeIcon(ConnectingMaterial material)
-            => _materialIcon.sprite = material.Data.Icon;
+        private void ChangeIcon(ConnectingMaterial currentMaterial)
+        {
+            if (currentMaterial.Data.Type == MaterialType.Plasticine)
+            {
+                _plasticineIcon.gameObject.SetActive(true);
+                _plasticineIcon.sprite = currentMaterial.Data.Icon;
+                _glueIcon.gameObject.SetActive(false);
+                _screwIcon.gameObject.SetActive(false);
+            }
+            else if (currentMaterial.Data.Type == MaterialType.Glue)
+            {
+                _glueIcon.gameObject.SetActive(true);
+                _glueIcon.sprite = currentMaterial.Data.Icon;
+                _plasticineIcon.gameObject.SetActive(false);
+                _screwIcon.gameObject.SetActive(false);
+            }
+            else if (currentMaterial.Data.Type == MaterialType.Screw)
+            {
+                _screwIcon.gameObject.SetActive(true);
+                _screwIcon.sprite = currentMaterial.Data.Icon;
+                _plasticineIcon.gameObject.SetActive(false);
+                _glueIcon.gameObject.SetActive(false);
+            }
+        }
     }
 }

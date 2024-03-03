@@ -19,7 +19,7 @@ MonoBehaviour:
   DefaultDamage: 0
   Damage: 0
   DefaultDefence: 0
-  Defence: 5
+  Defence: 3
   DefaultCooldown: 0
   Cooldown: 0
   RequiredAP: 0

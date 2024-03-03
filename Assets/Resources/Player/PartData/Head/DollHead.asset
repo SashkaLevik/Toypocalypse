@@ -17,7 +17,7 @@ MonoBehaviour:
   NameEn: Doll head
   NameRu: "\u0413\u043E\u043B\u043E\u0432\u0430 \u043A\u0443\u043A\u043B\u044B"
   Health: 3
-  Speed: 3
-  MaterialAmount: 3
+  Speed: 2
+  MaterialAmount: 1
   SkillData: {fileID: 11400000, guid: d11ae917ababa244cb79345fe95f6127, type: 2}
   Type: 0

@@ -117,6 +117,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
 
         private void CompleteStage()
         {
+            _completeStage.gameObject.SetActive(false);
             BattleEntered?.Invoke(false);
             StageCompleted?.Invoke();
             _routMap.gameObject.SetActive(true);

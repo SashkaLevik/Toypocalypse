@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31eba0da9f3403e478c76b01809cdf08, type: 3}
   m_Name: LvlBoss
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 0}
+  _enemy: {fileID: 7436280200827580417, guid: f05748a0f85efd04aa60d5601db13bf6, type: 3}
   _prefabs:
   - {fileID: 7436280200827580417, guid: f05748a0f85efd04aa60d5601db13bf6, type: 3}
-  _enemyType: 4
+  _enemyType: 5

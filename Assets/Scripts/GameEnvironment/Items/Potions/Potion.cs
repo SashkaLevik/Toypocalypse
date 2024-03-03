@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.Player;
-using Lean.Localization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,9 +9,9 @@ namespace Assets.Scripts.GameEnvironment.Items.Potions
 {
     public class Potion : MonoBehaviour
     {
-        //[SerializeField] private LeanLocalization _leanLocalization;
         [SerializeField] private PotionData _data;
         [SerializeField] private Image _potionIcon;
+        [SerializeField] private Image _descriptionBG;
         [SerializeField] private TMP_Text _description;
 
         private Toy _player;
@@ -35,12 +34,12 @@ namespace Assets.Scripts.GameEnvironment.Items.Potions
 
         public void OnEnter()
         {
-            _description.gameObject.SetActive(true);
+            _descriptionBG.gameObject.SetActive(true);
             _description.text = GetLocalizedDescription(_data);
         }            
 
         public void OnExit()
-            => _description.gameObject.SetActive(false);        
+            => _descriptionBG.gameObject.SetActive(false);        
 
         public void InitPlayer(Toy player)
         {

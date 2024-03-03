@@ -20,6 +20,8 @@ namespace Assets.Scripts.GameEnvironment.Battle
         private Part _currentPart;
         private int _randomPart;
 
+        public List<Part> InactiveParts => _inactiveParts;
+
         private void OnEnable()
         {
             _openBox.onClick.AddListener(ActivateNewPart);

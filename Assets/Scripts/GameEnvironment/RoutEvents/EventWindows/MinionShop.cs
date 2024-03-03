@@ -10,7 +10,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
     public class MinionShop : RoutEvent
     {
         [SerializeField] private List<SkillData> _skillDatas;
-        [SerializeField] private List<Image> _minionsContainer;
+        [SerializeField] private List<RectTransform> _minionsContainer;
         [SerializeField] private Image _preview;
         [SerializeField] private Button _takeMinion;
 
@@ -52,13 +52,16 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         private void ChooseMinion(Minion minion)
         {
             _choosedMinion = minion;
+            _preview.gameObject.SetActive(true);
+            _takeMinion.gameObject.SetActive(true);
             _preview.sprite = _choosedMinion.Icon;
         }
 
         private void TakeMinion()
         {
             _skillPanel.AddMinion(_choosedMinion);
-            _takeMinion.interactable = false;
+            _preview.gameObject.SetActive(false);
+            _takeMinion.gameObject.SetActive(false);
         }
 
         protected override void CloseEvent()

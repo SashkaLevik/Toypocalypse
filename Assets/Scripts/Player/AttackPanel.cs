@@ -65,7 +65,7 @@ namespace Assets.Scripts.Player
             {
                 _appliedEffects.Add(skillView.SkillData);
                 _playerHud.ShowAppliedEffect(skillView.SkillData);
-                _preparedSkills.Add(skillView);
+                //_preparedSkills.Add(skillView);
             }            
             if (skillView.SkillData.SkillType == SkillType.Defence)
             {
@@ -155,7 +155,7 @@ namespace Assets.Scripts.Player
                     if (skill.SkillData.SkillType == SkillType.Defence)
                         _playerHealth.Defence--;
                     if (skill.SkillData.SkillType == SkillType.Attack)
-                        Damage++;
+                        Damage+=2;
                 }
             }
             else if (areaType == AreaType.Defence)
@@ -165,7 +165,7 @@ namespace Assets.Scripts.Player
                     if (skill.SkillData.SkillType == SkillType.Attack)
                         Damage--;
                     if (skill.SkillData.SkillType == SkillType.Defence)
-                        _playerHealth.Defence++;
+                        _playerHealth.Defence+=2;
                 }
             }
             else if (areaType == AreaType.Common && _player.PreviouseArea == AreaType.Attack)
@@ -173,7 +173,7 @@ namespace Assets.Scripts.Player
                 foreach (var skill in _preparedSkills)
                 {
                     if (skill.SkillData.SkillType == SkillType.Attack)
-                        Damage--;
+                        Damage-=2;
                     if (skill.SkillData.SkillType == SkillType.Defence)
                         _playerHealth.Defence++;
                 }
@@ -183,7 +183,7 @@ namespace Assets.Scripts.Player
                 foreach (var skill in _preparedSkills)
                 {
                     if (skill.SkillData.SkillType == SkillType.Defence)
-                        _playerHealth.Defence--;
+                        _playerHealth.Defence-=2;
                     if (skill.SkillData.SkillType == SkillType.Attack)
                         Damage++;
                 }
