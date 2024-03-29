@@ -34,7 +34,16 @@ namespace Assets.Scripts.Player
                 _currentMaterial = material;
                 _currentMaterial.MaterialChoosed += _playerMoney.OnMaterialChoosed;
             }                
-        }                
+        }
+
+        private void OnDestroy()
+        {
+            foreach (var material in _materials)
+            {
+                _currentMaterial = material;
+                _currentMaterial.MaterialChoosed -= _playerMoney.OnMaterialChoosed;
+            }
+        }           
 
         public void EnableButtons()
         {

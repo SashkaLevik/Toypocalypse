@@ -9,8 +9,9 @@ namespace Assets.Scripts.Player
     public class MinionSlot : MonoBehaviour
     {
         [SerializeField] private SkillPanel _skillPanel;
-        [SerializeField] private Button _minionAttack;
-        [SerializeField] private Image _minionIcon;        
+        //[SerializeField] private Button _minionAttack;
+        //[SerializeField] private Image _minionIcon;
+        [SerializeField] private RectTransform _slot;
 
         private Toy _player;
         private PlayerHealth _playerHealth;
@@ -24,7 +25,7 @@ namespace Assets.Scripts.Player
         private void Start()
         {
             _skillPanel.BattleSystem.BattleEntered += Activate;
-            _minionAttack.onClick.AddListener(Attack);
+            //_minionAttack.onClick.AddListener(Attack);
             _player = _skillPanel.Player;
             _playerHealth = _player.GetComponent<PlayerHealth>();
         }             
@@ -33,26 +34,33 @@ namespace Assets.Scripts.Player
         {
             _enemy = enemy;
             _enemyMovement = _enemy.GetComponent<EnemyMovement>();
-            _enemyHud = _enemy.GetComponentInChildren<EnemyHud>();
+            _enemyHud = _enemy.EnemyHud;
         }
 
         public void OnMinionAdded(Minion minion)
         {
-            _minion = minion;
-            _minionIcon.gameObject.SetActive(true);
-            _minionIcon.sprite = minion.Icon;
+            //_minion = minion;
+            _minion = Instantiate(minion.MinionData.MinionPrefab, _slot);
+            //_minion.transform.position = _slot.transform.position;
+            _minion.transform.SetParent(_slot);
+            _minion.MinionButtonPressed += Attack;
+            //_minionIcon.gameObject.SetActive(true);
+            //_minionIcon.sprite = minion.Icon;
             _minionSkillData = minion.MinionSkillData;
         }
 
         public void Activate(bool isInBattle)
         {
-            if (isInBattle == true)
-                _minionAttack.interactable = true;
-            else
-                _minionAttack.interactable = false;
+            if (_minion != null)
+            {
+                if (isInBattle == true)
+                    _minion.Activate();
+                else
+                    _minion.Disactivate();
+            }            
         }        
 
-        private void Attack()
+        private void Attack(Minion minion)
         {
             StartCoroutine(StartAttack());
         }
@@ -61,6 +69,7 @@ namespace Assets.Scripts.Player
         {
             _attackPanel = _skillPanel.AttackPanel;
             _minion.Appear();
+            _minion.Disactivate();
             yield return new WaitForSeconds(1.5f);
 
             if (_minionSkillData.SkillType == SkillType.Attack)
@@ -73,7 +82,6 @@ namespace Assets.Scripts.Player
                 _enemyMovement.Pull();
 
             yield return new WaitForSeconds(0.2f);
-            _minionAttack.interactable = false;
         }
     }
 }

@@ -9,5 +9,6 @@ namespace Assets.Scripts.Infrastructure.AssetManagment
         public const string MenuHud = "Hud/MenuHud";
         public const string SkillPanel = "Hud/SkillPanel";
         public static string BattleSystem = "Hud/BattleSystem";
+        public static string ArtifactWatcher = "ArtifactsWatcher";
     }
 }

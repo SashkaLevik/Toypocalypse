@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.GameEnvironment.Items.Potions;
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 
@@ -19,19 +20,19 @@ namespace Assets.Scripts.Data
         public ToyStaticData CurrentToy;
         public List<PotionData> Potions;
         public List<ArtifactData> Artifacts;
-
-        public void ResetHP() => CurrentHP = MaxHP;
+        public int ArtifactSlots;
 
         public PlayerStats()
         {
-            Bubblegum = 24;
-            Plasticine = 4;
+            Bubblegum = 20;
+            Plasticine = 5;
             Glue = 0;
             Screw = 0;
             MaxHP = 0;
             CurrentHP = 0;
             MaxSpeed = 0;
             CurrentSpeed = 0;
+            ArtifactSlots = 1;
             Potions = new List<PotionData>();
             Artifacts = new List<ArtifactData>();
         }

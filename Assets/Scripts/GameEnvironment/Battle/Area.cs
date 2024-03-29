@@ -8,22 +8,29 @@ namespace Assets.Scripts.GameEnvironment.Battle
     {
         [SerializeField] private AreaType _areaType;
         [SerializeField] private GameObject _areaEnter;
-        [SerializeField] private float _areaBattleValue;
+        [SerializeField] private float _increasedValue;
+        [SerializeField] private float _decreasedValue;
         [SerializeField] private TMP_Text _battleValue;
 
-        public float AreaBattleValue => _areaBattleValue;
+        public float IncreasedValue => _increasedValue;
+        public float DecreasedValue => _decreasedValue;
         public AreaType AreaType => _areaType;
 
-        private void Start()
+        public void ChangeIncreased(float value)
         {
-            //_battleValue.text = _areaBattleValue.ToString();                
+            _increasedValue += value;
+        }
+
+        public void ChangeDecreased(float value)
+        {
+            _decreasedValue += value;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.TryGetComponent(out Toy player))
             {
-                player.ChangeArea(_areaType);
+                player.ChangeArea(this);
                 _areaEnter.SetActive(true);
             }
             if (collision.TryGetComponent(out BaseEnemy enemy))

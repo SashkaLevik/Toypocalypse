@@ -2,7 +2,6 @@
 using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.GameEnvironment.Battle;
 using Assets.Scripts.SaveLoad;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -17,14 +16,13 @@ namespace Assets.Scripts.Player
         [SerializeField] private Canvas _canvas;
         [SerializeField] private List<RectTransform> _skillSlots;
         [SerializeField] private MinionSlot _minionSlot;
-        [SerializeField] private SkillView _skillView;
-        [SerializeField] private SkillView _moveSkill;
         [SerializeField] private Button _wait;
         [SerializeField] private Button _foward;
         [SerializeField] private Button _backward;
         [SerializeField] private List<SkillView> _skills;
 
         bool _isInBattle;
+        private float _movementAP;
         private Toy _player;
         private Minion _currentMinion;
         private SkillView _currentSkill;
@@ -35,14 +33,16 @@ namespace Assets.Scripts.Player
         private BattleSystem _battleSystem;
         private List<SkillView> _playerSkills = new List<SkillView>();
         private List<SkillData> _playerSkillDatas = new List<SkillData>();
-        private PlayerProgress _playerProgress;
         private Transform _skillPosition;
+        private PlayerSpawnPoint _playerSpawner;
+        private PlayerProgress _playerProgress;
 
         public Toy Player => _player;
         public PlayerHud PlayerHud => _playerHud;
         public BattleSystem BattleSystem => _battleSystem;
         public List<SkillView> PlayerSkills => _playerSkills;
         public AttackPanel AttackPanel => _attackPanel;
+        public PlayerSpawnPoint PlayerSpawner => _playerSpawner;
 
         public event UnityAction<SkillView> SkillChoosed;
         public event UnityAction RoundEnded;
@@ -56,7 +56,6 @@ namespace Assets.Scripts.Player
             _backward.onClick.AddListener(OnLeftButton);
             _movement.PlayerMoved += OnPlayerMove;
             _battleSystem.BattleEntered += CheckBattleStatus;
-            SetMovmentAP();
         }
         
         private void OnDestroy()
@@ -69,20 +68,15 @@ namespace Assets.Scripts.Player
                 _player.AreaChanged -= skill.ChangeOnArea;
         }
 
-        public void Construct(Toy player, PlayerHud playerHud, BattleSystem battleSystem)
+        public void Construct(Toy player, PlayerHud playerHud, BattleSystem battleSystem, PlayerSpawnPoint playerSpawner)
         {
             _player = player;
             _playerSpeed = _player.GetComponent<PlayerSpeed>();
             _movement = _player.GetComponent<PlayerMovement>();
             _playerHud = playerHud;
             _battleSystem = battleSystem;
-        }     
-
-        private void SetMovmentAP()
-        {
-            _foward.GetComponentInChildren<TMP_Text>().text = _movement.MovementAP.ToString();
-            _backward.GetComponentInChildren<TMP_Text>().text = _movement.MovementAP.ToString();
-        }
+            _playerSpawner = playerSpawner;
+        }                              
 
         public void LoadPanelOrInitNew()
         {
@@ -134,6 +128,30 @@ namespace Assets.Scripts.Player
         public void ResetWaitButton()
             => _wait.interactable = true;
 
+        public void Activate()
+        {
+            foreach (var skill in _skills)
+                skill.Activate();
+
+            _wait.interactable = true;
+        }
+
+        public void Disactivate()
+        {
+            foreach (var skill in _skills)
+                skill.Disactivate();
+
+            _wait.interactable = false;
+        }
+
+        public void SetMovmentAP(float value)
+        {
+            _movementAP += value;
+            if (_movementAP < 0) _movementAP = 0;
+            _foward.GetComponentInChildren<TMP_Text>().text = _movementAP.ToString();
+            _backward.GetComponentInChildren<TMP_Text>().text = _movementAP.ToString();
+        }
+
         private void CheckBattleStatus(bool isInBattle)
             => _isInBattle = isInBattle;        
 
@@ -145,21 +163,11 @@ namespace Assets.Scripts.Player
                 _skills[i].SkillButtonPressed += ChooseSkill;
                 _player.AreaChanged += _skills[i].ChangeOnArea;
                 _playerSkills.Add(_skills[i]);
-                Debug.Log(_playerSkillDatas[i]);
-            }
-        }
 
-        private Transform GetSkillPosition()
-        {
-            foreach (var container in _skillSlots)
-            {
-                if (container.GetComponentInChildren<SkillView>() == null)
-                {
-                    _skillPosition = container.transform;
-                }
+                if (_playerSkillDatas[i].PartType == PartType.Legs)
+                    SetMovmentAP(_playerSkillDatas[i].EffectValue);
             }
-            return _skillPosition;
-        }
+        }               
 
         private void LoadSkillPanel()
         {
@@ -182,9 +190,20 @@ namespace Assets.Scripts.Player
                 _playerSkillDatas.Add(data.SkillData);
         }
 
+        private Transform GetSkillPosition()
+        {
+            foreach (var container in _skillSlots)
+            {
+                if (container.GetComponentInChildren<SkillView>() == null)
+                {
+                    _skillPosition = container.transform;
+                }
+            }
+            return _skillPosition;
+        }
+
         private void OnWaitButton()
         {            
-            _attackPanel.Attack();
             _wait.interactable = false;
             RoundEnded?.Invoke();
         }        
@@ -193,10 +212,10 @@ namespace Assets.Scripts.Player
         {
             if (_movement.IsMoving == true) return;
 
-            if (_movement.MovementAP <= _playerSpeed.CurrentSpeed)
+            if (_movementAP <= _playerSpeed.CurrentSpeed)
             {
                 _movement.MoveRight();
-                _playerSpeed.SpentAP(_movement.MovementAP);
+                _playerSpeed.SpentAP(_movementAP);
             }
             else
                 _playerHud.Warning.Enable(_playerHud.Warning.APWarning);
@@ -206,10 +225,10 @@ namespace Assets.Scripts.Player
         {
             if (_movement.IsMoving == true) return;
 
-            if (_movement.MovementAP <= _playerSpeed.CurrentSpeed)
+            if (_movementAP <= _playerSpeed.CurrentSpeed)
             {
                 _movement.MoveLeft();
-                _playerSpeed.SpentAP(_movement.MovementAP);
+                _playerSpeed.SpentAP(_movementAP);
             }
             else
                 _playerHud.Warning.Enable(_playerHud.Warning.APWarning);
@@ -223,9 +242,8 @@ namespace Assets.Scripts.Player
             if (skillView.RequiredAP <= _playerSpeed.CurrentSpeed)
             {
                 _playerSpeed.SpentAP(skillView.RequiredAP);
-                _attackPanel.PrepareSkills(skillView);
+                _attackPanel.ApplySkill(skillView);
                 skillView.DecreaseCooldown();
-                //skillView.SkillButtonPressed -= ChooseSkill;
             }
             else
             {
@@ -237,7 +255,6 @@ namespace Assets.Scripts.Player
         private void OnEvent(SkillView skillView)
         {
             SkillChoosed?.Invoke(skillView);
-            //skillView.SkillButtonPressed -= ChooseSkill; ansigne in events
         }      
 
         public void Save(PlayerProgress progress)

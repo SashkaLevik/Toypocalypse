@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2936af2b9100be74ebcfd047c2cd7877, type: 3}
   m_Name: LuckyKeyChain
   m_EditorClassIdentifier: 
+  Prefab: {fileID: 5377607290993938628, guid: c2599a9e8bdb29a48b54edf9340847cc, type: 3}
   RuName: "\u0421\u0447\u0430\u0441\u0442\u043B\u0438\u0432\u044B\u0439 \u0431\u0440\u0435\u043B\u043E\u043A"
   EnName: Lucky keychain
   RuDescription: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442
@@ -20,6 +21,6 @@ MonoBehaviour:
   EnDescription: Increases the amount of dropped material
   Price: 5
   AppliedValue: 0
-  Icon: {fileID: 21300000, guid: ee1f26da46cb1e24382fe0305a8d539f, type: 3}
-  Material: {fileID: 3560572913167305854, guid: 7359ea77605d51644aaa7f18ddd517e4, type: 3}
-  ArtifactType: 0
+  Icon: {fileID: 21300000, guid: 2a857f1baf392614f99f80f79a422789, type: 3}
+  Material: {fileID: 4716325762324565998, guid: caa8bd3f9ca6ef34a9d000012c81b550, type: 3}
+  ArtifactType: 2

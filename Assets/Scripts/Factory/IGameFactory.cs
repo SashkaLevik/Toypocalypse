@@ -16,7 +16,7 @@ namespace Assets.Scripts.Factory
         GameObject CreateBattleHud();
         GameObject CreateSkillPanel();
         GameObject CreateBattleSystem();
-
+        GameObject CreateArtifactsWatcher();
         List<ISaveProgress> ProgressWriters { get; }
         List<ILoadProgress> ProgressReaders { get; }
     }

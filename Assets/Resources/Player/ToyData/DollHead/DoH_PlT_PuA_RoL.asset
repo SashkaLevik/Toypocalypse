@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: DoH_PlT_PuA_RoL
   m_EditorClassIdentifier: 
   SpawnPosition: {x: -4.4, y: -0.7, z: 0}
-  toyImage: {fileID: -798277574, guid: 50905ebe8497cbd4d85c932def8bb376, type: 3}
-  Prefab: {fileID: 8634518628380221811, guid: 4d1aef5da4acba146a365e991579180b, type: 3}
+  toyImage: {fileID: 21300000, guid: 94c2797f4533cdf4396a9c7962514159, type: 3}
+  Prefab: {fileID: 8634518628380221811, guid: 624a933b5c3b32f4e9182f02bbba4b54, type: 3}
   Parts:
   - {fileID: 11400000, guid: 0ce086389d737d1409c1b13c2abbdb44, type: 2}
   - {fileID: 11400000, guid: e7c209560e2008f48abdc870fe9b8824, type: 2}
-  - {fileID: 11400000, guid: 874970cc4805cf3409ea22e1299375fb, type: 2}
+  - {fileID: 11400000, guid: e5ba8b798c511c44a930f39ed241baa1, type: 2}
   - {fileID: 11400000, guid: b5f6c4002f3f172478e8fc82df93b736, type: 2}

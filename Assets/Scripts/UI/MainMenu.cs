@@ -49,6 +49,7 @@ namespace Assets.Scripts.UI
         private float _maxHP;
         private float _currentHP;
         private float _maxSpeed;
+        private int _minGumAmount = 10;
 
         private void Awake()
         {
@@ -87,8 +88,8 @@ namespace Assets.Scripts.UI
 
         public void ActivateFirstMinion(Button button)
         {
-            _activeMinions.Add(_minions[3]);
-            _minions.Remove(_minions[3]);
+            _activeMinions.Add(_minions[2]);
+            _minions.Remove(_minions[2]);
             button.interactable = false;
             _garage.ShowActiveMinions(_activeMinions);
         }        
@@ -143,8 +144,13 @@ namespace Assets.Scripts.UI
                     if (skill != null)
                         skill.ResetSkill();
                 }
+
+                if (progress.PlayerStats.Bubblegum < _minGumAmount)
+                    progress.PlayerStats.Bubblegum = _minGumAmount;
+
+                progress.PlayerStats.Potions.Clear();
+                progress.PlayerStats.Artifacts.Clear();
                 progress.WorldData.Stage = 1;
-                Debug.Log("SaveMenu");
             }
             else
             {

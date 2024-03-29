@@ -5,7 +5,6 @@ using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Player;
 using Assets.Scripts.SaveLoad;
 using Assets.Scripts.UI;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -14,6 +13,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
 {
     public class BattleSystem : MonoBehaviour, ISaveProgress
     {
+        [SerializeField] private BattleTutorial _battleTutorial;
         [SerializeField] private PlayerSpawnPoint _playerSpawner;
         [SerializeField] private EnemySpawner _enemySpawner;
         [SerializeField] private StagePrizeCalculator _prizeCalculator;
@@ -56,17 +56,20 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _playerMovement = _player.GetComponent<PlayerMovement>();
             _skillPanel = _player.SkillPanel;
             _playerSpeed = _player.GetComponent<PlayerSpeed>();
+            _skillPanel.RoundEnded += EndRound;
             _enemySpawner.EnemySpawned += GetEnemyStats;
             _routMap.StageButtonPressed += EnterStage;
             _routMap.EventEntered += SetEvent;
             _completeStage.onClick.AddListener(CompleteStage);
             _artifactsContainer = _skillPanel.GetComponent<ArtifactsContainer>();
+            _enemySpawner.EnemySpawned += _battleTutorial.OpenTutorial;
             OpenNextStage();
         }        
 
         private void OnDestroy()
         {
-            _enemySpawner.EnemySpawned -= GetEnemyStats;            
+            _enemySpawner.EnemySpawned -= GetEnemyStats;
+            _enemySpawner.EnemySpawned -= _battleTutorial.OpenTutorial;
             _completeStage.onClick.RemoveListener(CompleteStage);
         }
 
@@ -87,15 +90,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
             //_enemy.AnimationEnded -= PlayerTurn;
             //_player.AnimationEnded -= _enemyAI.Attack;
             //if (_currentEvent != null) _currentEvent.EventCompleted -= SaveGame;
-        }
-
-        private void OnPlayerDie()
-        {
-            _dieWindow.SetActive(true);
-            _playerProgress.IsPlayerCreated = false;
-            _playerHealth.Died -= OnPlayerDie;
-            _saveLoadService.SaveProgress();
-        }
+        }        
 
         private void SetEvent(RoutEvent routEvent)
         {
@@ -126,6 +121,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _prizeCalculator.DisableBox();
             _winWindow.SetActive(false);
             _saveLoadService.SaveProgress();
+            //OpenNextStage();
             if (_stageNumber > _maxStages) _winLvlWindow.SetActive(true);
         }
 
@@ -148,14 +144,16 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _skillPanel.GetComponentInChildren<MinionSlot>().InitEnemy(_enemy);
             _enemyAI = _enemy.GetComponent<EnemyAI>();
             _enemyHealth = _enemy.GetComponent<EnemyHealth>();
-            _player.AnimationEnded += _enemyAI.Attack;
-            _enemy.AnimationEnded += PlayerTurn;
+            _enemyAI.SkillPlayed += PlayerTurn;
             _enemyHealth.Died += OnEnemyDie;
-        }            
+        }
 
         private void PlayerTurn()
+            => _skillPanel.Activate();
+
+        private void EndRound()
         {
-            _enemyAI.PrepareSkills();
+            _enemyAI.EndTurn();
             _skillPanel.ResetCooldown();
             _skillPanel.ResetWaitButton();
             _playerSpeed.ResetAP();
@@ -163,12 +161,26 @@ namespace Assets.Scripts.GameEnvironment.Battle
 
         private void OnEnemyDie()
         {
-            _player.AnimationEnded -= _enemyAI.Attack;
             _winWindow.SetActive(true);
             _prizeCalculator.GetBox();
             _skillPanel.ResetCooldown();
             _skillPanel.ResetWaitButton();
             _playerSpeed.ResetAP();
+        }
+
+        private void OnPlayerDie()
+        {
+            _dieWindow.SetActive(true);
+            _playerProgress.IsPlayerCreated = false;            
+
+            foreach (var skill in _playerProgress.PlayerSkills)
+            {
+                if (skill != null)
+                    skill.ResetSkill();
+            }            
+
+            _playerHealth.Died -= OnPlayerDie;
+            _saveLoadService.SaveProgress();
         }
 
         public void Save(PlayerProgress progress)

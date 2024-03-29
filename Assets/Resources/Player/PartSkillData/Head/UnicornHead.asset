@@ -12,16 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: UnicornHead
   m_EditorClassIdentifier: 
-  Icon: {fileID: -1901019991, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
+  Icon: {fileID: -31645244, guid: e477473885244d44da782a219590c6d5, type: 3}
   RuDescription: "\u0410\u0442\u0430\u043A\u0430 \u0440\u043E\u0433\u043E\u043C"
   EnDescription: Horne attack
-  DefaultDamage: 4
-  Damage: 4
+  EffectValue: 0
+  DefaultEffectValue: 0
+  DefaultDamage: 3
+  Damage: 3
   DefaultDefence: 0
   Defence: 0
-  DefaultCooldown: 4
-  Cooldown: 4
-  RequiredAP: 3
+  DefaultCooldown: 1
+  Cooldown: 1
+  RequiredAP: 1
   StunChance: 0
+  PartType: 0
   SkillType: 0
   AttackType: 0

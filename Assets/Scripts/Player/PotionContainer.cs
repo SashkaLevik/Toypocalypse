@@ -11,7 +11,6 @@ namespace Assets.Scripts.Player
     public class PotionContainer : MonoBehaviour, ISaveProgress
     {
         [SerializeField] private List<RectTransform> _potionSlots;
-        [SerializeField] private Potion _defaultPotion;
 
         private Transform _position;
         private Toy _player;
@@ -36,13 +35,14 @@ namespace Assets.Scripts.Player
             return false;
         }
 
-        public void AddPotion(Potion potion)
+        public void AddPotion(PotionData potion)
         {
-            _potions.Add(potion.Data);
+            _potions.Add(potion);
 
-            potion.transform.position = GetPosition().position;
-            potion.transform.SetParent(GetPosition());
-            potion.Used += RemovePotion;
+            _potion = Instantiate(potion.Prefab, GetPosition());
+            _potion.InitPlayer(_player);
+            _potion.Activate();
+            _potion.Used += RemovePotion;            
         }        
 
         private Transform GetPosition()
@@ -63,8 +63,7 @@ namespace Assets.Scripts.Player
             {
                 for (int i = 0; i < _potions.Count; i++)
                 {
-                    _defaultPotion.Init(_potions[i]);
-                    _potion = Instantiate(_defaultPotion, _potionSlots[i]);
+                    _potion = Instantiate(_potions[i].Prefab, GetPosition());
                     _potion.InitPlayer(_player);
                     _potion.Activate();
                     _potion.Used += RemovePotion;

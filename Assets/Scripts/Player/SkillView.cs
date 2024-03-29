@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Data.StaticData;
+using Assets.Scripts.GameEnvironment.Battle;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -34,7 +35,9 @@ namespace Assets.Scripts.Player
         public SkillData SkillData => _skillData;
         public Button SkillButton => _skillButton;
 
-        public event UnityAction<SkillView> SkillButtonPressed;                   
+        public event UnityAction<SkillView> SkillButtonPressed;
+        public event UnityAction<float> DamageChanged;
+        public event UnityAction<float> DefenceChanged;
 
         private void OnEnable()
             => _skillButton.onClick.AddListener(OnButtonPress);
@@ -61,51 +64,63 @@ namespace Assets.Scripts.Player
             {
                 _defence = _skillData.Defence;
                 _defaultDefence = _skillData.Defence;
+                DefenceChanged?.Invoke(_defence);
                 UpdateParameters(_skillData, _defence);                
             }            
             else if (_skillData.SkillType == SkillType.Attack)
             {
                 _damage = _skillData.Damage;
                 _defaultDamage = _skillData.Damage;
+                DamageChanged?.Invoke(_damage);
                 UpdateParameters(_skillData, _damage);
             }
 
             UpdateCooldown();                                             
         }       
 
-        public void ChangeOnArea(AreaType areaType)
-        {
-            if (areaType == AreaType.Attack)
+        public void ChangeOnArea(Area area)
+        {            
+            if (area.AreaType == AreaType.Attack)
             {                
                 if (_skillData.SkillType == SkillType.Attack)
                 {
-                    _damage += 2;
+                    _damage += area.IncreasedValue;
                     _damageText.color = Color.green;
                     UpdateBattleValue(_damage);
                 }
                 else if (_skillData.SkillType == SkillType.Defence)
                 {
-                    _defence -= 1;
-                    _damageText.color = Color.red;
+                    _defence -= area.DecreasedValue;
+
+                    if (_defence < _defaultDefence)
+                        _damageText.color = Color.red;
+                    else
+                        _damageText.color = Color.white;
+
                     UpdateBattleValue(_defence);
                 }
             }
-            else if (areaType == AreaType.Defence)
+            else if (area.AreaType == AreaType.Defence)
             {
                 if (_skillData.SkillType == SkillType.Defence)
                 {
-                    _defence += 2;
+                    _defence += area.IncreasedValue;
                     _damageText.color = Color.green;
                     UpdateBattleValue(_defence);
                 }
                 else if (_skillData.SkillType == SkillType.Attack)
                 {
-                    _damage -= 1;
-                    _damageText.color = Color.red;
+                    _damage -= area.DecreasedValue;
+
+                    if (_damage < _defaultDamage)
+                        _damageText.color = Color.red;
+                    else
+                        _damageText.color = Color.white;
+
                     UpdateBattleValue(_damage);
                 }
             }
-            else if (areaType == AreaType.Common)
+            else if (area.AreaType == AreaType.Common)
             {
                 if (_skillData.SkillType == SkillType.Defence)
                 {
@@ -119,153 +134,16 @@ namespace Assets.Scripts.Player
                 }
                 _damageText.color = Color.white;
             }
-        }
+        }                
 
-        public void IncreaseDamage()
+        public void Activate()
         {
-
+            if(_usePerTurn != 0)
+                _skillButton.interactable = true;
         }
 
-        public void IncreaseDefence()
-        {
-
-        }
-
-        public void DecreaseDamage()
-        {
-            _damage--;
-        }
-
-        public void DecreaseDefence()
-        {
-            _defence--;
-        }
-
-        public void ShowOnLeftButton(AreaType areaType)
-        {            
-            if (areaType == AreaType.Common)
-            {
-                float damage = _defaultDamage;
-                float defence = _defaultDefence;
-
-                if (_skillData.SkillType == SkillType.Attack)
-                {
-                    _damageText.color = Color.red;
-                    _damageText.text = (damage - 1).ToString();
-                }
-                else if (_skillData.SkillType == SkillType.Defence)
-                {
-                    _damageText.color = Color.green;
-                    _damageText.text = (defence + 2).ToString();
-                }
-            }
-            else if (areaType == AreaType.Attack)
-            {
-                if (_skillData.SkillType == SkillType.Attack)
-                {
-                    _damageText.color = Color.white;
-                    _damageText.text = _defaultDamage.ToString();
-                }
-                else if (_skillData.SkillType == SkillType.Defence)
-                {
-                    _damageText.color = Color.white;
-                    _damageText.text = _defaultDefence.ToString();
-                }
-            }
-        }
-
-        public void ShowOnRightButton(AreaType areaType)
-        {
-            if (areaType == AreaType.Common)
-            {
-                float damage = _defaultDamage;
-                float defence = _defaultDefence;
-
-                if (_skillData.SkillType == SkillType.Attack)
-                {
-                    _damageText.color = Color.green;
-                    _damageText.text = (damage + 2).ToString();
-                }
-                else if (_skillData.SkillType == SkillType.Defence)
-                {
-                    _damageText.color = Color.red;
-                    _damageText.text = (defence - 1).ToString();
-                }
-            }
-            else if (areaType == AreaType.Defence)
-            {
-                if (_skillData.SkillType == SkillType.Attack)
-                {
-                    _damageText.color = Color.white;
-                    _damageText.text = _defaultDamage.ToString();
-                }
-                else if (_skillData.SkillType == SkillType.Defence)
-                {
-                    _damageText.color = Color.white;
-                    _damageText.text = _defaultDefence.ToString();
-                }
-            }
-        }
-
-        public void SetDefaultLeft(AreaType areaType)
-        {
-            if (areaType == AreaType.Common)
-            {                
-                if (_skillData.SkillType == SkillType.Attack)
-                {
-                    _damageText.color = Color.white;
-                    _damageText.text = _defaultDamage.ToString();
-                }
-                else if (_skillData.SkillType == SkillType.Defence)
-                {
-                    _damageText.color = Color.white;
-                    _damageText.text = _defaultDefence.ToString();
-                }
-            }
-            else if (areaType == AreaType.Attack)
-            {                
-                if (_skillData.SkillType == SkillType.Attack)
-                {
-                    _damageText.color = Color.green;
-                    _damageText.text = (_damage).ToString();
-                }
-                else if (_skillData.SkillType == SkillType.Defence)
-                {
-                    _damageText.color = Color.red;
-                    _damageText.text = (_defence).ToString();
-                }
-            }            
-        }
-
-        public void SetDefaultRight(AreaType areaType)
-        {
-            if (areaType == AreaType.Common)
-            {
-                if (_skillData.SkillType == SkillType.Attack)
-                {
-                    _damageText.color = Color.white;
-                    _damageText.text = _defaultDamage.ToString();
-                }
-                else if (_skillData.SkillType == SkillType.Defence)
-                {
-                    _damageText.color = Color.white;
-                    _damageText.text = _defaultDefence.ToString();
-                }
-            }
-            else if (areaType == AreaType.Defence)
-            {                
-                if (_skillData.SkillType == SkillType.Attack)
-                {
-                    _damageText.color = Color.red;
-                    _damageText.text = (_damage).ToString();
-                }
-                else if (_skillData.SkillType == SkillType.Defence)
-                {
-                    _damageText.color = Color.green;
-                    _damageText.text = (_defence).ToString();
-                }
-            }
-        }
+        public void Disactivate()
+            => _skillButton.interactable = false;
 
         public void DecreaseCooldown()
         {
@@ -302,7 +180,7 @@ namespace Assets.Scripts.Player
         public void SetToDefault()
             => _skillData.ResetSkill();
 
-        private void UpdateBattleValue(float value)
+        public void UpdateBattleValue(float value)
             => _damageText.text = value.ToString();        
 
         public void UpdateParameters(SkillData skillData, float value)

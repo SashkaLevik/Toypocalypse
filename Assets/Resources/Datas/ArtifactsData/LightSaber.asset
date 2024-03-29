@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2936af2b9100be74ebcfd047c2cd7877, type: 3}
+  m_Name: LightSaber
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 5377607290993938628, guid: 0e0206b37ba554446ae05cb1d3cb7591, type: 3}
+  RuName: 
+  EnName: 
+  RuDescription: 
+  EnDescription: 
+  Price: 0
+  AppliedValue: 0
+  Icon: {fileID: 0}
+  Material: {fileID: 0}
+  ArtifactType: 0

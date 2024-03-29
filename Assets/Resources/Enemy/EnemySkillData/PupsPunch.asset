@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: PupsPunch
   m_EditorClassIdentifier: 
-  Icon: {fileID: -141908469, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
+  Icon: {fileID: -31645244, guid: e477473885244d44da782a219590c6d5, type: 3}
+  EffectIcon: {fileID: 20310043, guid: 220e61c0d923b6045ac5b9b00a5d8bf8, type: 3}
   RuDescription: "\u041E\u0431\u044B\u0447\u043D\u044B\u0439 \u0443\u0434\u0430\u0440"
   EnDescription: Common punch
-  NegativeValue: 0
+  RuEffectDescription: 
+  EnEffectDescription: 
+  EffectValue: 0
+  DefaultEffectValue: 0
   DefaultDamage: 0
   Damage: 3
   DefaultDefence: 0
@@ -24,5 +28,6 @@ MonoBehaviour:
   Cooldown: 3
   RequiredAP: 2
   StunChance: 0
+  PartType: 2
   SkillType: 0
   AttackType: 0

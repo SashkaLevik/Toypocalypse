@@ -48,7 +48,7 @@ namespace Assets.Scripts.Enemyes
         public void ResetDefence(Area area)
         {
             if (_isDefending)
-                Defence = area.AreaBattleValue;
+                Defence = area.IncreasedValue;
             else
                 Defence = 0;
         }       
@@ -62,8 +62,8 @@ namespace Assets.Scripts.Enemyes
         {
             yield return new WaitForSeconds(0.2f);
             _enemy.Animator.PlayHit();
-            yield return new WaitForSeconds(0.8f);
-            _enemy.Animator.PlayHit();
+            //yield return new WaitForSeconds(0.8f);
+            //_enemy.Animator.PlayHit();
         }
 
         private IEnumerator OnDie()

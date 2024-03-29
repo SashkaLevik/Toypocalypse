@@ -1029,7 +1029,7 @@ MonoBehaviour:
   _allPartsChoosed: {fileID: 5191515938303753034}
   _identicalType: {fileID: 5390380629986613756}
   _noMoney: {fileID: 6259953336314983081}
-  _fullPotions: {fileID: 6759319797428956474}
+  _fullSlots: {fileID: 6759319797428956474}
 --- !u!82 &9075351412468773349
 AudioSource:
   m_ObjectHideFlags: 0

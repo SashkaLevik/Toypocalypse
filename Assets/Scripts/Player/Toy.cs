@@ -1,11 +1,11 @@
 ﻿using Assets.Scripts.Data;
 using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.Enemyes;
+using Assets.Scripts.GameEnvironment.Battle;
 using Assets.Scripts.GameEnvironment.RoutEvents;
 using Assets.Scripts.GameEnvironment.TreeHouse;
 using Assets.Scripts.SaveLoad;
 using Assets.Scripts.UI;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,8 +27,8 @@ namespace Assets.Scripts.Player
         private PlayerHud _playerHud;
         private List<Minion> _activeMinions;
         private AnimatorController _animator;
-        private AreaType _currentArea;
-        private AreaType _previousArea;
+        private Area _currentArea;
+        private Area _previousArea;
         private List<Part> _inactiveParts;
         private RoutEvent _currentEvent;
 
@@ -39,17 +39,17 @@ namespace Assets.Scripts.Player
         public List<PartData> Parts => _parts;
         public List<Minion> Minions => _activeMinions;
         public AnimatorController Animator => _animator;
-        public AreaType CurrentArea => _currentArea;
-        public AreaType PreviouseArea => _previousArea;
+        public Area CurrentArea => _currentArea;
+        public Area PreviouseArea => _previousArea;
 
         public event UnityAction AnimationEnded;
-        public event UnityAction<AreaType> AreaChanged;
+        public event UnityAction<Area> AreaChanged;
 
         private void Start()
         {
             _skillPanel.LoadPanelOrInitNew();
             _animator = GetComponent<AnimatorController>();
-            _currentArea = AreaType.Common;
+            //_currentArea.AreaType = AreaType.Common;
             _routMap.EventEntered += OnEventEnter;
         }       
 
@@ -76,21 +76,12 @@ namespace Assets.Scripts.Player
         public void InitEnemy(BaseEnemy enemy)
             => _enemy = enemy;                
 
-        public void ChangeArea(AreaType areaType)
+        public void ChangeArea(Area area)
         {
             _previousArea = _currentArea;
-            _currentArea = areaType;
-            AreaChanged?.Invoke(areaType);            
-        }                    
-
-        public void Attack()
-        {
-            if (this.gameObject != null)
-            {
-                _animator.PlayAttack();
-                StartCoroutine(EndTurn());
-            }
-        }        
+            _currentArea = area;
+            AreaChanged?.Invoke(area);            
+        }                                  
 
         private IEnumerator EndTurn()
         {

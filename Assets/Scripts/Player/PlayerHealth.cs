@@ -48,8 +48,8 @@ namespace Assets.Scripts.Player
         {
             yield return new WaitForSeconds(0.2f);
             _player.Animator.PlayHit();
-            yield return new WaitForSeconds(0.8f);
-            _player.Animator.PlayHit();
+            //yield return new WaitForSeconds(0.8f);
+            //_player.Animator.PlayHit();
         }
 
         private IEnumerator OnDie()

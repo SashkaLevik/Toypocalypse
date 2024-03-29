@@ -10,15 +10,14 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
 {
     public class ArtifactShop : RoutEvent
     {
-        [SerializeField] private Image _materialIcon;
         [SerializeField] private TMP_Text _priceText;
         [SerializeField] private List<ArtifactData> _artifactDatas;
         [SerializeField] private List<RectTransform> _slots;
         [SerializeField] private List<BuyButton> _buyButtons;
-        [SerializeField] private Artifact _artifactView;
+        [SerializeField] private List<Image> _materialImages;
 
         private Artifact _artifact;
-        private Artifact _choosedArtifact;
+        private ArtifactData _choosedArtifact;
         private ArtifactsContainer _artifactContainer;
 
         protected override void Start()
@@ -42,43 +41,38 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
                 button.GetComponent<Button>().onClick.RemoveListener(() => BuyArtifact(button));
         }
 
+        private void InstantiateArtifacts()
+        {
+            for (int i = 0; i < _slots.Count; i++)
+            {
+                Instantiate(_artifactDatas[i].Prefab, _slots[i]);
+                _buyButtons[i].GetArtifact(_artifactDatas[i]);
+                _priceText = _buyButtons[i].GetComponentInChildren<TMP_Text>();
+                _priceText.text = _artifactDatas[i].Price.ToString();
+                _materialImages[i].sprite = _artifactDatas[i].Material.Data.Icon;
+            }
+        }
+
         private void BuyArtifact(BuyButton button)
         {
             _choosedArtifact = button.Artifact;
 
             if (_artifactContainer.CanAddArtifact() == false)
             {
-                _warning.Enable(_warning.FullPotions);
+                _warning.Enable(_warning.FullSlots);
+                Debug.Log("Cant Add");
                 return;
             }
 
-            //if (_playerMoney.GetValue(_choosedArtifact.Data.Material.Data.Type) >= _choosedArtifact.Data.Price)
-            //{
-            //    _playerMoney.RemoveMaterialByType(_choosedArtifact.Data.Material.Data.Type, _choosedArtifact.Data.Price);
-            //    _choosedArtifact.Activate();
-            //    _artifactContainer.AddPotion(_choosedArtifact);
-            //    button.GetComponent<Button>().interactable = false;
-            //}
-            //else
-            //    _warning.Enable(_warning.NoMoney);
-        }
-
-        private void InstantiateArtifacts()
-        {
-            //int randomPotion = Random.Range(0, _potions.Count);
-
-            for (int i = 0; i < _slots.Count; i++)
+            if (_playerMoney.GetValue(_choosedArtifact.Material.Data.Type) >= _choosedArtifact.Price)
             {
-                _artifactView.Init(_artifactDatas[i]);
-                _artifact = Instantiate(_artifactView, _slots[i]);
-                _buyButtons[i].GetArtifact(_artifact);
-                _priceText = _slots[i].GetComponentInChildren<TMP_Text>();
-                _priceText.text = _artifact.Data.Price.ToString();
-                _materialIcon = _slots[i].GetComponentInChildren<Image>();
-                _materialIcon.sprite = _artifact.Data.Material.Data.Icon;
-                _artifact.InitPlayer(_player);
+                _playerMoney.RemoveMaterialByType(_choosedArtifact.Material.Data.Type, _choosedArtifact.Price);
+                _artifactContainer.AddArtifact(_choosedArtifact);
+                button.GetComponent<Button>().interactable = false;
             }
-        }
+            else
+                _warning.Enable(_warning.NoMoney);
+        }        
 
         protected override void CloseEvent()
         {

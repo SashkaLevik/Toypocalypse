@@ -17,10 +17,8 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         [SerializeField] private List<RectTransform> _slots;
         [SerializeField] private List<BuyButton> _buyButtons;
         [SerializeField] private List<Image> _materialImages;
-        [SerializeField] private Potion _defaultPotion;
        
-        private Potion _potion;
-        private Potion _choosedPotion;
+        private PotionData _choosedPotion;
         private PotionContainer _potionContainer;
 
         protected override void Start()
@@ -50,14 +48,13 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
 
             if (_potionContainer.CanAddPotion() == false)
             {
-                _warning.Enable(_warning.FullPotions);
+                _warning.Enable(_warning.FullSlots);
                 return;
             }
 
-            if (_playerMoney.GetValue(_choosedPotion.Data.Material.Data.Type) >= _choosedPotion.Data.Price)
+            if (_playerMoney.GetValue(_choosedPotion.Material.Data.Type) >= _choosedPotion.Price)
             {
-                _playerMoney.RemoveMaterialByType(_choosedPotion.Data.Material.Data.Type, _choosedPotion.Data.Price);
-                _choosedPotion.Activate();
+                _playerMoney.RemoveMaterialByType(_choosedPotion.Material.Data.Type, _choosedPotion.Price);
                 _potionContainer.AddPotion(_choosedPotion);
                 button.GetComponent<Button>().interactable = false;
             }
@@ -67,18 +64,14 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
 
         private void InstantiatePotions()
         {
-            //int randomPotion = Random.Range(0, _potions.Count);
-
             for (int i = 0; i < _slots.Count; i++)
             {
-                _defaultPotion.Init(_potionDatas[i]);
-                _potion = Instantiate(_defaultPotion, _slots[i]);
-                _buyButtons[i].GetPotion(_potion);
-                _priceText = _slots[i].GetComponentInChildren<TMP_Text>();
-                _priceText.text = _potion.Data.Price.ToString();
+                Instantiate(_potionDatas[i].Prefab, _slots[i]);
+                _buyButtons[i].GetPotion(_potionDatas[i]);
+                _priceText = _buyButtons[i].GetComponentInChildren<TMP_Text>();
+                _priceText.text = _potionDatas[i].Price.ToString();
                 _materialIcon = _materialImages[i];
-                _materialIcon.sprite = _potion.Data.Material.Data.Icon;
-                _potion.InitPlayer(_player);
+                _materialIcon.sprite = _potionDatas[i].Material.Data.Icon;                
             }
         }
 

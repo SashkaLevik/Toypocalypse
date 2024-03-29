@@ -23,7 +23,13 @@ namespace Assets.Scripts.Player
         public event UnityAction<Minion> MinionButtonPressed;
 
         public void Appear()
-            => Instantiate(_appear); 
+            => Instantiate(_appear);
+
+        public void Activate()
+            => _minionButton.interactable = true;
+
+        public void Disactivate()
+            => _minionButton.interactable = false;
 
         public void OnEnter()
         {

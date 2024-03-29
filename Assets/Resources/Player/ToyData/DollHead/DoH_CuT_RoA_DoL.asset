@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DoH_CuT_RoA_DoL
   m_EditorClassIdentifier: 
   SpawnPosition: {x: -4.4, y: -0.7, z: 0}
-  toyImage: {fileID: -364754664, guid: 50905ebe8497cbd4d85c932def8bb376, type: 3}
-  Prefab: {fileID: 8634518628380221811, guid: 4ed696c73a679eb4c8cef4de8391ff40, type: 3}
+  toyImage: {fileID: 21300000, guid: f91f774f5ddd7e4419cc610d3ae515b1, type: 3}
+  Prefab: {fileID: 8634518628380221811, guid: 929244b89b27bff42a2447c2d332e74f, type: 3}
   Parts:
   - {fileID: 11400000, guid: f34b67ce001c4834aa20ecf728942dc2, type: 2}
   - {fileID: 11400000, guid: e7c209560e2008f48abdc870fe9b8824, type: 2}

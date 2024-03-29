@@ -91,6 +91,7 @@ namespace Assets.Scripts.UI
             foreach (var button in container.Buttons)
             {
                 button.interactable = true;
+                button.onClick.AddListener(()=>Disable(button));
                 button.onClick.AddListener(() => DisableButtons(container.Buttons));
             }
         }
@@ -140,6 +141,9 @@ namespace Assets.Scripts.UI
             {
                 button.interactable = false;
             }
-        }        
+        }
+
+        private void Disable(Button button)
+            => button.interactable = false;
     }
 }

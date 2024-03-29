@@ -23,6 +23,12 @@ namespace Assets.Scripts.Factory
            // _toyDataService = toyDataService;
         }
 
+        public GameObject CreateArtifactsWatcher()
+        {
+            GameObject artifactWatcher = _assetProvider.Instantiate(AssetPath.ArtifactWatcher);
+            return artifactWatcher;
+        }
+
         public GameObject CreteMenuHud()
         {
             GameObject menuHud = _assetProvider.Instantiate(AssetPath.MenuHud);

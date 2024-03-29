@@ -7,17 +7,17 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
 {
     public class BuyButton : MonoBehaviour
     {
-        private Potion _potion;
-        private Artifact _artifact;
+        private PotionData _potion;
+        private ArtifactData _artifact;
 
-        public Potion Potion => _potion;
+        public PotionData Potion => _potion;
 
-        public Artifact Artifact => _artifact;
+        public ArtifactData Artifact => _artifact;
 
-        public void GetPotion(Potion potion)
+        public void GetPotion(PotionData potion)
             => _potion = potion;
 
-        public void GetArtifact(Artifact artifact)
+        public void GetArtifact(ArtifactData artifact)
             => _artifact = artifact;
     }
 }

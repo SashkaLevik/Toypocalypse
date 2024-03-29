@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: WormLightning
   m_EditorClassIdentifier: 
-  Icon: {fileID: -317018116, guid: b6b71721e1f932a4184c3fb428c66575, type: 3}
-  RuDescription: 
-  EnDescription: 
+  Icon: {fileID: -31645244, guid: e477473885244d44da782a219590c6d5, type: 3}
+  RuDescription: "\u041C\u043E\u043B\u043D\u0438\u044F"
+  EnDescription: Lightning
   NegativeValue: 0
   DefaultDamage: 0
   Damage: 4
@@ -24,5 +24,6 @@ MonoBehaviour:
   Cooldown: 2
   RequiredAP: 3
   StunChance: 0
+  PartType: 0
   SkillType: 0
   AttackType: 0

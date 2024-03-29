@@ -62,11 +62,13 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             _skillPanel.AddMinion(_choosedMinion);
             _preview.gameObject.SetActive(false);
             _takeMinion.gameObject.SetActive(false);
+            Invoke(nameof(CloseEvent), 1f);
         }
 
         protected override void CloseEvent()
         {
             base.CloseEvent();
+            _currentMinion.MinionButtonPressed -= ChooseMinion;
             _routMap.gameObject.SetActive(true);
             gameObject.SetActive(false);
         }

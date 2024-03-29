@@ -43,6 +43,14 @@ namespace Assets.Scripts.UI
             _playerSpeed = _player.GetComponent<PlayerSpeed>();
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                _settingsWindow.SetActive(true);
+            }
+        }
+
         private void OnEnable()
         {
             _settings.onClick.AddListener(OpenSettings);

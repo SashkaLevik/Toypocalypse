@@ -22,7 +22,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         [SerializeField] private TMP_Text _maxHPAmount;
         [SerializeField] private TMP_Text _maxSpeedAmount;
         [SerializeField] private List<PotionData> _potionDatas;
-        [SerializeField] private Potion _defaultPotion;
         [SerializeField] private int _paymentPrice;
         [SerializeField] private float _healAmount;
         [SerializeField] private float _healthRiseValue;
@@ -30,7 +29,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         [SerializeField] private List<Button> _eventButtons;
         [SerializeField] private RectTransform _slot;
 
-        private Potion _potion;
         private PotionContainer _potionContainer;
 
         protected override void Start()
@@ -56,6 +54,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         private void OnDestroy()
         {
             _maxHP.onClick.RemoveListener(RiseHP);
+            _maxAP.onClick.RemoveListener(RiseAP);
             _heal.onClick.RemoveListener(HealPlayer);
             _getPotion.onClick.RemoveListener(GetRandomPotion);
             _close.onClick.RemoveListener(CloseEvent);
@@ -97,16 +96,12 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         {
             if (_potionContainer.CanAddPotion() == false)
             {
-                _warning.Enable(_warning.FullPotions);
+                _warning.Enable(_warning.FullSlots);
                 return;
             }
 
             int randomPotion = Random.Range(0, _potionDatas.Count);
-            _defaultPotion.Init(_potionDatas[randomPotion]);
-            _potion = Instantiate(_defaultPotion, _slot);
-            _potion.Activate();
-            _potionContainer.AddPotion(_potion);
-            _potion.InitPlayer(_player);
+            _potionContainer.AddPotion(_potionDatas[randomPotion]);                        
             OffButtons();
         }
 

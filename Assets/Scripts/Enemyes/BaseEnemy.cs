@@ -20,7 +20,9 @@ namespace Assets.Scripts.Enemyes
         private AreaType _previousAreaType;
         private Area _currentArea;
         private Area _previousArea;
+        private EnemyHud _enemyHud;
 
+        public EnemyHud EnemyHud => _enemyHud;
         public Toy Player => _player;
         public EnemyData EnemyData => _enemyData;
         public AnimatorController Animator => _animator;
@@ -39,6 +41,9 @@ namespace Assets.Scripts.Enemyes
         public void InitPlayer(Toy player)
             => _player = player;
 
+        public void InitHud(EnemyHud enemyHud)
+            => _enemyHud = enemyHud;
+
         public void ChangeArea(Area area, AreaType areaType)
         {
             _previousArea = _currentArea;
@@ -48,26 +53,17 @@ namespace Assets.Scripts.Enemyes
 
             if (_currentAreaType == AreaType.Attack)
             {
-                _enemyAI.IncreaseDamage(area.AreaBattleValue);
+                _enemyAI.IncreaseDamage(area.IncreasedValue);
             }
             else if (_currentAreaType == AreaType.Defence)
             {
-                _enemyHealth.IncreaseDefence(area.AreaBattleValue);
+                _enemyHealth.IncreaseDefence(area.IncreasedValue);
             }
             else if (_previousAreaType == AreaType.Attack && _currentAreaType == AreaType.Common)
-                _enemyAI.DecreaseDamage(_previousArea.AreaBattleValue);
+                _enemyAI.DecreaseDamage(_previousArea.IncreasedValue);
             else if (_previousAreaType == AreaType.Defence && _currentAreaType == AreaType.Common)
-                _enemyHealth.DecreaseDefence(_previousArea.AreaBattleValue);
-        }
-
-        public void PlayAttack()
-        {
-            if (this.gameObject != null)
-            {
-                _animator.PlayAttack();
-                StartCoroutine(EndTurn());
-            }            
-        }
+                _enemyHealth.DecreaseDefence(_previousArea.IncreasedValue);
+        }        
 
         private IEnumerator EndTurn()
         {

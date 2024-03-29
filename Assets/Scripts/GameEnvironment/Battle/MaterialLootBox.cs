@@ -24,8 +24,9 @@ namespace Assets.Scripts.GameEnvironment.Battle
         private int _plasticine;
         private int _glue;
         private int _screw;
-        private PlayerMoney _playerMoney;      
-       
+        private bool _isLucky;
+        private PlayerMoney _playerMoney;
+
         private void Start()
         {
             _playerMoney = _battleSystem.Player.GetComponent<PlayerMoney>();
@@ -43,29 +44,40 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _battleSystem.StageCompleted -= CloseBox;
         }
 
-        public void CalculatePrize()
+        public void GetLucky()
+            => _isLucky = true;
+
+        private void CalculatePrize()
         {            
-            CalculateOrdinary();
+            GetMaterialValues();
             _gumAmount.text = _gum.ToString();
             _plasticineAmount.text = _plasticine.ToString();
             _glueAmount.text = _glue.ToString();
             _screwAmount.text = _screw.ToString();
         }
 
+        private void GetMaterialValues()
+        {
+            if (_isLucky == false)
+                CalculateOrdinary();
+            else
+                CalculateHigh();
+        }
+
         private void CalculateOrdinary()
         {
             _gum = Random.Range(8, 12);
-            _plasticine = Random.Range(4, 6);
-            _glue = Random.Range(2, 4);
-            _screw = Random.Range(0, 2);
+            _plasticine = Random.Range(4, 7);
+            _glue = Random.Range(2, 5);
+            _screw = Random.Range(0, 3);
         }
 
         private void CalculateHigh()
         {
             _gum = Random.Range(8, 12);
-            _plasticine = Random.Range(6, 8);
-            _glue = Random.Range(4, 6);
-            _screw = Random.Range(2, 4);
+            _plasticine = Random.Range(6, 9);
+            _glue = Random.Range(4, 7);
+            _screw = Random.Range(2, 5);
         }
 
         private void CloseBox()

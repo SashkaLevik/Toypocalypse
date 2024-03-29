@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: RobotArms
   m_EditorClassIdentifier: 
-  Icon: {fileID: -1901019991, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
+  Icon: {fileID: -31645244, guid: e477473885244d44da782a219590c6d5, type: 3}
   RuDescription: "\u0412\u044B\u0441\u0442\u0440\u0435\u043B \u0438\u0437 \u043F\u0443\u0448\u043A\u0438"
   EnDescription: Gun shoot
   NegativeValue: 0
@@ -24,5 +24,6 @@ MonoBehaviour:
   Cooldown: 1
   RequiredAP: 2
   StunChance: 0
+  PartType: 2
   SkillType: 0
   AttackType: 0

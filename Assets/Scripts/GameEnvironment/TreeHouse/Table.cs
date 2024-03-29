@@ -134,6 +134,9 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private void ConstructToy()
         {
             ToyConstructed?.Invoke();
+
+            foreach (var part in _parts)
+                part.GetComponent<Image>().gameObject.SetActive(false);
         }
 
         private void ChoosePart(Part part)

@@ -13,15 +13,17 @@ namespace Assets.Scripts.Enemyes
         private const string HomeLevel = "Enemy/EnemiesSet/SisterRoomArea";
         private const string EnemySpawnTag = "EnemySpawnTag";
 
+        [SerializeField] private EnemyHud _hudPrfefab;
         [SerializeField] private RoutMap _routMap;
         [SerializeField] private GameObject _playerSpawner;
 
-        private GameObject _spawnPoint;
-        public Toy _player;
         private int _stageNumber;
+        private float _endAppearTime = 1.2f;
+        public Toy _player;
+        private GameObject _spawnPoint;
         private List<EnemiesSet> _enemies;
         private BaseEnemy _spawnedEnemy;
-        private float _endAppearTime = 1.2f;
+        private EnemyHud _enemyHud;
 
         public BaseEnemy Enemy => _spawnedEnemy;
 
@@ -60,6 +62,9 @@ namespace Assets.Scripts.Enemyes
             var appear = Instantiate(randomEnemy.EnemyData.Appear);
             _spawnPoint.GetComponent<EnemySpawnPoint>().SetPosition(randomEnemy.EnemyData);
             _spawnedEnemy = Instantiate(randomEnemy, at.transform);
+            _enemyHud = Instantiate(_hudPrfefab);
+            _spawnedEnemy.InitHud(_enemyHud);
+            _enemyHud.Init(_spawnedEnemy);
             _spawnedEnemy.InitPlayer(_player);
             EnemySpawned?.Invoke(_spawnedEnemy);
             yield return new WaitForSeconds(_endAppearTime);

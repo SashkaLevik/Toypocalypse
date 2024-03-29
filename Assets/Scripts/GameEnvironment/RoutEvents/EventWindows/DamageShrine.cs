@@ -33,7 +33,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         protected override void Start()
         {
             base.Start();
-            _walet.EnableButtons();
             _playerMoney.MaterialChoosed += GetPayment;
             _skillPanel.SkillChoosed += PrepareToBuff;
         }
@@ -120,7 +119,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         protected override void CloseEvent()
         {
             base.CloseEvent();
-            _walet.DisableButtons();
             if (_choosedSkill != null) _skillPanel.TakeBack(_choosedSkill);
             _routMap.gameObject.SetActive(true);
             gameObject.SetActive(false);

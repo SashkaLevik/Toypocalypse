@@ -22,12 +22,11 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         protected override void Start()
         {
             base.Start();
-            _walet.EnableButtons();
             _playerMoney.MaterialChoosed += GetPayment;
         }
 
         private void OnEnable()
-            => _close.onClick.AddListener(CloseEvent);
+            => _close.onClick.AddListener(CloseEvent);       
 
         protected override void GetPayment(ConnectingMaterial material)
         {
@@ -77,6 +76,8 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             _playerMoney.RemoveMaterialByType(_currentMaterial.Data.Type, GetPaymentValue(_currentMaterial));
             _currentMaterial = null;
             _materialIcon.gameObject.SetActive(false);
+            _convertingMaterial1.MaterialChoosed -= Convert;
+            _convertingMaterial2.MaterialChoosed -= Convert;
             RemoveMaterials();
         }
 
@@ -92,7 +93,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         protected override void CloseEvent()
         {
             base.CloseEvent();
-            _walet.DisableButtons();
+            _playerMoney.MaterialChoosed -= GetPayment;
             _routMap.gameObject.SetActive(true);
             gameObject.SetActive(false);
         }

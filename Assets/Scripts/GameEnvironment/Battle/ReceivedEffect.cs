@@ -7,40 +7,68 @@ namespace Assets.Scripts.GameEnvironment.Battle
 {
     public class ReceivedEffect : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _effectDescription;
+        [SerializeField] private Image _descriptionImage;
+        [SerializeField] private TMP_Text _description;
+        [SerializeField] private TMP_Text _effectValue;
         [SerializeField] private Image _effectImage;
 
-        private SkillData _skillEffect;
-        public SkillData SkillEffect => _skillEffect;
+        private float _effectDuration;
+        private bool _isActive;
+        private SkillData _skillData;
+
+        public float EffectDuration => _effectDuration;
+        public SkillData SkillData => _skillData;
 
         public void InitData(SkillData skillData)
         {
-            _skillEffect = skillData;
+            _skillData = skillData;
             _effectImage.gameObject.SetActive(true);
-            _effectImage.sprite = skillData.Icon;
+            _effectImage.sprite = skillData.EffectIcon;
+            _effectDuration = _skillData.EffectValue;
+            _effectValue.text = _effectDuration.ToString();
+            _isActive = true;
         }            
+
+        public bool IsActive()
+        {
+            return _isActive;
+        }
+
+        public void ReduceDuration()
+        {
+            _effectDuration -= 1;
+            if (_effectDuration == 0)
+                ResetEffect();
+        }
+
+        public void Stack(SkillData skillData)
+        {
+            _effectDuration += skillData.EffectValue;
+            _effectValue.text = _effectDuration.ToString();
+        }
 
         public void ResetEffect()
         {
+            _isActive = false;
             _effectImage.gameObject.SetActive(false);
-            _skillEffect = null;
+            _skillData = null;
         }
 
         public void OnEnter()
         {
-            _effectDescription.gameObject.SetActive(true);
-            _effectDescription.text = GetLocalizedDescription(_skillEffect);
+            _descriptionImage.gameObject.SetActive(true);
+            _description.text = GetLocalizedDescription(_skillData);
         }
 
         public void OnExit()
-            => _effectDescription.gameObject.SetActive(false);
+            => _descriptionImage.gameObject.SetActive(false);
 
         private string GetLocalizedDescription(SkillData skillData)
         {
             if (Application.systemLanguage == SystemLanguage.Russian)
-                return skillData.RuDescription;
+                return skillData.RuEffectDescription;
             else
-                return skillData.EnDescription;
+                return skillData.EnEffectDescription;
         }
     }
 }

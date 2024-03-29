@@ -14,14 +14,14 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _allPartsChoosed;
         [SerializeField] private TMP_Text _identicalType;
         [SerializeField] private TMP_Text _noMoney;
-        [SerializeField] private TMP_Text _fullPotions;
+        [SerializeField] private TMP_Text _fullSlots;
 
         public TMP_Text NoPartChoosed => _noPartChoosed;
         public TMP_Text NoMaterialChoosed => _noMaterialChoosed;
         public TMP_Text AllPartsChoosed => _allPartsChoosed;
         public TMP_Text SamePartChoosed => _identicalType;
         public TMP_Text NoMoney => _noMoney;
-        public TMP_Text FullPotions => _fullPotions;
+        public TMP_Text FullSlots => _fullSlots;
 
         public void Enable(TMP_Text text)
         {

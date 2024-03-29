@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.GameEnvironment.TreeHouse;
+﻿using Assets.Scripts.GameEnvironment.Items.Artifact;
+using Assets.Scripts.GameEnvironment.TreeHouse;
 using UnityEngine;
 
 namespace Assets.Scripts.Data.StaticData
@@ -6,6 +7,7 @@ namespace Assets.Scripts.Data.StaticData
     [CreateAssetMenu(fileName = "ArtifactData", menuName = "ArtifactData")]
     public class ArtifactData : ScriptableObject
     {
+        public Artifact Prefab;
         public string RuName;
         public string EnName;
         public string RuDescription;

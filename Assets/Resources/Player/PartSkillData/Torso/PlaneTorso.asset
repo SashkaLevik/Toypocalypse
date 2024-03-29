@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: PlaneTorso
   m_EditorClassIdentifier: 
-  Icon: {fileID: -545755102, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
+  Icon: {fileID: -660098578, guid: e477473885244d44da782a219590c6d5, type: 3}
   RuDescription: "\u041F\u043E\u0432\u044B\u0448\u0430\u0435\u0442 \u0437\u0430\u0449\u0438\u0442\u0443"
   EnDescription: Rise defence
+  NegativeValue: 0
   DefaultDamage: 0
   Damage: 0
-  DefaultDefence: 3
-  Defence: 3
-  DefaultCooldown: 3
-  Cooldown: 3
+  DefaultDefence: 4
+  Defence: 4
+  DefaultCooldown: 1
+  Cooldown: 1
   RequiredAP: 2
   StunChance: 0
+  PartType: 1
   SkillType: 1
   AttackType: 0

@@ -67,23 +67,28 @@ namespace Assets.Scripts.States
             GameObject battleHud = _gameFactory.CreateBattleHud();
             GameObject skillPanel = _gameFactory.CreateSkillPanel();
             GameObject battleSystem = _gameFactory.CreateBattleSystem();
-            player.GetComponent<Toy>().Construct(skillPanel.GetComponent<SkillPanel>(), spawnPoint.GetComponent<PlayerSpawnPoint>().RoutMap,
+            GameObject artifactWatcher = _gameFactory.CreateArtifactsWatcher();
+            artifactWatcher.GetComponent<ArtifactsWatcher>().Construct(skillPanel.GetComponent<SkillPanel>(), playerSpawner, battleSystem.GetComponent<BattleSystem>());
+            player.GetComponent<Toy>().Construct(skillPanel.GetComponent<SkillPanel>(), playerSpawner.RoutMap,
                 battleHud.GetComponentInChildren<PlayerHud>());
             playerSpawner.GetPlayer(player.GetComponent<Toy>());
             battleSystem.GetComponent<BattleSystem>().Construct(playerSpawner, playerSpawner.GetComponent<EnemySpawner>(), playerSpawner.RoutMap);
             battleSystem.GetComponent<Settings>().Construct(playerSpawner);
-            battleHud.GetComponent<AttackPanel>().Construct(playerSpawner.GetComponent<EnemySpawner>());
-            InitBattleHud(player, battleHud, skillPanel, battleSystem);
+            battleHud.GetComponent<AttackPanel>().Construct(playerSpawner.GetComponent<EnemySpawner>(), skillPanel.GetComponent<SkillPanel>());
+            battleHud.GetComponentInChildren<PlayerHud>().Construct(player.GetComponent<Toy>(), player.GetComponent<PlayerHealth>(), player.GetComponent<PlayerSpeed>());
+            skillPanel.GetComponent<SkillPanel>().Construct(player.GetComponent<Toy>(), battleHud.GetComponentInChildren<PlayerHud>(),
+                battleSystem.GetComponent<BattleSystem>(), playerSpawner);
+            //InitBattleHud(player, battleHud, skillPanel, battleSystem);
         }        
         
-        private void InitBattleHud(GameObject player, GameObject battleHud, GameObject skillPanel, GameObject battleSystem)
-        {
-            battleHud.GetComponentInChildren<PlayerHud>().Construct(player.GetComponent<Toy>(), player.GetComponent<PlayerHealth>(), player.GetComponent<PlayerSpeed>());
-            skillPanel.GetComponent<SkillPanel>().Construct(player.GetComponent<Toy>(), battleHud.GetComponentInChildren<PlayerHud>(), 
-                battleSystem.GetComponent<BattleSystem>());
-            //player.GetComponent<Toy>().Construct(skillPanel.GetComponent<SkillPanel>());
-            //attackPanel.Construct(skillPanel.GetComponent<SkillPanel>());
-        }
+        //private void InitBattleHud(GameObject player, GameObject battleHud, GameObject skillPanel, GameObject battleSystem)
+        //{
+        //    battleHud.GetComponentInChildren<PlayerHud>().Construct(player.GetComponent<Toy>(), player.GetComponent<PlayerHealth>(), player.GetComponent<PlayerSpeed>());
+        //    skillPanel.GetComponent<SkillPanel>().Construct(player.GetComponent<Toy>(), battleHud.GetComponentInChildren<PlayerHud>(), 
+        //        battleSystem.GetComponent<BattleSystem>());
+        //    //player.GetComponent<Toy>().Construct(skillPanel.GetComponent<SkillPanel>());
+        //    //attackPanel.Construct(skillPanel.GetComponent<SkillPanel>());
+        //}
 
         private void InformProgressReaders()
         {

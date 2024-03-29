@@ -12,17 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: CrabClaw
   m_EditorClassIdentifier: 
-  Icon: {fileID: -1901019991, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
-  RuDescription: 
-  EnDescription: 
-  NegativeValue: 0
+  Icon: {fileID: 1519283996, guid: e477473885244d44da782a219590c6d5, type: 3}
+  EffectIcon: {fileID: 20310043, guid: 220e61c0d923b6045ac5b9b00a5d8bf8, type: 3}
+  RuDescription: "\u0410\u0442\u0430\u043A\u0430 \u043A\u043B\u0435\u0449\u043D\u044F\u043C\u0438
+    \u043D\u0430\u043D\u043E\u0441\u0438\u0442 \u0442\u0440\u0430\u0432\u043C\u0443"
+  EnDescription: pincers attack apply trauma
+  RuEffectDescription: "\u041D\u0430\u043D\u043E\u0441\u0438\u0442 \u0443\u0440\u043E\u043D
+    \u043F\u0440\u0438 \u043F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u0438
+    \u0432 \u0442\u0435\u0447\u0435\u043D\u0438\u0435 \u0442\u043E\u0433\u043E \u0436\u0435
+    \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0430 \u0440\u0430\u0443\u043D\u0434\u043E\u0432"
+  EnEffectDescription: Deals damage when moving for the same number of rounds
+  EffectValue: 2
+  DefaultEffectValue: 2
   DefaultDamage: 0
-  Damage: 3
+  Damage: 2
   DefaultDefence: 0
   Defence: 0
   DefaultCooldown: 0
   Cooldown: 2
   RequiredAP: 4
   StunChance: 0
+  PartType: 0
   SkillType: 0
-  AttackType: 0
+  AttackType: 4

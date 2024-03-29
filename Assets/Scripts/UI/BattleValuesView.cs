@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Player;
+﻿using Assets.Scripts.GameEnvironment.Battle;
+using Assets.Scripts.Player;
 using UnityEngine;
 
 namespace Assets.Scripts.UI
@@ -8,7 +9,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private SkillPanel _skillPanel;
         
         private Toy _player;
-        private AreaType _showedArea;
+        private Area _currentArea;
         private PlayerHud _playerHud;
 
         private void Start()
@@ -19,42 +20,34 @@ namespace Assets.Scripts.UI
 
         public void ViewOnLeftButton()
         {
-            _showedArea = _player.CurrentArea;
+            _currentArea = _player.CurrentArea;
 
             foreach (var skill in _skillPanel.PlayerSkills)
-                skill.ShowOnLeftButton(_showedArea);
-
-            _playerHud.ShowOnLeft(_showedArea);
+                skill.GetComponent<SkillAreaWatcher>().ShowOnLeftButton(_currentArea);
         }
 
         public void ViewOnRightButton()
         {
-            _showedArea = _player.CurrentArea;
+            _currentArea = _player.CurrentArea;
 
             foreach (var skill in _skillPanel.PlayerSkills)
-                skill.ShowOnRightButton(_showedArea);
-
-            _playerHud.ShowOnRight(_showedArea);
+                skill.GetComponent<SkillAreaWatcher>().ShowOnRightButton(_currentArea);
         }
 
         public void SetDefaultLeft()
         {
-            _showedArea = _player.CurrentArea;
+            _currentArea = _player.CurrentArea;
 
             foreach (var skill in _skillPanel.PlayerSkills)
-                skill.SetDefaultLeft(_showedArea);
-
-            _playerHud.SetDefault();
+                skill.GetComponent<SkillAreaWatcher>().SetDefaultLeft(_currentArea);
         }
 
         public void SetDefaultRight()
         {
-            _showedArea = _player.CurrentArea;
+            _currentArea = _player.CurrentArea;
 
             foreach (var skill in _skillPanel.PlayerSkills)
-                skill.SetDefaultRight(_showedArea);
-
-            _playerHud.SetDefault();
+                skill.GetComponent<SkillAreaWatcher>().SetDefaultRight(_currentArea);
         }
     }
 }

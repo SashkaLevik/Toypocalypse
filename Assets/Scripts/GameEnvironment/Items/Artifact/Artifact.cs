@@ -31,12 +31,7 @@ namespace Assets.Scripts.GameEnvironment.Items.Artifact
         {
             _data = data;
             _artifactIcon.sprite = data.Icon;
-        }
-
-        public void ApplyArtifact()
-        {
-
-        }
+        }        
 
         public void OnEnter()
         {

@@ -13,6 +13,7 @@ namespace Assets.Scripts.UI
         [SerializeField] protected BattleIconAnimator _attackAnimator;
         [SerializeField] protected BattleIconAnimator _defenceAnimator;
         [SerializeField] protected List<AppliedEffect> _appliedEffects;
+        [SerializeField] protected List<ReceivedEffect> _receivedEffects;
         [SerializeField] protected HPBar _hpBar;
         [SerializeField] protected SpeedBar _speedBar;
         [SerializeField] protected TMP_Text _defence;
@@ -20,12 +21,6 @@ namespace Assets.Scripts.UI
 
         protected IHealth _health;
         protected ISpeed _speed;
-        //protected List<SkillData> _negativeEffects = new();
-
-        protected virtual void Start()
-        {
-            UpdateHPBar();
-        }
 
         public void ShowAppliedEffect(SkillData skillData)
         {
@@ -39,16 +34,20 @@ namespace Assets.Scripts.UI
             }
         }        
 
-        public void ResetApplied()
+        public void ResetEffect()
         {
             foreach (var effect in _appliedEffects)
-                effect.ResetEffect();
-        }
-       
-        
+            {
+                if (effect.SkillEffect != null)
+                {
+                    effect.ResetEffect();
+                    return;
+                }
+            }
+        }                    
 
         protected virtual void UpdateHPBar()
-            => _hpBar.SetValue(_health.CurrentHP, _health.MaxHP);
+            => _hpBar.SetValue(_health.CurrentHP, _health.MaxHP);       
 
         //public bool CheckNegativeEffect(SkillData skillData)
         //{
@@ -61,18 +60,6 @@ namespace Assets.Scripts.UI
         //    return false;
         //}
 
-        //public void ShowReceivedEffect(SkillData skillData)
-        //{
-        //    foreach (var effect in _receivedEffects)
-        //    {
-        //        if (effect.SkillEffect == null)
-        //        {
-        //            effect.InitData(skillData);
-        //            _negativeEffects.Add(skillData);
-        //            return;
-        //        }
-        //    }
-        //}
         //public void ResetReceived()
         //{
         //    _negativeEffects.Clear();

@@ -10,7 +10,7 @@ namespace Assets.Scripts.GameEnvironment.Items.Potions
     public class Potion : MonoBehaviour
     {
         [SerializeField] private PotionData _data;
-        [SerializeField] private Image _potionIcon;
+        //[SerializeField] private Image _potionIcon;
         [SerializeField] private Image _descriptionBG;
         [SerializeField] private TMP_Text _description;
 
@@ -19,14 +19,12 @@ namespace Assets.Scripts.GameEnvironment.Items.Potions
         private PlayerSpeed _playerSpeed;
         private Button _use;
 
-        public PotionData Data => _data;
-
         public event UnityAction<PotionData> Used;
 
         private void Awake()
         {
             _use = GetComponent<Button>();
-            _potionIcon.sprite = _data.Icon;
+            //_potionIcon.sprite = _data.Icon;
         }
 
         private void OnEnable()
@@ -48,11 +46,11 @@ namespace Assets.Scripts.GameEnvironment.Items.Potions
             _playerSpeed = _player.GetComponent<PlayerSpeed>();
         }            
 
-        public void Init(PotionData potionData)
-        {
-            _data = potionData;
-            _potionIcon.sprite = potionData.Icon;
-        }
+        //public void Init(PotionData potionData)
+        //{
+        //    _data = potionData;
+        //    _potionIcon.sprite = potionData.Icon;
+        //}
 
         public void Activate()
             => _use.interactable = true;

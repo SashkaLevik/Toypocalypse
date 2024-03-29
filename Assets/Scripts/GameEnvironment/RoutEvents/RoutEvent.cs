@@ -43,6 +43,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents
             _walet = _skillPanel.GetComponent<Walet>();
             _playerMoney = _player.GetComponent<PlayerMoney>();
             _skillPanel.ResetCooldown();
+            _walet.EnableButtons();
         }
 
         protected int GetPaymentValue(ConnectingMaterial material)
@@ -60,6 +61,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents
         protected virtual void CloseEvent()
         {            
             EventCompleted?.Invoke();
+            _walet.DisableButtons();
         }        
     }
 }

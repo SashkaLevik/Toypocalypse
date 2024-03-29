@@ -43,18 +43,23 @@ namespace Assets.Scripts.UI
 
         private void IncreaseOnMaterial(float health)
         {
+            _healthSlider.maxValue = health;
             _healthSlider.value = health;
         }
 
         private void IncreaseSliders(float health, float speed, float material)
         {            
+            _healthSlider.maxValue = health;
             _healthSlider.value = health;
+            _speedSlider.maxValue = speed;
             _speedSlider.value = speed;
             _materialCount.text = material.ToString();
         }
 
         private void DicreaseSliders(float health, float speed, float material)
         {
+            _healthSlider.maxValue = health;
+            _speedSlider.maxValue = speed;
             _healthSlider.value = health;
             _speedSlider.value = speed;
             _materialCount.text = material.ToString();

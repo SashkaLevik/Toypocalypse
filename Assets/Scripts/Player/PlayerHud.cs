@@ -20,9 +20,9 @@ namespace Assets.Scripts.Player
         private void Awake()
             => _canvas.worldCamera = Camera.main;
 
-        protected override void Start()
+        private void Start()
         {
-            base.Start();
+            UpdateHPBar();
             UpdateSpeedBar();
         }        
 
