@@ -2,54 +2,54 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.GameEnvironment.TreeHouse
 {
-    public class Part : MonoBehaviour
+    public class Part : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private PartData _partData;
-        [SerializeField] private bool _isActivated;
 
         private Button _chooseButton;
 
         public UnityAction<Part> PartChoosed;
+        public UnityAction DoubleClicked;
 
         public PartData PartData => _partData;
-        public bool IsActivated => _isActivated;
 
         private void Awake()
         {
             _chooseButton = GetComponent<Button>();
-        }
-        private void Start()
-        {
-        }
-
-        private void OnEnable()
-        {
-            _chooseButton.onClick.AddListener(ChoosePart);
-        }
-
-        private void OnDisable()
-        {
-            _chooseButton.onClick.RemoveListener(ChoosePart);
-        }
-
-        public bool IsAvalable()
-        {
-            return _isActivated;
-        }
+        }                      
 
         public void SetEnableColor()
             => _chooseButton.image.color = Color.green;
 
         public void SetDisableColor()
-            => _chooseButton.image.color = Color.white;
+            => _chooseButton.image.color = Color.white;        
 
-        private void ChoosePart()
-        {            
+        public void DisableOnTutorial()
+            => GetComponent<Image>().raycastTarget = false;
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            int clickCount = eventData.clickCount;
+
+            if (clickCount == 1)
+                OnSingleClick();
+            else if (clickCount == 2)
+                OnDoubleClick();
+        }
+
+        private void OnSingleClick()
+        {
             PartChoosed?.Invoke(this);
         }
+
+        private void OnDoubleClick()
+        {
+            DoubleClicked?.Invoke();
+        }       
     }
 }

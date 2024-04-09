@@ -36,9 +36,10 @@ namespace Assets.Scripts.UI
             _skip.onClick.RemoveListener(LoadMenu);
         }
 
-        private void PlayIntro(VideoPlayer source)
+        private void PlayIntro(VideoPlayer player)
         {
-            _cattImage.gameObject.SetActive(false);
+            _cattPlayer.Stop();            
+            //_cattImage.gameObject.SetActive(false);
             _cattPlayer.gameObject.SetActive(false);
             _introImage.gameObject.SetActive(true);
             _introPlayer.gameObject.SetActive(true);
@@ -46,6 +47,7 @@ namespace Assets.Scripts.UI
 
         private void EndIntro(VideoPlayer source)
         {
+            _introPlayer.Stop();
             LoadMenu();
         }        
 

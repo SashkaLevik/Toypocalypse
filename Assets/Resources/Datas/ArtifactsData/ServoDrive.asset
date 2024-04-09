@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ServoDrive
   m_EditorClassIdentifier: 
   Prefab: {fileID: 5377607290993938628, guid: 08448d9835ebceb4cb7864d75c9385da, type: 3}
-  RuName: Servodrive
-  EnName: "\u0421\u0435\u0440\u0432\u043E\u043F\u0440\u0438\u0432\u043E\u0434"
+  RuName: "\u0421\u0435\u0440\u0432\u043E\u043F\u0440\u0438\u0432\u043E\u0434"
+  EnName: Servodrive
   RuDescription: "-1 \u041E\u0414 \u0434\u043B\u044F \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F"
   EnDescription: -1 AP for movement
   Price: 4

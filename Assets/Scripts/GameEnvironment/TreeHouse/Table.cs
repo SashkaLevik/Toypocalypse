@@ -12,12 +12,11 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         [SerializeField] private TreeHouseUI _treeHouse;
         [SerializeField] private Inventory _inventory;
         [SerializeField] private PartsMover _partsMover;
-        [SerializeField] private Button _inInventory;
         [SerializeField] private Button _construct;
         [SerializeField] private Image _materialImage;
         [SerializeField] private float _health;
         [SerializeField] private float _speed;
-        [SerializeField] private int _material;
+        [SerializeField] private int _requiredMaterial;
 
         public Part _currentPart;
         public Part _previousPart;
@@ -29,12 +28,11 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         public float Health => _health;
         public float Speed => _speed;
         public List<Part> Parts => _parts;
-        public int RequiredMaterial => _material;
+        public int RequiredMaterial => _requiredMaterial;
 
         public event UnityAction<float, float, float> PartAdded;
         public event UnityAction<float, float, float> PartRemoved;
         public event UnityAction<float> MaterialAdded;
-        public event UnityAction<ConnectingMaterial> MaterialReturned;
         public event UnityAction<Part> PartReturned;
         public event UnityAction ToyConstructed;
 
@@ -46,16 +44,12 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         {
             _construct.onClick.AddListener(ConstructToy);
             _inventory.PlacedOnTable += AddPart;
-            _materials.RequiredQuantityAdded += OnMaterialAdded;
-            _inInventory.onClick.AddListener(RemovePart);
         }
 
         private void OnDisable()
         {
             _construct.onClick.RemoveListener(ConstructToy);
             _inventory.PlacedOnTable -= AddPart;
-            _materials.RequiredQuantityAdded -= OnMaterialAdded;
-            _inInventory.onClick.RemoveListener(RemovePart);
         }        
 
         public bool CheckTypeMatch(Part part)
@@ -81,7 +75,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             return false;
         }
 
-        private void OnMaterialAdded(ConnectingMaterial material)
+        public void AddMaterial(ConnectingMaterial material)
         {            
             if (_currentMaterial == null)
             {
@@ -90,14 +84,13 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
                 _materialImage.sprite = _currentMaterial.Data.Icon;
                 _health += _currentMaterial.Data.Health;
                 _construct.gameObject.SetActive(true);
-                _inInventory.gameObject.SetActive(false);
                 MaterialAdded?.Invoke(_health);
             }
             else
             {
                 _previousMaterial = _currentMaterial;
                 _health -= _previousMaterial.Data.Health;
-                MaterialReturned?.Invoke(_previousMaterial);
+                _materials.ReturnMaterial(_previousMaterial);
                 _currentMaterial = material;
                 _materialImage.sprite = _currentMaterial.Data.Icon;
                 _health += _currentMaterial.Data.Health;
@@ -105,30 +98,52 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             }
         }
        
+        public void DisableOnTutorial()
+        {
+            foreach (var part in _parts)
+                part.DisableOnTutorial();
+        }
+
         private void AddPart(Part part)
         {            
             _parts.Add(part);
             IncreaseValues(part.PartData.Health, part.PartData.Speed, part.PartData.MaterialAmount);
-            PartAdded?.Invoke(_health, _speed, _material);
+            PartAdded?.Invoke(_health, _speed, _requiredMaterial);
             part.PartChoosed += ChoosePart;
             if (_parts.Count == _maxParts) _materials.EnablePanel();
         }
 
+        private void ChoosePart(Part part)
+        {
+            _currentPart = part;
+            _currentPart.DoubleClicked += RemovePart;
+        }
+
         private void RemovePart()
         {
-            if (_currentPart == null)
-                _treeHouse.Warning.Enable(_treeHouse.Warning.NoPartChoosed);
-            else
+            if (_currentMaterial != null)
             {
-                DecreaseValues(_currentPart.PartData.Health, _currentPart.PartData.Speed, _currentPart.PartData.MaterialAmount);
+                _materials.ReturnMaterial(_currentMaterial);
+                _materialImage.gameObject.SetActive(false);
+                _health -= _currentMaterial.Data.Health;
+                _materials.ResetMaterial();
+                _currentMaterial = null;
+            }
 
-                PartRemoved?.Invoke(_health, _speed, _material);
-                PartReturned?.Invoke(_currentPart);
-                GetSutableContainer();
-                _currentPart.PartChoosed -= ChoosePart;
-                _currentPart = null;
+            DecreaseValues(_currentPart.PartData.Health, _currentPart.PartData.Speed, _currentPart.PartData.MaterialAmount);
+            PartRemoved?.Invoke(_health, _speed, _requiredMaterial);
+            PartReturned?.Invoke(_currentPart);
+            GetSutableContainer();
+            _currentPart.PartChoosed -= ChoosePart;
+            _currentPart.DoubleClicked -= RemovePart;
+            _parts.Remove(_currentPart);
+            _currentPart = null;
+
+            if (_parts.Count < _maxParts)
+            {
                 _materials.DisablePanel();
-            }            
+                _construct.gameObject.SetActive(false);                
+            }                      
         }
 
         private void ConstructToy()
@@ -137,36 +152,20 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
 
             foreach (var part in _parts)
                 part.GetComponent<Image>().gameObject.SetActive(false);
-        }
-
-        private void ChoosePart(Part part)
-        {
-            if (_currentPart == null)
-            {
-                _currentPart = part;
-                _currentPart.SetEnableColor();
-            }
-            else
-            {
-                _previousPart = _currentPart;
-                _previousPart.SetDisableColor();
-                _currentPart = part;
-                _currentPart.SetEnableColor();
-            }
-        }
+        }        
 
         private void IncreaseValues(float health, float speed, int material)
         {
             _health += health;
             _speed += speed;
-            _material += material;
+            _requiredMaterial += material;
         }
 
         private void DecreaseValues(float health, float speed, int material)
         {
             _health -= health;
             _speed -= speed;
-            _material -= material;
+            _requiredMaterial -= material;
         }
 
         private void GetSutableContainer()

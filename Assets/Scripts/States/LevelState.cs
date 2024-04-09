@@ -68,7 +68,8 @@ namespace Assets.Scripts.States
             GameObject skillPanel = _gameFactory.CreateSkillPanel();
             GameObject battleSystem = _gameFactory.CreateBattleSystem();
             GameObject artifactWatcher = _gameFactory.CreateArtifactsWatcher();
-            artifactWatcher.GetComponent<ArtifactsWatcher>().Construct(skillPanel.GetComponent<SkillPanel>(), playerSpawner, battleSystem.GetComponent<BattleSystem>());
+            artifactWatcher.GetComponent<ArtifactsWatcher>().Construct(skillPanel.GetComponent<SkillPanel>(), battleHud.GetComponentInChildren<PlayerHud>(),
+                battleSystem.GetComponent<BattleSystem>());
             player.GetComponent<Toy>().Construct(skillPanel.GetComponent<SkillPanel>(), playerSpawner.RoutMap,
                 battleHud.GetComponentInChildren<PlayerHud>());
             playerSpawner.GetPlayer(player.GetComponent<Toy>());

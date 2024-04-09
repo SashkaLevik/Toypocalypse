@@ -25,9 +25,10 @@ namespace Assets.Scripts.Player
         private float _defence;
         private float _requiredAP;
         private int _usePerTurn;
-        private SkillData _skillData;
         private float _defaultDamage;
         private float _defaultDefence;
+        private SkillData _skillData;
+        private Area _currentArea;
 
         public float Damage => _damage;
         public float Defence => _defence;
@@ -79,62 +80,72 @@ namespace Assets.Scripts.Player
         }       
 
         public void ChangeOnArea(Area area)
-        {            
-            if (area.AreaType == AreaType.Attack)
-            {                
-                if (_skillData.SkillType == SkillType.Attack)
-                {
-                    _damage += area.IncreasedValue;
-                    _damageText.color = Color.green;
-                    UpdateBattleValue(_damage);
-                }
-                else if (_skillData.SkillType == SkillType.Defence)
-                {
-                    _defence -= area.DecreasedValue;
+        {
+            if (_currentArea == area) return;
+            else
+                ChangeOnCommon();
 
-                    if (_defence < _defaultDefence)
-                        _damageText.color = Color.red;
-                    else
-                        _damageText.color = Color.white;
+            _currentArea = area;
 
-                    UpdateBattleValue(_defence);
-                }
-            }
-            else if (area.AreaType == AreaType.Defence)
+            if (_currentArea.AreaType == AreaType.Attack)
+                ChangeOnAttack(_currentArea);
+            else if (_currentArea.AreaType == AreaType.Defence)
             {
-                if (_skillData.SkillType == SkillType.Defence)
-                {
-                    _defence += area.IncreasedValue;
-                    _damageText.color = Color.green;
-                    UpdateBattleValue(_defence);
-                }
-                else if (_skillData.SkillType == SkillType.Attack)
-                {
-                    _damage -= area.DecreasedValue;
-
-                    if (_damage < _defaultDamage)
-                        _damageText.color = Color.red;
-                    else
-                        _damageText.color = Color.white;
-
-                    UpdateBattleValue(_damage);
-                }
+                ChangeOnDefence(_currentArea);
             }
-            else if (area.AreaType == AreaType.Common)
+            else if (_currentArea.AreaType == AreaType.Common)
             {
-                if (_skillData.SkillType == SkillType.Defence)
-                {
-                    _defence = _skillData.Defence;
-                    UpdateBattleValue(_defence);
-                }
-                else if (_skillData.SkillType == SkillType.Attack)
-                {
-                    _damage = _skillData.Damage;
-                    UpdateBattleValue(_damage);
-                }
-                _damageText.color = Color.white;
+                ChangeOnCommon();
             }
         }                
+
+        private void ChangeOnAttack(Area area)
+        {
+            if (_skillData.SkillType == SkillType.Attack)
+            {
+                _damage += area.IncreasedValue;
+                _damageText.color = Color.green;
+                UpdateBattleValue(_damage);
+            }
+            else if (_skillData.SkillType == SkillType.Defence)
+            {
+                _defence -= area.DecreasedValue;
+                _damageText.color = Color.red;
+
+                UpdateBattleValue(_defence);
+            }
+        }
+
+        private void ChangeOnDefence(Area area)
+        {
+            if (_skillData.SkillType == SkillType.Defence)
+            {
+                _defence += area.IncreasedValue;
+                _damageText.color = Color.green;
+                UpdateBattleValue(_defence);
+            }
+            else if (_skillData.SkillType == SkillType.Attack)
+            {
+                _damage -= area.DecreasedValue;
+                _damageText.color = Color.red;                
+                UpdateBattleValue(_damage);
+            }
+        }
+
+        private void ChangeOnCommon()
+        {
+            if (_skillData.SkillType == SkillType.Defence)
+            {
+                _defence = _skillData.Defence;
+                UpdateBattleValue(_defence);
+            }
+            else if (_skillData.SkillType == SkillType.Attack)
+            {
+                _damage = _skillData.Damage;
+                UpdateBattleValue(_damage);
+            }
+            _damageText.color = Color.white;
+        }
 
         public void Activate()
         {

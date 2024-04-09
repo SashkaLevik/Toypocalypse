@@ -21,7 +21,7 @@ MonoBehaviour:
   EffectValue: 0
   DefaultEffectValue: 0
   DefaultDamage: 0
-  Damage: 4
+  Damage: 6
   DefaultDefence: 0
   Defence: 0
   DefaultCooldown: 0

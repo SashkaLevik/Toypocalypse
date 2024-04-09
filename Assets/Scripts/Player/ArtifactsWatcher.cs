@@ -8,14 +8,14 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] private SkillPanel _skillPanel;
         [SerializeField] private ArtifactsContainer _artifactsContainer;
-        [SerializeField] private PlayerSpawnPoint _playerSpawner;
+        [SerializeField] private PlayerHud _playerHud;
         [SerializeField] private BattleSystem _battleSystem;
         [SerializeField] private MaterialLootBox _materialBox;
 
-        public void Construct(SkillPanel skillPanel, PlayerSpawnPoint playerSpawner, BattleSystem battleSystem)
+        public void Construct(SkillPanel skillPanel, PlayerHud playerHud, BattleSystem battleSystem)
         {
             _skillPanel = skillPanel;
-            _playerSpawner = playerSpawner;
+            _playerHud = playerHud;
             _battleSystem = battleSystem;
             _materialBox = _battleSystem.GetComponent<MaterialLootBox>();
             _artifactsContainer = _skillPanel.GetComponent<ArtifactsContainer>();
@@ -28,7 +28,7 @@ namespace Assets.Scripts.Player
                 _skillPanel.SetMovmentAP(data.AppliedValue);
             else if (data.ArtifactType == ArtifactType.KingsShield)
             {
-                foreach (var area in _playerSpawner.PlayerAreas)
+                foreach (var area in _playerHud.Areas)
                 {
                     if (area.AreaType == AreaType.Defence)
                     {
@@ -38,7 +38,7 @@ namespace Assets.Scripts.Player
             }
             else if (data.ArtifactType == ArtifactType.KingsSword)
             {
-                foreach (var area in _playerSpawner.PlayerAreas)
+                foreach (var area in _playerHud.Areas)
                 {
                     if (area.AreaType == AreaType.Attack)
                     {

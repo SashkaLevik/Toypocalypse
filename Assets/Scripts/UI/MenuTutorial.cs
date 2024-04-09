@@ -9,6 +9,7 @@ namespace Assets.Scripts.UI
     public class MenuTutorial : MonoBehaviour, ISaveProgress
     {
         [SerializeField] private MaterialsPanel _materialsPanel;
+        [SerializeField] private Table _table;
         [SerializeField] private Image _garageExplain;
         [SerializeField] private Image _minionExplain;
         [SerializeField] private Image _minionActivated;
@@ -20,7 +21,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _getMinion;
         [SerializeField] private Button _exitGarage;
         [SerializeField] private Button _treeHouse;
-        [SerializeField] private Button _putOnTable;
         [SerializeField] private Button _material;
         [SerializeField] private Button _construct;
 
@@ -81,7 +81,10 @@ namespace Assets.Scripts.UI
         }
 
         private void OnMaterial()
-            => ShowNext(_materialExplain, _constructExplain);
+        {
+            ShowNext(_materialExplain, _constructExplain);
+            _table.DisableOnTutorial();
+        }            
 
         private void OnConstruct()
             => _constructExplain.gameObject.SetActive(false);

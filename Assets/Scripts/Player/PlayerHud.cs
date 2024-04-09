@@ -1,5 +1,10 @@
-﻿using Assets.Scripts.UI;
+﻿using Assets.Scripts.GameEnvironment.Battle;
+using Assets.Scripts.GameEnvironment.Dice;
+using Assets.Scripts.UI;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Player
 {
@@ -8,14 +13,25 @@ namespace Assets.Scripts.Player
         [SerializeField] private BattleHudWarning _warning;
         [SerializeField] private Canvas _canvas;
         [SerializeField] private AttackPanel _attackPanel;
+        [SerializeField] private AreaDice _dicePrefab;
+        [SerializeField] private Button _areaDice;
+        [SerializeField] private Area _commonArea;
+        [SerializeField] private Area _defenceArea;
+        [SerializeField] private Area _attackArea;
+        [SerializeField] private Area[] _areas;
 
+        private int _rerolls;
         private Toy _player;
         private PlayerHealth _playerHealth;
         private PlayerSpeed _playerSpeed;
         private RoutMap _routMap;
+        private AreaDice _dice;
 
         public Toy Player => _player;
+        public Area[] Areas => _areas;
         public BattleHudWarning Warning => _warning;
+
+        public event UnityAction<Area> AreaChanged;
 
         private void Awake()
             => _canvas.worldCamera = Camera.main;
@@ -24,7 +40,48 @@ namespace Assets.Scripts.Player
         {
             UpdateHPBar();
             UpdateSpeedBar();
-        }        
+            _dice = Instantiate(_dicePrefab);
+            _dice.OnDiceResult += SetBattleArea;
+            _rerolls = _dice.Rerolls;
+            _areaDice.onClick.AddListener(RollDice);
+        }
+
+        private void RollDice()
+        {
+            _dice.Roll();
+            //_rerolls--;
+
+            if (_rerolls == 0)
+                _areaDice.interactable = false;
+        }
+
+        private void SetBattleArea(AreaType areaType)
+        {
+            foreach (var area in _areas)
+                area.gameObject.SetActive(false);
+
+            if (areaType == AreaType.Attack)
+            {
+                _attackArea.gameObject.SetActive(true);
+                AreaChanged?.Invoke(_attackArea);
+            }
+            else if (areaType == AreaType.Defence)
+            {
+                _defenceArea.gameObject.SetActive(true);
+                AreaChanged.Invoke(_defenceArea);
+            }
+            else if (areaType == AreaType.Common)
+            {
+                _commonArea.gameObject.SetActive(true);
+                AreaChanged.Invoke(_commonArea);
+            }
+        }
+
+        public void ResetDice()
+        {
+            _areaDice.interactable = true;
+            _rerolls = _dice.Rerolls;
+        }            
 
         private void OnDestroy()
         {

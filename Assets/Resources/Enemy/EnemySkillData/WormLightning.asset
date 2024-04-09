@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: WormLightning
   m_EditorClassIdentifier: 
   Icon: {fileID: -31645244, guid: e477473885244d44da782a219590c6d5, type: 3}
+  EffectIcon: {fileID: 0}
   RuDescription: "\u041C\u043E\u043B\u043D\u0438\u044F"
   EnDescription: Lightning
-  NegativeValue: 0
+  RuEffectDescription: 
+  EnEffectDescription: 
+  EffectValue: 0
+  DefaultEffectValue: 0
   DefaultDamage: 0
-  Damage: 4
+  Damage: 5
   DefaultDefence: 0
   Defence: 0
   DefaultCooldown: 0

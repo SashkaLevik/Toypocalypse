@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Robot
   m_EditorClassIdentifier: 
   Icon: {fileID: -660098578, guid: e477473885244d44da782a219590c6d5, type: 3}
+  EffectIcon: {fileID: 0}
   RuDescription: "\u041F\u043E\u0432\u044B\u0448\u0430\u044E\u0442 \u0437\u0430\u0449\u0438\u0442\u0443"
   EnDescription: Rise defence
+  RuEffectDescription: 
+  EnEffectDescription: 
   EffectValue: 1
   DefaultEffectValue: 1
   DefaultDamage: 0

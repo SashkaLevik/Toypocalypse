@@ -65,7 +65,7 @@ namespace Assets.Scripts.Player
             _backward.onClick.RemoveListener(OnLeftButton);
 
             foreach (var skill in _playerSkills)
-                _player.AreaChanged -= skill.ChangeOnArea;
+                _playerHud.AreaChanged -= skill.ChangeOnArea;
         }
 
         public void Construct(Toy player, PlayerHud playerHud, BattleSystem battleSystem, PlayerSpawnPoint playerSpawner)
@@ -161,7 +161,7 @@ namespace Assets.Scripts.Player
             {
                 _skills[i].Init(_playerSkillDatas[i]);
                 _skills[i].SkillButtonPressed += ChooseSkill;
-                _player.AreaChanged += _skills[i].ChangeOnArea;
+                _playerHud.AreaChanged += _skills[i].ChangeOnArea;
                 _playerSkills.Add(_skills[i]);
 
                 if (_playerSkillDatas[i].PartType == PartType.Legs)

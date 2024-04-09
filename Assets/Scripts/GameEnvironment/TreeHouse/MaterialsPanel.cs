@@ -22,7 +22,6 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private int _currentMoney;
         private ConnectingMaterial _currentMaterial;
 
-        public event UnityAction<ConnectingMaterial> RequiredQuantityAdded;
         public event UnityAction PanelEnabled;
 
         private void Start()
@@ -34,16 +33,12 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         {
             foreach (var material in _materials)
                 material.MaterialChoosed += OnMaterialChoosed;
-
-            _table.MaterialReturned += ReturnMaterial;
         }
 
         private void OnDestroy()
         {
             foreach (var material in _materials)
                 material.MaterialChoosed -= OnMaterialChoosed;
-
-            _table.MaterialReturned -= ReturnMaterial;
         }        
 
         public void EnablePanel()
@@ -61,6 +56,9 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             UpdateMaterialsCount();           
         }
 
+        public void ResetMaterial()
+            => _currentMaterial = null;
+
         private void OnMaterialChoosed(ConnectingMaterial material)
         {
             if (_currentMaterial == material) return;
@@ -75,7 +73,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             if (_currentMoney >= _table.RequiredMaterial)
             {
                 _playerMoney.RemoveMaterialByType(_currentMaterial.Data.Type, _table.RequiredMaterial);
-                RequiredQuantityAdded?.Invoke(_currentMaterial);
+                _table.AddMaterial(_currentMaterial);
                 UpdateMaterialsCount();
             }
             else

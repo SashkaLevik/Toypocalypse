@@ -17,7 +17,7 @@ namespace Assets.Scripts.Enemyes
         [SerializeField] private RoutMap _routMap;
         [SerializeField] private GameObject _playerSpawner;
 
-        private int _stageNumber;
+        //private int _stageNumber;
         private float _endAppearTime = 1.2f;
         public Toy _player;
         private GameObject _spawnPoint;

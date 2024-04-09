@@ -12,22 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: StrongWings
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: -290041819, guid: e477473885244d44da782a219590c6d5, type: 3}
   EffectIcon: {fileID: 0}
-  RuDescription: 
-  EnDescription: 
+  RuDescription: "\u043E\u0442\u0442\u0430\u043B\u043A\u0438\u0432\u0430\u044E\u0449\u0430\u044F
+    \u0430\u0442\u0430\u043A\u0430"
+  EnDescription: Push attack
   RuEffectDescription: 
   EnEffectDescription: 
   EffectValue: 0
   DefaultEffectValue: 0
-  DefaultDamage: 0
-  Damage: 0
+  DefaultDamage: 4
+  Damage: 4
   DefaultDefence: 0
   Defence: 0
   DefaultCooldown: 0
   Cooldown: 0
   RequiredAP: 0
   StunChance: 0
-  PartType: 0
+  PartType: 2
   SkillType: 0
-  AttackType: 0
+  AttackType: 1

@@ -25,8 +25,8 @@ namespace Assets.Scripts.States
         public void Enter()
         {
             LoadProgressOrInitNew();
-            _sceneLoader.Load(Intro);
-            //_gameStateMachine.Enter<MenuState, string>(MenuScene);
+            //_sceneLoader.Load(Intro);
+            _gameStateMachine.Enter<MenuState, string>(MenuScene);
         }
 
         public void Exit() { }        

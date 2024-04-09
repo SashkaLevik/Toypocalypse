@@ -278,3 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _areaType: 0
+  _areaEnter: {fileID: 0}
+  _increasedValue: 0
+  _decreasedValue: 0
+  _battleValue: {fileID: 0}

@@ -51,7 +51,7 @@ namespace Assets.Scripts.Player
         {                     
             if (currentArea.AreaType == AreaType.Common)
             {
-                _showedArea = _playerSpawner.DefenceArea;                
+                //_showedArea = _playerSpawner.DefenceArea;                
                 float tempDamage = _damage - _showedArea.DecreasedValue;
                 float tempDefence = _defence + _showedArea.IncreasedValue;
 
@@ -89,7 +89,7 @@ namespace Assets.Scripts.Player
         {                      
             if (currentArea.AreaType == AreaType.Common)
             {
-                _showedArea = _playerSpawner.AttackArea;                
+                //_showedArea = _playerSpawner.AttackArea;                
                 float tempDamage = _damage + _showedArea.IncreasedValue;
                 float tempDefence = _defence - _showedArea.DecreasedValue;
 

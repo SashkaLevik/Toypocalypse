@@ -40,10 +40,9 @@ namespace Assets.Scripts.Player
         public List<Minion> Minions => _activeMinions;
         public AnimatorController Animator => _animator;
         public Area CurrentArea => _currentArea;
-        public Area PreviouseArea => _previousArea;
 
         public event UnityAction AnimationEnded;
-        public event UnityAction<Area> AreaChanged;
+        //public event UnityAction<Area> AreaChanged;
 
         private void Start()
         {
@@ -74,14 +73,14 @@ namespace Assets.Scripts.Player
         }
         
         public void InitEnemy(BaseEnemy enemy)
-            => _enemy = enemy;                
+            => _enemy = enemy;
 
         public void ChangeArea(Area area)
         {
             _previousArea = _currentArea;
             _currentArea = area;
-            AreaChanged?.Invoke(area);            
-        }                                  
+            //AreaChanged?.Invoke(area);
+        }                                      
 
         private IEnumerator EndTurn()
         {

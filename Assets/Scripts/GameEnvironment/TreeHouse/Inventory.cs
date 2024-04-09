@@ -21,7 +21,6 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         [SerializeField] private GameObject _armsContainer;
         [SerializeField] private GameObject _legsContainer;
         [SerializeField] private Table _table;
-        [SerializeField] private Button _onTable;
         [SerializeField] private PartsMover _partsMover;
 
         public List<Part> _parts = new();
@@ -29,7 +28,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         public Part _spawnedPart;
         public Part _currentPart;
         public Part _previousPart;
-        private Part _newPart;
+
         public GameObject HeadContainer => _headContainer;
         public GameObject TorsoContainer => _torsoContainer;
         public GameObject ArmsContainer => _armsContainer;
@@ -50,13 +49,11 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
 
         private void OnEnable()
         {
-            _onTable.onClick.AddListener(RemovePart);
             _table.PartReturned += AddPart;
         }
 
         private void OnDisable()
         {
-            _onTable.onClick.RemoveListener(RemovePart);
             _table.PartReturned -= AddPart;
         }
 
@@ -65,6 +62,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             _parts.Add(part);
             _spawnedPart = part;
             _spawnedPart.PartChoosed += ChoosePart;
+            _spawnedPart.DoubleClicked += RemovePart;
         }
 
         private void RemovePart()
@@ -76,6 +74,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
                 if (_table.CanAddPart() && _table.CheckTypeMatch(_currentPart))
                 {
                     _currentPart.PartChoosed -= ChoosePart;
+                    _currentPart.DoubleClicked -= RemovePart;
                     _partsMover.RemovePart(_parts, _currentPart, _table.transform);
                     PlacedOnTable?.Invoke(_currentPart);
                     _description.gameObject.SetActive(false);
