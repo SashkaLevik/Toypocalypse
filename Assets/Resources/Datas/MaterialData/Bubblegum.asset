@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fd31920986b8f4fb5946640cf3d473, type: 3}
   m_Name: Bubblegum
   m_EditorClassIdentifier: 
-  Icon: {fileID: 1950034250, guid: 2b3f53440d9cbca43a0b72ada31cb3ad, type: 3}
+  Icon: {fileID: 5849848200293318905, guid: 2b3f53440d9cbca43a0b72ada31cb3ad, type: 3}
   Name: Bubblegum
   Health: 1
   Type: 0

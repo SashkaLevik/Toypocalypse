@@ -15,8 +15,8 @@ namespace Assets.Scripts.GameEnvironment.Battle
         [SerializeField] private BoxAnimator _boxAnimator;
         [SerializeField] private BattleSystem _battleSystem;
 
-        private List<Part> _inactiveParts = new();
-        private List<Part> _activeParts = new();
+        private List<Part> _inactiveParts = new List<Part>();
+        private List<Part> _activeParts = new List<Part>();
         private Part _currentPart;
         private int _randomPart;
 

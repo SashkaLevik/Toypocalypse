@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fd31920986b8f4fb5946640cf3d473, type: 3}
   m_Name: Plasticine
   m_EditorClassIdentifier: 
-  Icon: {fileID: -1220605961, guid: 2b3f53440d9cbca43a0b72ada31cb3ad, type: 3}
+  Icon: {fileID: 2754213484557895342, guid: 2b3f53440d9cbca43a0b72ada31cb3ad, type: 3}
   Name: Plasticine
   Health: 2
   Type: 1

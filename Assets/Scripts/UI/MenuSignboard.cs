@@ -1,4 +1,5 @@
 ﻿using Lean.Localization;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private Sprite _enOffImage;
         [SerializeField] private Button _signboardButton; 
         [SerializeField] private AudioSource _buttonSound;
+        [SerializeField] private ButtonFlyes _buttonFlyes;
 
         public event UnityAction<bool> IsButtonEntered;
 
@@ -24,7 +26,7 @@ namespace Assets.Scripts.UI
             _signboardButton.image.sprite = GetOnImage();
             if (_signboardButton.interactable == false)
                 _signboardButton.image.sprite = GetOffImage();
-        }        
+        }       
 
         public void OnEnter()
         {

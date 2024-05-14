@@ -12,22 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: Robot
   m_EditorClassIdentifier: 
-  Icon: {fileID: -660098578, guid: e477473885244d44da782a219590c6d5, type: 3}
+  Icon: {fileID: -4800280973878993068, guid: e477473885244d44da782a219590c6d5, type: 3}
   EffectIcon: {fileID: 0}
-  RuDescription: "\u041F\u043E\u0432\u044B\u0448\u0430\u044E\u0442 \u0437\u0430\u0449\u0438\u0442\u0443"
-  EnDescription: Rise defence
+  RuDescription: "\u0411\u0440\u043E\u0441\u0430\u0435\u0442 \u043A\u0443\u0431 \u043F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u044F.
+    \u041F\u043E\u0432\u044B\u0448\u0430\u0435\u0442 \u0437\u0430\u0449\u0438\u0442\u0443"
+  EnDescription: Roll move dice. Gain defence
   RuEffectDescription: 
   EnEffectDescription: 
+  EffectChance: 0
   EffectValue: 1
-  DefaultEffectValue: 1
+  EffectDuration: 0
   DefaultDamage: 0
   Damage: 0
-  DefaultDefence: 2
-  Defence: 2
-  DefaultCooldown: 1
-  Cooldown: 1
+  DefaultDefence: 1
+  Defence: 1
+  DefaultCooldown: 2
+  Cooldown: 2
   RequiredAP: 1
   StunChance: 0
   PartType: 3
   SkillType: 1
   AttackType: 0
+  AreaDice: {fileID: 6603341500204310017, guid: 1b97b8ec0c8b4d24eab1d86340b53846, type: 3}

@@ -17,7 +17,6 @@ namespace Assets.Scripts.Enemyes
         [SerializeField] private RoutMap _routMap;
         [SerializeField] private GameObject _playerSpawner;
 
-        //private int _stageNumber;
         private float _endAppearTime = 1.2f;
         public Toy _player;
         private GameObject _spawnPoint;
@@ -60,15 +59,20 @@ namespace Assets.Scripts.Enemyes
             _player = _playerSpawner.GetComponentInChildren<Toy>();
             var randomEnemy = GetRandomEnemy<BaseEnemy>(enemyType);
             var appear = Instantiate(randomEnemy.EnemyData.Appear);
+            appear.GetComponentInChildren<EnemyAppear>().AppearEnded += OnEnemySpawned;
             _spawnPoint.GetComponent<EnemySpawnPoint>().SetPosition(randomEnemy.EnemyData);
             _spawnedEnemy = Instantiate(randomEnemy, at.transform);
             _enemyHud = Instantiate(_hudPrfefab);
             _spawnedEnemy.InitHud(_enemyHud);
             _enemyHud.Init(_spawnedEnemy);
             _spawnedEnemy.InitPlayer(_player);
-            EnemySpawned?.Invoke(_spawnedEnemy);
             yield return new WaitForSeconds(_endAppearTime);
             Destroy(appear);            
+        }
+
+        private void OnEnemySpawned()
+        {
+            EnemySpawned?.Invoke(_spawnedEnemy);
         }
 
         private T GetRandomEnemy<T>(EnemyTypeID type) where T : BaseEnemy

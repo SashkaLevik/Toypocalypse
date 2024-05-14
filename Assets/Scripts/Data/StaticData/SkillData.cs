@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.GameEnvironment.Dice;
+using UnityEngine;
 
 namespace Assets.Scripts.Data.StaticData
 {
@@ -11,8 +12,9 @@ namespace Assets.Scripts.Data.StaticData
         public string EnDescription;
         public string RuEffectDescription;
         public string EnEffectDescription;
+        public int EffectChance;
         public float EffectValue;
-        public float DefaultEffectValue;
+        public float EffectDuration;
         public float DefaultDamage;
         public float Damage;
         public float DefaultDefence;
@@ -24,13 +26,13 @@ namespace Assets.Scripts.Data.StaticData
         public PartType PartType;
         public SkillType SkillType;
         public AttackType AttackType;
+        public AreaDice AreaDice;
 
         public void ResetSkill()
         {
             Damage = DefaultDamage;
             Cooldown = DefaultCooldown;
             Defence = DefaultDefence;
-            EffectValue = DefaultEffectValue;
         }
     }    
 }

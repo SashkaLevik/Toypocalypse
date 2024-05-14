@@ -10,7 +10,7 @@ namespace Assets.Scripts.Enemyes
         [SerializeField] private float _currentSpeed;
         [SerializeField] private float _maxSpeed;
 
-        public event UnityAction SpeedChanged;
+        public event UnityAction<float> SpeedChanged;
 
         public float CurrentSpeed
         {
@@ -18,7 +18,7 @@ namespace Assets.Scripts.Enemyes
             set
             {
                 _currentSpeed = value;
-                SpeedChanged?.Invoke();
+                SpeedChanged?.Invoke(CurrentSpeed);
             }
         }
         public float MaxSpeed { get => _maxSpeed; set => _maxSpeed = value; }

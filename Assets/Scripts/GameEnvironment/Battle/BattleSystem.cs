@@ -5,6 +5,7 @@ using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Player;
 using Assets.Scripts.SaveLoad;
 using Assets.Scripts.UI;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -56,8 +57,8 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _playerMovement = _player.GetComponent<PlayerMovement>();
             _skillPanel = _player.SkillPanel;
             _playerSpeed = _player.GetComponent<PlayerSpeed>();
-            _skillPanel.RoundEnded += EndRound;
-            _enemySpawner.EnemySpawned += GetEnemyStats;
+            _skillPanel.PlayerTurnEnded += EnemyTurn;
+            _enemySpawner.EnemySpawned += OnEnemySpawned;
             _routMap.StageButtonPressed += EnterStage;
             _routMap.EventEntered += SetEvent;
             _completeStage.onClick.AddListener(CompleteStage);
@@ -68,7 +69,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
 
         private void OnDestroy()
         {
-            _enemySpawner.EnemySpawned -= GetEnemyStats;
+            _enemySpawner.EnemySpawned -= OnEnemySpawned;
             _enemySpawner.EnemySpawned -= _battleTutorial.OpenTutorial;
             _completeStage.onClick.RemoveListener(CompleteStage);
         }
@@ -86,9 +87,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
         public void AnsigneEvents()
         {
             _routMap.StageButtonPressed -= EnterStage;
-            _routMap.EventEntered -= SetEvent;
-            //_enemy.AnimationEnded -= PlayerTurn;
-            //_player.AnimationEnded -= _enemyAI.Attack;
+            _routMap.EventEntered -= SetEvent;            
             //if (_currentEvent != null) _currentEvent.EventCompleted -= SaveGame;
         }        
 
@@ -98,7 +97,6 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _currentEvent.EventCompleted += OpenNextStage;
             _currentEvent.EventCompleted += SaveGame;
             _playerMovement.SetDefoultPosition();
-            _skillPanel.ResetMoveButtons();
         }
 
         private void SaveGame()
@@ -108,7 +106,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
         {
             BattleEntered?.Invoke(true);
             _enemySpawner.SpawnEnemy(_stageNumber);
-        }            
+        }        
 
         private void CompleteStage()
         {
@@ -137,35 +135,38 @@ namespace Assets.Scripts.GameEnvironment.Battle
             }
         }
 
-        private void GetEnemyStats(BaseEnemy enemy)
+        private void OnEnemySpawned(BaseEnemy enemy)
         {
             _enemy = enemy;
             _player.InitEnemy(_enemy);
             _skillPanel.GetComponentInChildren<MinionSlot>().InitEnemy(_enemy);
             _enemyAI = _enemy.GetComponent<EnemyAI>();
+            _enemyAI.PrepareSkills();
             _enemyHealth = _enemy.GetComponent<EnemyHealth>();
-            _enemyAI.SkillPlayed += PlayerTurn;
+            _enemyAI.EnemyTurnEnded += PlayerTurn;
             _enemyHealth.Died += OnEnemyDie;
         }
 
         private void PlayerTurn()
-            => _skillPanel.Activate();
-
-        private void EndRound()
         {
-            _enemyAI.EndTurn();
+            _skillPanel.ResetArea();
             _skillPanel.ResetCooldown();
-            _skillPanel.ResetWaitButton();
+            _skillPanel.Activate();
             _playerSpeed.ResetAP();
+        }
+
+        private void EnemyTurn()
+        {
+            _enemyAI.EnemyTurn();            
         }
 
         private void OnEnemyDie()
         {
             _winWindow.SetActive(true);
             _prizeCalculator.GetBox();
-            _skillPanel.ResetCooldown();
-            _skillPanel.ResetWaitButton();
-            _playerSpeed.ResetAP();
+            PlayerTurn();            
+            _enemyAI.EnemyTurnEnded -= PlayerTurn;
+            _enemyHealth.Died -= OnEnemyDie;
         }
 
         private void OnPlayerDie()

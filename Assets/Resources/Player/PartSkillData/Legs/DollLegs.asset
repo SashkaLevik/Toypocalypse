@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: DollLegs
   m_EditorClassIdentifier: 
-  Icon: {fileID: -660098578, guid: e477473885244d44da782a219590c6d5, type: 3}
-  RuDescription: "\u041E\u0447\u0435\u043D\u044C \u0431\u044B\u0441\u0442\u0440\u044B\u0435"
-  EnDescription: Very fast
+  Icon: {fileID: -4800280973878993068, guid: e477473885244d44da782a219590c6d5, type: 3}
+  EffectIcon: {fileID: 0}
+  RuDescription: "\u0437\u0430\u0449\u0438\u0442\u0430. \u0431\u0440\u043E\u0441\u043E\u043A
+    \u043A\u0443\u0431\u0430"
+  EnDescription: defence. roll dice
+  RuEffectDescription: 
+  EnEffectDescription: 
   EffectValue: 0
   DefaultEffectValue: 0
   DefaultDamage: 0
@@ -28,3 +32,4 @@ MonoBehaviour:
   PartType: 3
   SkillType: 1
   AttackType: 0
+  AreaDice: {fileID: 6603341500204310017, guid: fa14dd675b10188439d910c1f557c0c9, type: 3}

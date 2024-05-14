@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Player
 {
@@ -15,33 +16,36 @@ namespace Assets.Scripts.Player
         protected Vector3 _leftBorder = new Vector3(-2.5f, 0, 0);
         protected Vector3 _defaultPosition = new Vector3(0, 0, 0);
 
+        public event UnityAction UnitMoved;
+
         public void SetDefoultPosition()
         {
-            transform.localPosition = _defaultPosition;
-            _startPos = _defaultPosition;
+            StartCoroutine(Move(_defaultPosition));
+            UnitMoved?.Invoke();
         }
 
         public virtual void MoveRight()
         {
-            if (CanMove(_rightBorder))
-            {
-                _right = _startPos += new Vector3(2.5f, 0, 0);
-                StartCoroutine(Move(_right));
-            }
+            StartCoroutine(Move(_rightBorder));
+
+            UnitMoved?.Invoke();
         }
 
         public virtual void MoveLeft()
         {
-            if (CanMove(_leftBorder))
-            {
-                _left = _startPos += new Vector3(-2.5f, 0, 0);
-                StartCoroutine(Move(_left));
-            }
+            StartCoroutine(Move(_leftBorder));
+            UnitMoved?.Invoke();
+
+            //if (CanMove(_leftBorder))
+            //{
+            //    _left = _startPos += new Vector3(-2.5f, 0, 0);
+            //    StartCoroutine(Move(_left));
+            //}
         }
 
-        public virtual void Push() { }            
+        public virtual void PushInAttack() { }            
 
-        public virtual void Pull() { }            
+        public virtual void PushInDefence() { }            
 
         private bool CanMove(Vector3 border)
         {
@@ -60,7 +64,7 @@ namespace Assets.Scripts.Player
                 transform.localPosition = Vector3.MoveTowards(transform.localPosition, newPos, _moveSpeed * Time.deltaTime);
                 yield return null;
             }
-            _startPos = transform.localPosition;
+            //_startPos = transform.localPosition;
             _isMoving = false;
         }
     }

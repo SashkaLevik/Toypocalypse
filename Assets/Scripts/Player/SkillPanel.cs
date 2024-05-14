@@ -1,7 +1,9 @@
 ﻿using Assets.Scripts.Data;
 using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.GameEnvironment.Battle;
+using Assets.Scripts.GameEnvironment.Dice;
 using Assets.Scripts.SaveLoad;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -16,13 +18,11 @@ namespace Assets.Scripts.Player
         [SerializeField] private Canvas _canvas;
         [SerializeField] private List<RectTransform> _skillSlots;
         [SerializeField] private MinionSlot _minionSlot;
-        [SerializeField] private Button _wait;
-        [SerializeField] private Button _foward;
-        [SerializeField] private Button _backward;
+        [SerializeField] private Button _wait;        
         [SerializeField] private List<SkillView> _skills;
+        [SerializeField] private DiceLayout _diceLayout;
 
         bool _isInBattle;
-        private float _movementAP;
         private Toy _player;
         private Minion _currentMinion;
         private SkillView _currentSkill;
@@ -34,48 +34,45 @@ namespace Assets.Scripts.Player
         private List<SkillView> _playerSkills = new List<SkillView>();
         private List<SkillData> _playerSkillDatas = new List<SkillData>();
         private Transform _skillPosition;
-        private PlayerSpawnPoint _playerSpawner;
         private PlayerProgress _playerProgress;
+        private AreaDice _dice;
 
         public Toy Player => _player;
         public PlayerHud PlayerHud => _playerHud;
         public BattleSystem BattleSystem => _battleSystem;
         public List<SkillView> PlayerSkills => _playerSkills;
         public AttackPanel AttackPanel => _attackPanel;
-        public PlayerSpawnPoint PlayerSpawner => _playerSpawner;
 
         public event UnityAction<SkillView> SkillChoosed;
-        public event UnityAction RoundEnded;
+        public event UnityAction PlayerTurnEnded;
 
         private void Start()
         {
             _canvas.worldCamera = Camera.main;
             _attackPanel = _playerHud.GetComponent<AttackPanel>();
-            _wait.onClick.AddListener(OnWaitButton);
-            _foward.onClick.AddListener(OnRightButton);
-            _backward.onClick.AddListener(OnLeftButton);
-            _movement.PlayerMoved += OnPlayerMove;
+            _wait.onClick.AddListener(OnWaitButton);           
             _battleSystem.BattleEntered += CheckBattleStatus;
         }
         
         private void OnDestroy()
         {
             _wait.onClick.RemoveListener(OnWaitButton);
-            _foward.onClick.RemoveListener(OnRightButton);
-            _backward.onClick.RemoveListener(OnLeftButton);
 
             foreach (var skill in _playerSkills)
-                _playerHud.AreaChanged -= skill.ChangeOnArea;
+            {
+                _playerHud.Dice.OnDiceResult -= skill.ChangeOnArea;
+                _minionSlot.AreaChanged -= skill.ChangeOnArea;
+            }
         }
 
-        public void Construct(Toy player, PlayerHud playerHud, BattleSystem battleSystem, PlayerSpawnPoint playerSpawner)
+        public void Construct(Toy player, PlayerHud playerHud, BattleSystem battleSystem)//, PlayerSpawnPoint playerSpawner)
         {
             _player = player;
             _playerSpeed = _player.GetComponent<PlayerSpeed>();
             _movement = _player.GetComponent<PlayerMovement>();
             _playerHud = playerHud;
             _battleSystem = battleSystem;
-            _playerSpawner = playerSpawner;
+            //_playerSpawner = playerSpawner;
         }                              
 
         public void LoadPanelOrInitNew()
@@ -94,7 +91,6 @@ namespace Assets.Scripts.Player
             _currentSkill = skillView;
             _currentSkill.transform.position = GetSkillPosition().position;
             _currentSkill.transform.SetParent(GetSkillPosition());
-            //_currentSkill.SkillButtonPressed += ChooseSkill;
         }
 
         public void AddMinion(Minion minion)
@@ -119,14 +115,12 @@ namespace Assets.Scripts.Player
                 skill.ResetCooldown();
         }
 
-        public void ResetMoveButtons()
+        public void ResetArea()
         {
-            _foward.interactable = true;
-            _backward.interactable = true;
-        }
-
-        public void ResetWaitButton()
-            => _wait.interactable = true;
+            foreach (var skill in _playerSkills)
+                skill.ResetArea();
+            _playerHud.SetCommon();
+        }            
 
         public void Activate()
         {
@@ -142,14 +136,12 @@ namespace Assets.Scripts.Player
                 skill.Disactivate();
 
             _wait.interactable = false;
-        }
+        }       
 
-        public void SetMovmentAP(float value)
+        private void OnWaitButton()
         {
-            _movementAP += value;
-            if (_movementAP < 0) _movementAP = 0;
-            _foward.GetComponentInChildren<TMP_Text>().text = _movementAP.ToString();
-            _backward.GetComponentInChildren<TMP_Text>().text = _movementAP.ToString();
+            Disactivate();
+            PlayerTurnEnded?.Invoke();
         }
 
         private void CheckBattleStatus(bool isInBattle)
@@ -161,13 +153,21 @@ namespace Assets.Scripts.Player
             {
                 _skills[i].Init(_playerSkillDatas[i]);
                 _skills[i].SkillButtonPressed += ChooseSkill;
-                _playerHud.AreaChanged += _skills[i].ChangeOnArea;
                 _playerSkills.Add(_skills[i]);
 
-                if (_playerSkillDatas[i].PartType == PartType.Legs)
-                    SetMovmentAP(_playerSkillDatas[i].EffectValue);
+                if (_skills[i].SkillData.PartType == PartType.Legs)
+                {
+                    _playerHud.InstantiateDice(_skills[i].SkillData.AreaDice);
+                    _diceLayout.InitDice(_skills[i].SkillData.AreaDice);
+                }
             }
-        }               
+
+            foreach (var skill in _playerSkills)
+            {
+                _playerHud.Dice.OnDiceResult += skill.ChangeOnArea;
+                _minionSlot.AreaChanged += skill.ChangeOnArea;
+            }
+        }          
 
         private void LoadSkillPanel()
         {
@@ -200,42 +200,7 @@ namespace Assets.Scripts.Player
                 }
             }
             return _skillPosition;
-        }
-
-        private void OnWaitButton()
-        {            
-            _wait.interactable = false;
-            RoundEnded?.Invoke();
-        }        
-
-        private void OnRightButton()
-        {
-            if (_movement.IsMoving == true) return;
-
-            if (_movementAP <= _playerSpeed.CurrentSpeed)
-            {
-                _movement.MoveRight();
-                _playerSpeed.SpentAP(_movementAP);
-            }
-            else
-                _playerHud.Warning.Enable(_playerHud.Warning.APWarning);
-        }
-
-        private void OnLeftButton()
-        {
-            if (_movement.IsMoving == true) return;
-
-            if (_movementAP <= _playerSpeed.CurrentSpeed)
-            {
-                _movement.MoveLeft();
-                _playerSpeed.SpentAP(_movementAP);
-            }
-            else
-                _playerHud.Warning.Enable(_playerHud.Warning.APWarning);
-        }
-
-        private void OnPlayerMove()
-            => _movement.CheckButtons(_foward, _backward);
+        }                       
 
         private void OnAttack(SkillView skillView)
         {           

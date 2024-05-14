@@ -110,13 +110,24 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
             IncreaseValues(part.PartData.Health, part.PartData.Speed, part.PartData.MaterialAmount);
             PartAdded?.Invoke(_health, _speed, _requiredMaterial);
             part.PartChoosed += ChoosePart;
+            part.DoubleClicked += RemovePart;
             if (_parts.Count == _maxParts) _materials.EnablePanel();
         }
 
         private void ChoosePart(Part part)
         {
-            _currentPart = part;
-            _currentPart.DoubleClicked += RemovePart;
+            if (_currentPart == null)
+            {
+                _currentPart = part;
+                _currentPart.SetEnableColor();
+            }
+            else
+            {
+                _previousPart = _currentPart;
+                _previousPart.SetDisableColor();
+                _currentPart = part;
+                _currentPart.SetEnableColor();
+            }            
         }
 
         private void RemovePart()

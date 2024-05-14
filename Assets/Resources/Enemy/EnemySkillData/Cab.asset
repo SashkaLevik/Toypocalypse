@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: Cab
   m_EditorClassIdentifier: 
-  Icon: {fileID: -660098578, guid: e477473885244d44da782a219590c6d5, type: 3}
+  Icon: {fileID: -4800280973878993068, guid: e477473885244d44da782a219590c6d5, type: 3}
   EffectIcon: {fileID: 0}
   RuDescription: "\u0437\u0430\u0449\u0438\u0442\u0430"
   EnDescription: defence

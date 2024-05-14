@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: WormLightning
   m_EditorClassIdentifier: 
-  Icon: {fileID: -31645244, guid: e477473885244d44da782a219590c6d5, type: 3}
-  EffectIcon: {fileID: 0}
+  Icon: {fileID: -2130292641307725112, guid: e477473885244d44da782a219590c6d5, type: 3}
+  EffectIcon: {fileID: 8506703278990721906, guid: 220e61c0d923b6045ac5b9b00a5d8bf8, type: 3}
   RuDescription: "\u041C\u043E\u043B\u043D\u0438\u044F"
   EnDescription: Lightning
   RuEffectDescription: 
   EnEffectDescription: 
+  EffectChance: 0
   EffectValue: 0
-  DefaultEffectValue: 0
+  EffectDuration: 0
   DefaultDamage: 0
-  Damage: 5
+  Damage: 4
   DefaultDefence: 0
   Defence: 0
   DefaultCooldown: 0
@@ -31,3 +32,4 @@ MonoBehaviour:
   PartType: 0
   SkillType: 0
   AttackType: 0
+  AreaDice: {fileID: 0}

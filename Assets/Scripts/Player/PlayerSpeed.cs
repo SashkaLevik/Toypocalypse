@@ -11,7 +11,7 @@ namespace Assets.Scripts.Player
         private float _maxSpeed;
         private Toy _toy;
 
-        public event UnityAction SpeedChanged;
+        public event UnityAction<float> SpeedChanged;
 
         public float CurrentSpeed
         {
@@ -19,7 +19,7 @@ namespace Assets.Scripts.Player
             set
             {
                 _currentSpeed = value;
-                SpeedChanged?.Invoke();
+                SpeedChanged?.Invoke(CurrentSpeed);
             }
         }
 
@@ -29,7 +29,6 @@ namespace Assets.Scripts.Player
             set
             {
                 _maxSpeed = value;
-                SpeedChanged?.Invoke();
             }
         }
 

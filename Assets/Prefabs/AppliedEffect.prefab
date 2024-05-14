@@ -28,7 +28,6 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8532924643593773854}
   m_RootOrder: 0
@@ -163,7 +162,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5242750306832740289}
   m_Father: {fileID: 7760859700225165746}
@@ -202,7 +200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -252596967, guid: 1c39142de4996e945a3bbd71eda965f1, type: 3}
+  m_Sprite: {fileID: -2791781955627221804, guid: 1c39142de4996e945a3bbd71eda965f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -242,7 +240,6 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8532924643593773854}
   m_Father: {fileID: 0}
@@ -304,6 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effectDescription: {fileID: 7248522016962365257}
+  _skillValue: {fileID: 0}
   _effectImage: {fileID: 2410288635550362584}
   _descImage: {fileID: 5997431410109794142}
 --- !u!114 &491697373394323323

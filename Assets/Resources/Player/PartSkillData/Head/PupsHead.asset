@@ -12,15 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: PupsHead
   m_EditorClassIdentifier: 
-  Icon: {fileID: -1508558464, guid: e477473885244d44da782a219590c6d5, type: 3}
-  EffectIcon: {fileID: 0}
-  RuDescription: "\u041A\u0438\u0441\u043B\u043E\u0442\u043D\u0430\u044F \u0430\u0442\u0430\u043A\u0430
-    \u0441\u043D\u0438\u043C\u0430\u0435\u0442 1 \u0437\u0430\u0449\u0438\u0442\u0443"
-  EnDescription: Acid attack removes 1 defense
-  RuEffectDescription: 
-  EnEffectDescription: 
-  EffectValue: 1
-  DefaultEffectValue: 1
+  Icon: {fileID: -6565243667325986066, guid: e477473885244d44da782a219590c6d5, type: 3}
+  EffectIcon: {fileID: 3762855722552047121, guid: 220e61c0d923b6045ac5b9b00a5d8bf8, type: 3}
+  RuDescription: "50% \u0448\u0430\u043D\u0441 \u043D\u0430\u043B\u043E\u0436\u0438\u0442\u044C
+    \u0440\u0430\u0437\u0440\u0443\u0448\u0435\u043D\u0438\u0435 \u0437\u0430\u0449\u0438\u0442\u044B
+    \u043D\u0430 2 \u0440\u0430\u0443\u043D\u0434\u0430"
+  EnDescription: 50% chance to apply a protection destruction for 2 rounds
+  RuEffectDescription: "\u0432 \u043A\u043E\u043D\u0446\u0435 \u0445\u043E\u0434\u0430
+    \u0440\u0430\u0437\u0440\u0443\u0448\u0430\u0435\u0442 2 \u0449\u0438\u0442\u0430"
+  EnEffectDescription: destroy 2 shields at the end of the turn
+  EffectChance: 9
+  EffectValue: 2
+  EffectDuration: 2
   DefaultDamage: 3
   Damage: 3
   DefaultDefence: 0
@@ -31,4 +34,5 @@ MonoBehaviour:
   StunChance: 0
   PartType: 0
   SkillType: 0
-  AttackType: 5
+  AttackType: 3
+  AreaDice: {fileID: 0}

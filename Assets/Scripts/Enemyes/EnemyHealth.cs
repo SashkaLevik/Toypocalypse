@@ -43,15 +43,7 @@ namespace Assets.Scripts.Enemyes
         {
             Defence -= value;
             if (Defence < 0) Defence = 0;
-        }
-
-        public void ResetDefence(Area area)
-        {
-            if (_isDefending)
-                Defence = area.IncreasedValue;
-            else
-                Defence = 0;
-        }       
+        }            
 
         protected override void Die()
         {

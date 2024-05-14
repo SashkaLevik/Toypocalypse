@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: RoboLegs
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 464190d8002eca74c8268e387d544af9, type: 3}
-  SkillImage: {fileID: -545755102, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
   NameEn: Robot legs
   NameRu: "\u041D\u043E\u0433\u0438 \u0440\u043E\u0431\u043E\u0442\u0430"
   Health: 2

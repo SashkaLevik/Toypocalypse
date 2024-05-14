@@ -1,0 +1,83 @@
+
+garazh_02.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 37
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1080
+  orig: 1922, 1082
+  offset: 1, 1
+  index: -1
+box
+  rotate: false
+  xy: 1095, 1119
+  size: 352, 294
+  orig: 354, 296
+  offset: 1, 1
+  index: -1
+box_lite
+  rotate: true
+  xy: 516, 1359
+  size: 54, 56
+  orig: 56, 58
+  offset: 1, 1
+  index: -1
+lampa_main
+  rotate: false
+  xy: 1449, 1084
+  size: 337, 329
+  orig: 337, 329
+  offset: 0, 0
+  index: -1
+lampa_osnova
+  rotate: false
+  xy: 208, 1394
+  size: 139, 19
+  orig: 141, 21
+  offset: 1, 1
+  index: -1
+lampa_sgib
+  rotate: false
+  xy: 76, 1395
+  size: 130, 18
+  orig: 132, 20
+  offset: 1, 1
+  index: -1
+mash_lapa_1
+  rotate: true
+  xy: 349, 1392
+  size: 21, 68
+  orig: 23, 70
+  offset: 1, 1
+  index: -1
+mash_lapa_2
+  rotate: true
+  xy: 2, 1397
+  size: 16, 72
+  orig: 18, 74
+  offset: 1, 1
+  index: -1
+mash_lapa_osnovn
+  rotate: true
+  xy: 574, 1299
+  size: 114, 152
+  orig: 114, 152
+  offset: 0, 0
+  index: -1
+mash_osnova
+  rotate: false
+  xy: 419, 1370
+  size: 95, 43
+  orig: 97, 45
+  offset: 1, 1
+  index: -1
+stul
+  rotate: true
+  xy: 728, 1125
+  size: 288, 365
+  orig: 288, 365
+  offset: 0, 0
+  index: -1

@@ -17,5 +17,6 @@ namespace Assets.Scripts.Data.StaticData
         public Sprite Icon;
         public ConnectingMaterial Material;
         public ArtifactType ArtifactType;
+        public DiceFaceData FaceData;
     }
 }

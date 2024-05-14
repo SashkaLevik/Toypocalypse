@@ -29,7 +29,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6259953336836100836}
   m_RootOrder: 5
@@ -180,7 +179,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6259953336836100836}
   m_RootOrder: 1
@@ -330,7 +328,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6259953336836100836}
   m_RootOrder: 4
@@ -481,7 +478,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6259953336836100836}
   m_RootOrder: 3
@@ -632,7 +628,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6259953336836100836}
   m_RootOrder: 2
@@ -783,7 +778,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6259953336836100836}
   m_RootOrder: 0
@@ -936,7 +930,6 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6259953336314983082}
   - {fileID: 2664963327560043008}
@@ -980,7 +973,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -381096766, guid: 83045644a0698144c81c2910661d8e5c, type: 3}
+  m_Sprite: {fileID: -6164229943738199763, guid: 83045644a0698144c81c2910661d8e5c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -992,7 +985,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 1
 --- !u!95 &3847196833037860499
 Animator:
-  serializedVersion: 4
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1005,7 +998,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -1024,7 +1016,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _warning: {fileID: 6259953336836100838}
   _warningSound: {fileID: 9075351412468773349}
-  _noPartChoosed: {fileID: 7656063601076924930}
   _noMaterialChoosed: {fileID: 7261991677607340718}
   _allPartsChoosed: {fileID: 5191515938303753034}
   _identicalType: {fileID: 5390380629986613756}
@@ -1039,7 +1030,7 @@ AudioSource:
   m_GameObject: {fileID: 6259953336836100839}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3628198639210608691, guid: 0ed0ba2e3ea7e8c4685d3710fe3ce897, type: 2}
   m_audioClip: {fileID: 8300000, guid: 34f6f916ab64396438534625e05c3214, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

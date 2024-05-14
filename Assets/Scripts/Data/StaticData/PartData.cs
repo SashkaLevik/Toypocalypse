@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Data.StaticData
 {
@@ -7,7 +6,6 @@ namespace Assets.Scripts.Data.StaticData
     public class PartData : ScriptableObject
     {
         public Sprite Icon;
-        public Sprite SkillImage;
         public string NameEn;
         public string NameRu;
         public float Health;

@@ -76,9 +76,9 @@ namespace Assets.Scripts.States
             battleSystem.GetComponent<BattleSystem>().Construct(playerSpawner, playerSpawner.GetComponent<EnemySpawner>(), playerSpawner.RoutMap);
             battleSystem.GetComponent<Settings>().Construct(playerSpawner);
             battleHud.GetComponent<AttackPanel>().Construct(playerSpawner.GetComponent<EnemySpawner>(), skillPanel.GetComponent<SkillPanel>());
-            battleHud.GetComponentInChildren<PlayerHud>().Construct(player.GetComponent<Toy>(), player.GetComponent<PlayerHealth>(), player.GetComponent<PlayerSpeed>());
+            battleHud.GetComponentInChildren<PlayerHud>().Construct(player.GetComponent<Toy>());
             skillPanel.GetComponent<SkillPanel>().Construct(player.GetComponent<Toy>(), battleHud.GetComponentInChildren<PlayerHud>(),
-                battleSystem.GetComponent<BattleSystem>(), playerSpawner);
+                battleSystem.GetComponent<BattleSystem>());
             //InitBattleHud(player, battleHud, skillPanel, battleSystem);
         }        
         

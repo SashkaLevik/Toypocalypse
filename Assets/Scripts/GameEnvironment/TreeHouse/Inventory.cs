@@ -1,12 +1,8 @@
 ﻿using Assets.Scripts.Data.StaticData;
 using Assets.Scripts.UI;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.GameEnvironment.TreeHouse
 {
@@ -23,7 +19,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         [SerializeField] private Table _table;
         [SerializeField] private PartsMover _partsMover;
 
-        public List<Part> _parts = new();
+        public List<Part> _parts = new List<Part>();
         public PartData _partData;
         public Part _spawnedPart;
         public Part _currentPart;
@@ -66,23 +62,18 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         }
 
         private void RemovePart()
-        {
-            if (_currentPart == null)
-                _treeHouse.Warning.Enable(_treeHouse.Warning.NoPartChoosed);
-            else
+        {           
+            if (_table.CanAddPart() && _table.CheckTypeMatch(_currentPart))
             {
-                if (_table.CanAddPart() && _table.CheckTypeMatch(_currentPart))
-                {
-                    _currentPart.PartChoosed -= ChoosePart;
-                    _currentPart.DoubleClicked -= RemovePart;
-                    _partsMover.RemovePart(_parts, _currentPart, _table.transform);
-                    PlacedOnTable?.Invoke(_currentPart);
-                    _description.gameObject.SetActive(false);
-                    _currentPart = null;
-                }
-                else if(_table.CanAddPart() == false)
-                    _treeHouse.Warning.Enable(_treeHouse.Warning.AllPartsChoosed);
-            }                        
+                _currentPart.PartChoosed -= ChoosePart;
+                _currentPart.DoubleClicked -= RemovePart;
+                _partsMover.RemovePart(_parts, _currentPart, _table.transform);
+                PlacedOnTable?.Invoke(_currentPart);
+                _description.gameObject.SetActive(false);
+                _currentPart = null;
+            }
+            else if (_table.CanAddPart() == false)
+                _treeHouse.Warning.Enable(_treeHouse.Warning.AllPartsChoosed);
         }                        
 
         public void ChoosePart(Part part)

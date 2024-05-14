@@ -19,7 +19,7 @@ namespace Assets.Scripts.UI
 
         public void OpenTutorial(BaseEnemy enemy)
         {
-            Invoke(nameof(StartTutorial), 1.3f);
+            Invoke(nameof(StartTutorial), 0.4f);
         }
 
         private void StartTutorial()

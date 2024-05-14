@@ -1,0 +1,146 @@
+
+ShopPotion_sp_02.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 2, 263
+  size: 1920, 1080
+  orig: 1922, 1082
+  offset: 1, 1
+  index: -1
+bottle_blik_1
+  rotate: true
+  xy: 43, 1989
+  size: 23, 58
+  orig: 25, 60
+  offset: 1, 1
+  index: -1
+bottle_blik_2
+  rotate: true
+  xy: 1765, 1974
+  size: 38, 59
+  orig: 40, 61
+  offset: 1, 1
+  index: -1
+bottle_blik_3
+  rotate: true
+  xy: 647, 1983
+  size: 29, 36
+  orig: 31, 38
+  offset: 1, 1
+  index: -1
+buble1
+  rotate: false
+  xy: 2, 2000
+  size: 12, 12
+  orig: 14, 15
+  offset: 1, 1
+  index: -1
+buble2
+  rotate: true
+  xy: 16, 1990
+  size: 22, 25
+  orig: 24, 27
+  offset: 1, 1
+  index: -1
+flor_blik_1
+  rotate: false
+  xy: 103, 1988
+  size: 542, 24
+  orig: 544, 26
+  offset: 1, 1
+  index: -1
+flor_blik_2
+  rotate: false
+  xy: 2, 1954
+  size: 456, 32
+  orig: 458, 34
+  offset: 1, 1
+  index: -1
+flor_blik_3
+  rotate: false
+  xy: 1226, 1982
+  size: 537, 30
+  orig: 539, 32
+  offset: 1, 1
+  index: -1
+flor_blik_4
+  rotate: false
+  xy: 460, 1943
+  size: 444, 38
+  orig: 446, 40
+  offset: 1, 1
+  index: -1
+flor_blik_5
+  rotate: false
+  xy: 685, 1983
+  size: 539, 29
+  orig: 541, 31
+  offset: 1, 1
+  index: -1
+flor_blik_6
+  rotate: false
+  xy: 906, 1938
+  size: 414, 42
+  orig: 416, 44
+  offset: 1, 1
+  index: -1
+fog
+  rotate: true
+  xy: 1439, 1883
+  size: 97, 125
+  orig: 105, 140
+  offset: 3, 7
+  index: -1
+liquid_1
+  rotate: false
+  xy: 1322, 1904
+  size: 115, 76
+  orig: 115, 76
+  offset: 0, 0
+  index: -1
+lite polka blue
+  rotate: false
+  xy: 1754, 1746
+  size: 256, 216
+  orig: 256, 216
+  offset: 0, 0
+  index: -1
+lite_fon
+  rotate: true
+  xy: 591, 1345
+  size: 591, 649
+  orig: 591, 649
+  offset: 0, 0
+  index: -1
+lite_polka_pink
+  rotate: false
+  xy: 2, 1729
+  size: 587, 212
+  orig: 589, 214
+  offset: 1, 1
+  index: -1
+lite_stoyka_1
+  rotate: true
+  xy: 1960, 1964
+  size: 48, 52
+  orig: 50, 54
+  offset: 1, 1
+  index: -1
+lite_stoyka_2
+  rotate: false
+  xy: 1826, 1965
+  size: 132, 47
+  orig: 132, 47
+  offset: 0, 0
+  index: -1
+potion
+  rotate: true
+  xy: 1566, 1859
+  size: 121, 186
+  orig: 121, 186
+  offset: 0, 0
+  index: -1

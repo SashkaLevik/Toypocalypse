@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Skills:
   - {fileID: 11400000, guid: 1b54703fbc55c124bb53a551a7f4055a, type: 2}
-  - {fileID: 11400000, guid: e22433890adc24642912135c121bcf8a, type: 2}
+  - {fileID: 11400000, guid: b11862463ae496a468be395761e415e1, type: 2}
   - {fileID: 11400000, guid: 0cc846aa69534b948a6879d8d843820e, type: 2}
   - {fileID: 11400000, guid: b2a2c7ce4bdb2734ea48d9597c354b82, type: 2}
   - {fileID: 11400000, guid: 5264c1cc04ba9474e879be7c9559bc1f, type: 2}
-  SpawnPosition: {x: 4.5, y: -0.3, z: 0}
+  SpawnPosition: {x: 4.25, y: -0.3, z: 0}
   Appear: {fileID: 7436280200827580419, guid: f05748a0f85efd04aa60d5601db13bf6, type: 3}
   Health: 16
   Speed: 10

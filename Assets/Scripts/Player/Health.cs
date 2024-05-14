@@ -12,7 +12,7 @@ namespace Assets.Scripts.Player
         protected float _defendingDamage;
         protected bool _isDefending;
 
-        public event UnityAction HealthChanged;
+        public event UnityAction<float> HealthChanged;
         public event UnityAction DefenceChanged;
 
         public float Defence
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Player
             set
             {
                 _currentHealth = value;
-                HealthChanged?.Invoke();
+                HealthChanged?.Invoke(CurrentHP);
             }
         }
 
@@ -41,7 +41,6 @@ namespace Assets.Scripts.Player
             set
             {
                 _maxHealth = value;
-                HealthChanged?.Invoke();
             }
         }       
 
@@ -58,6 +57,24 @@ namespace Assets.Scripts.Player
 
             if (CurrentHP < 0) CurrentHP = 0;
             if (CurrentHP <= 0) Die();
+        }
+
+        public void TakeDirectDamage(float damage)
+        {
+            CurrentHP -= damage;
+
+            if (CurrentHP <= 0)
+            {
+                CurrentHP = 0;
+                Die();
+            }
+        }
+
+        public void BreakeDefence(float value)
+        {
+            Defence -= value;
+            if (Defence < 0)
+                Defence = 0;
         }
 
         protected virtual void Die() { }                   

@@ -20,7 +20,7 @@ namespace Assets.Scripts.Player
         private Transform _position;
         private Toy _player;
         private SkillPanel _skillPanel;
-        private List<ArtifactData> _artifacts = new();
+        private List<ArtifactData> _artifacts = new List<ArtifactData>();
 
         public List<ArtifactData> Artifacts => _artifacts;
 

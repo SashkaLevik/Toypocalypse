@@ -22,3 +22,4 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: d1942d42faa639843a927afcae114302, type: 3}
   Material: {fileID: 4716325762324565998, guid: caa8bd3f9ca6ef34a9d000012c81b550, type: 3}
   ArtifactType: 5
+  FaceData: {fileID: 11400000, guid: a4a27893784350f4f8835099566bd964, type: 2}

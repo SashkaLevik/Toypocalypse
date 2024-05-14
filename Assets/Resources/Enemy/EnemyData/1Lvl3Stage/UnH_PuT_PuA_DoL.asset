@@ -15,8 +15,9 @@ MonoBehaviour:
   Skills:
   - {fileID: 11400000, guid: 2658c1ed193e02b4687223a5d93e0d28, type: 2}
   - {fileID: 11400000, guid: 51c65dd941c843b46b669b73703522f1, type: 2}
-  - {fileID: 11400000, guid: f7417066d1b91404d9c490a83f1a451b, type: 2}
+  - {fileID: 11400000, guid: d0e54dff98e27aa4085d3bfb26361871, type: 2}
   - {fileID: 11400000, guid: 0cc846aa69534b948a6879d8d843820e, type: 2}
+  - {fileID: 11400000, guid: 51c65dd941c843b46b669b73703522f1, type: 2}
   SpawnPosition: {x: 4.5, y: 0, z: 0}
   Appear: {fileID: 307832150595218324, guid: adaf1c6b641c93f4fa3c6849687738a7, type: 3}
   Health: 14

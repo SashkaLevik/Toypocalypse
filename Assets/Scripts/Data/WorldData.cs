@@ -12,6 +12,9 @@ namespace Assets.Scripts.Data
         public int LevelNumber;
         public bool IsNewGame;
         public bool IsFirstRun;
+        public float MasterVolume;
+        public float MusicVolume;
+        public float SFXVolume;
 
         public WorldData(string level)
         {
@@ -21,6 +24,9 @@ namespace Assets.Scripts.Data
             LevelNumber = 1;
             IsNewGame = true;
             IsFirstRun = true;
+            MasterVolume = 1;
+            MusicVolume = 1;
+            SFXVolume = 1;
         }
     }
 }

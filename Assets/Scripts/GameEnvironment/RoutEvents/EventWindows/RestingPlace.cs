@@ -66,6 +66,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             {
                 _playerSpeed.MaxSpeed += _speedRiseValue;
                 _playerSpeed.CurrentSpeed += _speedRiseValue;
+                _playerHud.UpdateSpeedBar();
                 _playerMoney.RemoveMaterialByType(_paymentMaterial.Data.Type, _paymentPrice);
                 OffButtons();
             }
@@ -79,6 +80,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             {
                 _playerHealth.MaxHP += _healthRiseValue;
                 _playerHealth.CurrentHP += _healthRiseValue;
+                _playerHud.UpdateHPBar();
                 _playerMoney.RemoveMaterialByType(_paymentMaterial.Data.Type, _paymentPrice);
                 OffButtons();
             }

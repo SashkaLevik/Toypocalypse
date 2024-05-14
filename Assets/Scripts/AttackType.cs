@@ -5,10 +5,8 @@ namespace Assets.Scripts
     {
         Simple,
         Push,
-        Pull,
-        Stun,
         Trauma,
-        Rust,
+        Acid,
         Burn
     }
 }

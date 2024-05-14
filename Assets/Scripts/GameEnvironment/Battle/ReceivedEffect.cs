@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Data.StaticData;
+using Assets.Scripts.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
         [SerializeField] private Image _effectImage;
 
         private float _effectDuration;
-        private bool _isActive;
+        //private bool _isActive;
         private SkillData _skillData;
 
         public float EffectDuration => _effectDuration;
@@ -25,18 +26,25 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _effectImage.gameObject.SetActive(true);
             _effectImage.sprite = skillData.EffectIcon;
             _effectDuration = _skillData.EffectValue;
-            _effectValue.text = _effectDuration.ToString();
-            _isActive = true;
-        }            
+            UpdateDuration();
+            //_isActive = true;
+        }                  
 
-        public bool IsActive()
+        public void Apply(IHealth health)
         {
-            return _isActive;
+            if (_skillData.AttackType == AttackType.Acid)
+                health.BreakeDefence(_skillData.EffectValue);
+            else if (_skillData.AttackType == AttackType.Burn)
+                health.TakeDirectDamage(_skillData.EffectValue);            
+
+            ReduceDuration();
         }
 
         public void ReduceDuration()
         {
             _effectDuration -= 1;
+            UpdateDuration();
+
             if (_effectDuration == 0)
                 ResetEffect();
         }
@@ -44,14 +52,15 @@ namespace Assets.Scripts.GameEnvironment.Battle
         public void Stack(SkillData skillData)
         {
             _effectDuration += skillData.EffectValue;
-            _effectValue.text = _effectDuration.ToString();
+            UpdateDuration();
         }
 
         public void ResetEffect()
         {
-            _isActive = false;
+            //_isActive = false;
             _effectImage.gameObject.SetActive(false);
             _skillData = null;
+            _effectDuration = 0;
         }
 
         public void OnEnter()
@@ -62,6 +71,9 @@ namespace Assets.Scripts.GameEnvironment.Battle
 
         public void OnExit()
             => _descriptionImage.gameObject.SetActive(false);
+
+        private void UpdateDuration()
+            => _effectValue.text = _effectDuration.ToString();
 
         private string GetLocalizedDescription(SkillData skillData)
         {

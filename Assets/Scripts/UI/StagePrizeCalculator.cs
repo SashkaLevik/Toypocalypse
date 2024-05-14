@@ -15,7 +15,7 @@ namespace Assets.Scripts.UI
 
         private Toy _player;
         private int _boxTypePercent;
-        private int _materialPercent = 90;
+        private int _materialPercent = 100;
         private int _changedPercent = 10;
         private int _stageNumber;
         private int _inactiveParts;

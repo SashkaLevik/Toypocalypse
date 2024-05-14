@@ -12,7 +12,8 @@ namespace Assets.Scripts.UI
         private const string MenuScene = "Menu";
 
         [SerializeField] private VideoPlayer _cattPlayer;
-        [SerializeField] private VideoPlayer _introPlayer;
+        [SerializeField] private VideoPlayer _enIntroPlayer;
+        [SerializeField] private VideoPlayer _ruIntroPlayer;
         [SerializeField] private RawImage _cattImage;
         [SerializeField] private RawImage _introImage;
         [SerializeField] private Button _skip;
@@ -25,31 +26,38 @@ namespace Assets.Scripts.UI
         private void OnEnable()
         {
             _cattPlayer.loopPointReached += PlayIntro;
-            _introPlayer.loopPointReached += EndIntro;
+            _enIntroPlayer.loopPointReached += EndIntro;
+            _ruIntroPlayer.loopPointReached += EndIntro;
             _skip.onClick.AddListener(LoadMenu);
         }        
 
         private void OnDestroy()
         {
             _cattPlayer.loopPointReached -= PlayIntro;
-            _introPlayer.loopPointReached -= EndIntro;
+            _enIntroPlayer.loopPointReached -= EndIntro;
+            _ruIntroPlayer.loopPointReached -= EndIntro;
             _skip.onClick.RemoveListener(LoadMenu);
         }
 
         private void PlayIntro(VideoPlayer player)
         {
             _cattPlayer.Stop();            
-            //_cattImage.gameObject.SetActive(false);
+            _cattImage.gameObject.SetActive(false);
             _cattPlayer.gameObject.SetActive(false);
             _introImage.gameObject.SetActive(true);
-            _introPlayer.gameObject.SetActive(true);
+
+            if (Application.systemLanguage == SystemLanguage.Russian)
+                _ruIntroPlayer.gameObject.SetActive(true);
+            else
+                _enIntroPlayer.gameObject.SetActive(true);
         }
 
         private void EndIntro(VideoPlayer source)
         {
-            _introPlayer.Stop();
+            _enIntroPlayer.Stop();
+            _ruIntroPlayer.Stop();
             LoadMenu();
-        }        
+        }              
 
         private void LoadMenu()
         {

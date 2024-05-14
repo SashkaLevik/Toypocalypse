@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CabPuHead
   m_EditorClassIdentifier: 
   Skills:
-  - {fileID: 11400000, guid: 5264c1cc04ba9474e879be7c9559bc1f, type: 2}
+  - {fileID: 11400000, guid: 814f4705af3052f45acc58956e2155a6, type: 2}
   - {fileID: 11400000, guid: d7dee15ccacf8c74a988e88106d425ef, type: 2}
   - {fileID: 11400000, guid: e22433890adc24642912135c121bcf8a, type: 2}
   - {fileID: 11400000, guid: 0cc846aa69534b948a6879d8d843820e, type: 2}

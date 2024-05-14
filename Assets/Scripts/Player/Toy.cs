@@ -20,29 +20,22 @@ namespace Assets.Scripts.Player
         [SerializeField] protected Sprite _previewImage;
         [SerializeField] private List<PartData> _parts;
         
-        private float _animationDelay = 2f;
         private BaseEnemy _enemy;
         private SkillPanel _skillPanel;
         private RoutMap _routMap;
         private PlayerHud _playerHud;
         private List<Minion> _activeMinions;
         private AnimatorController _animator;
-        private Area _currentArea;
-        private Area _previousArea;
         private List<Part> _inactiveParts;
         private RoutEvent _currentEvent;
 
+        public AnimatorController Animator => _animator;
         public List<Part> InactiveParts => _inactiveParts;
         public SkillPanel SkillPanel => _skillPanel;
         public PlayerHud PlayerHud => _playerHud;
         public Sprite PreviewImage => _previewImage;
         public List<PartData> Parts => _parts;
         public List<Minion> Minions => _activeMinions;
-        public AnimatorController Animator => _animator;
-        public Area CurrentArea => _currentArea;
-
-        public event UnityAction AnimationEnded;
-        //public event UnityAction<Area> AreaChanged;
 
         private void Start()
         {
@@ -56,12 +49,10 @@ namespace Assets.Scripts.Player
         {
             _currentEvent = routEvent;
             _currentEvent.EventCompleted += OnEventExit;
-            _playerHud.HideIcons();
         }
 
         private void OnEventExit()
         {
-            _playerHud.ShowIcons();
             _currentEvent.EventCompleted -= OnEventExit;
         }
 
@@ -73,20 +64,7 @@ namespace Assets.Scripts.Player
         }
         
         public void InitEnemy(BaseEnemy enemy)
-            => _enemy = enemy;
-
-        public void ChangeArea(Area area)
-        {
-            _previousArea = _currentArea;
-            _currentArea = area;
-            //AreaChanged?.Invoke(area);
-        }                                      
-
-        private IEnumerator EndTurn()
-        {
-            yield return new WaitForSeconds(_animationDelay);
-            AnimationEnded?.Invoke();
-        }            
+            => _enemy = enemy;                                                               
 
         public void Save(PlayerProgress progress)
         {

@@ -1,0 +1,97 @@
+
+SR_mtp_nol_btn.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BG
+  rotate: false
+  xy: 2, 696
+  size: 1920, 1080
+  orig: 1922, 1082
+  offset: 1, 1
+  index: -1
+flover_1
+  rotate: false
+  xy: 1253, 2
+  size: 337, 335
+  orig: 337, 335
+  offset: 0, 0
+  index: -1
+flowe1_shdw
+  rotate: true
+  xy: 1924, 754
+  size: 80, 103
+  orig: 80, 103
+  offset: 0, 0
+  index: -1
+flowe2
+  rotate: false
+  xy: 1748, 387
+  size: 240, 307
+  orig: 240, 307
+  offset: 0, 0
+  index: -1
+flowe2_shdw
+  rotate: true
+  xy: 1968, 1017
+  size: 60, 76
+  orig: 60, 76
+  offset: 0, 0
+  index: -1
+flowe3
+  rotate: true
+  xy: 1253, 339
+  size: 355, 493
+  orig: 362, 493
+  offset: 0, 0
+  index: -1
+flowe3_shdw
+  rotate: true
+  xy: 1924, 1079
+  size: 89, 118
+  orig: 89, 118
+  offset: 0, 0
+  index: -1
+lite_big
+  rotate: false
+  xy: 1748, 149
+  size: 254, 236
+  orig: 256, 238
+  offset: 1, 1
+  index: -1
+lite_luch1
+  rotate: false
+  xy: 1924, 836
+  size: 42, 241
+  orig: 55, 249
+  offset: 7, 2
+  index: -1
+lite_luch2
+  rotate: false
+  xy: 2008, 1206
+  size: 33, 199
+  orig: 35, 203
+  offset: 2, 0
+  index: -1
+lite_luch3
+  rotate: false
+  xy: 1924, 1170
+  size: 82, 235
+  orig: 89, 238
+  offset: 0, 0
+  index: -1
+shkaf
+  rotate: false
+  xy: 2, 126
+  size: 1249, 568
+  orig: 1251, 570
+  offset: 1, 1
+  index: -1
+skaf_shdw
+  rotate: true
+  xy: 1924, 1407
+  size: 369, 104
+  orig: 371, 106
+  offset: 1, 1
+  index: -1

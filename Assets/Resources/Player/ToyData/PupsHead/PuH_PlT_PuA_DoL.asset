@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0422c2de02d0634a934cc5b4f3a7473, type: 3}
   m_Name: PuH_PlT_PuA_DoL
   m_EditorClassIdentifier: 
-  SpawnPosition: {x: 0, y: 0, z: 0}
+  SpawnPosition: {x: -4.25, y: -0.7, z: 0}
   toyImage: {fileID: 21300000, guid: 740588dd36d57764987b4e3e3dd37cf1, type: 3}
   Prefab: {fileID: 8634518628380221811, guid: 3edbf2464fbd222459de6cfd71588add, type: 3}
   Parts:

@@ -5,21 +5,21 @@ using UnityEngine;
 namespace Assets.Scripts.Enemyes
 {
     public class EnemyMovement : Movement
-    {                    
-        public override void MoveRight()
-        {
-            base.MoveRight();                        
-        }
+    {
+        //public override void MoveRight()
+        //{
+        //    base.MoveRight();
+        //}
 
-        public override void MoveLeft()
-        {
-            base.MoveLeft();                       
-        }        
+        //public override void MoveLeft()
+        //{
+        //    base.MoveLeft();
+        //}
 
-        public override void Push()
+        public override void PushInAttack()
             => MoveRight();
 
-        public override void Pull()
+        public override void PushInDefence()
             => MoveLeft();        
     }
 }

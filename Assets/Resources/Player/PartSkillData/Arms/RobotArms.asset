@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: RobotArms
   m_EditorClassIdentifier: 
-  Icon: {fileID: -31645244, guid: e477473885244d44da782a219590c6d5, type: 3}
+  Icon: {fileID: -2130292641307725112, guid: e477473885244d44da782a219590c6d5, type: 3}
+  EffectIcon: {fileID: 0}
   RuDescription: "\u0412\u044B\u0441\u0442\u0440\u0435\u043B \u0438\u0437 \u043F\u0443\u0448\u043A\u0438"
   EnDescription: Gun shoot
-  NegativeValue: 0
+  RuEffectDescription: 
+  EnEffectDescription: 
+  EffectValue: 0
+  DefaultEffectValue: 0
   DefaultDamage: 4
   Damage: 4
   DefaultDefence: 0

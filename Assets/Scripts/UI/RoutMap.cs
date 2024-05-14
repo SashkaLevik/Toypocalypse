@@ -32,11 +32,11 @@ namespace Assets.Scripts.UI
 
         private bool _isInBattle;
         private Toy _player;
-        private List<RoutEvent> _1StageShuffled = new();
-        private List<RoutEvent> _2StageShuffled = new();
-        private List<RoutEvent> _3StageShuffled = new();
-        private List<RoutEvent> _4StageShuffled = new();
-        private List<RoutEvent> _5StageShuffled = new();
+        private List<RoutEvent> _1StageShuffled = new List<RoutEvent>();
+        private List<RoutEvent> _2StageShuffled = new List<RoutEvent>();
+        private List<RoutEvent> _3StageShuffled = new List<RoutEvent>();
+        private List<RoutEvent> _4StageShuffled = new List<RoutEvent>();
+        private List<RoutEvent> _5StageShuffled = new List<RoutEvent>();
         private IGameStateMachine _stateMachine;
 
         public bool IsInBattle => _isInBattle;

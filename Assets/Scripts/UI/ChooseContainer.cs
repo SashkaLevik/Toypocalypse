@@ -23,6 +23,9 @@ namespace Assets.Scripts.UI
         {
             _containerButton = GetComponent<Button>();            
             _containerButton.onClick.AddListener(PushButton);
+
+            foreach (var button in _buttons)
+                button._containerButton.image.sprite = button.GetOffImage();
         }
 
         private void OnDestroy()        

@@ -1,8 +1,11 @@
 ﻿using Assets.Scripts.Data.StaticData;
+using Assets.Scripts.GameEnvironment.Dice;
 using Assets.Scripts.Player;
 using Lean.Localization;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.UI
 {
@@ -10,6 +13,7 @@ namespace Assets.Scripts.UI
     {
         private const string Russian = "Russian";
 
+        [SerializeField] private Canvas _menuCanvas;
         [SerializeField] private LeanLocalization _leanLocalization;
         [SerializeField] private TMP_Text _partName;
         [SerializeField] private TMP_Text _health;
@@ -17,19 +21,44 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _material;
         [SerializeField] private SkillView _skillView;
         [SerializeField] private TMP_Text _skillDescription;
+        [SerializeField] private Image _cooldownDescription;
+        [SerializeField] private Image _apDescription;
+        [SerializeField] private Image _skillDescriptionImage;
+        [SerializeField] private Image _layoutImage;
+        [SerializeField] private DiceLayout _diceLayout;
 
-        private PartData _choosedPartData;
-        public PartData ChoosedPart => _choosedPartData;
+        private PartData _choosedPart;
+        public PartData ChoosedPart => _choosedPart;
+
+        public void OnEnter()
+        {
+            if (_choosedPart.Type == PartType.Legs)
+            {
+                _layoutImage.gameObject.SetActive(true);
+                _diceLayout.InitDice(_choosedPart.SkillData.AreaDice);                
+            }
+            _cooldownDescription.gameObject.SetActive(true);
+            _apDescription.gameObject.SetActive(true);
+            _skillDescriptionImage.gameObject.SetActive(true);
+        }
+
+        public void OnExit()
+        {
+            _cooldownDescription.gameObject.SetActive(false);
+            _apDescription.gameObject.SetActive(false);
+            _skillDescriptionImage.gameObject.SetActive(false);
+            _layoutImage.gameObject.SetActive(false);
+        }
 
         public void SetValues(PartData partData)
         {
-            _choosedPartData = partData;
+            _choosedPart = partData;
             _partName.text = GetLocalizedName(partData);
             _health.text = partData.Health.ToString();
             _speed.text = partData.Speed.ToString();
             _material.text = partData.MaterialAmount.ToString();
             _skillDescription.text = GetLocalizedSkill(partData.SkillData);
-            _skillView.Init(partData.SkillData);            
+            _skillView.Init(partData.SkillData);           
         }
 
         private string GetLocalizedName(PartData partData)
@@ -42,7 +71,7 @@ namespace Assets.Scripts.UI
 
         private string GetLocalizedSkill(SkillData skillData)
         {
-            if (_leanLocalization.CurrentLanguage == "Russian")
+            if (_leanLocalization.CurrentLanguage == Russian)
                 return skillData.RuDescription;
             else
                 return skillData.EnDescription;

@@ -1,53 +1,78 @@
 ﻿using Assets.Scripts.Data.StaticData;
+using Assets.Scripts.Enemyes;
 using Assets.Scripts.Player;
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.GameEnvironment.Battle
 {
     public class EffectsReceiver : MonoBehaviour
     {        
         [SerializeField] protected List<ReceivedEffect> _receivedEffects;
+        [SerializeField] protected Image _resist;
 
-        //private List<SkillData> _negativeEffects = new();
-        private Toy _player;
-        private PlayerHealth _playerHealth;
-        private PlayerMovement _movement;
-        private SkillPanel _skillPanel;
+        public int _effectPercent;
+        protected float _animationDelay = 0.8f;
+        protected IHealth _health;
+        protected BaseEnemy _enemy;
+        protected EnemyHealth _enemyHealth;
+        protected EnemyAI _enemyAI;
+        protected EnemyMovement _enemyMovement;
 
-        private void Awake()
+        protected Toy _player;
+        protected PlayerMovement _playerMovement;
+        protected PlayerHealth _playerHealth;
+        protected SkillPanel _skillPanel;        
+
+        public void TryApplyEffect(SkillData skillData)
         {
-            _player = GetComponent<Toy>();
-            _movement = GetComponent<PlayerMovement>();
-            _playerHealth = GetComponent<PlayerHealth>();
-            _movement.PlayerMoved += CheckTrauma;
+            _effectPercent = Random.Range(0, 11);
+
+            StartCoroutine(ApplyEffect(skillData));            
         }
 
-        private void Start()
+        private IEnumerator ApplyEffect(SkillData skillData)
         {
-            _skillPanel = _player.SkillPanel;
-            _skillPanel.RoundEnded += ResetEffects;
+            yield return new WaitForSeconds(_animationDelay);
+
+            if (_effectPercent <= skillData.EffectChance)
+                Receive(skillData);
+            else
+                StartCoroutine(ShowResist());                        
         }
 
-        private void ResetEffects()
+        private IEnumerator ShowResist()
+        {
+            _resist.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.7f);
+            _resist.gameObject.SetActive(false);
+        }
+
+        protected virtual void ChekTrauma()
         {
             foreach (var effect in _receivedEffects)
             {
-                effect.ReduceDuration();
-            }
-        }        
-
-        private void CheckTrauma()
-        {
-            foreach (var effect in _receivedEffects)
-            {
-                if (effect.IsActive() && effect.SkillData.AttackType == AttackType.Trauma)
-                    _playerHealth.TakeDamage(effect.EffectDuration);
+                if (effect.SkillData != null && effect.SkillData.AttackType == AttackType.Trauma)
+                {
+                    _health.TakeDamage(effect.SkillData.EffectValue);
+                }
             }
         }
 
-        public void Receive(SkillData skillData)
+        protected virtual void CheckEffects()
+        {
+            foreach (var effect in _receivedEffects)
+            {
+                if (effect.SkillData != null)
+                {
+                    effect.Apply(_health);
+                }
+            }
+        }               
+
+        private void Receive(SkillData skillData)
         {
             foreach (var effect in _receivedEffects)
             {
