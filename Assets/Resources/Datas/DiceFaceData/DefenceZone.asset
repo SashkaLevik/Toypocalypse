@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f0206c4fd7eb347be7691f52d8de3d, type: 3}
   m_Name: DefenceZone
   m_EditorClassIdentifier: 
-  FaceImage: {fileID: 21300000, guid: f36ecb5036a0e7e4c9228308999cc1ee, type: 3}
-  Material: {fileID: 2100000, guid: ddbeeac69f990264594af7344193e66f, type: 2}
+  FaceImage: {fileID: 21300000, guid: 284b08de0b925034db040c29a094a8aa, type: 3}
+  Material: {fileID: 2100000, guid: eef1990b1a0bccb46b97a043d3e3e6b4, type: 2}
   AreaType: 2
   IncreaseValue: 1
   DecreaseValue: 0

@@ -8,6 +8,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
 {
     public class Table : MonoBehaviour
     {
+        [SerializeField] private ToyConstructor _toyConstructor;
         [SerializeField] private MaterialsPanel _materials;
         [SerializeField] private TreeHouseUI _treeHouse;
         [SerializeField] private Inventory _inventory;
@@ -34,7 +35,6 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         public event UnityAction<float, float, float> PartRemoved;
         public event UnityAction<float> MaterialAdded;
         public event UnityAction<Part> PartReturned;
-        public event UnityAction ToyConstructed;
 
         private void Start()
         {
@@ -159,7 +159,7 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
 
         private void ConstructToy()
         {
-            ToyConstructed?.Invoke();
+            _toyConstructor.IdentifyPrefab();
 
             foreach (var part in _parts)
                 part.GetComponent<Image>().gameObject.SetActive(false);

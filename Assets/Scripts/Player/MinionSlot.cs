@@ -11,7 +11,6 @@ namespace Assets.Scripts.Player
     public class MinionSlot : MonoBehaviour
     {
         [SerializeField] private SkillPanel _skillPanel;
-        [SerializeField] private DiceFace _diceFace;        
         [SerializeField] private RectTransform _slot;
 
         private float _appearDelay = 1.5f;
@@ -25,7 +24,7 @@ namespace Assets.Scripts.Player
         private AttackPanel _attackPanel;
         private Minion _minion;
 
-        public event UnityAction<DiceFace> AreaChanged;
+        //public event UnityAction<DiceFace> AreaChanged;
 
         private void Start()
         {
@@ -47,7 +46,6 @@ namespace Assets.Scripts.Player
             _minion = Instantiate(minion.MinionData.MinionPrefab, _slot);
             _minion.transform.SetParent(_slot);
             _minion.MinionButtonPressed += Attack;
-            _diceFace = _minion.AreaType;
             _minionSkillData = minion.MinionSkillData;
         }
 
@@ -80,8 +78,10 @@ namespace Assets.Scripts.Player
                 _playerHealth.Defence += _minionSkillData.Defence;
             if (_minionSkillData.AttackType == AttackType.Push)
             {
-                _playerHud.SetBattleArea(_diceFace);
-                AreaChanged?.Invoke(_diceFace);
+                _playerHud.RollDice();
+                _skillPanel.Disactivate();
+                yield return new WaitWhile(() => _playerHud.Dice.IsRolling);
+                _skillPanel.Activate();
             }         
 
             yield return new WaitForSeconds(0.2f);

@@ -61,7 +61,7 @@ namespace Assets.Scripts.Player
             foreach (var skill in _playerSkills)
             {
                 _playerHud.Dice.OnDiceResult -= skill.ChangeOnArea;
-                _minionSlot.AreaChanged -= skill.ChangeOnArea;
+                //_minionSlot.AreaChanged -= skill.ChangeOnArea;
             }
         }
 
@@ -165,7 +165,7 @@ namespace Assets.Scripts.Player
             foreach (var skill in _playerSkills)
             {
                 _playerHud.Dice.OnDiceResult += skill.ChangeOnArea;
-                _minionSlot.AreaChanged += skill.ChangeOnArea;
+                //_minionSlot.AreaChanged += skill.ChangeOnArea;
             }
         }          
 
@@ -174,14 +174,12 @@ namespace Assets.Scripts.Player
             _playerSkillDatas = _playerProgress.PlayerSkills.ToList();
             CreatePanel();
             if (_currentMinion != null) AddMinion(_currentMinion);
-            Debug.Log("LoadPanel");
         }
 
         private void CreateNewPanel()
         {
             GetSkillDatas();
             CreatePanel();
-            Debug.Log("NewPanel");
         }
 
         private void GetSkillDatas()

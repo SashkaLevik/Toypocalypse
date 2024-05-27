@@ -68,7 +68,6 @@ namespace Assets.Scripts.UI
 
         public void Save(PlayerProgress progress)
         {
-            Debug.Log("saveVolume");
             progress.WorldData.MasterVolume = _masterVolume;
             progress.WorldData.MusicVolume = _musicVolume;
             progress.WorldData.SFXVolume = _SFXVolume;

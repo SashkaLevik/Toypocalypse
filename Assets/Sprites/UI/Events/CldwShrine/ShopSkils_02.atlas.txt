@@ -1,0 +1,125 @@
+
+ShopSkils_02.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Levels 1
+  rotate: false
+  xy: 388, 1601
+  size: 960, 254
+  orig: 962, 256
+  offset: 1, 1
+  index: -1
+Levels 1 copy
+  rotate: false
+  xy: 2, 575
+  size: 1920, 1024
+  orig: 1922, 1026
+  offset: 1, 1
+  index: -1
+arm
+  rotate: true
+  xy: 554, 1880
+  size: 76, 147
+  orig: 76, 147
+  offset: 0, 0
+  index: -1
+arrow
+  rotate: true
+  xy: 2, 1934
+  size: 22, 39
+  orig: 23, 39
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 1627, 1776
+  size: 180, 329
+  orig: 180, 329
+  offset: 0, 0
+  index: -1
+box_lite
+  rotate: true
+  xy: 1373, 1847
+  size: 109, 114
+  orig: 128, 114
+  offset: 0, 0
+  index: -1
+circle_tv
+  rotate: true
+  xy: 1198, 1857
+  size: 99, 173
+  orig: 101, 175
+  offset: 1, 1
+  index: -1
+fist1
+  rotate: false
+  xy: 182, 1898
+  size: 92, 58
+  orig: 92, 58
+  offset: 0, 0
+  index: -1
+fist2
+  rotate: false
+  xy: 99, 1906
+  size: 81, 50
+  orig: 81, 50
+  offset: 0, 0
+  index: -1
+fist3
+  rotate: false
+  xy: 276, 1897
+  size: 103, 59
+  orig: 108, 59
+  offset: 5, 0
+  index: -1
+forearm
+  rotate: false
+  xy: 443, 1884
+  size: 109, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+head
+  rotate: true
+  xy: 1489, 1835
+  size: 121, 136
+  orig: 121, 136
+  offset: 0, 0
+  index: -1
+legs
+  rotate: false
+  xy: 703, 1876
+  size: 130, 80
+  orig: 130, 80
+  offset: 0, 0
+  index: -1
+lite_lamp
+  rotate: false
+  xy: 835, 1874
+  size: 361, 82
+  orig: 364, 82
+  offset: 0, 0
+  index: -1
+lite_squear
+  rotate: false
+  xy: 381, 1897
+  size: 60, 59
+  orig: 62, 61
+  offset: 1, 1
+  index: -1
+neck_back
+  rotate: false
+  xy: 43, 1907
+  size: 54, 49
+  orig: 56, 51
+  offset: 1, 1
+  index: -1
+vinet
+  rotate: false
+  xy: 2, 1679
+  size: 384, 216
+  orig: 386, 218
+  offset: 1, 1
+  index: -1

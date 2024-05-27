@@ -25,7 +25,7 @@ namespace Assets.Scripts.Enemyes
 
         private void Start()
         {
-            _maxSpeed = _enemy.EnemyData.Speed;
+            _maxSpeed = _enemy.EnemyData.StartDefence;
             _currentSpeed = _maxSpeed;
         }
 

@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: RoboArms
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 2ffd981d62201df4495ac04d1fac9901, type: 3}
-  SkillImage: {fileID: -1901019991, guid: 7c7df8c0a5e2d6249a23a8a4e2511784, type: 3}
   NameEn: Robot arms
   NameRu: "\u0420\u0443\u043A\u0438 \u0440\u043E\u0431\u043E\u0442\u0430"
   Health: 3
-  Speed: 2
-  MaterialAmount: 2
+  Speed: 1
+  MaterialAmount: 1
   SkillData: {fileID: 11400000, guid: 5c4f5822b60e16c4c9a2b5f7d3e6ab83, type: 2}
   Type: 2

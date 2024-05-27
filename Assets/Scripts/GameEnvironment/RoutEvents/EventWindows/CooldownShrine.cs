@@ -41,13 +41,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         {
             _buffButton.onClick.AddListener(ApplyBuff);
             _close.onClick.AddListener(CloseEvent);
-        }
-
-        private void OnDestroy()
-        {
-            _buffButton.onClick.RemoveListener(ApplyBuff);
-            _close.onClick.RemoveListener(CloseEvent);
-        }
+        }  
 
         protected override void GetPayment(ConnectingMaterial material)
         {
@@ -86,7 +80,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
                 _choosedSkill = skill;
                 _choosedSkill.transform.SetParent(_shrineSlot.transform);
                 _choosedSkill.transform.position = _shrineSlot.position;
-                //_choosedSkill.SkillButtonPressed -= _skillPanel.ChooseSkill;
             }
             else
             {
@@ -95,7 +88,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
                 _choosedSkill = _nextSkill;
                 _choosedSkill.transform.SetParent(_shrineSlot.transform);
                 _choosedSkill.transform.position = _shrineSlot.position;
-                //_choosedSkill.SkillButtonPressed -= _skillPanel.ChooseSkill;
             }
         }
 
@@ -103,6 +95,8 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         {
             base.CloseEvent();
             if (_choosedSkill != null) _skillPanel.TakeBack(_choosedSkill);
+            _buffButton.onClick.RemoveListener(ApplyBuff);
+            _close.onClick.RemoveListener(CloseEvent);
             _playerMoney.MaterialChoosed -= GetPayment;
             _routMap.gameObject.SetActive(true);
             gameObject.SetActive(false);

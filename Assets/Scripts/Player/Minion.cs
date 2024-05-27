@@ -17,12 +17,10 @@ namespace Assets.Scripts.Player
         [SerializeField] private TMP_Text _description;
         [SerializeField] private GameObject _appear;
         [SerializeField] private AudioSource _attackSound;
-        [SerializeField] private DiceFace _areaType;
 
         public Sprite Icon => _icon;
         public MinionData MinionData => _minionData;
         public SkillData MinionSkillData => _minionSkillData;
-        public DiceFace AreaType => _areaType;
 
         public event UnityAction<Minion> MinionButtonPressed;
 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: -2130292641307725112, guid: e477473885244d44da782a219590c6d5, type: 3}
   EffectIcon: {fileID: 8506703278990721906, guid: 220e61c0d923b6045ac5b9b00a5d8bf8, type: 3}
-  RuDescription: "\u041C\u043E\u043B\u043D\u0438\u044F"
+  RuDescription: "\u043C\u043E\u043B\u043D\u0438\u044F"
   EnDescription: Lightning
   RuEffectDescription: 
   EnEffectDescription: 

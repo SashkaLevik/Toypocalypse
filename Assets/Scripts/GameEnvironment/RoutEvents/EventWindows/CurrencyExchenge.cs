@@ -7,7 +7,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
 {
     public class CurrencyExchenge : RoutEvent
     {
-        [SerializeField] private Sprite _defaultImage;
         [SerializeField] private Image _materialIcon;
         [SerializeField] private ConnectingMaterial _plasticine;
         [SerializeField] private ConnectingMaterial _glue;

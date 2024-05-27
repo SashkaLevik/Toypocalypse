@@ -5,7 +5,6 @@ using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Player;
 using Assets.Scripts.SaveLoad;
 using Assets.Scripts.UI;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -37,7 +36,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
         private RoutEvent _currentEvent;
         private PlayerMovement _playerMovement;
         private ArtifactsContainer _artifactsContainer;
-        private PlayerProgress _playerProgress;
+        private PlayerProgress _playerProgress;       
 
         public Toy Player => _player;
         public BaseEnemy Enemy => _enemy;
@@ -118,6 +117,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _stageNumber++;
             _prizeCalculator.DisableBox();
             _winWindow.SetActive(false);
+            PlayerTurn();
             _saveLoadService.SaveProgress();
             //OpenNextStage();
             if (_stageNumber > _maxStages) _winLvlWindow.SetActive(true);
@@ -163,8 +163,9 @@ namespace Assets.Scripts.GameEnvironment.Battle
         private void OnEnemyDie()
         {
             _winWindow.SetActive(true);
+            _skillPanel.Disactivate();
             _prizeCalculator.GetBox();
-            PlayerTurn();            
+            //PlayerTurn();            
             _enemyAI.EnemyTurnEnded -= PlayerTurn;
             _enemyHealth.Died -= OnEnemyDie;
         }

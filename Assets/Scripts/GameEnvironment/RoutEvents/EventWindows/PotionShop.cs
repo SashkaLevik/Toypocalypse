@@ -32,15 +32,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         }
 
         private void OnEnable()
-            => _close.onClick.AddListener(CloseEvent);
-
-        private void OnDestroy()
-        {
-            _close.onClick.RemoveListener(CloseEvent);
-
-            foreach (var button in _buyButtons)
-                button.GetComponent<Button>().onClick.RemoveListener(() => BuyPotion(button));
-        }        
+            => _close.onClick.AddListener(CloseEvent);              
 
         private void BuyPotion(BuyButton button)
         {
@@ -78,6 +70,11 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         protected override void CloseEvent()
         {
             base.CloseEvent();
+
+            foreach (var button in _buyButtons)
+                button.GetComponent<Button>().onClick.RemoveListener(() => BuyPotion(button));
+
+            _close.onClick.RemoveListener(CloseEvent);
             _routMap.gameObject.SetActive(true);
             gameObject.SetActive(false);
         }

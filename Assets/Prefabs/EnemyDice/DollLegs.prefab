@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9195917739412886172}
   - component: {fileID: 3896840811421247819}
   - component: {fileID: 6603341500204310017}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DollLegs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557176146944380513}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 5, y: -1, z: -12}
+  m_LocalPosition: {x: 1, y: 1.5, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5849846185386368307}
@@ -137,7 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce986c41860ba16409547ae3cae4e6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _diceLayout: {fileID: 6941130439101543571, guid: 4b06f2425e7d250498a3afa6817a6551, type: 3}
   _checkSides:
   - {fileID: 4938371356280945539}
   - {fileID: 7056604967813869063}
@@ -349,9 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecab58f56c1e6e14481dc497e751d022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _faceType: 3
-  _increaseValue: 0
-  _decreaseValue: 0
+  _diceFaceData: {fileID: 11400000, guid: 5c3b1e8181404a04cad73cf4583f7442, type: 2}
   _increaseText: {fileID: 0}
   _decreaseText: {fileID: 0}
 --- !u!1 &1386854758605505822
@@ -479,9 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecab58f56c1e6e14481dc497e751d022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _faceType: 1
-  _increaseValue: 2
-  _decreaseValue: 1
+  _diceFaceData: {fileID: 11400000, guid: 904c71c91e09c634dbb1df5ce8bbc99a, type: 2}
   _increaseText: {fileID: 148539201638912979}
   _decreaseText: {fileID: 4212078817299454151}
 --- !u!1 &1885498573843785840
@@ -617,9 +612,9 @@ RectTransform:
   m_Father: {fileID: 4701513852337066549}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.25, y: 0.25000024}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.25, y: -0.25}
   m_SizeDelta: {x: 0.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4872317467635857709
@@ -1104,7 +1099,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f44ed313d9a7e6e489e4184086806f29, type: 2}
+  - {fileID: 2100000, guid: 8aa7402cbf6405141bfd6b2b8236994c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1138,9 +1133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecab58f56c1e6e14481dc497e751d022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _faceType: 4
-  _increaseValue: 1
-  _decreaseValue: 0
+  _diceFaceData: {fileID: 11400000, guid: 87028385f3500654d9b9e53f024a2963, type: 2}
   _increaseText: {fileID: 2966364794061125825}
   _decreaseText: {fileID: 0}
 --- !u!1 &6243676385339759993
@@ -1204,7 +1197,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ddbeeac69f990264594af7344193e66f, type: 2}
+  - {fileID: 2100000, guid: eef1990b1a0bccb46b97a043d3e3e6b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1238,9 +1231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecab58f56c1e6e14481dc497e751d022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _faceType: 2
-  _increaseValue: 2
-  _decreaseValue: 1
+  _diceFaceData: {fileID: 11400000, guid: a4a27893784350f4f8835099566bd964, type: 2}
   _increaseText: {fileID: 2479186823091317765}
   _decreaseText: {fileID: 0}
 --- !u!1 &6421916943946538138
@@ -1367,9 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecab58f56c1e6e14481dc497e751d022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _faceType: 3
-  _increaseValue: 0
-  _decreaseValue: 0
+  _diceFaceData: {fileID: 11400000, guid: 5c3b1e8181404a04cad73cf4583f7442, type: 2}
   _increaseText: {fileID: 0}
   _decreaseText: {fileID: 0}
 --- !u!1 &7974265225282117678
@@ -1434,9 +1423,9 @@ RectTransform:
   m_Father: {fileID: 4566954652621891711}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.25, y: 0.25}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.25, y: -0.25}
   m_SizeDelta: {x: 0.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2904975631190145096
@@ -1731,7 +1720,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ddbeeac69f990264594af7344193e66f, type: 2}
+  - {fileID: 2100000, guid: eef1990b1a0bccb46b97a043d3e3e6b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1765,9 +1754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecab58f56c1e6e14481dc497e751d022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _faceType: 2
-  _increaseValue: 1
-  _decreaseValue: 0
+  _diceFaceData: {fileID: 11400000, guid: a4a27893784350f4f8835099566bd964, type: 2}
   _increaseText: {fileID: 3448995037512218555}
   _decreaseText: {fileID: 0}
 --- !u!1 &8413432781943950430
@@ -1902,9 +1889,9 @@ RectTransform:
   m_Father: {fileID: 2475782954731472640}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.25, y: 0.25}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.25, y: -0.25}
   m_SizeDelta: {x: 0.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5613640113825050983

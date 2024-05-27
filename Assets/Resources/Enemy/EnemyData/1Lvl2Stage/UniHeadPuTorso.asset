@@ -20,5 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cd0cb3af3ef353c408fdb4b5edb4844a, type: 2}
   SpawnPosition: {x: 4.5, y: -0.45, z: 0}
   Appear: {fileID: 307832150595218324, guid: f70545bdbaac09c4992cff1d2ea259e5, type: 3}
-  Health: 12
+  Health: 14
   Speed: 5

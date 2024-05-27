@@ -13,7 +13,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
         [SerializeField] protected List<ReceivedEffect> _receivedEffects;
         [SerializeField] protected Image _resist;
 
-        public int _effectPercent;
+        private int _effectPercent;
         protected float _animationDelay = 0.8f;
         protected IHealth _health;
         protected BaseEnemy _enemy;

@@ -9,7 +9,7 @@ namespace Assets.Scripts.Player
     public class PlayerHealth : Health, ISaveProgress
     {
         private Toy _player;
-        private float _animationDelay = 1.2f;
+        private float _animationDelay = 1.4f;
 
         public event UnityAction Died;
 
@@ -56,8 +56,15 @@ namespace Assets.Scripts.Player
         {
             _player.Animator.PlayDie();
             yield return new WaitForSeconds(_animationDelay);
+            //yield return StartCoroutine(PlayDieSound());
             Died?.Invoke();
             Destroy(gameObject);
+        }
+
+        private IEnumerator PlayDieSound()
+        {
+            _player.Animator.PlayDie();
+            yield return null;
         }
 
         public void Save(PlayerProgress progress)

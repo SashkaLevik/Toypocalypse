@@ -53,9 +53,7 @@ namespace Assets.Scripts.Enemyes
         private IEnumerator Hit()
         {
             yield return new WaitForSeconds(0.2f);
-            _enemy.Animator.PlayHit();
-            //yield return new WaitForSeconds(0.8f);
-            //_enemy.Animator.PlayHit();
+            _enemy.Animator.PlayHit();            
         }
 
         private IEnumerator OnDie()

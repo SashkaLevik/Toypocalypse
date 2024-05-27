@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: -6565243667325986066, guid: e477473885244d44da782a219590c6d5, type: 3}
   EffectIcon: {fileID: 3762855722552047121, guid: 220e61c0d923b6045ac5b9b00a5d8bf8, type: 3}
-  RuDescription: "50% \u0448\u0430\u043D\u0441 \u043D\u0430\u043B\u043E\u0436\u0438\u0442\u044C
+  RuDescription: "30% \u0448\u0430\u043D\u0441 \u043D\u0430\u043B\u043E\u0436\u0438\u0442\u044C
     \u0440\u0430\u0437\u0440\u0443\u0448\u0435\u043D\u0438\u0435 \u0437\u0430\u0449\u0438\u0442\u044B
     \u043D\u0430 2 \u0440\u0430\u0443\u043D\u0434\u0430"
-  EnDescription: 50% chance to apply a protection destruction for 2 rounds
+  EnDescription: 30% chance to apply a protection destruction for 2 rounds
   RuEffectDescription: "\u0432 \u043A\u043E\u043D\u0446\u0435 \u0445\u043E\u0434\u0430
     \u0440\u0430\u0437\u0440\u0443\u0448\u0430\u0435\u0442 2 \u0449\u0438\u0442\u0430"
   EnEffectDescription: destroy 2 shields at the end of the turn
-  EffectChance: 9
+  EffectChance: 3
   EffectValue: 2
   EffectDuration: 2
   DefaultDamage: 3

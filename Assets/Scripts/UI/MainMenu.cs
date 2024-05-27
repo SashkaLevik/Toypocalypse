@@ -50,6 +50,7 @@ namespace Assets.Scripts.UI
         private float _currentHP;
         private float _maxSpeed;
         private int _minGumAmount = 10;
+        private int _maxMaterialAmount = 99;
 
         private void Awake()
         {
@@ -88,8 +89,8 @@ namespace Assets.Scripts.UI
 
         public void ActivateFirstMinion(Button button)
         {
-            _activeMinions.Add(_minions[2]);
-            _minions.Remove(_minions[2]);
+            _activeMinions.Add(_minions[0]);
+            _minions.Remove(_minions[0]);
             button.interactable = false;
             _garage.ShowActiveMinions(_activeMinions);
         }        
@@ -146,7 +147,7 @@ namespace Assets.Scripts.UI
                 }
 
                 if (progress.PlayerStats.Bubblegum < _minGumAmount)
-                    progress.PlayerStats.Bubblegum = _minGumAmount;
+                    progress.PlayerStats.Bubblegum = _minGumAmount;                
 
                 progress.PlayerStats.Potions.Clear();
                 progress.PlayerStats.Artifacts.Clear();
@@ -156,10 +157,23 @@ namespace Assets.Scripts.UI
             {
                 progress.PlayerStats.MaxHP = _maxHP;
                 progress.PlayerStats.CurrentHP = _currentHP;
-                progress.PlayerStats.MaxSpeed = _maxSpeed;
+                progress.PlayerStats.MaxSpeed = _maxSpeed;                
             }
 
+            if (progress.PlayerStats.Bubblegum > _maxMaterialAmount)
+                progress.PlayerStats.Bubblegum = _maxMaterialAmount;
+
+            if (progress.PlayerStats.Plasticine > _maxMaterialAmount)
+                progress.PlayerStats.Plasticine = _maxMaterialAmount;
+
+            if (progress.PlayerStats.Glue > _maxMaterialAmount)
+                progress.PlayerStats.Glue = _maxMaterialAmount;
+
+            if (progress.PlayerStats.Screw > _maxMaterialAmount)
+                progress.PlayerStats.Screw = _maxMaterialAmount;
+
             if (_currentToyData != null) progress.PlayerStats.CurrentToy = _currentToyData;
+
             if (_level != null) progress.WorldData.Level = _level;
 
             if (progress.WorldData.IsNewGame == true)

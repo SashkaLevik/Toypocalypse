@@ -12,6 +12,6 @@ namespace Assets.Scripts.Data.StaticData
         public Vector3 SpawnPosition;
         public GameObject Appear;
         public float Health;
-        public float Speed;
+        public float StartDefence;
     }
 }

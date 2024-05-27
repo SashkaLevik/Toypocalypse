@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0422c2de02d0634a934cc5b4f3a7473, type: 3}
   m_Name: DoH_CuT_RoA_DoL
   m_EditorClassIdentifier: 
-  SpawnPosition: {x: -4.4, y: -0.7, z: 0}
+  SpawnPosition: {x: -4.4, y: 0, z: 0}
   toyImage: {fileID: 21300000, guid: f91f774f5ddd7e4419cc610d3ae515b1, type: 3}
   Prefab: {fileID: 8634518628380221811, guid: 929244b89b27bff42a2447c2d332e74f, type: 3}
   Parts:

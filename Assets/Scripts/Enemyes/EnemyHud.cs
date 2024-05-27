@@ -31,7 +31,7 @@ namespace Assets.Scripts.Enemyes
         private void Start()
         {
             UpdateHPBar();
-            
+            _currentArea = _commonArea;
         }       
 
         private void OnDestroy()
@@ -149,6 +149,7 @@ namespace Assets.Scripts.Enemyes
 
         private void DestroyHud()
         {
+            Destroy(_dice.gameObject);
             Destroy(gameObject);
         }
 

@@ -26,7 +26,7 @@ namespace Assets.Scripts.GameEnvironment.Dice
         private void Awake()
         {
             InitDiceFace(_diceFaceData);
-        }        
+        }
 
         public void InitDiceFace(DiceFaceData faceData)
         {

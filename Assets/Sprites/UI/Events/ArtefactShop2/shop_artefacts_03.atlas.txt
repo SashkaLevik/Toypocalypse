@@ -1,0 +1,132 @@
+
+shop_artefacts_03.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_1
+  rotate: false
+  xy: 1924, 1275
+  size: 118, 154
+  orig: 118, 154
+  offset: 0, 0
+  index: -1
+arm_shdw
+  rotate: false
+  xy: 1924, 920
+  size: 100, 105
+  orig: 100, 110
+  offset: 0, 0
+  index: -1
+artefact
+  rotate: false
+  xy: 1924, 437
+  size: 56, 84
+  orig: 56, 84
+  offset: 0, 0
+  index: -1
+bodu_btn
+  rotate: true
+  xy: 1152, 109
+  size: 184, 136
+  orig: 184, 136
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 371, 157
+  size: 190, 288
+  orig: 190, 288
+  offset: 0, 0
+  index: -1
+cloud
+  rotate: true
+  xy: 1924, 1027
+  size: 246, 104
+  orig: 246, 104
+  offset: 0, 0
+  index: -1
+ferst_plan
+  rotate: false
+  xy: 2, 24
+  size: 367, 323
+  orig: 368, 324
+  offset: 0, 1
+  index: -1
+fotearm_1
+  rotate: true
+  xy: 1924, 615
+  size: 98, 66
+  orig: 98, 66
+  offset: 0, 0
+  index: -1
+glass
+  rotate: true
+  xy: 1924, 295
+  size: 70, 43
+  orig: 74, 46
+  offset: 1, 1
+  index: -1
+glass_shdw
+  rotate: true
+  xy: 1969, 301
+  size: 64, 24
+  orig: 66, 26
+  offset: 1, 1
+  index: -1
+hand2_1
+  rotate: true
+  xy: 1924, 715
+  size: 97, 67
+  orig: 99, 69
+  offset: 1, 1
+  index: -1
+hand2_2
+  rotate: true
+  xy: 1924, 367
+  size: 68, 54
+  orig: 70, 56
+  offset: 1, 1
+  index: -1
+hand_1
+  rotate: true
+  xy: 1924, 814
+  size: 104, 72
+  orig: 104, 78
+  offset: 0, 6
+  index: -1
+hand_2
+  rotate: true
+  xy: 1924, 523
+  size: 90, 64
+  orig: 90, 64
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 661, 2
+  size: 133, 166
+  orig: 133, 166
+  offset: 0, 0
+  index: -1
+leg_1
+  rotate: true
+  xy: 866, 201
+  size: 146, 284
+  orig: 146, 284
+  offset: 0, 0
+  index: -1
+polka_1
+  rotate: false
+  xy: 2, 349
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+sky
+  rotate: false
+  xy: 661, 170
+  size: 203, 177
+  orig: 204, 178
+  offset: 0, 1
+  index: -1

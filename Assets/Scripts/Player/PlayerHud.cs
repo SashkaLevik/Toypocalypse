@@ -3,8 +3,6 @@ using Assets.Scripts.GameEnvironment.Dice;
 using Assets.Scripts.UI;
 using System;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Player
 {
@@ -19,6 +17,7 @@ namespace Assets.Scripts.Player
         private PlayerSpeed _playerSpeed;
         private PlayerMovement _movement;
         private Area _currentArea;
+        private BattleSystem _battleSystem;
 
         public Toy Player => _player;
         public Area[] Areas => _areas;
@@ -30,7 +29,8 @@ namespace Assets.Scripts.Player
         private void Start()
         {
             UpdateHPBar();
-            UpdateSpeedBar();            
+            UpdateSpeedBar();
+            _currentArea = _commonArea;
         }       
 
         private void OnDestroy()
@@ -39,11 +39,12 @@ namespace Assets.Scripts.Player
             _playerHealth.HealthChanged -= _hpBar.OnValueChange;
             _playerSpeed.SpeedChanged -= _speedBar.OnValueChange;
             _dice.OnDiceResult -= SetBattleArea;
-            //_attackPanel.DamageChanged -= UpdateDamage;
-        }        
+            _battleSystem.BattleEntered -= SwitchZone;
+        }
 
-        public void Construct(Toy player)
+        public void Construct(Toy player, BattleSystem battleSystem)
         {
+            _battleSystem = battleSystem;
             _player = player;
             _playerHealth = _player.GetComponent<PlayerHealth>();
             _playerSpeed = _player.GetComponent<PlayerSpeed>();
@@ -51,8 +52,8 @@ namespace Assets.Scripts.Player
             _playerHealth.DefenceChanged += UpdateDefence;
             _playerHealth.HealthChanged += _hpBar.OnValueChange;
             _playerSpeed.SpeedChanged += _speedBar.OnValueChange;
-            //_attackPanel.DamageChanged += UpdateDamage;
-        }
+            _battleSystem.BattleEntered += SwitchZone;
+        }        
 
         public override void SetBattleArea(DiceFace diceFace)
         {
@@ -61,8 +62,6 @@ namespace Assets.Scripts.Player
 
             if (diceFace.FaceType == AreaType.Attack || diceFace.FaceType == AreaType.StrongAttack)
             {
-                //if (_currentArea == _defenceArea) _movement.SetDefoultPosition();
-
                 _attackArea.gameObject.SetActive(true);
                 _movement.MoveRight();
                 _currentArea = _attackArea;
@@ -96,8 +95,16 @@ namespace Assets.Scripts.Player
                 _commonArea.gameObject.SetActive(true);
                 _currentArea = _commonArea;
             }                      
-        }                   
-      
+        }
+
+        private void SwitchZone(bool value)
+        {
+            if (value == true)
+                _commonArea.gameObject.SetActive(true);
+            else
+                _commonArea.gameObject.SetActive(false);
+        }
+
         private void UpdateDefence()
         {
             _defence.text = _playerHealth.Defence.ToString();

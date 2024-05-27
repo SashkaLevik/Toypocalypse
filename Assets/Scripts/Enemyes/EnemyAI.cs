@@ -18,14 +18,10 @@ namespace Assets.Scripts.Enemyes
 
         private float _damage;
 
-        private EnemySkillView _currentSkill;
+        private EnemySkillView _currentSkill;        
         private Toy _player;
         private PlayerEffectsReceiver _playerEffects;
         private PlayerHealth _playerHealth;
-        private PlayerMovement _playerMovement;
-        private PlayerHud _playerHud;
-        private EnemyMovement _movement;
-        private EnemySpeed _enemySpeed;
         private AreaDice _dice;
         private AnimatorController _animator;
         private List<EnemySkillView> _preparedSkills = new List<EnemySkillView>();
@@ -47,10 +43,7 @@ namespace Assets.Scripts.Enemyes
         {
             _player = _enemy.Player;
             _playerEffects = _player.GetComponent<PlayerEffectsReceiver>();
-            _playerHud = _player.PlayerHud;
-            _playerMovement = _player.GetComponent<PlayerMovement>();
             _playerHealth = _player.GetComponent<PlayerHealth>();
-            _movement = GetComponent<EnemyMovement>();
             _enemyHud = _enemy.EnemyHud;
             _animator = _enemy.Animator;
         }
@@ -118,7 +111,9 @@ namespace Assets.Scripts.Enemyes
         {
             yield return new WaitForSeconds(0.2f);
             _animator.PlayAttack(_currentSkill.SkillData);
-            _playerHealth.TakeDamage(_damage);
-        }                                                                                                   
+
+            if(_playerHealth != null)
+                _playerHealth.TakeDamage(_damage);
+        }
     }
 }

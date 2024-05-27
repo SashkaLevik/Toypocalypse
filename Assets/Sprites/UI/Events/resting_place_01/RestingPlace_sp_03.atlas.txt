@@ -1,0 +1,188 @@
+
+RestingPlace_sp_03.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm
+  rotate: true
+  xy: 370, 1750
+  size: 136, 232
+  orig: 136, 232
+  offset: 0, 0
+  index: -1
+arm_lite
+  rotate: true
+  xy: 566, 1888
+  size: 41, 97
+  orig: 41, 97
+  offset: 0, 0
+  index: -1
+barrel
+  rotate: false
+  xy: 1047, 1639
+  size: 375, 193
+  orig: 375, 478
+  offset: 0, 0
+  index: -1
+bg
+  rotate: false
+  xy: 2, 410
+  size: 1920, 1080
+  orig: 1922, 1082
+  offset: 1, 1
+  index: -1
+body
+  rotate: true
+  xy: 2, 1492
+  size: 256, 537
+  orig: 256, 537
+  offset: 0, 0
+  index: -1
+body_lite
+  rotate: true
+  xy: 1139, 1842
+  size: 87, 247
+  orig: 87, 247
+  offset: 0, 0
+  index: -1
+face
+  rotate: true
+  xy: 916, 1862
+  size: 67, 134
+  orig: 67, 134
+  offset: 0, 0
+  index: -1
+face_lite
+  rotate: true
+  xy: 382, 1898
+  size: 31, 55
+  orig: 33, 57
+  offset: 1, 1
+  index: -1
+faer2_1
+  rotate: true
+  xy: 1506, 1821
+  size: 108, 118
+  orig: 108, 118
+  offset: 0, 0
+  index: -1
+faer2_2
+  rotate: true
+  xy: 1388, 1834
+  size: 95, 116
+  orig: 95, 116
+  offset: 0, 0
+  index: -1
+faer2_3
+  rotate: true
+  xy: 1626, 1814
+  size: 115, 122
+  orig: 115, 122
+  offset: 0, 0
+  index: -1
+faer_lite
+  rotate: true
+  xy: 604, 1725
+  size: 145, 157
+  orig: 147, 159
+  offset: 1, 1
+  index: -1
+forearm
+  rotate: true
+  xy: 2, 1789
+  size: 126, 179
+  orig: 126, 179
+  offset: 0, 0
+  index: -1
+forearm_lite
+  rotate: true
+  xy: 475, 1890
+  size: 39, 89
+  orig: 39, 89
+  offset: 0, 0
+  index: -1
+hand
+  rotate: false
+  xy: 1052, 1859
+  size: 85, 70
+  orig: 87, 72
+  offset: 1, 1
+  index: -1
+hand_lite
+  rotate: true
+  xy: 439, 1896
+  size: 33, 34
+  orig: 35, 36
+  offset: 1, 1
+  index: -1
+hood
+  rotate: true
+  xy: 1424, 1597
+  size: 215, 230
+  orig: 215, 230
+  offset: 0, 0
+  index: -1
+hood_lite
+  rotate: true
+  xy: 744, 1872
+  size: 57, 107
+  orig: 57, 107
+  offset: 0, 0
+  index: -1
+leg_1
+  rotate: true
+  xy: 183, 1774
+  size: 127, 185
+  orig: 127, 185
+  offset: 0, 0
+  index: -1
+leg_2
+  rotate: true
+  xy: 1750, 1809
+  size: 120, 179
+  orig: 120, 179
+  offset: 0, 0
+  index: -1
+lite copy
+  rotate: false
+  xy: 853, 1870
+  size: 61, 59
+  orig: 63, 61
+  offset: 1, 1
+  index: -1
+siik_lite
+  rotate: false
+  xy: 196, 1915
+  size: 150, 14
+  orig: 152, 16
+  offset: 1, 1
+  index: -1
+sity_lite
+  rotate: false
+  xy: 763, 1670
+  size: 282, 190
+  orig: 284, 192
+  offset: 1, 1
+  index: -1
+stick
+  rotate: false
+  xy: 2, 1917
+  size: 192, 12
+  orig: 194, 14
+  offset: 1, 1
+  index: -1
+stik_faer
+  rotate: true
+  xy: 348, 1903
+  size: 26, 32
+  orig: 26, 32
+  offset: 0, 0
+  index: -1
+stik_smocke
+  rotate: true
+  xy: 665, 1885
+  size: 44, 77
+  orig: 44, 77
+  offset: 0, 0
+  index: -1

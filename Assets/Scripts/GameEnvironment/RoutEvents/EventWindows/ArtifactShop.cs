@@ -31,15 +31,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         }
 
         private void OnEnable()
-            => _close.onClick.AddListener(CloseEvent);
-
-        private void OnDestroy()
-        {
-            _close.onClick.RemoveListener(CloseEvent);
-
-            foreach (var button in _buyButtons)
-                button.GetComponent<Button>().onClick.RemoveListener(() => BuyArtifact(button));
-        }
+            => _close.onClick.AddListener(CloseEvent);       
 
         private void InstantiateArtifacts()
         {
@@ -60,7 +52,6 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             if (_artifactContainer.CanAddArtifact() == false)
             {
                 _warning.Enable(_warning.FullSlots);
-                Debug.Log("Cant Add");
                 return;
             }
 
@@ -77,6 +68,11 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         protected override void CloseEvent()
         {
             base.CloseEvent();
+
+            foreach (var button in _buyButtons)
+                button.GetComponent<Button>().onClick.RemoveListener(() => BuyArtifact(button));
+
+            _close.onClick.RemoveListener(CloseEvent);
             _routMap.gameObject.SetActive(true);
             gameObject.SetActive(false);
         }

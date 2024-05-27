@@ -28,6 +28,12 @@ namespace Assets.Scripts.Player
             _artifactsContainer.ArtifactAdded += ApplyArtifactEffect;
         }
 
+        private void OnDestroy()
+        {
+            _playerHud.DiceActivated -= InitDice;
+            _artifactsContainer.ArtifactAdded -= ApplyArtifactEffect;
+        }
+
         private void InitDice(AreaDice dice)
         {
             _playerDice = dice;
@@ -52,7 +58,8 @@ namespace Assets.Scripts.Player
             }
             else if (data.ArtifactType == ArtifactType.KingsSword)
             {
-                
+                _playerDice.AddFace(data.FaceData);
+                _diceLayout.UpdateFaces(_playerDice);
             }
             else if (data.ArtifactType == ArtifactType.LuckeyKeychain)
             {

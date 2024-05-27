@@ -41,14 +41,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         {
             _buffButton.onClick.AddListener(ApplyBuff);
             _close.onClick.AddListener(CloseEvent);
-        }
-
-        private void OnDestroy()
-        {
-            _buffButton.onClick.RemoveListener(ApplyBuff);
-            _close.onClick.RemoveListener(CloseEvent);
-            _playerMoney.MaterialChoosed -= GetPayment;
-        }
+        }        
 
         protected override void GetPayment(ConnectingMaterial material)
         {
@@ -120,6 +113,9 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         {
             base.CloseEvent();
             if (_choosedSkill != null) _skillPanel.TakeBack(_choosedSkill);
+            _buffButton.onClick.RemoveListener(ApplyBuff);
+            _close.onClick.RemoveListener(CloseEvent);
+            _playerMoney.MaterialChoosed -= GetPayment;
             _routMap.gameObject.SetActive(true);
             gameObject.SetActive(false);
         }

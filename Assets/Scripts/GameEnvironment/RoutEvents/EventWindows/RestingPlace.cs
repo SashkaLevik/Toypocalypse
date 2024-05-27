@@ -49,16 +49,7 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
             _heal.onClick.AddListener(HealPlayer);
             _getPotion.onClick.AddListener(GetRandomPotion);
             _close.onClick.AddListener(CloseEvent);
-        }
-
-        private void OnDestroy()
-        {
-            _maxHP.onClick.RemoveListener(RiseHP);
-            _maxAP.onClick.RemoveListener(RiseAP);
-            _heal.onClick.RemoveListener(HealPlayer);
-            _getPotion.onClick.RemoveListener(GetRandomPotion);
-            _close.onClick.RemoveListener(CloseEvent);
-        }
+        }      
 
         private void RiseAP()
         {
@@ -116,6 +107,11 @@ namespace Assets.Scripts.GameEnvironment.RoutEvents.EventWindows
         protected override void CloseEvent()
         {
             base.CloseEvent();
+            _maxHP.onClick.RemoveListener(RiseHP);
+            _maxAP.onClick.RemoveListener(RiseAP);
+            _heal.onClick.RemoveListener(HealPlayer);
+            _getPotion.onClick.RemoveListener(GetRandomPotion);
+            _close.onClick.RemoveListener(CloseEvent);
             _routMap.gameObject.SetActive(true);
             gameObject.SetActive(false);
         }

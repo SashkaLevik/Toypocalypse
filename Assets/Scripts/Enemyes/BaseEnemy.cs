@@ -29,6 +29,7 @@ namespace Assets.Scripts.Enemyes
             _animator = GetComponent<AnimatorController>();
             _enemyAI = GetComponent<EnemyAI>();
             _enemyHealth = GetComponent<EnemyHealth>();
+            _enemyHealth.Defence += _enemyData.StartDefence;
         }
         
         public void InitPlayer(Toy player)

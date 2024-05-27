@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1885d17a20b9355439a216b5cc3d49b3, type: 3}
   m_Name: Robot
   m_EditorClassIdentifier: 
-  Icon: {fileID: -4800280973878993068, guid: e477473885244d44da782a219590c6d5, type: 3}
+  Icon: {fileID: 21300000, guid: 436e8af93fb13c14c99c1f5e5ddd9a87, type: 3}
   EffectIcon: {fileID: 0}
   RuDescription: "\u0411\u0440\u043E\u0441\u0430\u0435\u0442 \u043A\u0443\u0431 \u043F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u044F.
     \u041F\u043E\u0432\u044B\u0448\u0430\u0435\u0442 \u0437\u0430\u0449\u0438\u0442\u0443"

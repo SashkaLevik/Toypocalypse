@@ -15,10 +15,12 @@ MonoBehaviour:
   Prefab: {fileID: 5377607290993938628, guid: da1ef2b98575caf4ea439a9ce18c175a, type: 3}
   RuName: "\u041A\u043E\u0440\u043E\u043B\u0435\u0432\u0441\u043A\u0438\u0439 \u043C\u0435\u0447"
   EnName: Kings sword
-  RuDescription: "+1 \u0432 \u0437\u043E\u043D\u0435 \u0430\u0442\u0430\u043A\u0438"
-  EnDescription: +1 in attack zone
-  Price: 4
+  RuDescription: "\u0434\u043E\u0431\u0430\u0432\u043B\u044F\u0435\u0442 \u0430\u0442\u0430\u043A\u0430+1
+    \u043D\u0430 \u043A\u0443\u0431\u0438\u043A"
+  EnDescription: Add attack+1 on dice
+  Price: 3
   AppliedValue: 1
   Icon: {fileID: 21300000, guid: 91a6e34bd2e17e449a1ba6d851765871, type: 3}
-  Material: {fileID: 4716325762324565998, guid: caa8bd3f9ca6ef34a9d000012c81b550, type: 3}
+  Material: {fileID: 3560572913167305854, guid: 7359ea77605d51644aaa7f18ddd517e4, type: 3}
   ArtifactType: 6
+  FaceData: {fileID: 11400000, guid: 87028385f3500654d9b9e53f024a2963, type: 2}

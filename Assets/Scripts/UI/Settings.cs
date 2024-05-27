@@ -81,7 +81,6 @@ namespace Assets.Scripts.UI
 
         public void Save(PlayerProgress progress)
         {
-            Debug.Log("SaveInSettings");
             progress.WorldData.Level = _scene.name;
             progress.PlayerStats.CurrentHP = _playerHealth.CurrentHP;
             progress.PlayerStats.MaxHP = _playerHealth.MaxHP;

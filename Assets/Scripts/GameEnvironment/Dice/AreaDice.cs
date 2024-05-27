@@ -9,7 +9,6 @@ namespace Assets.Scripts.GameEnvironment.Dice
 {
     public class AreaDice : MonoBehaviour
     {
-        [SerializeField] private Image _diceLayout;
         [SerializeField] private Transform[] _checkSides;
         [SerializeField] private List<DiceFace> _faces;
         [SerializeField] private float _throwForce;
@@ -23,7 +22,6 @@ namespace Assets.Scripts.GameEnvironment.Dice
 
         public bool IsRolling => _isRolling;
         public List<DiceFace> Faces => _faces;
-        public Image DiceLayout => _diceLayout;
 
         public event UnityAction<DiceFace> OnDiceResult;
 

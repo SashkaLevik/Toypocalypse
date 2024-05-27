@@ -11,7 +11,6 @@ namespace Assets.Scripts.UI
 {
     public class BattleHud : MonoBehaviour
     {
-        //[SerializeField] protected BattleIconAnimator _attackAnimator;
         [SerializeField] protected BattleIconAnimator _defenceAnimator;
         [SerializeField] protected HPBar _hpBar;
         [SerializeField] protected SpeedBar _speedBar;

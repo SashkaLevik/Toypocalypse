@@ -22,7 +22,9 @@ namespace Assets.Scripts.Enemyes
         private GameObject _spawnPoint;
         private List<EnemiesSet> _enemies;
         private BaseEnemy _spawnedEnemy;
+        private BaseEnemy _randomEnemy;
         private EnemyHud _enemyHud;
+        private GameObject _enemyAppear;
 
         public BaseEnemy Enemy => _spawnedEnemy;
 
@@ -57,17 +59,17 @@ namespace Assets.Scripts.Enemyes
         private IEnumerator CreateEnemy(EnemyTypeID enemyType, GameObject at)
         {
             _player = _playerSpawner.GetComponentInChildren<Toy>();
-            var randomEnemy = GetRandomEnemy<BaseEnemy>(enemyType);
-            var appear = Instantiate(randomEnemy.EnemyData.Appear);
-            appear.GetComponentInChildren<EnemyAppear>().AppearEnded += OnEnemySpawned;
-            _spawnPoint.GetComponent<EnemySpawnPoint>().SetPosition(randomEnemy.EnemyData);
-            _spawnedEnemy = Instantiate(randomEnemy, at.transform);
+            _randomEnemy = GetRandomEnemy<BaseEnemy>(enemyType);
+            _enemyAppear = Instantiate(_randomEnemy.EnemyData.Appear);
+            _spawnPoint.GetComponent<EnemySpawnPoint>().SetPosition(_randomEnemy.EnemyData);
+            _spawnedEnemy = Instantiate(_randomEnemy, at.transform);
             _enemyHud = Instantiate(_hudPrfefab);
             _spawnedEnemy.InitHud(_enemyHud);
             _enemyHud.Init(_spawnedEnemy);
             _spawnedEnemy.InitPlayer(_player);
             yield return new WaitForSeconds(_endAppearTime);
-            Destroy(appear);            
+            Destroy(_enemyAppear);
+            EnemySpawned?.Invoke(_spawnedEnemy);
         }
 
         private void OnEnemySpawned()

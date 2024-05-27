@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Data;
 using Assets.Scripts.GameEnvironment.TreeHouse;
 using Assets.Scripts.SaveLoad;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,14 +12,23 @@ namespace Assets.Scripts.GameEnvironment.Battle
     public class PartsLootBox : MonoBehaviour, ISaveProgress
     {
         [SerializeField] private Button _openBox;
-        [SerializeField] private Image _newPartImage;
         [SerializeField] private BoxAnimator _boxAnimator;
         [SerializeField] private BattleSystem _battleSystem;
+        [SerializeField] private RectTransform _partPosition;
+        [SerializeField] private RectTransform _firstMove;
+        [SerializeField] private RectTransform _secondMove;
 
+        private float _speed = 1500f;
         private List<Part> _inactiveParts = new List<Part>();
         private List<Part> _activeParts = new List<Part>();
         private Part _currentPart;
-        private int _randomPart;
+        private Part _activatedPart;
+        private Vector3 _startPos;
+
+        private void Start()
+        {
+            _startPos = _partPosition.position;
+        }
 
         public List<Part> InactiveParts => _inactiveParts;
 
@@ -40,16 +50,31 @@ namespace Assets.Scripts.GameEnvironment.Battle
 
             if (_inactiveParts.Count > 0)
             {
-                _randomPart = Random.Range(0, _inactiveParts.Count);
                 _currentPart = _inactiveParts[0];
-                _newPartImage.gameObject.SetActive(true);
-                _newPartImage.sprite = _currentPart.PartData.Icon;
-                //_currentPart = _inactiveParts[_randomPart];
+                _activatedPart = Instantiate(_currentPart, _partPosition.transform);
+                StartCoroutine(MovePart(_partPosition.gameObject));              
                 SaveActivatedPart();
             }
 
             _battleSystem.OnLootBoxOpened();
             _openBox.interactable = false;                        
+        }
+
+        private IEnumerator MovePart(GameObject part)
+        {
+            yield return null;
+            yield return new WaitForSeconds(0.1f);
+
+            while (part.transform.position != _firstMove.transform.position)
+            {
+                part.transform.position = Vector3.MoveTowards(part.transform.position, _firstMove.position, Time.deltaTime * _speed);
+                yield return null;
+            }
+            while (part.transform.position != _secondMove.transform.position)
+            {
+                part.transform.position = Vector3.MoveTowards(part.transform.position, _secondMove.position, Time.deltaTime * _speed);
+                yield return null;
+            }
         }
 
         private void SaveActivatedPart()
@@ -60,8 +85,11 @@ namespace Assets.Scripts.GameEnvironment.Battle
 
         private void CloseBox()
         {
+            if(_activatedPart != null)
+                Destroy(_activatedPart.gameObject);
+
+            _partPosition.transform.position = _startPos;
             _openBox.interactable = true;
-            _newPartImage.gameObject.SetActive(false);
         }
 
         public void Load(PlayerProgress progress)

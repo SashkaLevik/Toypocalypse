@@ -45,7 +45,7 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _effectDuration -= 1;
             UpdateDuration();
 
-            if (_effectDuration == 0)
+            if (_effectDuration <= 0)
                 ResetEffect();
         }
 

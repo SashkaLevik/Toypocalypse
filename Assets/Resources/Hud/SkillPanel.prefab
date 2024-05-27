@@ -268,7 +268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillPanel: {fileID: 833066891538703461}
-  _diceFace: {fileID: 0}
   _slot: {fileID: 1753351808285904559}
 --- !u!1 &263486868792844484
 GameObject:

@@ -96,7 +96,6 @@ namespace Assets.Scripts.GameEnvironment.Battle
                 _damage += diceFace.IncreaseValue;
                 _skillValueText.color = Color.green;
                 UpdateBattleValue(_damage);
-                Debug.Log("Attack");
             }
         }
 
@@ -107,8 +106,6 @@ namespace Assets.Scripts.GameEnvironment.Battle
                 _defence += diceFace.IncreaseValue;
                 _skillValueText.color = Color.green;
                 UpdateBattleValue(_defence);
-                Debug.Log("Defence");
-
             }
         }
 
@@ -127,8 +124,6 @@ namespace Assets.Scripts.GameEnvironment.Battle
 
                 UpdateBattleValue(_defence);
             }
-            Debug.Log("StrongAttack");
-
         }
 
         private void ChangeOnStrongDefence(DiceFace diceFace)
@@ -145,8 +140,6 @@ namespace Assets.Scripts.GameEnvironment.Battle
                 _skillValueText.color = Color.red;
                 UpdateBattleValue(_damage);
             }
-            Debug.Log("StrongDefence");
-
         }
 
         private void ChangeOnCommon()
@@ -161,8 +154,6 @@ namespace Assets.Scripts.GameEnvironment.Battle
                 _damage = _skillData.Damage;
                 UpdateBattleValue(_damage);
             }
-            Debug.Log("Common");
-
         }
 
         private void UpdateBattleValue(float value)

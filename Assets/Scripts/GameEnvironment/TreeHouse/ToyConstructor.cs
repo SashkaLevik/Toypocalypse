@@ -20,14 +20,9 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
         private int _allParts = 4;
         private ToyStaticData _createdToyData;
 
-        public event UnityAction<ToyStaticData> ToyConstructed;       
+        public event UnityAction<ToyStaticData> ToyConstructed;            
 
-        private void OnEnable()
-        {
-            _table.ToyConstructed += IdentifyPrefab;
-        }                
-
-        private void IdentifyPrefab()
+        public void IdentifyPrefab()
         {            
             foreach (var toyData in _toyDatas)
             {
@@ -35,18 +30,23 @@ namespace Assets.Scripts.GameEnvironment.TreeHouse
                 {
                     for (int i = 0; i < _table.Parts.Count; i++)
                     {
-                        if (_table.Parts[i].PartData == partData) _matchCount++;
-                    }
+                        if (_table.Parts[i].PartData == partData)
+                        {
+                            _matchCount++;
+                        }                        
+                    }                    
                 }
+
                 if (_matchCount == _allParts)
                 {
                     _createdToyData = toyData;
-                    ToyConstructed?.Invoke(_createdToyData);                    
+                    ToyConstructed?.Invoke(_createdToyData);
+                    _matchCount = 0;
                 }
-                    
                 else
                     _matchCount = 0;
             }
+
             var toy = _createdToyData.Prefab.GetComponent<Toy>();
             ShowCreatedToy(toy);
         }

@@ -1,0 +1,97 @@
+
+bg_poyavl_vraga_02.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 2, 331
+  size: 961, 541
+  orig: 961, 541
+  offset: 0, 0
+  index: -1
+line/l1
+  rotate: false
+  xy: 2, 166
+  size: 163, 163
+  orig: 163, 163
+  offset: 0, 0
+  index: -1
+line/l10
+  rotate: false
+  xy: 494, 3
+  size: 162, 162
+  orig: 163, 163
+  offset: 0, 1
+  index: -1
+line/l11
+  rotate: false
+  xy: 658, 3
+  size: 162, 162
+  orig: 163, 163
+  offset: 0, 1
+  index: -1
+line/l12
+  rotate: false
+  xy: 822, 3
+  size: 162, 162
+  orig: 163, 163
+  offset: 0, 1
+  index: -1
+line/l2
+  rotate: false
+  xy: 2, 2
+  size: 162, 162
+  orig: 163, 163
+  offset: 0, 1
+  index: -1
+line/l3
+  rotate: false
+  xy: 167, 167
+  size: 162, 162
+  orig: 163, 163
+  offset: 0, 1
+  index: -1
+line/l4
+  rotate: false
+  xy: 331, 167
+  size: 162, 162
+  orig: 163, 163
+  offset: 0, 1
+  index: -1
+line/l5
+  rotate: false
+  xy: 495, 167
+  size: 162, 162
+  orig: 163, 163
+  offset: 0, 1
+  index: -1
+line/l6
+  rotate: false
+  xy: 659, 167
+  size: 162, 162
+  orig: 163, 163
+  offset: 0, 1
+  index: -1
+line/l7
+  rotate: false
+  xy: 823, 167
+  size: 162, 162
+  orig: 163, 163
+  offset: 0, 1
+  index: -1
+line/l8
+  rotate: false
+  xy: 166, 2
+  size: 162, 162
+  orig: 163, 163
+  offset: 0, 1
+  index: -1
+line/l9
+  rotate: false
+  xy: 330, 3
+  size: 162, 162
+  orig: 163, 163
+  offset: 0, 1
+  index: -1
