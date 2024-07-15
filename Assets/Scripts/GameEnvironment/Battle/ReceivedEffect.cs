@@ -27,7 +27,6 @@ namespace Assets.Scripts.GameEnvironment.Battle
             _effectImage.sprite = skillData.EffectIcon;
             _effectDuration = _skillData.EffectValue;
             UpdateDuration();
-            //_isActive = true;
         }                  
 
         public void Apply(IHealth health)
@@ -57,7 +56,6 @@ namespace Assets.Scripts.GameEnvironment.Battle
 
         public void ResetEffect()
         {
-            //_isActive = false;
             _effectImage.gameObject.SetActive(false);
             _skillData = null;
             _effectDuration = 0;

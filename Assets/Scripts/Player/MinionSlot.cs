@@ -81,6 +81,7 @@ namespace Assets.Scripts.Player
                 _playerHud.RollDice();
                 _skillPanel.Disactivate();
                 yield return new WaitWhile(() => _playerHud.Dice.IsRolling);
+                yield return new WaitForSeconds(0.5f);
                 _skillPanel.Activate();
             }         
 

@@ -1,9 +1,6 @@
 ﻿using Assets.Scripts.Data.StaticData;
-using Assets.Scripts.GameEnvironment.Battle;
 using Assets.Scripts.Player;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Assets.Scripts.Enemyes
 {
@@ -36,33 +33,6 @@ namespace Assets.Scripts.Enemyes
             => _player = player;
 
         public void InitHud(EnemyHud enemyHud)
-            => _enemyHud = enemyHud;
-
-        //public void ChangeArea(Area area, AreaType areaType)
-        //{
-        //    _previousArea = _currentArea;
-        //    _currentArea = area;
-        //    _previousAreaType = _currentAreaType;
-        //    _currentAreaType = areaType;
-
-        //    if (_currentAreaType == AreaType.Attack)
-        //    {
-        //        _enemyAI.IncreaseDamage(area.IncreasedValue);
-        //    }
-        //    else if (_currentAreaType == AreaType.Defence)
-        //    {
-        //        _enemyHealth.IncreaseDefence(area.IncreasedValue);
-        //    }
-        //    else if (_previousAreaType == AreaType.Attack && _currentAreaType == AreaType.Common)
-        //        _enemyAI.DecreaseDamage(_previousArea.IncreasedValue);
-        //    else if (_previousAreaType == AreaType.Defence && _currentAreaType == AreaType.Common)
-        //        _enemyHealth.DecreaseDefence(_previousArea.IncreasedValue);
-        //}        
-
-        //private IEnumerator EndTurn()
-        //{
-        //    yield return new WaitForSeconds(_animationDelay);
-        //    AnimationEnded?.Invoke();
-        //}            
+            => _enemyHud = enemyHud;                   
     }
 }

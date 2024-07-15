@@ -11,7 +11,6 @@ namespace Assets.Scripts.Factory
     public class GameFactory : IGameFactory
     {
         private readonly IAssetProvider _assetProvider;
-        private readonly IToyDataService _toyDataService;
 
         public List<ISaveProgress> ProgressWriters { get; } = new List<ISaveProgress>();
 
@@ -20,7 +19,6 @@ namespace Assets.Scripts.Factory
         public GameFactory(IAssetProvider assetProvider)
         {
             _assetProvider = assetProvider;
-           // _toyDataService = toyDataService;
         }
 
         public GameObject CreateArtifactsWatcher()

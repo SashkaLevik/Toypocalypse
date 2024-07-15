@@ -102,6 +102,8 @@ namespace Assets.Scripts.UI
             else
             {
                 _currentToyData = null;
+                _continue.interactable = false;
+                _continue.GetComponent<MenuSignboard>().DetectLanguage();
                 EnterTreeHouse();
             }
                 

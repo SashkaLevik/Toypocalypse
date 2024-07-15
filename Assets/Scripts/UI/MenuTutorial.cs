@@ -87,7 +87,9 @@ namespace Assets.Scripts.UI
         }            
 
         private void OnConstruct()
-            => _constructExplain.gameObject.SetActive(false);
+        {
+            gameObject.SetActive(false);
+        }            
 
         private void ShowNext(Image current, Image next)
         {

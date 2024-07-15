@@ -18,12 +18,13 @@ MonoBehaviour:
   EnDescription: defence
   RuEffectDescription: 
   EnEffectDescription: 
+  EffectChance: 0
   EffectValue: 0
-  DefaultEffectValue: 0
+  EffectDuration: 0
   DefaultDamage: 0
   Damage: 0
-  DefaultDefence: 4
-  Defence: 4
+  DefaultDefence: 3
+  Defence: 3
   DefaultCooldown: 0
   Cooldown: 0
   RequiredAP: 0

@@ -2,7 +2,6 @@
 using Assets.Scripts.GameEnvironment.Dice;
 using Assets.Scripts.Player;
 using Assets.Scripts.UI.Bar;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;

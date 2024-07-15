@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Data.StaticData;
-using Assets.Scripts.GameEnvironment.Battle;
+﻿using Assets.Scripts.GameEnvironment.Battle;
 using Assets.Scripts.GameEnvironment.Dice;
 using Assets.Scripts.Player;
 using System.Collections;
